@@ -48,14 +48,13 @@
             font-weight: bold;
         }
 
-        /* Contenitore Principale Dinamico */
+        /* Schermata Principale */
         .main-container {
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 20px;
-            position: relative;
+            padding: 60px 20px;
         }
 
         /* Hub Centrale Radiale */
@@ -69,37 +68,25 @@
         }
 
         /* Logo al Centro Extra Large */
-.center-logo {
-    width: 320px; /* Aumentato a 320px */
-    height: 320px; /* Aumentato a 320px */
-    background: linear-gradient(135deg, var(--primary), #3b82f6);
-    border: 5px solid var(--accent); /* Bordo leggermente più spesso */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
-    z-index: 10;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-}
+        .center-logo {
+            width: 320px;
+            height: 320px;
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            border: 5px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+            z-index: 10;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
 
         .center-logo:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(245, 158, 11, 0.6);
-        }
-
-        .center-logo h2 {
-            font-size: 1.6rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .center-logo p {
-            font-size: 0.75rem;
-            color: var(--accent);
-            font-weight: 600;
+            box-shadow: 0 0 50px rgba(245, 158, 11, 0.6);
         }
 
         /* Bottoni delle Sezioni Intorno */
@@ -132,55 +119,139 @@
             box-shadow: 0 10px 25px rgba(30, 58, 138, 0.5);
         }
 
-        /* Icone segnaposto (Emoticon usate come ancora visiva) */
         .section-node .icon {
             font-size: 1.8rem;
             margin-bottom: 8px;
         }
 
-        /* Posizionamento geometrico a raggiera (Angoli calcolati) */
-        /* Sopra (0°) */
-        .node-classifiche { top: 20px; left: calc(50% - 65px); }
-        /* Sopra a Destra (60°) */
-        .node-statistiche { top: 120px; right: 20px; }
-        /* Sotto a Destra (120°) */
-        .node-societa { bottom: 120px; right: 20px; }
-        /* Sotto (180°) */
-        .node-albo { bottom: 20px; left: calc(50% - 65px); }
-        /* Sotto a Sinistra (240°) */
-        .node-regolamento { bottom: 120px; left: 20px; }
-        /* Sopra a Sinistra (300°) */
-        .node-contatti { top: 120px; left: 20px; }
+        /* Posizionamento geometrico a raggiera */
+        .node-classifiche { top: -20px; left: calc(50% - 65px); }
+        .node-statistiche { top: 90px; right: -10px; }
+        .node-societa { bottom: 90px; right: -10px; }
+        .node-albo { bottom: -20px; left: calc(50% - 65px); }
+        .node-regolamento { bottom: 90px; left: -10px; }
+        .node-contatti { top: 90px; left: -10px; }
 
+        /* Contenitore per le sezioni interne posizionato SOTTO la raggiera */
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto 60px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Stile Sezione Storia & Timeline */
+        .card-storia {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            scroll-margin-top: 40px; /* Aiuta lo scorrimento automatico */
+        }
+
+        .card-storia h2 {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .intro-storia {
+            color: #94a3b8;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 50px;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary);
+            top: 10px;
+            bottom: 10px;
+            left: 15px;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 0 40px 0;
+            position: relative;
+        }
+
+        .timeline-badge {
+            position: absolute;
+            width: 70px;
+            height: 35px;
+            left: -75px;
+            top: 12px;
+            background: var(--accent);
+            color: var(--dark);
+            font-weight: bold;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+            z-index: 1;
+        }
+
+        .timeline-content {
+            padding: 25px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 12px;
+            border-left: 5px solid var(--accent);
+        }
+
+        .timeline-content h3 {
+            color: var(--light);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .timeline-content p {
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
 
         footer {
             text-align: center;
-            padding: 15px;
+            padding: 20px;
             background: rgba(15, 23, 42, 0.8);
             font-size: 0.85rem;
             color: #64748b;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+            width: 100%;
         }
 
-        /* RESPONSIVE: Ottimizzazione per Smartphone e Tablet */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            body {
-                overflow-y: auto;
-            }
+            body { overflow-y: auto; }
+            .main-container { padding: 30px 20px; }
             .radial-hub {
                 width: 100%;
                 height: auto;
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
-                padding: 20px 0;
             }
             .center-logo {
                 position: relative;
-                order: -1; /* Mette il logo sempre in alto su mobile */
+                order: -1;
                 margin-bottom: 20px;
-                width: 140px;
-                height: 140px;
+                width: 260px;
+                height: 260px;
             }
             .section-node {
                 position: relative;
@@ -197,8 +268,15 @@
                 left: auto !important;
                 right: auto !important;
             }
-            .section-node .icon {
-                margin-bottom: 0;
+            .section-node .icon { margin-bottom: 0; }
+            .timeline { padding-left: 0; }
+            .timeline::after { display: none; }
+            .timeline-badge {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 15px;
+                display: inline-block;
             }
         }
     </style>
@@ -209,45 +287,14 @@
         <h1>Lega Fantacalcio <span>Barriera dell'M</span></h1>
     </header>
 
+    <!-- AREA DEDICATA ESCLUSIVAMENTE AL LOGO E AI BOTTONI RADIALI -->
     <div class="main-container">
         <div class="radial-hub">
-     <!-- SEZIONE STORIA DELLA LEGA -->
-<section id="storia" class="card-storia">
-    <h2>La Nostra Storia</h2>
-    <p class="intro-storia">Fondata nel lontano 1995, la Lefabam attraversa decenni di calcio, amicizia, scambi leggendari e rivalità storiche.</p>
-    
-    <div class="timeline">
-        
-        <div class="timeline-item">
-            <div class="timeline-badge">1995</div>
-            <div class="timeline-content">
-                <h3>La Fondazione</h3>
-                <p>Nasce ufficialmente la <strong>Lega Fantacalcio Barriera dell'M</strong>. Un'era pionieristica fatta di aste memorabili vissute dal vivo, calcoli rigorosamente a mano con la Gazzetta dello Sport del lunedì e i primi storici campioni della lega.</p>
+            
+            <!-- LOGO CENTRALE (Sostituisci logo.gif con il tuo file originale) -->
+            <div class="center-logo">
+                <img src="leganet.gif" alt="Logo Lefabam" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-badge">2000</div>
-            <div class="timeline-content">
-                <h3>L'Era Digitale</h3>
-                <p>Il <strong>29 Ottobre 2000</strong> segna una svolta epocale: viene attivato il primo canale di contatto ufficiale via e-mail della società. La lega si modernizza, velocizzando le comunicazioni e la gestione dei mercati invernali.</p>
-            </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-badge">Oggi</div>
-            <div class="timeline-content">
-                <h3>La Leggenda Continua</h3>
-                <p>Oltre trent'anni di fantacalcio. La Lefabam è ormai un'istituzione dove si tramandano rivalità storiche, sfottò generazionali e albi d'oro che valgono una carriera.</p>
-            </div>
-        </div>
-
-    </div>
-</section>       
-            <!-- LOGO CENTRALE -->
-<div class="center-logo">
-    <img src="leganet.gif" alt="Logo Lefabam" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
-</div>
 
             <!-- SEZIONI INTORNO -->
             <a href="#classifiche" class="section-node node-classifiche">
@@ -265,6 +312,7 @@
                 <span>Società</span>
             </a>
 
+            <!-- Ora punta correttamente alla sezione storia posizionata in basso -->
             <a href="#storia" class="section-node node-albo">
                 <div class="icon">📜</div>
                 <span>Storia e Albo</span>
@@ -283,9 +331,5 @@
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 1995 - 2026 Lefabam. Portale Ufficiale della Lega.</p>
-    </footer>
-
-</body>
-</html>
+    <!-- AREA SOTTOSTANTE DEDICATA AI CONTENUTI DESSLE SEZIONI INTERNE -->
+    <div class="content-container">
