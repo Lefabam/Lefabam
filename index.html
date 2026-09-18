@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lefabam - Home Portale</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            letter-spacing: 2px;
+            color: var(--light);
+        }
+
+        header span {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Contenitore Principale Dinamico */
+        .main-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        /* Hub Centrale Radiale */
+        .radial-hub {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Logo al Centro */
+        .center-logo {
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            border: 4px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            z-index: 10;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .center-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(245, 158, 11, 0.6);
+        }
+
+        .center-logo h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .center-logo p {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Bottoni delle Sezioni Intorno */
+        .section-node {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            background: rgba(30, 41, 59, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: center;
+            padding: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .section-node:hover {
+            border-color: var(--accent);
+            background: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.5);
+        }
+
+        /* Icone segnaposto (Emoticon usate come ancora visiva) */
+        .section-node .icon {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        /* Posizionamento geometrico a raggiera (Angoli calcolati) */
+        /* Sopra (0°) */
+        .node-classifiche { top: 20px; left: calc(50% - 65px); }
+        /* Sopra a Destra (60°) */
+        .node-statistiche { top: 120px; right: 20px; }
+        /* Sotto a Destra (120°) */
+        .node-societa { bottom: 120px; right: 20px; }
+        /* Sotto (180°) */
+        .node-albo { bottom: 20px; left: calc(50% - 65px); }
+        /* Sotto a Sinistra (240°) */
+        .node-regolamento { bottom: 120px; left: 20px; }
+        /* Sopra a Sinistra (300°) */
+        .node-contatti { top: 120px; left: 20px; }
+
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: rgba(15, 23, 42, 0.8);
+            font-size: 0.85rem;
+            color: #64748b;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* RESPONSIVE: Ottimizzazione per Smartphone e Tablet */
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto;
+            }
+            .radial-hub {
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px 0;
+            }
+            .center-logo {
+                position: relative;
+                order: -1; /* Mette il logo sempre in alto su mobile */
+                margin-bottom: 20px;
+                width: 140px;
+                height: 140px;
+            }
+            .section-node {
+                position: relative;
+                width: 100%;
+                max-width: 280px;
+                height: 70px;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 20px;
+                padding-left: 25px;
+                border-radius: 12px;
+                top: auto !important;
+                bottom: auto !important;
+                left: auto !important;
+                right: auto !important;
+            }
+            .section-node .icon {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Lega Fantacalcio <span>Barriera dell'M</span></h1>
+    </header>
+
+    <div class="main-container">
+        <div class="radial-hub">
+            
+            <!-- LOGO CENTRALE -->
+            <div class="center-logo">
+                <h2>LEFABAM</h2>
+                <p>Dal 1995</p>
+            </div>
+
+            <!-- SEZIONI INTORNO -->
+            <a href="#classifiche" class="section-node node-classifiche">
+                <div class="icon">🏆</div>
+                <span>Classifiche</span>
+            </a>
+
+            <a href="#statistiche" class="section-node node-statistiche">
+                <div class="icon">📊</div>
+                <span>Statistiche</span>
+            </a>
+
+            <a href="#societa" class="section-node node-societa">
+                <div class="icon">🛡️</div>
+                <span>Società</span>
+            </a>
+
+            <a href="#albo" class="section-node node-albo">
+                <div class="icon">📜</div>
+                <span>Albo d'Oro</span>
+            </a>
+
+            <a href="#regolamento" class="section-node node-regolamento">
+                <div class="icon">📘</div>
+                <span>Regolamento</span>
+            </a>
+
+            <a href="#contatti" class="section-node node-contatti">
+                <div class="icon">✉️</div>
+                <span>Contatti</span>
+            </a>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 1995 - 2026 Lefabam. Portale Ufficiale della Lega.</p>
+    </footer>
+
+</body>
+</html>
