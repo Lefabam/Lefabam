@@ -68,23 +68,22 @@
             align-items: center;
         }
 
-        /* Logo al Centro */
-        .center-logo {
-            width: 160px;
-            height: 160px;
-            background: linear-gradient(135deg, var(--primary), #3b82f6);
-            border: 4px solid var(--accent);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
-            z-index: 10;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+        /* Logo al Centro Ingrandito e Ottimizzato */
+.center-logo {
+    width: 240px; /* Aumentato da 160px a 240px */
+    height: 240px; /* Aumentato da 160px a 240px */
+    background: linear-gradient(135deg, var(--primary), #3b82f6);
+    border: 4px solid var(--accent);
+    border-radius: 50%; /* Mantiene la forma circolare del bordo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+    z-index: 10;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Taglia gli angoli della GIF per farla stare nel cerchio */
+}
 
         .center-logo:hover {
             transform: scale(1.05);
