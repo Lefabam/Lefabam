@@ -281,7 +281,22 @@
         }
     </style>
 </head>
-<body>
+<!-- SCRIPT PER LO SCORRIMENTO FLUIDO -->
+    <script>
+        document.querySelector('.node-albo').addEventListener('click', function(e) {
+            e.preventDefault(); // Impedisce il salto secco del browser
+            const targetSection = document.getElementById('storia');
+            
+            // Fa scorrere la pagina in modo fluido fino alla sezione storia
+            targetSection.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        });
+    </script>
+</body>
+</html>
+    <body>
 
     <header>
         <h1>Lega Fantacalcio <span>Barriera dell'M</span></h1>
