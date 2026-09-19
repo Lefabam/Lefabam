@@ -1,351 +1,1114 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lefabam - Home Portale</title>
-    <style>
-        :root {
-            --primary: #1e3a8a;
-            --accent: #f59e0b;
-            --dark: #0f172a;
-            --light: #f8fafc;
-        }
+<title>Lefabam — Lega Fantacalcio Barriera dell'M</title>
+<style>
+    :root {
+        --primary: #1e3a8a;
+        --primary-light: #3b82f6;
+        --accent: #f59e0b;
+        --accent-light: #fbbf24;
+        --dark: #020617;
+        --dark-2: #0f172a;
+        --dark-3: #1e293b;
+        --text: #f8fafc;
+        --muted: #94a3b8;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, sans-serif;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    }
 
-        body {
-    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: white;
-    overflow-x: hidden;
-    scroll-behavior: smooth; /* Aggiungi questa riga */
-}
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        min-height: 100vh;
+        color: var(--text);
+        background:
+            radial-gradient(circle at 50% 35%, rgba(30, 64, 175, .35), transparent 35%),
+            radial-gradient(circle at 10% 80%, rgba(245, 158, 11, .08), transparent 30%),
+            linear-gradient(135deg, #020617, #0f172a 50%, #020617);
+        overflow-x: hidden;
+    }
+
+    /* =========================================================
+       SFONDO ANIMATO
+    ========================================================= */
+
+    .background {
+        position: fixed;
+        inset: 0;
+        z-index: -10;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: .18;
+        animation: floatOrb 12s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+        width: 400px;
+        height: 400px;
+        background: #2563eb;
+        top: -120px;
+        left: -100px;
+    }
+
+    .orb-2 {
+        width: 300px;
+        height: 300px;
+        background: #f59e0b;
+        right: -100px;
+        top: 35%;
+        animation-delay: -4s;
+    }
+
+    .orb-3 {
+        width: 350px;
+        height: 350px;
+        background: #1d4ed8;
+        bottom: -150px;
+        left: 35%;
+        animation-delay: -7s;
+    }
+
+    @keyframes floatOrb {
+        from {
+            transform: translate(0, 0) scale(1);
+        }
+        to {
+            transform: translate(60px, -40px) scale(1.15);
+        }
+    }
+
+    /* Stelle / particelle */
+
+    .particles {
+        position: absolute;
+        inset: 0;
+        background-image:
+            radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px),
+            radial-gradient(circle, rgba(59,130,246,.35) 1px, transparent 1px);
+        background-size: 80px 80px, 130px 130px;
+        background-position: 0 0, 40px 60px;
+        opacity: .16;
+        animation: particlesMove 25s linear infinite;
+    }
+
+    @keyframes particlesMove {
+        from {
+            background-position: 0 0, 40px 60px;
+        }
+        to {
+            background-position: 80px 80px, 170px 190px;
+        }
+    }
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    header {
+        position: relative;
+        z-index: 20;
+        text-align: center;
+        padding: 25px 20px;
+        background: rgba(2, 6, 23, .65);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    header::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 180px;
+        height: 2px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            var(--accent),
+            transparent
+        );
+        box-shadow: 0 0 15px var(--accent);
+    }
+
+    .header-title {
+        font-size: clamp(1.3rem, 3vw, 2rem);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+
+    .header-title span {
+        color: var(--accent);
+        text-shadow: 0 0 15px rgba(245,158,11,.5);
+    }
+
+    .header-subtitle {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: .8rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+    }
+
+    /* =========================================================
+       HERO / RAGGIERA
+    ========================================================= */
+
+    .main-container {
+        min-height: calc(100vh - 100px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 70px 20px 100px;
+    }
+
+    .radial-hub {
+        position: relative;
+        width: 700px;
+        height: 700px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* anelli */
+
+    .ring {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(59,130,246,.15);
+        pointer-events: none;
+    }
+
+    .ring-1 {
+        width: 440px;
+        height: 440px;
+        animation: rotateRing 25s linear infinite;
+    }
+
+    .ring-2 {
+        width: 570px;
+        height: 570px;
+        border-style: dashed;
+        border-color: rgba(245,158,11,.12);
+        animation: rotateRingReverse 35s linear infinite;
+    }
+
+    .ring-3 {
+        width: 690px;
+        height: 690px;
+        border-color: rgba(255,255,255,.05);
+        animation: pulseRing 5s ease-in-out infinite;
+    }
+
+    @keyframes rotateRing {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes rotateRingReverse {
+        to {
+            transform: rotate(-360deg);
+        }
+    }
+
+    @keyframes pulseRing {
+        0%,100% {
+            transform: scale(.98);
+            opacity: .5;
+        }
+        50% {
+            transform: scale(1.02);
+            opacity: 1;
+        }
+    }
+
+    /* =========================================================
+       LINEE RADIALI
+    ========================================================= */
+
+    .connection {
+        position: absolute;
+        height: 2px;
+        width: 240px;
+        left: 50%;
+        top: 50%;
+        transform-origin: left center;
+        background: linear-gradient(
+            90deg,
+            rgba(59,130,246,.5),
+            rgba(245,158,11,.7),
+            transparent
+        );
+        opacity: .45;
+        z-index: 0;
+        animation: connectionPulse 3s ease-in-out infinite;
+    }
+
+    .connection::after {
+        content: "";
+        position: absolute;
+        right: 10%;
+        top: -2px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 12px var(--accent);
+    }
+
+    .c1 { transform: rotate(-90deg); }
+    .c2 { transform: rotate(-30deg); }
+    .c3 { transform: rotate(30deg); }
+    .c4 { transform: rotate(90deg); }
+    .c5 { transform: rotate(150deg); }
+    .c6 { transform: rotate(210deg); }
+
+    @keyframes connectionPulse {
+        0%,100% { opacity: .25; }
+        50% { opacity: .65; }
+    }
+
+    /* =========================================================
+       LOGO CENTRALE
+    ========================================================= */
+
+    .center-logo {
+        position: relative;
+        width: 310px;
+        height: 310px;
+        border-radius: 50%;
+        padding: 7px;
+        background: linear-gradient(
+            135deg,
+            var(--accent),
+            #fff1a8,
+            var(--accent),
+            #b45309
+        );
+        box-shadow:
+            0 0 30px rgba(59,130,246,.45),
+            0 0 80px rgba(59,130,246,.18);
+        z-index: 10;
+        cursor: pointer;
+        transition:
+            transform .5s cubic-bezier(.2,.8,.2,1),
+            box-shadow .5s ease;
+        animation: logoFloat 5s ease-in-out infinite;
+    }
+
+    .center-logo::before {
+        content: "";
+        position: absolute;
+        inset: -12px;
+        border-radius: 50%;
+        border: 1px solid rgba(245,158,11,.35);
+        animation: logoPulse 2.8s ease-in-out infinite;
+    }
+
+    .center-logo::after {
+        content: "";
+        position: absolute;
+        inset: -25px;
+        border-radius: 50%;
+        border: 1px solid rgba(59,130,246,.12);
+    }
+
+    .center-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 50%;
+        background: var(--dark-2);
+    }
+
+    .center-logo:hover {
+        transform: scale(1.07) rotate(2deg);
+        box-shadow:
+            0 0 45px rgba(245,158,11,.65),
+            0 0 100px rgba(59,130,246,.35);
+    }
+
+    @keyframes logoFloat {
+        0%,100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-8px);
+        }
+    }
+
+    @keyframes logoPulse {
+        0%,100% {
+            transform: scale(.95);
+            opacity: .3;
+        }
+        50% {
+            transform: scale(1.05);
+            opacity: .8;
+        }
+    }
+
+    /* =========================================================
+       NODI
+    ========================================================= */
+
+    .section-node {
+        position: absolute;
+        width: 145px;
+        height: 110px;
+        padding: 15px;
+        border-radius: 20px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        color: white;
+        text-decoration: none;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(30,41,59,.88),
+                rgba(15,23,42,.75)
+            );
+
+        border: 1px solid rgba(255,255,255,.12);
+
+        box-shadow:
+            0 15px 35px rgba(0,0,0,.35),
+            inset 0 1px 0 rgba(255,255,255,.06);
+
+        backdrop-filter: blur(15px);
+
+        transition:
+            transform .4s cubic-bezier(.2,.8,.2,1),
+            border-color .3s,
+            box-shadow .3s,
+            background .3s;
+
+        z-index: 5;
+    }
+
+    .section-node::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(
+            135deg,
+            rgba(59,130,246,.15),
+            transparent 60%
+        );
+        opacity: 0;
+        transition: opacity .3s;
+    }
+
+    .section-node:hover {
+        border-color: rgba(245,158,11,.8);
+        background:
+            linear-gradient(
+                145deg,
+                rgba(30,58,138,.95),
+                rgba(15,23,42,.9)
+            );
+        box-shadow:
+            0 20px 45px rgba(0,0,0,.5),
+            0 0 25px rgba(245,158,11,.18);
+        transform: translateY(-8px) scale(1.05);
+    }
+
+    .section-node:hover::before {
+        opacity: 1;
+    }
+
+    .icon {
+        position: relative;
+        font-size: 2rem;
+        margin-bottom: 8px;
+        filter: drop-shadow(0 0 8px rgba(255,255,255,.15));
+        transition: transform .3s;
+    }
+
+    .section-node:hover .icon {
+        transform: scale(1.2) translateY(-2px);
+    }
+
+    .node-title {
+        position: relative;
+        font-size: .9rem;
+        font-weight: 700;
+        letter-spacing: .5px;
+    }
+
+    .node-classifiche {
+        top: 5px;
+        left: calc(50% - 72px);
+    }
+
+    .node-statistiche {
+        top: 135px;
+        right: 0;
+    }
+
+    .node-societa {
+        bottom: 135px;
+        right: 0;
+    }
+
+    .node-albo {
+        bottom: 5px;
+        left: calc(50% - 72px);
+    }
+
+    .node-regolamento {
+        bottom: 135px;
+        left: 0;
+    }
+
+    .node-contatti {
+        top: 135px;
+        left: 0;
+    }
+
+    /* =========================================================
+       SEZIONE CONTENUTI
+    ========================================================= */
+
+    .content-container {
+        width: min(100% - 40px, 1000px);
+        margin: 0 auto 80px;
+    }
+
+    .section-card {
+        position: relative;
+        padding: 45px;
+        margin-bottom: 30px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(30,41,59,.78),
+                rgba(15,23,42,.72)
+            );
+
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 24px;
+
+        box-shadow:
+            0 25px 60px rgba(0,0,0,.35),
+            inset 0 1px 0 rgba(255,255,255,.04);
+
+        backdrop-filter: blur(15px);
+
+        scroll-margin-top: 30px;
+    }
+
+    .section-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 40px;
+        right: 40px;
+        height: 2px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            var(--accent),
+            transparent
+        );
+        opacity: .7;
+    }
+
+    .section-card h2 {
+        color: var(--accent);
+        font-size: 2rem;
+        margin-bottom: 12px;
+    }
+
+    .section-card > p {
+        color: var(--muted);
+        line-height: 1.7;
+        margin-bottom: 35px;
+    }
+
+    /* =========================================================
+       TIMELINE
+    ========================================================= */
+
+    .timeline {
+        position: relative;
+        padding-left: 45px;
+    }
+
+    .timeline::before {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 5px;
+        bottom: 5px;
+        width: 3px;
+        background: linear-gradient(
+            var(--accent),
+            var(--primary-light),
+            transparent
+        );
+        border-radius: 5px;
+    }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -43px;
+        top: 22px;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow:
+            0 0 0 5px rgba(245,158,11,.12),
+            0 0 18px rgba(245,158,11,.7);
+    }
+
+    .timeline-year {
+        display: inline-block;
+        padding: 7px 14px;
+        margin-bottom: 10px;
+        border-radius: 7px;
+        background: var(--accent);
+        color: var(--dark);
+        font-weight: 800;
+        font-size: .85rem;
+    }
+
+    .timeline-content {
+        padding: 22px;
+        border-radius: 15px;
+        background: rgba(2,6,23,.45);
+        border: 1px solid rgba(255,255,255,.06);
+        transition: transform .3s, border-color .3s;
+    }
+
+    .timeline-content:hover {
+        transform: translateX(6px);
+        border-color: rgba(59,130,246,.4);
+    }
+
+    .timeline-content h3 {
+        margin-bottom: 8px;
+    }
+
+    .timeline-content p {
+        color: #cbd5e1;
+        line-height: 1.7;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+        padding: 25px 20px;
+        text-align: center;
+        color: #64748b;
+        font-size: .8rem;
+        background: rgba(2,6,23,.75);
+        border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    footer span {
+        color: var(--accent);
+    }
+
+    /* =========================================================
+       ANIMAZIONE ENTRATA
+    ========================================================= */
+
+    .radial-hub {
+        animation: hubAppear 1.2s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .section-node {
+        opacity: 0;
+        animation: nodeAppear .7s ease forwards;
+    }
+
+    .node-classifiche { animation-delay: .2s; }
+    .node-statistiche { animation-delay: .35s; }
+    .node-societa { animation-delay: .5s; }
+    .node-albo { animation-delay: .65s; }
+    .node-regolamento { animation-delay: .8s; }
+    .node-contatti { animation-delay: .95s; }
+
+    @keyframes hubAppear {
+        from {
+            opacity: 0;
+            transform: scale(.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes nodeAppear {
+        from {
+            opacity: 0;
+            transform: scale(.6);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 768px) {
 
         header {
-            text-align: center;
-            padding: 20px;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 18px 15px;
         }
 
-        header h1 {
-            font-size: 2rem;
+        .header-title {
+            font-size: 1.1rem;
+            letter-spacing: 1.5px;
+        }
+
+        .header-subtitle {
+            font-size: .65rem;
             letter-spacing: 2px;
-            color: var(--light);
         }
 
-        header span {
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        /* Schermata Principale */
         .main-container {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 60px 20px;
+            padding: 45px 20px 70px;
         }
 
-        /* Hub Centrale Radiale */
         .radial-hub {
-            position: relative;
-            width: 600px;
-            height: 600px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Logo al Centro Extra Large */
-        .center-logo {
-            width: 320px;
-            height: 320px;
-            background: linear-gradient(135deg, var(--primary), #3b82f6);
-            border: 5px solid var(--accent);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
-            z-index: 10;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-        }
-
-        .center-logo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 50px rgba(245, 158, 11, 0.6);
-        }
-
-        /* Bottoni delle Sezioni Intorno */
-        .section-node {
-            position: absolute;
-            width: 130px;
-            height: 130px;
-            background: rgba(30, 41, 59, 0.8);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 18px;
+            width: 100%;
+            height: auto;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-align: center;
-            padding: 10px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            backdrop-filter: blur(5px);
+            gap: 15px;
         }
 
-        .section-node:hover {
-            border-color: var(--accent);
-            background: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.5);
+        .ring,
+        .connection {
+            display: none;
         }
 
-        .section-node .icon {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
+        .center-logo {
+            width: 240px;
+            height: 240px;
+            margin-bottom: 20px;
         }
 
-        /* Posizionamento geometrico a raggiera */
-        .node-classifiche { top: -20px; left: calc(50% - 65px); }
-        .node-statistiche { top: 90px; right: -10px; }
-        .node-societa { bottom: 90px; right: -10px; }
-        .node-albo { bottom: -20px; left: calc(50% - 65px); }
-        .node-regolamento { bottom: 90px; left: -10px; }
-        .node-contatti { top: 90px; left: -10px; }
+        .section-node,
+        .node-classifiche,
+        .node-statistiche,
+        .node-societa,
+        .node-albo,
+        .node-regolamento,
+        .node-contatti {
+            position: relative;
+            top: auto;
+            bottom: auto;
+            left: auto;
+            right: auto;
 
-        /* Contenitore per le sezioni interne posizionato SOTTO la raggiera */
+            width: min(100%, 360px);
+            height: 70px;
+            margin: 0 auto;
+
+            flex-direction: row;
+            justify-content: flex-start;
+            gap: 18px;
+            padding: 0 25px;
+        }
+
+        .icon {
+            margin: 0;
+            font-size: 1.6rem;
+        }
+
+        .node-title {
+            font-size: .95rem;
+        }
+
         .content-container {
-            max-width: 900px;
-            margin: 0 auto 60px auto;
-            padding: 0 20px;
-            width: 100%;
+            width: min(100% - 25px, 1000px);
         }
 
-        /* Stile Sezione Storia & Timeline */
-        .card-storia {
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
+        .section-card {
+            padding: 30px 22px;
             border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            backdrop-filter: blur(10px);
-            scroll-margin-top: 40px; /* Aiuta lo scorrimento automatico */
         }
 
-        .card-storia h2 {
-            color: var(--accent);
-            font-size: 2rem;
-            margin-bottom: 15px;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
-            padding-bottom: 10px;
-        }
-
-        .intro-storia {
-            color: #94a3b8;
-            margin-bottom: 40px;
-            font-size: 1.1rem;
+        .section-card h2 {
+            font-size: 1.6rem;
         }
 
         .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            padding-left: 50px;
+            padding-left: 25px;
         }
 
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--primary);
-            top: 10px;
-            bottom: 10px;
-            left: 15px;
-            margin-left: -2px;
-            border-radius: 2px;
+        .timeline::before,
+        .timeline-item::before {
+            display: none;
         }
+    }
 
-        .timeline-item {
-            padding: 10px 0 40px 0;
-            position: relative;
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: .01ms !important;
+            animation-iteration-count: 1 !important;
+            scroll-behavior: auto !important;
         }
+    }
+</style>
 
-        .timeline-badge {
-            position: absolute;
-            width: 70px;
-            height: 35px;
-            left: -75px;
-            top: 12px;
-            background: var(--accent);
-            color: var(--dark);
-            font-weight: bold;
-            text-align: center;
-            line-height: 35px;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
-            z-index: 1;
-        }
+</head> <body>
+<!-- SFONDO -->
+<div class="background">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="particles"></div>
+</div>
 
-        .timeline-content {
-            padding: 25px;
-            background: rgba(15, 23, 42, 0.6);
-            border-radius: 12px;
-            border-left: 5px solid var(--accent);
-        }
-
-        .timeline-content h3 {
-            color: var(--light);
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-        }
-
-        .timeline-content p {
-            color: #cbd5e1;
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(15, 23, 42, 0.8);
-            font-size: 0.85rem;
-            color: #64748b;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            width: 100%;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            body { overflow-y: auto; }
-            .main-container { padding: 30px 20px; }
-            .radial-hub {
-                width: 100%;
-                height: auto;
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            }
-            .center-logo {
-                position: relative;
-                order: -1;
-                margin-bottom: 20px;
-                width: 260px;
-                height: 260px;
-            }
-            .section-node {
-                position: relative;
-                width: 100%;
-                max-width: 280px;
-                height: 70px;
-                flex-direction: row;
-                justify-content: flex-start;
-                gap: 20px;
-                padding-left: 25px;
-                border-radius: 12px;
-                top: auto !important;
-                bottom: auto !important;
-                left: auto !important;
-                right: auto !important;
-            }
-            .section-node .icon { margin-bottom: 0; }
-            .timeline { padding-left: 0; }
-            .timeline::after { display: none; }
-            .timeline-badge {
-                position: relative;
-                left: 0;
-                top: 0;
-                margin-bottom: 15px;
-                display: inline-block;
-            }
-        }
-    </style>
-</head>
-<!-- SCRIPT PER LO SCORRIMENTO FLUIDO -->
-    <script>
-        document.querySelector('.node-albo').addEventListener('click', function(e) {
-            e.preventDefault(); // Impedisce il salto secco del browser
-            const targetSection = document.getElementById('storia');
-            
-            // Fa scorrere la pagina in modo fluido fino alla sezione storia
-            targetSection.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
-            });
-        });
-    </script>
-</body>
-</html>
-    <body>
-
-    <header>
-        <h1>Lega Fantacalcio <span>Barriera dell'M</span></h1>
-    </header>
-
-    <!-- AREA DEDICATA ESCLUSIVAMENTE AL LOGO E AI BOTTONI RADIALI -->
-    <div class="main-container">
-        <div class="radial-hub">
-            
-            <!-- LOGO CENTRALE (Sostituisci logo.gif con il tuo file originale) -->
-            <div class="center-logo">
-                <img src="leganet.gif" alt="Logo Lefabam" style="width: 100%; height: 100%; object-fit: contain;">
-            </div>
-
-            <!-- SEZIONI INTORNO -->
-            <a href="#classifiche" class="section-node node-classifiche">
-                <div class="icon">🏆</div>
-                <span>Classifiche</span>
-            </a>
-
-            <a href="#statistiche" class="section-node node-statistiche">
-                <div class="icon">📊</div>
-                <span>Statistiche</span>
-            </a>
-
-            <a href="#societa" class="section-node node-societa">
-                <div class="icon">🛡️</div>
-                <span>Società</span>
-            </a>
-
-            <!-- Ora punta correttamente alla sezione storia posizionata in basso -->
-            <a href="#storia" class="section-node node-albo">
-                <div class="icon">📜</div>
-                <span>Storia e Albo</span>
-            </a>
-
-            <a href="#regolamento" class="section-node node-regolamento">
-                <div class="icon">📘</div>
-                <span>Regolamento</span>
-            </a>
-
-            <a href="#contatti" class="section-node node-contatti">
-                <div class="icon">✉️</div>
-                <span>Contatti</span>
-            </a>
-
-        </div>
+<!-- HEADER -->
+<header>
+    <div class="header-title">
+        Lega Fantacalcio
+        <span>Barriera dell'M</span>
     </div>
 
-    <!-- AREA SOTTOSTANTE DEDICATA AI CONTENUTI DESSLE SEZIONI INTERNE -->
-    <div class="content-container">
+    <div class="header-subtitle">
+        Il portale ufficiale della lega
+    </div>
+</header>
+
+<!-- =========================================================
+     HERO
+========================================================== -->
+
+<main class="main-container">
+
+    <div class="radial-hub">
+
+        <!-- ANELLI -->
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+
+        <!-- COLLEGAMENTI -->
+        <div class="connection c1"></div>
+        <div class="connection c2"></div>
+        <div class="connection c3"></div>
+        <div class="connection c4"></div>
+        <div class="connection c5"></div>
+        <div class="connection c6"></div>
+
+        <!-- LOGO -->
+        <div class="center-logo">
+            <img
+                src="leganet.gif"
+                alt="Logo Lefabam"
+            >
+        </div>
+
+        <!-- MENU -->
+
+        <a href="#classifiche" class="section-node node-classifiche">
+            <div class="icon">🏆</div>
+            <div class="node-title">Classifiche</div>
+        </a>
+
+        <a href="#statistiche" class="section-node node-statistiche">
+            <div class="icon">📊</div>
+            <div class="node-title">Statistiche</div>
+        </a>
+
+        <a href="#societa" class="section-node node-societa">
+            <div class="icon">🛡️</div>
+            <div class="node-title">Società</div>
+        </a>
+
+        <a href="#storia" class="section-node node-albo">
+            <div class="icon">📜</div>
+            <div class="node-title">Storia e Albo</div>
+        </a>
+
+        <a href="#regolamento" class="section-node node-regolamento">
+            <div class="icon">📘</div>
+            <div class="node-title">Regolamento</div>
+        </a>
+
+        <a href="#contatti" class="section-node node-contatti">
+            <div class="icon">✉️</div>
+            <div class="node-title">Contatti</div>
+        </a>
+
+    </div>
+
+</main>
+
+<!-- =========================================================
+     CONTENUTI
+========================================================== -->
+
+<div class="content-container">
+
+    <!-- CLASSIFICHE -->
+    <section id="classifiche" class="section-card">
+        <h2>🏆 Classifiche</h2>
+        <p>
+            La situazione aggiornata della lega, con classifica,
+            risultati e andamento delle squadre.
+        </p>
+    </section>
+
+    <!-- STATISTICHE -->
+    <section id="statistiche" class="section-card">
+        <h2>📊 Statistiche</h2>
+        <p>
+            Numeri, record, gol segnati, miglior punteggio
+            e tutte le statistiche della stagione.
+        </p>
+    </section>
+
+    <!-- SOCIETA -->
+    <section id="societa" class="section-card">
+        <h2>🛡️ Società</h2>
+        <p>
+            Scopri tutte le squadre partecipanti,
+            i loro presidenti e la storia della lega.
+        </p>
+    </section>
+
+    <!-- STORIA -->
+    <section id="storia" class="section-card">
+
+        <h2>📜 Storia & Albo d'Oro</h2>
+
+        <p>
+            Tutta la storia della Lega Fantacalcio Barriera dell'M,
+            dalle origini fino alle stagioni più recenti.
+        </p>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-year">2000</div>
+
+                <div class="timeline-content">
+                    <h3>La nascita della lega</h3>
+                    <p>
+                        Nasce la Lega Fantacalcio Barriera dell'M,
+                        dando inizio a una lunga storia di sfide,
+                        rivalità e campionati.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2005</div>
+
+                <div class="timeline-content">
+                    <h3>La crescita</h3>
+                    <p>
+                        La lega cresce e il fantacalcio diventa
+                        un appuntamento fisso per tutti i partecipanti.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2020</div>
+
+                <div class="timeline-content">
+                    <h3>Una nuova era</h3>
+                    <p>
+                        La competizione entra in una nuova fase,
+                        con nuove squadre e nuove generazioni
+                        di fantallenatori.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">OGGI</div>
+
+                <div class="timeline-content">
+                    <h3>La leggenda continua</h3>
+                    <p>
+                        Ogni giornata aggiunge un nuovo capitolo
+                        alla storia della Lega.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- REGOLAMENTO -->
+    <section id="regolamento" class="section-card">
+        <h2>📘 Regolamento</h2>
+        <p>
+            Tutte le regole ufficiali della Lega Fantacalcio
+            Barriera dell'M.
+        </p>
+    </section>
+
+    <!-- CONTATTI -->
+    <section id="contatti" class="section-card">
+        <h2>✉️ Contatti</h2>
+        <p>
+            Per informazioni, comunicazioni e tutto ciò che
+            riguarda la lega.
+        </p>
+    </section>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+    Lega Fantacalcio <span>Barriera dell'M</span>
+    &nbsp;•&nbsp;
+    Portale ufficiale
+</footer>
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script>
+
+    /* ---------------------------------------------------------
+       PARALLAX DELLA RAGGIERA
+    --------------------------------------------------------- */
+
+    const hub = document.querySelector(".radial-hub");
+
+    document.addEventListener("mousemove", (event) => {
+
+        if (window.innerWidth <= 768) return;
+
+        const x =
+            (event.clientX / window.innerWidth - 0.5) * 2;
+
+        const y =
+            (event.clientY / window.innerHeight - 0.5) * 2;
+
+        hub.style.transform =
+            `translate(${x * 8}px, ${y * 8}px)`;
+    });
+
+    /* ---------------------------------------------------------
+       RESET PARALLAX
+    --------------------------------------------------------- */
+
+    document.addEventListener("mouseleave", () => {
+        hub.style.transform = "";
+    });
+
+    /* ---------------------------------------------------------
+       SCROLL FLUIDO
+    --------------------------------------------------------- */
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+        link.addEventListener("click", function(event) {
+
+            const targetId =
+                this.getAttribute("href");
+
+            const target =
+                document.querySelector(targetId);
+
+            if (!target) return;
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
+
+    });
+
+    /* ---------------------------------------------------------
+       APPARIZIONE DELLE CARD
+    --------------------------------------------------------- */
+
+    const cards =
+        document.querySelectorAll(".section-card");
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) return;
+
+                    entry.target.animate(
+                        [
+                            {
+                                opacity: 0,
+                                transform: "translateY(35px)"
+                            },
+                            {
+                                opacity: 1,
+                                transform: "translateY(0)"
+                            }
+                        ],
+                        {
+                            duration: 700,
+                            easing: "cubic-bezier(.2,.8,.2,1)",
+                            fill: "forwards"
+                        }
+                    );
+
+                    observer.unobserve(entry.target);
+
+                });
+
+            },
+            {
+                threshold: .12
+            }
+        );
+
+    cards.forEach(card => observer.observe(card));
+
+</script>
+
+</body> </html>
