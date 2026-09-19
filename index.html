@@ -788,6 +788,378 @@
             scroll-behavior: auto !important;
         }
     }
+    /* =========================================================
+   CLASSIFICA
+========================================================= */
+
+.classification-section {
+    overflow: hidden;
+}
+
+/* HEADER CLASSIFICA */
+
+.classification-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.classification-header h2 {
+    margin-bottom: 8px;
+}
+
+.classification-header p {
+    margin-bottom: 0;
+}
+
+.season-badge {
+    flex-shrink: 0;
+    padding: 9px 16px;
+    border-radius: 999px;
+
+    color: var(--accent);
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+
+    background: rgba(245,158,11,.08);
+    border: 1px solid rgba(245,158,11,.3);
+
+    box-shadow:
+        0 0 20px rgba(245,158,11,.08),
+        inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+/* CONTENITORE TABELLA */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.08);
+
+    background: rgba(2,6,23,.38);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.25),
+        inset 0 1px 0 rgba(255,255,255,.03);
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) rgba(255,255,255,.05);
+}
+
+.table-wrapper::-webkit-scrollbar {
+    height: 7px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: rgba(255,255,255,.04);
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(245,158,11,.6);
+    border-radius: 10px;
+}
+
+/* TABELLA */
+
+.league-table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+    font-size: .86rem;
+}
+
+/* HEADER */
+
+.league-table thead {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(30,58,138,.55),
+            rgba(15,23,42,.85)
+        );
+}
+
+.league-table th {
+    height: 52px;
+    padding: 0 12px;
+
+    color: #cbd5e1;
+
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    text-align: center;
+
+    border-bottom: 1px solid rgba(245,158,11,.2);
+
+    white-space: nowrap;
+}
+
+.league-table th.team-col {
+    text-align: left;
+}
+
+/* CELLE */
+
+.league-table td {
+    height: 54px;
+    padding: 0 12px;
+
+    text-align: center;
+
+    color: #cbd5e1;
+
+    border-bottom: 1px solid rgba(255,255,255,.045);
+
+    white-space: nowrap;
+
+    transition:
+        background .25s,
+        color .25s;
+}
+
+.league-table td.team-name {
+    text-align: left;
+
+    color: #f8fafc;
+
+    font-weight: 700;
+    letter-spacing: .3px;
+}
+
+.league-table tbody tr {
+    transition:
+        transform .25s,
+        background .25s;
+}
+
+.league-table tbody tr:hover {
+    background: rgba(59,130,246,.08);
+}
+
+/* POSIZIONE */
+
+.pos-col {
+    width: 70px;
+}
+
+.league-table td.position {
+    width: 70px;
+
+    color: #94a3b8;
+
+    font-weight: 800;
+}
+
+.league-table tr:nth-child(1) td.position {
+    color: var(--accent);
+}
+
+/* PUNTI */
+
+.league-table td.points {
+    color: #fff;
+
+    font-size: .95rem;
+    font-weight: 900;
+}
+
+/* PRIMA CLASSIFICATA */
+
+.league-table tbody tr.first-place {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(245,158,11,.13),
+            rgba(245,158,11,.025),
+            transparent
+        );
+}
+
+.league-table tbody tr.first-place td {
+    border-bottom-color: rgba(245,158,11,.16);
+}
+
+.league-table tbody tr.first-place .team-name {
+    color: var(--accent);
+}
+
+.league-table tbody tr.first-place .position {
+    font-size: 1rem;
+    color: var(--accent);
+}
+
+/* TOP 3 */
+
+.league-table tbody tr.second-place .position {
+    color: #cbd5e1;
+}
+
+.league-table tbody tr.third-place .position {
+    color: #d97706;
+}
+
+/* DIFFERENZA */
+
+.league-table td.difference {
+    font-weight: 800;
+    color: var(--accent-light);
+}
+
+/* CELLE CARTE */
+
+.league-table td.card-value {
+    color: #94a3b8;
+    font-size: .78rem;
+    font-weight: 700;
+}
+
+/* FOOTER TABELLA */
+
+.league-table tfoot {
+    background: rgba(245,158,11,.045);
+}
+
+.league-table tfoot td {
+    height: 48px;
+
+    color: var(--accent);
+    font-weight: 800;
+
+    border-top: 1px solid rgba(245,158,11,.15);
+    border-bottom: 0;
+}
+
+.league-table tfoot .cards-total-label {
+    text-align: left;
+
+    text-transform: uppercase;
+    letter-spacing: .7px;
+    font-size: .7rem;
+}
+
+/* =========================================================
+   LEGENDA
+========================================================= */
+
+.classification-legend {
+    margin-top: 22px;
+    padding: 20px;
+
+    border-radius: 16px;
+
+    background: rgba(2,6,23,.32);
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+.legend-title {
+    margin-bottom: 14px;
+
+    color: #e2e8f0;
+
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--muted);
+
+    font-size: .75rem;
+}
+
+.legend-code {
+    min-width: 30px;
+    height: 24px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    font-size: .65rem;
+    font-weight: 900;
+
+    color: var(--dark);
+    background: var(--accent);
+}
+
+.legend-code.ca {
+    background: #f59e0b;
+}
+
+.legend-code.cc {
+    background: #60a5fa;
+}
+
+.legend-code.cd {
+    background: #a78bfa;
+}
+
+.legend-code.tc {
+    background: #34d399;
+}
+
+.legend-code.j {
+    background: #fb7185;
+}
+
+.legend-code.d {
+    background: #fbbf24;
+}
+
+/* =========================================================
+   RESPONSIVE CLASSIFICA
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .classification-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .season-badge {
+        font-size: .65rem;
+    }
+
+    .league-table {
+        min-width: 820px;
+    }
+
+    .league-table th,
+    .league-table td {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+    .classification-legend {
+        padding: 16px;
+    }
+
+    .legend-items {
+        gap: 8px 14px;
+    }
+}
 </style>
 
 </head> <body>
@@ -842,10 +1214,114 @@
 
         <!-- MENU -->
 
-        <a href="#classifiche" class="section-node node-classifiche">
-            <div class="icon">🏆</div>
-            <div class="node-title">Classifiche</div>
-        </a>
+        <!-- =========================================================
+     CLASSIFICHE
+========================================================== -->
+
+<section id="classifiche" class="section-card classification-section">
+
+    <div class="classification-header">
+        <div>
+            <h2>🏆 Classifica</h2>
+            <p>
+                Classifica generale della Lega Fantacalcio Barriera dell'M.
+            </p>
+        </div>
+
+        <div class="season-badge">
+            STAGIONE 2026/27
+        </div>
+    </div>
+
+    <!-- TABELLA CLASSIFICA -->
+    <div class="table-wrapper">
+
+        <table class="league-table">
+
+            <thead>
+                <tr>
+                    <th class="pos-col">Pos.</th>
+                    <th class="team-col">Squadra</th>
+                    <th>PT</th>
+                    <th>PP</th>
+                    <th>PG</th>
+                    <th>CA</th>
+                    <th>CC</th>
+                    <th>CD</th>
+                    <th>TC</th>
+                    <th>J</th>
+                    <th>D</th>
+                    <th>Diff.</th>
+                </tr>
+            </thead>
+
+            <tbody id="classification-body">
+                <!-- Le squadre vengono inserite automaticamente da JavaScript -->
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="5" class="cards-total-label">
+                        Totale carte
+                    </td>
+                    <td id="total-ca">0</td>
+                    <td id="total-cc">0</td>
+                    <td id="total-cd">0</td>
+                    <td id="total-tc">0</td>
+                    <td id="total-j">0</td>
+                    <td id="total-d">0</td>
+                    <td id="total-cards">0</td>
+                </tr>
+            </tfoot>
+
+        </table>
+
+    </div>
+
+    <!-- LEGENDA -->
+    <div class="classification-legend">
+
+        <div class="legend-title">
+            Carte, riserve e bonus
+        </div>
+
+        <div class="legend-items">
+
+            <div class="legend-item">
+                <span class="legend-code ca">CA</span>
+                <span>Carte A</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-code cc">CC</span>
+                <span>Carte C</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-code cd">CD</span>
+                <span>Carte D</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-code tc">TC</span>
+                <span>Totale Carte</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-code j">J</span>
+                <span>Jolly</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-code d">D</span>
+                <span>Bonus / penalità</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
         <a href="#statistiche" class="section-node node-statistiche">
             <div class="icon">📊</div>
@@ -1111,7 +1587,443 @@
         );
 
     cards.forEach(card => observer.observe(card));
+* =========================================================
+   DATI CLASSIFICA
+========================================================= */
 
+const squadre = [
+
+    {
+        nome: "PROFONDA AURORA",
+        pt: 168,
+        pp: 89.5,
+        pg: 78.5,
+        ca: 0,
+        cc: 0,
+        cd: 0,
+        tc: 0,
+        j: 0,
+        d: 0,
+        diff: "-"
+    },
+
+    {
+        nome: "VAIENTUS",
+        pt: 167,
+        pp: 83,
+        pg: 84,
+        ca: 1,
+        cc: 0,
+        cd: 1,
+        tc: 0,
+        j: 0,
+        d: 0,
+        diff: 1
+    },
+
+    {
+        nome: "REAL DORATOM",
+        pt: 155,
+        pp: 71.5,
+        pg: 83.5,
+        ca: 0,
+        cc: 1,
+        cd: 0,
+        tc: 0,
+        j: 0,
+        d: 0,
+        diff: 12
+    },
+
+    {
+        nome: "MONACO DI BARRIERA",
+        pt: 150.5,
+        pp: 80.5,
+        pg: 70,
+        ca: 0,
+        cc: 0,
+        cd: 1,
+        tc: 0,
+        j: 0,
+        d: 0,
+        diff: 4.5
+    },
+
+    {
+        nome: "LOBE UNITED",
+        pt: 148,
+        pp: 75.5,
+        pg: 72.5,
+        ca: 1,
+        cc: 1,
+        cd: 0,
+        tc: 0,
+        j: 0,
+        d: 0,
+        diff: 2.5
+    },
+
+    {
+        nome: "SPARTAK PISA",
+        pt: 148,
+        pp: 70,
+        pg: 78,
+        ca: 0,
+        cc: 1,
+        cd: 1,
+        tc: 0,
+        j: 0,
+        d: 0,
+        diff: 0
+    },
+
+    {
+        nome: "EVERTOR",
+        pt: 146,
+        pp: 69.5,
+        pg: 76.5,
+        ca: 0,
+        cc: 1,
+        cd: 1,
+        tc: 0,
+        j: 0,
+        d: 0,
+        diff: 2
+    },
+
+    {
+        nome: "TAURINORUM",
+        pt: 143.5,
+        pp: 70.5,
+        pg: 73,
+        ca: 1,
+        cc: 0,
+        cd: 1,
+        tc: 0,
+        j: 2,
+        d: 0,
+        diff: 2.5
+    },
+
+    {
+        nome: "INTERTOR",
+        pt: 143,
+        pp: 80,
+        pg: 63,
+        ca: 0,
+        cc: 1,
+        cd: 1,
+        tc: 0,
+        j: 0,
+        d: 0,
+        diff: 0.5
+    },
+
+    {
+        nome: "DINAMO SIENA",
+        pt: 139,
+        pp: 68.5,
+        pg: 70.5,
+        ca: 1,
+        cc: 1,
+        cd: 0,
+        tc: 0,
+        j: 0,
+        d: 0,
+        diff: 4
+    },
+
+    {
+        nome: "TOMCAT",
+        pt: 137.5,
+        pp: 67.5,
+        pg: 70,
+        ca: 0,
+        cc: 0,
+        cd: 1,
+        tc: 0,
+        j: 1,
+        d: 0,
+        diff: 1.5
+    },
+
+    {
+        nome: "WILD EAGLES",
+        pt: 136.5,
+        pp: 68,
+        pg: 68.5,
+        ca: 0,
+        cc: 0,
+        cd: 0,
+        tc: 0,
+        j: 0,
+        d: 0,
+        diff: 1
+    },
+
+    {
+        nome: "ZULUZEBRA",
+        pt: 133.5,
+        pp: 70.5,
+        pg: 63,
+        ca: 1,
+        cc: 0,
+        cd: 0,
+        tc: 0,
+        j: 0,
+        d: 0,
+        diff: 3
+    },
+
+    {
+        nome: "CASTEL DI IEMMA",
+        pt: 130,
+        pp: 69,
+        pg: 61,
+        ca: 0,
+        cc: 0,
+        cd: 0,
+        tc: 0,
+        j: 0,
+        d: 0,
+        diff: 3.5
+    }
+
+];
+
+
+/* =========================================================
+   GENERAZIONE CLASSIFICA
+========================================================= */
+
+function generaClassifica() {
+
+    const tbody =
+        document.getElementById("classification-body");
+
+    if (!tbody) return;
+
+    tbody.innerHTML = "";
+
+    squadre.forEach((squadra, index) => {
+
+        const posizione = index + 1;
+
+        const tr =
+            document.createElement("tr");
+
+        /* Classi speciali */
+
+        if (posizione === 1) {
+            tr.classList.add("first-place");
+        }
+
+        if (posizione === 2) {
+            tr.classList.add("second-place");
+        }
+
+        if (posizione === 3) {
+            tr.classList.add("third-place");
+        }
+
+        /* Posizione */
+
+        const tdPos =
+            document.createElement("td");
+
+        tdPos.className = "position";
+
+        tdPos.textContent =
+            posizione + "°";
+
+        tr.appendChild(tdPos);
+
+
+        /* Squadra */
+
+        const tdNome =
+            document.createElement("td");
+
+        tdNome.className = "team-name";
+
+        tdNome.textContent =
+            squadra.nome;
+
+        tr.appendChild(tdNome);
+
+
+        /* Funzione celle numeriche */
+
+        const creaCella =
+            (valore, classe = "") => {
+
+                const td =
+                    document.createElement("td");
+
+                if (classe) {
+                    td.className = classe;
+                }
+
+                td.textContent =
+                    valore ?? "";
+
+                return td;
+            };
+
+
+        tr.appendChild(
+            creaCella(
+                squadra.pt,
+                "points"
+            )
+        );
+
+        tr.appendChild(
+            creaCella(
+                squadra.pp
+            )
+        );
+
+        tr.appendChild(
+            creaCella(
+                squadra.pg
+            )
+        );
+
+        tr.appendChild(
+            creaCella(
+                squadra.ca,
+                "card-value"
+            )
+        );
+
+        tr.appendChild(
+            creaCella(
+                squadra.cc,
+                "card-value"
+            )
+        );
+
+        tr.appendChild(
+            creaCella(
+                squadra.cd,
+                "card-value"
+            )
+        );
+
+        tr.appendChild(
+            creaCella(
+                squadra.tc,
+                "card-value"
+            )
+        );
+
+        tr.appendChild(
+            creaCella(
+                squadra.j,
+                "card-value"
+            )
+        );
+
+        tr.appendChild(
+            creaCella(
+                squadra.d,
+                "card-value"
+            )
+        );
+
+        tr.appendChild(
+            creaCella(
+                squadra.diff,
+                "difference"
+            )
+        );
+
+
+        tbody.appendChild(tr);
+
+    });
+
+
+    /* =====================================================
+       TOTALI
+    ===================================================== */
+
+    const totaleCA =
+        squadre.reduce(
+            (totale, squadra) =>
+                totale + squadra.ca,
+            0
+        );
+
+    const totaleCC =
+        squadre.reduce(
+            (totale, squadra) =>
+                totale + squadra.cc,
+            0
+        );
+
+    const totaleCD =
+        squadre.reduce(
+            (totale, squadra) =>
+                totale + squadra.cd,
+            0
+        );
+
+    const totaleTC =
+        squadre.reduce(
+            (totale, squadra) =>
+                totale + squadra.tc,
+            0
+        );
+
+    const totaleJ =
+        squadre.reduce(
+            (totale, squadra) =>
+                totale + squadra.j,
+            0
+        );
+
+    const totaleD =
+        squadre.reduce(
+            (totale, squadra) =>
+                totale + squadra.d,
+            0
+        );
+
+    const totaleCarte =
+        totaleCA +
+        totaleCC +
+        totaleCD;
+
+
+    document.getElementById("total-ca")
+        .textContent = totaleCA;
+
+    document.getElementById("total-cc")
+        .textContent = totaleCC;
+
+    document.getElementById("total-cd")
+        .textContent = totaleCD;
+
+    document.getElementById("total-tc")
+        .textContent = totaleTC;
+
+    document.getElementById("total-j")
+        .textContent = totaleJ;
+
+    document.getElementById("total-d")
+        .textContent = totaleD;
+
+    document.getElementById("total-cards")
+        .textContent = totaleCarte;
+
+}
+
+
+/* Avvia la classifica */
+
+generaClassifica();
 </script>
 
 </body> </html>
