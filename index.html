@@ -4012,7 +4012,265 @@ document
    ALBO D'ORO - DATI SERIE MAXIMA
 ========================================================= */
 
-</script>
+const serieMaxima = [
 
-</body>
-</html>
+    {
+        edizione: "1a",
+        stagione: "1995/1996",
+        campione: "Salutony A.F."
+    },
+
+    {
+        edizione: "2a",
+        stagione: "1996/1997",
+        campione: "Zuluzebra F.C."
+    },
+
+    {
+        edizione: "3a",
+        stagione: "1997/1998",
+        campione: "Zuluzebra F.C."
+    },
+
+    {
+        edizione: "4a",
+        stagione: "1998/1999",
+        campione: "Castel di Iemma F.C."
+    },
+
+    {
+        edizione: "5a",
+        stagione: "1999/2000",
+        campione: "Zuluzebra F.C."
+    },
+
+    {
+        edizione: "6a",
+        stagione: "2000/2001",
+        campione: "Castel di Iemma F.C."
+    },
+
+    {
+        edizione: "7a",
+        stagione: "2001/2002",
+        campione: "Evertor A.F."
+    },
+
+    {
+        edizione: "8a",
+        stagione: "2002/2003",
+        campione: "Castel di Iemma F.C."
+    },
+
+    {
+        edizione: "9a",
+        stagione: "2003/2004",
+        campione: "Borgo d'Ale A.F."
+    },
+
+    {
+        edizione: "10a",
+        stagione: "2004/2005",
+        campione: "Castel di Iemma F.C."
+    },
+
+    {
+        edizione: "11a",
+        stagione: "2005/2006",
+        campione: "Castel di Iemma F.C."
+    },
+
+    {
+        edizione: "12a",
+        stagione: "2006/2007",
+        campione: "Jumbo AFC"
+    },
+
+    {
+        edizione: "13a",
+        stagione: "2007/2008",
+        campione: "Zuluzebra F.C."
+    },
+
+    {
+        edizione: "14a",
+        stagione: "2008/2009",
+        campione: "Zuluzebra F.C."
+    },
+
+    {
+        edizione: "15a",
+        stagione: "2009/2010",
+        campione: "Zuluzebra F.C."
+    },
+
+    {
+        edizione: "16a",
+        stagione: "2010/2011",
+        campione: "Zuluzebra F.C."
+    },
+
+    {
+        edizione: "17a",
+        stagione: "2011/2012",
+        campione: "Vaientus F.C."
+    },
+
+    {
+        edizione: "18a",
+        stagione: "2012/2013",
+        campione: "Zuluzebra F.C."
+    },
+
+    {
+        edizione: "19a",
+        stagione: "2013/2014",
+        campione: "Intertor F.C."
+    },
+
+    {
+        edizione: "20a",
+        stagione: "2014/2015",
+        campione: "Intertor F.C."
+    },
+
+    {
+        edizione: "21a",
+        stagione: "2015/2016",
+        campione: "Intertor F.C."
+    },
+
+    {
+        edizione: "22a",
+        stagione: "2016/2017",
+        campione: "Intertor F.C."
+    },
+
+    {
+        edizione: "23a",
+        stagione: "2017/2018",
+        campione: "Imperial Astinano F.C."
+    },
+
+    {
+        edizione: "24a",
+        stagione: "2018/2019",
+        campione: "Intertor F.C."
+    },
+
+    {
+        edizione: "25a",
+        stagione: "2019/2020",
+        campione: "Intertor F.C."
+    },
+
+    {
+        edizione: "26a",
+        stagione: "2020/2021",
+        campione: "Intertor F.C."
+    },
+
+    {
+        edizione: "27a",
+        stagione: "2021/2022",
+        campione: "Intertor F.C."
+    },
+
+    {
+        edizione: "28a",
+        stagione: "2022/2023",
+        campione: "Lobe United"
+    },
+
+    {
+        edizione: "29a",
+        stagione: "2023/2024",
+        campione: "Intertor F.C."
+    },
+
+    {
+        edizione: "30a",
+        stagione: "2024/2025",
+        campione: "Intertor F.C."
+    },
+
+    {
+        edizione: "31a",
+        stagione: "2025/2026",
+        campione: "Profonda Aurora A.F."
+    }
+
+];
+
+
+/* =========================================================
+   GENERA ALBO SERIE MAXIMA
+========================================================= */
+
+function generaSerieMaxima() {
+
+    const tbody =
+        document.getElementById(
+            "serie-maxima-body"
+        );
+
+    if (!tbody)
+        return;
+
+    tbody.innerHTML = "";
+
+
+    serieMaxima.forEach(
+        stagione => {
+
+            const tr =
+                document.createElement("tr");
+
+
+            const tdEdizione =
+                document.createElement("td");
+
+            tdEdizione.textContent =
+                stagione.edizione;
+
+
+            const tdStagione =
+                document.createElement("td");
+
+            tdStagione.textContent =
+                stagione.stagione;
+
+
+            const tdCampione =
+                document.createElement("td");
+
+            tdCampione.textContent =
+                stagione.campione;
+
+
+            tr.appendChild(
+                tdEdizione
+            );
+
+            tr.appendChild(
+                tdStagione
+            );
+
+            tr.appendChild(
+                tdCampione
+            );
+
+
+            tbody.appendChild(tr);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   AVVIO ALBO D'ORO
+========================================================= */
+
+generaSerieMaxima();
