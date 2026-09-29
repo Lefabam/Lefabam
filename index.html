@@ -868,7 +868,7 @@
 
 .league-table {
     width: 100%;
-    min-width: 850px;
+    min-width: 900px;
     border-collapse: collapse;
     font-size: .86rem;
 }
@@ -1133,31 +1133,119 @@
 
 @media (max-width: 768px) {
 
-    .classification-header {
-        align-items: flex-start;
-        flex-direction: column;
+    header {
+        padding: 18px 15px;
     }
 
-    .season-badge {
+    .header-title {
+        font-size: 1.1rem;
+        letter-spacing: 1.5px;
+    }
+
+    .header-subtitle {
         font-size: .65rem;
+        letter-spacing: 2px;
     }
 
-    .league-table {
-        min-width: 820px;
+    .main-container {
+        width: 100%;
+        min-height: auto;
+
+        padding: 45px 20px 70px;
+
+        overflow: visible;
     }
 
-    .league-table th,
-    .league-table td {
-        padding-left: 9px;
-        padding-right: 9px;
+    .radial-hub {
+        width: 100%;
+        height: auto;
+
+        flex: none;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 15px;
+
+        margin: 0 auto;
     }
 
-    .classification-legend {
-        padding: 16px;
+    .ring,
+    .connection {
+        display: none;
     }
 
-    .legend-items {
-        gap: 8px 14px;
+    .center-logo {
+        width: 240px;
+        height: 240px;
+
+        margin: 0 auto 20px;
+    }
+
+    .section-node,
+    .node-classifiche,
+    .node-statistiche,
+    .node-societa,
+    .node-albo,
+    .node-regolamento,
+    .node-contatti {
+        position: relative;
+
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+
+        width: min(100%, 360px);
+        height: 70px;
+
+        margin: 0 auto;
+
+        flex-direction: row;
+        justify-content: flex-start;
+
+        gap: 18px;
+        padding: 0 25px;
+    }
+
+    .icon {
+        margin: 0;
+        font-size: 1.6rem;
+    }
+
+    .node-title {
+        font-size: .95rem;
+    }
+
+    .content-container {
+        position: relative;
+
+        width: min(100% - 25px, 1000px);
+
+        margin: 0 auto 80px;
+
+        z-index: 5;
+    }
+
+    .section-card {
+        position: relative;
+        z-index: 5;
+
+        padding: 30px 22px;
+        border-radius: 18px;
+    }
+
+    .section-card h2 {
+        font-size: 1.6rem;
+    }
+
+    .timeline {
+        padding-left: 25px;
+    }
+
+    .timeline::before,
+    .timeline-item::before {
+        display: none;
     }
 }
 </style>
@@ -1577,25 +1665,25 @@
 
     document.addEventListener("mousemove", (event) => {
 
-        if (window.innerWidth <= 768) return;
+    if (window.innerWidth <= 768) return;
 
-        const x =
-            (event.clientX / window.innerWidth - 0.5) * 2;
+    const x =
+        (event.clientX / window.innerWidth - 0.5) * 2;
 
-        const y =
-            (event.clientY / window.innerHeight - 0.5) * 2;
+    const y =
+        (event.clientY / window.innerHeight - 0.5) * 2;
 
-        hub.style.transform =
-            `translate(${x * 8}px, ${y * 8}px)`;
-    });
+    hub.style.translate =
+        `${x * 8}px ${y * 8}px`;
+});
 
     /* ---------------------------------------------------------
        RESET PARALLAX
     --------------------------------------------------------- */
 
     document.addEventListener("mouseleave", () => {
-        hub.style.transform = "";
-    });
+    hub.style.translate = "";
+});
 
     /* ---------------------------------------------------------
        SCROLL FLUIDO
