@@ -1,1 +1,498 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serie Maxima - Lega Fantacalcio Barriera dell'M</title>
 
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #1f2937;
+        }
+
+        header {
+            background: linear-gradient(135deg, #111827, #374151);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.85;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 16px;
+            background: white;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .back-link:hover {
+            background: #f9fafb;
+        }
+
+        .hero {
+            background: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .hero h2 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .hero p {
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .section {
+            background: white;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .section h3 {
+            margin-top: 0;
+            font-size: 22px;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th,
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        th {
+            background: #f3f4f6;
+            font-weight: bold;
+        }
+
+        td:nth-child(2) {
+            text-align: left;
+            font-weight: 600;
+        }
+
+        tr:hover td {
+            background: #f9fafb;
+        }
+
+        .position {
+            width: 55px;
+            font-weight: bold;
+        }
+
+        .champion {
+            background: #fff7d6;
+            font-weight: bold;
+        }
+
+        .top-four {
+            background: #f0fdf4;
+        }
+
+        .minus-zone {
+            background: #fef2f2;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .info-card {
+            padding: 18px;
+            border-radius: 10px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-card strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 700px) {
+            header h1 {
+                font-size: 25px;
+            }
+
+            .hero h2 {
+                font-size: 23px;
+            }
+
+            .section {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Serie Maxima</h1>
+    <p>Lega Fantacalcio Barriera dell'M</p>
+</header>
+
+<div class="container">
+
+    <a href="index.html" class="back-link">
+        ← Torna alla Home
+    </a>
+
+    <section class="hero">
+        <h2>🏆 Serie Maxima</h2>
+        <p>
+            Il campionato principale della Lega Fantacalcio Barriera dell'M.
+            La classifica viene determinata dalla somma dei punteggi ottenuti
+            dalle squadre nelle singole giornate.
+        </p>
+    </section>
+
+  <section class="section">
+    <h3>Classifica Serie Maxima</h3>
+
+    <p>
+        <strong>Classifica aggiornata alla 3ª giornata</strong>
+    </p>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Pos.</th>
+                    <th>Squadra</th>
+                    <th>PT</th>
+                    <th>PP</th>
+                    <th>PG</th>
+                    <th>CA</th>
+                    <th>CC</th>
+                    <th>CD</th>
+                    <th>TC</th>
+                    <th>J</th>
+                    <th>D</th>
+                    <th>Diff.</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr class="champion">
+                    <td class="position">1</td>
+                    <td>PROFONDA AURORA</td>
+                    <td><strong>237</strong></td>
+                    <td><strong>168</strong></td>
+                    <td><strong>69</strong></td>
+                    <td></td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>-</td>
+                </tr>
+
+                <tr class="top-four">
+                    <td class="position">2</td>
+                    <td>VAIENTUS</td>
+                    <td><strong>237</strong></td>
+                    <td><strong>167</strong></td>
+                    <td><strong>70</strong></td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>0</td>
+                </tr>
+
+                <tr class="top-four">
+                    <td class="position">3</td>
+                    <td>MONACO DI BARRIERA</td>
+                    <td><strong>231,5</strong></td>
+                    <td><strong>150,5</strong></td>
+                    <td><strong>81</strong></td>
+                    <td></td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>5,5</td>
+                </tr>
+
+                <tr class="top-four">
+                    <td class="position">4</td>
+                    <td>REAL DORATOM</td>
+                    <td><strong>222,5</strong></td>
+                    <td><strong>155</strong></td>
+                    <td><strong>67,5</strong></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>9</td>
+                </tr>
+
+                <tr>
+                    <td class="position">5</td>
+                    <td>EVERTOR</td>
+                    <td><strong>220,5</strong></td>
+                    <td><strong>146</strong></td>
+                    <td><strong>74,5</strong></td>
+                    <td></td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>2</td>
+                </tr>
+
+                <tr>
+                    <td class="position">6</td>
+                    <td>DINAMO SIENA</td>
+                    <td><strong>219,5</strong></td>
+                    <td><strong>139</strong></td>
+                    <td><strong>80,5</strong></td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                </tr>
+
+                <tr>
+                    <td class="position">7</td>
+                    <td>SPARTAK PISA</td>
+                    <td><strong>218,5</strong></td>
+                    <td><strong>148</strong></td>
+                    <td><strong>70,5</strong></td>
+                    <td></td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                </tr>
+
+                <tr>
+                    <td class="position">8</td>
+                    <td>LOBE UNITED</td>
+                    <td><strong>217</strong></td>
+                    <td><strong>148</strong></td>
+                    <td><strong>69</strong></td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1,5</td>
+                </tr>
+
+                <tr>
+                    <td class="position">9</td>
+                    <td>TAURINORUM</td>
+                    <td><strong>217</strong></td>
+                    <td><strong>143,5</strong></td>
+                    <td><strong>73,5</strong></td>
+                    <td>3</td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td>3</td>
+                    <td></td>
+                    <td>0</td>
+                </tr>
+
+                <tr>
+                    <td class="position">10</td>
+                    <td>INTERTOR</td>
+                    <td><strong>213,5</strong></td>
+                    <td><strong>143</strong></td>
+                    <td><strong>70,5</strong></td>
+                    <td>1</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>3,5</td>
+                </tr>
+
+                <tr>
+                    <td class="position">11</td>
+                    <td>TOMCAT</td>
+                    <td><strong>205</strong></td>
+                    <td><strong>137,5</strong></td>
+                    <td><strong>67,5</strong></td>
+                    <td>1</td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td>8,5</td>
+                </tr>
+
+                <tr>
+                    <td class="position">12</td>
+                    <td>WILD EAGLES</td>
+                    <td><strong>203,5</strong></td>
+                    <td><strong>136,5</strong></td>
+                    <td><strong>67</strong></td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1,5</td>
+                </tr>
+
+                <tr class="minus-zone">
+                    <td class="position">13</td>
+                    <td>CASTEL DI IEMMA</td>
+                    <td><strong>200,5</strong></td>
+                    <td><strong>130</strong></td>
+                    <td><strong>70,5</strong></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>3</td>
+                </tr>
+
+                <tr class="minus-zone">
+                    <td class="position">14</td>
+                    <td>ZULUZEBRA</td>
+                    <td><strong>198,5</strong></td>
+                    <td><strong>133,5</strong></td>
+                    <td><strong>65</strong></td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td></td>
+                    <td>2</td>
+                    <td></td>
+                    <td>2</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
+    <section class="section">
+        <h3>Informazioni sulla competizione</h3>
+
+        <div class="info-grid">
+
+            <div class="info-card">
+                <strong>📊 Classifica</strong>
+                La graduatoria è determinata dalla somma dei punteggi
+                ottenuti nelle singole giornate.
+            </div>
+
+            <div class="info-card">
+                <strong>⚽ Formula</strong>
+                La Serie Maxima rappresenta il campionato principale
+                della Lega.
+            </div>
+
+            <div class="info-card">
+                <strong>🏆 Titolo</strong>
+                La squadra che conclude la stagione al primo posto
+                conquista la Serie Maxima.
+            </div>
+
+            <div class="info-card">
+                <strong>📅 Stagione</strong>
+                Stagione 2026/2027
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h3>Regolamento</h3>
+
+        <p>
+            La classifica della Serie Maxima viene determinata sulla base
+            dei punteggi complessivi ottenuti nelle giornate di campionato.
+        </p>
+
+        <p>
+            Per i dettagli completi della competizione si fa riferimento
+            al regolamento ufficiale della Lega Fantacalcio Barriera dell'M.
+        </p>
+    </section>
+
+</div>
+
+<footer>
+    Lega Fantacalcio Barriera dell'M
+</footer>
+
+</body>
+</html>
