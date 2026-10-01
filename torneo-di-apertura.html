@@ -69,109 +69,202 @@
             margin-top: 0;
         }
 
-        .fase {
-            margin-bottom: 35px;
-        }
+.fase {
+    margin-bottom: 40px;
+}
 
-        .fase h2 {
-            margin-bottom: 18px;
-        }
+.fase h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
 
-        .tabellone {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-            align-items: start;
-        }
+.tabellone-wrapper {
+    overflow-x: auto;
+    padding: 10px 0 25px;
+}
 
-        .turno {
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
+.tabellone {
+    min-width: 1180px;
+    display: grid;
+    grid-template-columns: 250px 250px 250px 250px;
+    gap: 35px;
+    align-items: stretch;
+}
 
-        .turno h3 {
-            margin: 0 0 15px;
-            text-align: center;
-            font-size: 17px;
-        }
+.colonna {
+    display: flex;
+    flex-direction: column;
+}
 
-        .sfida {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            overflow: hidden;
-        }
+.colonna-titolo {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    color: #555;
+}
 
-        .squadra {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background: #fafafa;
-            border-bottom: 1px solid #eee;
-            font-weight: bold;
-            font-size: 14px;
-        }
+.sfida {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 7px rgba(0,0,0,0.07);
+    position: relative;
+}
 
-        .squadra:last-child {
-            border-bottom: none;
-        }
+.squadra {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 9px 11px;
+    background: #fafafa;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+    font-weight: bold;
+}
 
-        .risultato {
-            font-weight: bold;
-            margin-left: 10px;
-            white-space: nowrap;
-        }
+.squadra:last-child {
+    border-bottom: none;
+}
 
-        .da-definire {
-            color: #777;
-            font-style: italic;
-            font-weight: normal;
-        }
+.squadra .nome {
+    flex: 1;
+}
 
-        .accesso-diretto {
-            border: 1px dashed #999;
-            border-radius: 8px;
-            padding: 13px 10px;
-            margin-bottom: 12px;
-            text-align: center;
-            background: #fafafa;
-        }
+.squadra .risultato {
+    min-width: 20px;
+    text-align: center;
+    font-weight: bold;
+}
 
-        .accesso-diretto strong {
-            display: block;
-            margin-bottom: 5px;
-        }
+.diretto {
+    background: #fffdf2;
+    border: 1px dashed #b99a45;
+}
 
-        .nota {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            line-height: 1.5;
-        }
+.diretto .etichetta {
+    display: block;
+    padding: 6px 10px 0;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #92751f;
+    font-weight: bold;
+}
 
-        footer {
-            margin-top: 40px;
-            padding: 25px 20px;
-            background: #111;
-            color: #aaa;
-            text-align: center;
-            font-size: 13px;
-        }
+.diretto .squadra {
+    background: transparent;
+    border-bottom: none;
+}
 
-        @media (max-width: 950px) {
-            .tabellone {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+.vincente {
+    color: #777;
+    font-style: italic;
+    font-weight: normal;
+}
 
-        @media (max-width: 600px) {
-            .tabellone {
-                grid-template-columns: 1fr;
-            }
+.colonna-ottavi {
+    justify-content: space-between;
+}
+
+.colonna-quarti {
+    justify-content: space-around;
+    padding-top: 55px;
+}
+
+.colonna-semifinali {
+    justify-content: space-around;
+    padding-top: 125px;
+}
+
+.colonna-finale {
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.colonna-ottavi .sfida {
+    margin-bottom: 18px;
+}
+
+.colonna-quarti .sfida {
+    margin-bottom: 90px;
+}
+
+.colonna-semifinali .sfida {
+    margin-bottom: 190px;
+}
+
+.collegamento {
+    position: relative;
+}
+
+.collegamento::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -35px;
+    width: 35px;
+    border-top: 2px solid #bbb;
+}
+
+.colonna-quarti .collegamento::before,
+.colonna-semifinali .collegamento::before {
+    content: "";
+    position: absolute;
+    left: -18px;
+    top: 25%;
+    height: 50%;
+    border-left: 2px solid #bbb;
+}
+
+.finale .sfida {
+    border: 2px solid #c6a227;
+    box-shadow: 0 4px 12px rgba(198,162,39,0.18);
+}
+
+.finale .colonna-titolo {
+    color: #a07c00;
+}
+
+.nota {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    line-height: 1.5;
+}
+
+footer {
+    margin-top: 40px;
+    padding: 25px 20px;
+    background: #111;
+    color: #aaa;
+    text-align: center;
+    font-size: 13px;
+}
+
+@media (max-width: 950px) {
+    .tabellone {
+        min-width: 1050px;
+        grid-template-columns: 220px 220px 220px 220px;
+        gap: 25px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .tabellone-wrapper {
+        margin: 0 -5px;
+    }
+}
         }
     </style>
 </head>
