@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Torneo di Apertura - Lega Fantacalcio Barriera dell'M</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 30px;
+        }
+
+        header p {
+            margin: 0;
+            color: #ccc;
+            font-size: 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 25px;
+            padding: 10px 16px;
+            background: #222;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            background: #444;
+        }
+
+        .intro {
+            background: white;
+            padding: 22px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .intro h2 {
+            margin-top: 0;
+        }
+
+        .fase {
+            margin-bottom: 35px;
+        }
+
+        .fase h2 {
+            margin-bottom: 18px;
+        }
+
+        .tabellone {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .turno {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .turno h3 {
+            margin: 0 0 15px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .sfida {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .squadra {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #fafafa;
+            border-bottom: 1px solid #eee;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .squadra:last-child {
+            border-bottom: none;
+        }
+
+        .risultato {
+            font-weight: bold;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+
+        .da-definire {
+            color: #777;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        .accesso-diretto {
+            border: 1px dashed #999;
+            border-radius: 8px;
+            padding: 13px 10px;
+            margin-bottom: 12px;
+            text-align: center;
+            background: #fafafa;
+        }
+
+        .accesso-diretto strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .nota {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            line-height: 1.5;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 25px 20px;
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 950px) {
+            .tabellone {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .tabellone {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Torneo di Apertura</h1>
+    <p>Lega Fantacalcio Barriera dell'M</p>
+</header>
+
+
+<div class="container">
+
+    <a href="index.html" class="back-link">
+        ← Torna alla Home
+    </a>
+
+
+    <section class="intro">
+
+        <h2>Torneo di Apertura 2026/27</h2>
+
+        <p>
+            Tabellone a eliminazione diretta del Torneo di Apertura.
+        </p>
+
+        <p>
+            Le sfide della fase iniziale vengono disputate tra le squadre
+            abbinate in base alla posizione di classifica prevista per
+            questa edizione.
+        </p>
+
+        <p>
+            Le fasi successive conducono ai quarti di finale, alle
+            semifinali e alla finale.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         FASE INIZIALE
+    ====================================================== -->
+
+    <section class="fase">
+
+        <h2>Fase iniziale</h2>
+
+        <div class="tabellone">
+
+            <div class="turno">
+
+                <h3>1ª Sfida</h3>
+
+                <div class="sfida">
+                    <div class="squadra">
+                        <span>2ª classificata</span>
+                        <span class="risultato da-definire">–</span>
+                    </div>
+
+                    <div class="squadra">
+                        <span>14ª classificata</span>
+                        <span class="risultato da-definire">–</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="turno">
+
+                <h3>2ª Sfida</h3>
+
+                <div class="sfida">
+                    <div class="squadra">
+                        <span>3ª classificata</span>
+                        <span class="risultato da-definire">–</span>
+                    </div>
+
+                    <div class="squadra">
+                        <span>13ª classificata</span>
+                        <span class="risultato da-definire">–</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="turno">
+
+                <h3>3ª Sfida</h3>
+
+                <div class="sfida">
+                    <div class="squadra">
+                        <span>4ª classificata</span>
+                        <span class="risultato da-definire">–</span>
+                    </div>
+
+                    <div class="squadra">
+                        <span>12ª classificata</span>
+                        <span class="risultato da-definire">–</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="turno">
+
+                <h3>4ª Sfida</h3>
+
+                <div class="sfida">
+                    <div class="squadra">
+                        <span>5ª classificata</span>
+                        <span class="risultato da-definire">–</span>
+                    </div>
+
+                    <div class="squadra">
+                        <span>11ª classificata</span>
+                        <span class="risultato da-definire">–</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="turno">
+
+                <h3>5ª Sfida</h3>
+
+                <div class="sfida">
+                    <div class="squadra">
+                        <span>6ª classificata</span>
+                        <span class="risultato da-definire">–</span>
+                    </div>
+
+                    <div class="squadra">
+                        <span>10ª classificata</span>
+                        <span class="risultato da-definire">–</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="turno">
+
+                <h3>6ª Sfida</h3>
+
+                <div class="sfida">
+                    <div class="squadra">
+                        <span>7ª classificata</span>
+                        <span class="risultato da-definire">–</span>
+                    </div>
+
+                    <div class="squadra">
+                        <span>9ª classificata</span>
+                        <span class="risultato da-definire">–</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="turno">
+
+                <h3>Accesso diretto</h3>
+
+                <div class="accesso-diretto">
+                    <strong>Posto diretto 1</strong>
+                    <span class="da-definire">
+                        Da definire
+                    </span>
+                </div>
+
+                <div class="accesso-diretto">
+                    <strong>Posto diretto 2</strong>
+                    <span class="da-definire">
+                        Da definire
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         QUARTI DI FINALE
+    ====================================================== -->
+
+    <div class="match-card">
+    <div class="match-team">
+        <strong>PROFONDA AURORA</strong>
+        <span>Accesso diretto</span>
+    </div>
+    <div class="match-vs">VS</div>
+    <div class="match-team">
+        <strong>Vincente TOMCAT / REAL DORATOM</strong>
+        <span>Ottavo 1</span>
+    </div>
+</div>
+
+<div class="match-card">
+    <div class="match-team">
+        <strong>Vincente WILD EAGLES / LOBE UNITED</strong>
+        <span>Ottavo 2</span>
+    </div>
+    <div class="match-vs">VS</div>
+    <div class="match-team">
+        <strong>Vincente TAURINORUM / SPARTAK PISA</strong>
+        <span>Ottavo 3</span>
+    </div>
+</div>
+
+<div class="match-card">
+    <div class="match-team">
+        <strong>Vincente DINAMO SIENA / VAIENTUS</strong>
+        <span>Ottavo 4</span>
+    </div>
+    <div class="match-vs">VS</div>
+    <div class="match-team">
+        <strong>Vincente CASTEL DI IEMMA / MONACO DI BARRIERA</strong>
+        <span>Ottavo 5</span>
+    </div>
+</div>
+
+<div class="match-card">
+    <div class="match-team">
+        <strong>Vincente EVERTOR / ZULUZEBRA</strong>
+        <span>Ottavo 6</span>
+    </div>
+    <div class="match-vs">VS</div>
+    <div class="match-team">
+        <strong>INTERTOR</strong>
+        <span>Accesso diretto</span>
+    </div>
+</div>
+
+
+    <!-- =====================================================
+         SEMIFINALI
+    ====================================================== -->
+
+    <div class="match-card">
+    <div class="match-team">
+        <strong>Vincente QUARTO 1</strong>
+        <span>Semifinale 1</span>
+    </div>
+
+    <div class="match-vs">VS</div>
+
+    <div class="match-team">
+        <strong>Vincente QUARTO 2</strong>
+        <span>Semifinale 1</span>
+    </div>
+
+    <div class="match-leg">
+        <span>ANDATA</span>
+        <strong>—</strong>
+    </div>
+
+    <div class="match-leg">
+        <span>RITORNO</span>
+        <strong>—</strong>
+    </div>
+</div>
+
+
+<div class="match-card">
+    <div class="match-team">
+        <strong>Vincente QUARTO 3</strong>
+        <span>Semifinale 2</span>
+    </div>
+
+    <div class="match-vs">VS</div>
+
+    <div class="match-team">
+        <strong>Vincente QUARTO 4</strong>
+        <span>Semifinale 2</span>
+    </div>
+
+    <div class="match-leg">
+        <span>ANDATA</span>
+        <strong>—</strong>
+    </div>
+
+    <div class="match-leg">
+        <span>RITORNO</span>
+        <strong>—</strong>
+    </div>
+</div>
+
+    <!-- =====================================================
+         FINALE
+    ====================================================== -->
+
+    <div class="match-card">
+    <div class="match-team">
+        <strong>Vincente SEMIFINALE 1</strong>
+        <span>Finalista 1</span>
+    </div>
+
+    <div class="match-vs">VS</div>
+
+    <div class="match-team">
+        <strong>Vincente SEMIFINALE 2</strong>
+        <span>Finalista 2</span>
+    </div>
+
+    <div class="match-leg">
+        <span>FINALE</span>
+        <strong>—</strong>
+    </div>
+</div>
+
+    <!-- =====================================================
+         REGOLAMENTO
+    ====================================================== -->
+
+    <section class="nota">
+
+        <h2>Regole della competizione</h2>
+
+        <p>
+            Il Torneo di Apertura si disputa con formula a eliminazione
+            diretta.
+        </p>
+
+        <p>
+            Nelle fasi a eliminazione diretta vengono applicate le regole
+            previste dal regolamento della Lega per gli incontri
+            internazionali. In caso di parità complessiva, si procede
+            secondo i criteri stabiliti dal regolamento ufficiale.
+        </p>
+
+        <p>
+            La finale viene disputata in gara unica. In caso di parità,
+            si applicano i criteri DTS e, se necessario, i rigori.
+        </p>
+
+    </section>
+
+</div>
+
+
+<footer>
+    Lega Fantacalcio Barriera dell'M
+</footer>
+
+</body>
+</html>
