@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Qualificazioni Extra League - Lega Fantacalcio Barriera dell'M</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 30px;
+        }
+
+        header p {
+            margin: 0;
+            color: #ccc;
+            font-size: 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 25px;
+            padding: 10px 16px;
+            background: #222;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            background: #444;
+        }
+
+        .intro {
+            background: white;
+            padding: 22px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .intro h2 {
+            margin-top: 0;
+        }
+
+        .gironi {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .girone {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .girone-header {
+            background: #222;
+            color: white;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .girone-header h3 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+        .squadre {
+            padding: 15px;
+        }
+
+        .squadra {
+            padding: 13px 10px;
+            border-bottom: 1px solid #eee;
+            font-weight: bold;
+        }
+
+        .squadra:last-child {
+            border-bottom: none;
+        }
+
+        .classifica {
+            margin-top: 35px;
+            background: white;
+            padding: 22px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .classifica h2 {
+            margin-top: 0;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            padding: 11px 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #222;
+            color: white;
+        }
+
+        td:nth-child(2) {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .nota {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f7f7f7;
+            border-left: 4px solid #222;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 25px 20px;
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+            .gironi {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Qualificazioni Extra League</h1>
+    <p>Lega Fantacalcio Barriera dell'M</p>
+</header>
+
+<div class="container">
+
+    <a href="index.html" class="back-link">
+        ← Torna alla Home
+    </a>
+
+    <section class="intro">
+        <h2>Qualificazioni Extra League</h2>
+
+        <p>
+            Le squadre partecipanti sono suddivise in tre gironi da quattro
+            squadre ciascuno.
+        </p>
+
+        <p>
+            Le prime due classificate di ogni girone accedono alla fase finale
+            dell'Extra League, mentre le altre squadre proseguono nella
+            Lefabam Cup.
+        </p>
+    </section>
+
+    <section class="gironi">
+
+        <!-- GIRONE A -->
+        <div class="girone">
+
+            <div class="girone-header">
+                <h3>Girone A</h3>
+            </div>
+
+            <div class="squadre">
+                <div class="squadra">INTERTOR</div>
+                <div class="squadra">EVERTOR</div>
+                <div class="squadra">DINAMO SIENA</div>
+                <div class="squadra">LOBE UNITED</div>
+            </div>
+
+        </div>
+
+        <!-- GIRONE B -->
+        <div class="girone">
+
+            <div class="girone-header">
+                <h3>Girone B</h3>
+            </div>
+
+            <div class="squadre">
+                <div class="squadra">ZULUZEBRA</div>
+                <div class="squadra">CASTEL DI IEMMA</div>
+                <div class="squadra">SPARTAK PISA</div>
+                <div class="squadra">WILD EAGLES</div>
+            </div>
+
+        </div>
+
+        <!-- GIRONE C -->
+        <div class="girone">
+
+            <div class="girone-header">
+                <h3>Girone C</h3>
+            </div>
+
+            <div class="squadre">
+                <div class="squadra">TOMCAT</div>
+                <div class="squadra">TAURINORUM</div>
+                <div class="squadra">VAIENTUS</div>
+                <div class="squadra">MONACO DI BARRIERA</div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="classifica">
+
+        <h2>Risultati e classifiche</h2>
+
+        <p>
+            I risultati delle gare e le classifiche dei tre gironi saranno
+            aggiornati durante lo svolgimento della fase di qualificazione.
+        </p>
+
+        <div class="nota">
+            <strong>Formula:</strong>
+            le prime due squadre di ogni girone ottengono l'accesso
+            alla fase finale dell'Extra League. Le altre squadre vengono
+            inserite nella fase finale della Lefabam Cup.
+        </div>
+
+    </section>
+
+</div>
+
+<footer>
+    Lega Fantacalcio Barriera dell'M
+</footer>
+
+</body>
+</html>
