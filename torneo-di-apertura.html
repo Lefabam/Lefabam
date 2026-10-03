@@ -1,3 +1,42 @@
+
+
+Modifica
+
+Ah sì, adesso ho capito cosa intendevi. 😄 Hai ragione: il PNG precedente aveva tagliato una parte della decorazione laterale del trofeo.
+Ho rifatto il ritaglio prendendo una porzione più ampia dell'immagine originale, così vengono mantenuti trofeo completo + entrambe le decorazioni laterali.
+
+Scarica il PNG corretto del trofeo
+
+Per il sito, quindi, usa questo file e chiamalo:
+
+trofeo-apertura.png
+
+Il codice HTML/CSS che ti avevo dato prima può rimanere invariato. 
+
+trofeo-apertura-completo.png
+immagine
+
+allora fammi una cortesia.. mi riproduci l'intero codice affinché l'immagine sia come nella simulazione che ti inserisco qui, con però il colore delle semifinali come avevamo stabilito di una tonalità di azzurro più scura... 
+Certo. Questa volta ti preparo l'intero torneo-di-apertura.html da sostituire completamente, ricreando la simulazione che hai allegato.
+Ho mantenuto:
+
+sfondo azzurro con effetto grafico;
+testata blu scuro sagomata;
+pulsante Torna alla Home;
+scheda introduttiva;
+tabellone a 4 colonne;
+Ottavi azzurro chiaro;
+Quarti azzurro/turchese;
+Semifinali in una tonalità di azzurro più scura, come avevamo stabilito, invece del viola della simulazione;
+Finale dorata;
+trofeo sopra la finale;
+collegamenti tra le varie fasi;
+regolamento in fondo;
+footer blu scuro;
+struttura responsive con scorrimento orizzontale su schermi piccoli.
+Importante: nella stessa cartella dell'HTML deve esserci trofeo-apertura.png.
+Sostituisci tutto il contenuto del tuo torneo-di-apertura.html con questo:
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -1988,5 +2027,217 @@
 </footer>
 
 
+</body>
+</html>
+Una cosa importante rispetto alla simulazione
+Ho volutamente cambiato il colore delle semifinali.
+Nella tua immagine di riferimento sono praticamente viola:
+
+SEMIFINALI → viola
+Nel codice che ti ho appena preparato invece sono:
+SEMIFINALI → azzurro/blu più scuro
+con:
+.title-semifinali {
+    background: linear-gradient(
+        180deg,
+        #4d86bd,
+        #356fa9
+    );
+}
+e le relative schede:
+.semifinale .team {
+    background: linear-gradient(
+        180deg,
+        #d1e0f3,
+        #bed2ea
+    );
+}
+Quindi la progressione dovrebbe risultare:
+Ottavi → azzurro chiaro
+↓
+Quarti → azzurro/turchese
+↓
+Semifinali → azzurro/blu più scuro
+↓
+Finale → blu scuro + oro
+
+che è esattamente la logica cromatica che avevamo stabilito.
+allora.. qualcosa è andato storto.... iniziando dalle caselle degli ottavi, che ora sono appiccicate tra loro senza spazio e risultano brutte... le semifinali continuano ad avere una tonalità lilla-viola.. e il logo della coppa non ha lo sfondo in tinta con quello della pagina e la scritta finale è rimasta sopra di esso e non come nell'immagine che avevi creato, che mi pareva molto più carino. inoltre le caselle non hanno la cornice che si vede nella simulazione.
+Hai ragione: nella versione precedente ho modificato troppo la geometria rispetto alla simulazione originale. In particolare:
+Ottavi: ho ridotto troppo lo spazio verticale tra le schede.
+Semifinali: il colore risultava ancora tendente al lilla perché la tonalità scelta era troppo vicina al blu-viola.
+Trofeo: il PNG aveva effettivamente uno sfondo incorporato, quindi non poteva fondersi con quello della pagina.
+Finale: il titolo “FINALE” era posizionato in alto insieme agli altri titoli, mentre nella simulazione deve stare sotto il trofeo e immediatamente sopra la scheda della finale.
+Cornici: nella nuova versione ho aggiunto una vera bordatura chiara alle schede, visibile come nella simulazione.
+Ho anche mantenuto la struttura cromatica progressiva: Ottavi → Quarti → Semifinali più scure → Finale blu/oro.
+Ho inoltre sistemato il trofeo creando una versione con sfondo trasparente, così non vedrai più quel rettangolo azzurro diverso dal fondo.
+File completo già pronto
+Pacchetto completo
+Questo è probabilmente il modo più semplice: contiene HTML + trofeo corretto trasparente, già con il nome giusto trofeo-apertura.png.
+Ti consiglio di usare direttamente lo ZIP, così non rischiamo che nella cartella rimanga il vecchio trofeo-apertura.png.
+
+La disposizione ora segue molto più fedelmente la tua immagine: il trofeo sta sopra la scritta FINALE, la scritta è sopra la relativa casella, e le semifinali sono azzurro/blu, non lilla.
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Torneo di Apertura 2026/27 - Lega Fantacalcio Barriera dell'M</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#123d5c;
+    min-height:100vh;
+    overflow-x:hidden;
+    background:
+        radial-gradient(circle at 72% 42%,rgba(255,255,255,.18),transparent 28%),
+        linear-gradient(135deg,#dff5fc 0%,#b9e5f2 30%,#80cbe0 67%,#5aaed0 100%);
+}
+body:before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;
+    background:
+      linear-gradient(132deg,transparent 0 18%,rgba(255,255,255,.14) 18.2%,transparent 31%),
+      linear-gradient(312deg,transparent 0 66%,rgba(255,255,255,.09) 66.2%,transparent 84%);
+}
+body:after{
+    content:"";position:fixed;right:-120px;bottom:-180px;width:330px;height:330px;border:15px solid rgba(255,255,255,.12);border-radius:50%;box-shadow:0 0 0 16px rgba(255,255,255,.06),0 0 0 32px rgba(255,255,255,.035);pointer-events:none;z-index:-1;
+}
+header{
+    width:680px;max-width:82%;margin:0 auto;padding:18px 24px 20px;text-align:center;color:#fff;
+    background:linear-gradient(180deg,#073b5a,#084c6d);border-radius:0 0 42px 42px;box-shadow:0 8px 20px rgba(8,55,82,.18);position:relative;z-index:5;
+}
+header h1{margin:0 0 5px;font-size:45px;line-height:1.05;font-weight:900;text-shadow:0 2px 2px rgba(0,0,0,.18)}
+header p{display:flex;align-items:center;justify-content:center;gap:22px;margin:0;color:#dff5ff;font-size:24px;font-weight:700}
+header p:before,header p:after{content:"";display:block;width:52px;height:2px;background:rgba(255,255,255,.8)}
+.container{width:100%;max-width:1500px;margin:0 auto;padding:0 24px 25px}
+.back-link{display:inline-block;position:relative;z-index:10;margin-top:-74px;margin-bottom:44px;padding:14px 20px;background:#073d5e;color:#fff;text-decoration:none;border-radius:10px;font-size:16px;font-weight:700;box-shadow:0 5px 12px rgba(0,0,0,.15)}
+.back-link:hover{background:#075071}
+.intro,.nota{background:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.72);border-radius:14px;box-shadow:0 5px 16px rgba(27,86,113,.10);backdrop-filter:blur(4px)}
+.intro{margin-bottom:25px;padding:13px 18px}
+.intro h2{margin:0 0 6px;color:#073d5e;font-size:23px}
+.intro p{margin:4px 0;color:#104d73;font-size:15px;line-height:1.32}
+.tabellone-scroll{width:100%;overflow-x:auto;overflow-y:hidden;padding:0 4px 15px;scrollbar-width:thin;scrollbar-color:#347ea1 rgba(255,255,255,.3)}
+.tabellone-scroll::-webkit-scrollbar{height:9px}.tabellone-scroll::-webkit-scrollbar-track{background:rgba(255,255,255,.3);border-radius:10px}.tabellone-scroll::-webkit-scrollbar-thumb{background:#347ea1;border-radius:10px}
+.tabellone{position:relative;width:1220px;height:650px;margin:0 auto}
+.round-title{position:absolute;height:36px;display:flex;align-items:center;justify-content:center;border-radius:10px;color:#fff;font-size:19px;font-weight:900;text-transform:uppercase;box-shadow:0 3px 8px rgba(23,78,106,.14);z-index:5}
+.title-ottavi{left:0;top:0;width:268px;background:linear-gradient(180deg,#438eb1,#347ea2)}
+.title-quarti{left:328px;top:0;width:286px;background:linear-gradient(180deg,#3caebe,#2c9bad)}
+/* Semifinali: azzurro/blu più scuro, non lilla */
+.title-semifinali{left:660px;top:0;width:286px;background:linear-gradient(180deg,#4382b6,#2f699f)}
+/* Il titolo FINALE è sopra la relativa scheda, sotto il trofeo */
+.title-finale{left:992px;top:174px;width:228px;background:linear-gradient(180deg,#11618d,#075071)}
+.match{position:absolute;width:268px;border-radius:12px;overflow:hidden;border:2px solid rgba(255,255,255,.76);box-shadow:0 5px 13px rgba(29,91,119,.16);z-index:4}
+.match.quarto,.match.semifinale{width:286px}.match.finale{width:228px;border:3px solid #d5a51e;box-shadow:0 6px 16px rgba(106,76,4,.22)}
+.match-label{padding:6px 11px 5px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.4px}
+.team{min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 11px;font-size:14px;font-weight:700;border-top:1px solid rgba(30,84,109,.10)}
+.team:first-of-type{border-top:none}.team-name{line-height:1.18}.score{flex:0 0 auto;min-width:20px;text-align:right;font-weight:900}
+/* OTTAVI */
+.ottavo-1 .team,.ottavo-2 .team,.ottavo-3 .team,.ottavo-4 .team,.ottavo-5 .team,.ottavo-6 .team{background:linear-gradient(180deg,#e4f5fb,#d1ecf7);color:#123e5d}
+.ottavo-1 .match-label,.ottavo-2 .match-label,.ottavo-3 .match-label,.ottavo-4 .match-label,.ottavo-5 .match-label,.ottavo-6 .match-label{background:#d5eef8;color:#145074}
+/* QUARTI */
+.quarto .team{background:linear-gradient(180deg,#d4f0f5,#bfe6ee);color:#164c68}
+.quarto .match-label{background:linear-gradient(180deg,#bce7ef,#a5dbe5);color:#15506c}
+/* SEMIFINALI */
+.semifinale .team{background:linear-gradient(180deg,#d8e6f5,#c4d7ec);color:#123f66}
+.semifinale .match-label{background:linear-gradient(180deg,#6f99c9,#5b82b6);color:#fff}
+.semifinale .gara-extra{background:rgba(255,255,255,.34);color:#1b4d75}
+/* DIRETTI */
+.team.direct{background:linear-gradient(180deg,#e1f3e4,#cbe8d0)!important;color:#214b2b}.team.direct .team-name{color:#214b2b;font-weight:900}
+.direct-badge{display:inline-block;margin-left:5px;padding:2px 6px;border-radius:7px;background:linear-gradient(180deg,#e9c64e,#d2a916);color:#fff;font-size:9px;font-weight:900;vertical-align:middle}
+.placeholder .team-name{font-weight:650}
+/* FINALE */
+.finale .team{background:linear-gradient(180deg,#fff7d4,#f7e7a7);color:#443600}.finale .match-label{background:linear-gradient(180deg,#d9ad26,#c49513);color:#fff}.finale .gara-extra{background:#efd36d;color:#554400}.finale .score{color:#493900}
+.gara-extra{display:flex;justify-content:space-between;align-items:center;padding:7px 11px;background:rgba(255,255,255,.35);border-top:1px solid rgba(40,80,105,.12);font-size:10px;font-weight:800}.gara-extra strong{font-size:12px}
+/* POSIZIONI - più aria tra gli ottavi */
+.ottavo-1{left:0;top:48px}.ottavo-2{left:0;top:151px}.ottavo-3{left:0;top:254px}.ottavo-4{left:0;top:357px}.ottavo-5{left:0;top:460px}.ottavo-6{left:0;top:563px}
+.quarto-1{left:328px;top:72px}.quarto-2{left:328px;top:224px}.quarto-3{left:328px;top:376px}.quarto-4{left:328px;top:528px}
+.semifinale-1{left:660px;top:110px}.semifinale-2{left:660px;top:392px}
+.finale{left:992px;top:212px}
+/* TROFEO: sopra il titolo finale, con PNG trasparente */
+.trofeo-finale{position:absolute;left:992px;top:22px;width:228px;height:145px;display:flex;align-items:center;justify-content:center;z-index:3;pointer-events:none}
+.trofeo-finale img{display:block;width:150px;height:auto;filter:drop-shadow(0 5px 4px rgba(67,70,25,.20))}
+/* LINEE */
+.line{position:absolute;background:#23678c;z-index:1;pointer-events:none}.line-h{height:2px}.line-v{width:2px}
+/* ottavi -> quarti */
+.q1-h1{left:268px;top:78px;width:30px}.q1-v{left:298px;top:78px;height:42px}.q1-h2{left:298px;top:120px;width:30px}
+.q2-h1{left:268px;top:181px;width:30px}.q2-v{left:298px;top:120px;height:113px}.q2-h2{left:298px;top:233px;width:30px}
+.q3-h1{left:268px;top:284px;width:30px}.q3-v{left:298px;top:233px;height:113px}.q3-h2{left:298px;top:346px;width:30px}
+.q4-h1{left:268px;top:387px;width:30px}.q4-v{left:298px;top:346px;height:113px}.q4-h2{left:298px;top:459px;width:30px}
+.q5-h1{left:268px;top:490px;width:30px}.q5-v{left:298px;top:459px;height:113px}.q5-h2{left:298px;top:572px;width:30px}
+.q6-h1{left:268px;top:593px;width:30px}.q6-v{left:298px;top:572px;height:4px}.q6-h2{left:298px;top:572px;width:30px}
+/* quarti -> semifinali */
+.s1-h1{left:614px;top:113px;width:28px}.s1-v{left:642px;top:113px;height:72px}.s1-h2{left:642px;top:185px;width:18px}.s1-h3{left:614px;top:266px;width:28px}.s1-v2{left:642px;top:185px;height:81px}
+.s2-h1{left:614px;top:417px;width:28px}.s2-v{left:642px;top:417px;height:72px}.s2-h2{left:642px;top:489px;width:18px}.s2-h3{left:614px;top:570px;width:28px}.s2-v2{left:642px;top:489px;height:81px}
+/* semifinali -> finale */
+.f-h1{left:946px;top:185px;width:46px}.f-v{left:992px;top:185px;height:181px}.f-mid{left:992px;top:366px;width:0}.f-h2{left:946px;top:489px;width:46px}
+.nota{margin-top:0;padding:15px 22px 16px;color:#104d73}.nota h2{margin:0 0 7px;color:#07527d;font-size:21px}.nota p{position:relative;margin:4px 0;padding-left:19px;font-size:14px;line-height:1.35}.nota p:before{content:"•";position:absolute;left:4px;top:0;font-size:17px;font-weight:900;color:#12648f}
+footer{margin-top:15px;padding:16px 20px;background:linear-gradient(180deg,#084d70,#063b5a);color:#d9eff9;text-align:center;font-size:14px}footer:before,footer:after{content:"";display:inline-block;width:30%;height:2px;vertical-align:middle;background:rgba(255,255,255,.3);margin:0 20px}
+@media(max-width:900px){header{width:88%;max-width:680px}header h1{font-size:34px}header p{font-size:18px}.back-link{margin-top:-55px;margin-bottom:35px}.container{padding-left:15px;padding-right:15px}}
+@media(max-width:600px){header{width:94%;padding:18px 15px 20px;border-radius:0 0 30px 30px}header h1{font-size:29px}header p{font-size:15px;gap:10px}header p:before,header p:after{width:30px}.back-link{margin-top:-50px;padding:11px 15px;font-size:14px}.intro{padding:14px 16px}.intro h2{font-size:20px}.intro p{font-size:14px}.round-title{font-size:17px}.nota{padding:15px 17px}.nota h2{font-size:19px}.nota p{font-size:13px}footer:before,footer:after{display:none}}
+</style>
+</head>
+<body>
+<header>
+    <h1>Torneo di Apertura</h1>
+    <p>Lega Fantacalcio Barriera dell'M</p>
+</header>
+<div class="container">
+    <a href="index.html" class="back-link">← &nbsp;Torna alla Home</a>
+    <section class="intro">
+        <h2>Torneo di Apertura 2026/27</h2>
+        <p>Tabellone a eliminazione diretta del Torneo di Apertura.</p>
+        <p>Gli ottavi di finale prevedono sei sfide. <strong>PROFONDA</strong> e <strong>INTERTOR</strong> accedono direttamente ai quarti di finale.</p>
+        <p>Le fasi successive conducono ai quarti di finale, alle semifinali e alla finale.</p>
+    </section>
+    <section class="tabellone-section">
+        <div class="tabellone-scroll">
+            <div class="tabellone">
+                <div class="round-title title-ottavi">Ottavi di finale</div>
+                <div class="round-title title-quarti">Quarti di finale</div>
+                <div class="round-title title-semifinali">Semifinali</div>
+                <div class="round-title title-finale">Finale</div>
+
+                <div class="match ottavo-1"><div class="match-label">Ottavo 1</div><div class="team"><span class="team-name">TOMCAT</span><span class="score">–</span></div><div class="team"><span class="team-name">REAL DORATOM</span><span class="score">–</span></div></div>
+                <div class="match ottavo-2"><div class="match-label">Ottavo 2</div><div class="team"><span class="team-name">WILD EAGLES</span><span class="score">–</span></div><div class="team"><span class="team-name">LOBE</span><span class="score">–</span></div></div>
+                <div class="match ottavo-3"><div class="match-label">Ottavo 3</div><div class="team"><span class="team-name">TAURINORUM</span><span class="score">–</span></div><div class="team"><span class="team-name">SPARTAK</span><span class="score">–</span></div></div>
+                <div class="match ottavo-4"><div class="match-label">Ottavo 4</div><div class="team"><span class="team-name">DINAMO</span><span class="score">–</span></div><div class="team"><span class="team-name">VAIENTUS</span><span class="score">–</span></div></div>
+                <div class="match ottavo-5"><div class="match-label">Ottavo 5</div><div class="team"><span class="team-name">CASTEL</span><span class="score">–</span></div><div class="team"><span class="team-name">MONACO DB</span><span class="score">–</span></div></div>
+                <div class="match ottavo-6"><div class="match-label">Ottavo 6</div><div class="team"><span class="team-name">EVERTOR</span><span class="score">–</span></div><div class="team"><span class="team-name">ZULUZEBRA</span><span class="score">–</span></div></div>
+
+                <div class="match quarto quarto-1"><div class="match-label">Quarto 1</div><div class="team direct"><span class="team-name">PROFONDA <span class="direct-badge">DIRETTO</span></span><span class="score">–</span></div><div class="team placeholder"><span class="team-name">Vincente TOMCAT / REAL DORATOM</span><span class="score">–</span></div></div>
+                <div class="match quarto quarto-2"><div class="match-label">Quarto 2</div><div class="team placeholder"><span class="team-name">Vincente WILD EAGLES / LOBE</span><span class="score">–</span></div><div class="team placeholder"><span class="team-name">Vincente TAURINORUM / SPARTAK</span><span class="score">–</span></div></div>
+                <div class="match quarto quarto-3"><div class="match-label">Quarto 3</div><div class="team placeholder"><span class="team-name">Vincente DINAMO / VAIENTUS</span><span class="score">–</span></div><div class="team placeholder"><span class="team-name">Vincente CASTEL / MONACO DB</span><span class="score">–</span></div></div>
+                <div class="match quarto quarto-4"><div class="match-label">Quarto 4</div><div class="team placeholder"><span class="team-name">Vincente EVERTOR / ZULUZEBRA</span><span class="score">–</span></div><div class="team direct"><span class="team-name">INTERTOR <span class="direct-badge">DIRETTO</span></span><span class="score">–</span></div></div>
+
+                <div class="match semifinale semifinale-1"><div class="match-label">Semifinale 1</div><div class="team placeholder"><span class="team-name">Vincente QUARTO 1</span><span class="score">–</span></div><div class="team placeholder"><span class="team-name">Vincente QUARTO 2</span><span class="score">–</span></div><div class="gara-extra"><span>ANDATA:</span><strong>—</strong><span>RITORNO:</span><strong>—</strong></div></div>
+                <div class="match semifinale semifinale-2"><div class="match-label">Semifinale 2</div><div class="team placeholder"><span class="team-name">Vincente QUARTO 3</span><span class="score">–</span></div><div class="team placeholder"><span class="team-name">Vincente QUARTO 4</span><span class="score">–</span></div><div class="gara-extra"><span>ANDATA:</span><strong>—</strong><span>RITORNO:</span><strong>—</strong></div></div>
+
+                <div class="trofeo-finale"><img src="trofeo-apertura.png" alt="Trofeo del Torneo di Apertura"></div>
+
+                <div class="match finale"><div class="match-label">Finale · Gara unica</div><div class="team placeholder"><span class="team-name">Vincente SEMIFINALE 1</span><span class="score">–</span></div><div class="team placeholder"><span class="team-name">Vincente SEMIFINALE 2</span><span class="score">–</span></div><div class="gara-extra"><span>FINALE:</span><strong>—</strong></div></div>
+
+                <span class="line line-h q1-h1"></span><span class="line line-v q1-v"></span><span class="line line-h q1-h2"></span>
+                <span class="line line-h q2-h1"></span><span class="line line-v q2-v"></span><span class="line line-h q2-h2"></span>
+                <span class="line line-h q3-h1"></span><span class="line line-v q3-v"></span><span class="line line-h q3-h2"></span>
+                <span class="line line-h q4-h1"></span><span class="line line-v q4-v"></span><span class="line line-h q4-h2"></span>
+                <span class="line line-h q5-h1"></span><span class="line line-v q5-v"></span><span class="line line-h q5-h2"></span>
+                <span class="line line-h q6-h1"></span><span class="line line-v q6-v"></span><span class="line line-h q6-h2"></span>
+                <span class="line line-h s1-h1"></span><span class="line line-v s1-v"></span><span class="line line-h s1-h2"></span><span class="line line-h s1-h3"></span><span class="line line-v s1-v2"></span>
+                <span class="line line-h s2-h1"></span><span class="line line-v s2-v"></span><span class="line line-h s2-h2"></span><span class="line line-h s2-h3"></span><span class="line line-v s2-v2"></span>
+                <span class="line line-h f-h1"></span><span class="line line-v f-v"></span><span class="line line-h f-mid"></span><span class="line line-h f-h2"></span>
+            </div>
+        </div>
+    </section>
+    <section class="nota">
+        <h2>📋 &nbsp;Regole della competizione</h2>
+        <p>Il Torneo di Apertura si disputa con formula a eliminazione diretta.</p>
+        <p>Nelle fasi a eliminazione diretta vengono applicate le regole previste dal regolamento della Lega per gli incontri internazionali. In caso di parità complessiva, si procede secondo i criteri stabiliti dal regolamento ufficiale.</p>
+        <p>La finale viene disputata in gara unica. In caso di parità, si applicano i criteri DTS e, se necessario, i rigori.</p>
+    </section>
+</div>
+<footer>Lega Fantacalcio Barriera dell'M</footer>
 </body>
 </html>
