@@ -1,12 +1,17 @@
-```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torneo di Apertura - Lega Fantacalcio Barriera dell'M</title>
+
+    <title>Torneo di Apertura 2026/27 - Lega Fantacalcio Barriera dell'M</title>
 
     <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
         * {
             box-sizing: border-box;
         }
@@ -18,175 +23,442 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background: #f4f7fa;
-            color: #1d2730;
+            color: #123b59;
+
+            /*
+             * Sfondo principale
+             */
+            background:
+                linear-gradient(
+                    135deg,
+                    #dff5fc 0%,
+                    #b8e5f3 28%,
+                    #7fc9df 62%,
+                    #5eafd0 100%
+                );
+
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
+
+        /* =========================================================
+           SFONDO DECORATIVO
+        ========================================================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    transparent 0%,
+                    rgba(255,255,255,.18) 30%,
+                    transparent 30.5%
+                ),
+                linear-gradient(
+                    315deg,
+                    transparent 0%,
+                    rgba(255,255,255,.12) 38%,
+                    transparent 38.5%
+                );
+
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+
+            right: -120px;
+            bottom: -160px;
+
+            width: 360px;
+            height: 360px;
+
+            border: 18px solid rgba(255,255,255,.13);
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 18px rgba(255,255,255,.07),
+                0 0 0 36px rgba(255,255,255,.04);
+
+            pointer-events: none;
+            z-index: -1;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
         header {
-            background: #111;
+            position: relative;
+
+            width: 680px;
+            max-width: 82%;
+
+            margin: 0 auto;
+
+            padding: 22px 25px 24px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #083b5c 0%,
+                    #075071 100%
+                );
+
             color: #fff;
-            padding: 28px 20px;
+
             text-align: center;
+
+            border-radius: 0 0 42px 42px;
+
+            box-shadow:
+                0 8px 20px rgba(8,55,82,.18);
+
+            z-index: 5;
         }
 
         header h1 {
-            margin: 0 0 8px;
-            font-size: 30px;
+            margin: 0 0 6px;
+
+            font-size: 46px;
+            line-height: 1.05;
+
+            font-weight: 900;
+            letter-spacing: -.5px;
+
+            text-shadow:
+                0 2px 2px rgba(0,0,0,.18);
         }
 
         header p {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+
             margin: 0;
-            color: #ccc;
-            font-size: 15px;
+
+            color: #dff5ff;
+
+            font-size: 24px;
+            font-weight: 700;
         }
 
-        .container {
-            max-width: 1500px;
-            margin: 30px auto;
-            padding: 0 20px;
+        header p::before,
+        header p::after {
+            content: "";
+
+            width: 52px;
+            height: 2px;
+
+            background: rgba(255,255,255,.8);
+
+            display: block;
         }
+
+
+        /* =========================================================
+           CONTENITORE
+        ========================================================= */
+
+        .container {
+            width: 100%;
+            max-width: 1500px;
+
+            margin: 0 auto;
+
+            padding: 0 24px 35px;
+        }
+
+
+        /* =========================================================
+           LINK HOME
+        ========================================================= */
 
         .back-link {
             display: inline-block;
-            margin-bottom: 25px;
-            padding: 10px 16px;
-            background: #222;
+
+            margin-top: -74px;
+            margin-bottom: 44px;
+
+            position: relative;
+            z-index: 10;
+
+            padding: 14px 20px;
+
+            background: #073d5e;
             color: #fff;
+
             text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            box-shadow:
+                0 5px 12px rgba(0,0,0,.15);
+
+            transition:
+                transform .2s ease,
+                background .2s ease;
         }
 
         .back-link:hover {
-            background: #444;
+            background: #075071;
+            transform: translateY(-2px);
         }
 
-        .intro,
-        .nota {
-            background: #fff;
-            padding: 24px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,.07);
-        }
+
+        /* =========================================================
+           INTRODUZIONE
+        ========================================================= */
 
         .intro {
-            margin-bottom: 32px;
-        }
-
-        .intro h2,
-        .nota h2 {
             margin-top: 0;
+            margin-bottom: 28px;
+
+            padding: 15px 20px;
+
+            background: rgba(255,255,255,.72);
+
+            border: 1px solid rgba(255,255,255,.65);
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 5px 16px rgba(27,86,113,.10);
+
+            backdrop-filter: blur(4px);
         }
 
-        .intro p,
-        .nota p {
-            line-height: 1.6;
+        .intro h2 {
+            margin: 0 0 7px;
+
+            color: #073d5e;
+
+            font-size: 24px;
+            line-height: 1.2;
         }
 
-        /* =====================================================
+        .intro p {
+            margin: 5px 0;
+
+            color: #104d73;
+
+            font-size: 16px;
+            line-height: 1.35;
+        }
+
+        .intro strong {
+            font-weight: 900;
+        }
+
+
+        /* =========================================================
            TABELLONE
-        ====================================================== */
+        ========================================================= */
 
         .tabellone-section {
-            margin-bottom: 40px;
+            width: 100%;
+            margin-bottom: 30px;
         }
 
         .tabellone-scroll {
             width: 100%;
+
             overflow-x: auto;
             overflow-y: hidden;
-            padding: 8px 8px 18px;
+
+            padding: 0 4px 16px;
+
+            scrollbar-color: #397fa2 rgba(255,255,255,.3);
+            scrollbar-width: thin;
+        }
+
+        .tabellone-scroll::-webkit-scrollbar {
+            height: 9px;
+        }
+
+        .tabellone-scroll::-webkit-scrollbar-track {
+            background: rgba(255,255,255,.3);
+            border-radius: 10px;
+        }
+
+        .tabellone-scroll::-webkit-scrollbar-thumb {
+            background: #397fa2;
+            border-radius: 10px;
         }
 
         .tabellone {
             position: relative;
-            width: 1340px;
-            height: 1080px;
+
+            width: 1220px;
+            height: 650px;
+
             margin: 0 auto;
         }
 
+
+        /* =========================================================
+           TITOLI DELLE FASI
+        ========================================================= */
+
         .round-title {
             position: absolute;
+
             top: 0;
-            height: 38px;
+
+            height: 37px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 800;
-            letter-spacing: .5px;
+
+            border-radius: 10px;
+
+            font-size: 20px;
+            font-weight: 900;
+
             text-transform: uppercase;
+
+            color: #fff;
+
+            box-shadow:
+                0 3px 8px rgba(23,78,106,.13);
+
             z-index: 5;
         }
 
         .title-ottavi {
             left: 0;
-            width: 260px;
-            background: #d7edf7;
-            color: #28566c;
+            width: 268px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #438eb1,
+                    #347ea2
+                );
         }
 
         .title-quarti {
-            left: 340px;
-            width: 290px;
-            background: #b9ddea;
-            color: #204e64;
+            left: 328px;
+            width: 286px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #39aabe,
+                    #2c9bad
+                );
         }
 
+        /*
+         * SEMIFINALI:
+         * più scure rispetto alla simulazione originale,
+         * come richiesto.
+         */
         .title-semifinali {
-            left: 710px;
-            width: 290px;
-            background: #93b8d0;
-            color: #173f58;
+            left: 660px;
+            width: 286px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #4d86bd,
+                    #356fa9
+                );
         }
 
         .title-finale {
-            left: 1080px;
-            width: 260px;
-            background: #4f91b5;
-            color: #fff;
+            left: 992px;
+            width: 228px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #11618d,
+                    #075071
+                );
         }
+
+
+        /* =========================================================
+           MATCH CARD
+        ========================================================= */
 
         .match {
             position: absolute;
-            width: 260px;
-            min-height: 108px;
+
+            width: 268px;
+            min-height: 88px;
+
             border-radius: 12px;
-            overflow: visible;
-            box-shadow: 0 4px 12px rgba(28,62,80,.12);
+
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 12px rgba(29,91,119,.15);
+
             z-index: 4;
         }
 
         .match.quarto,
         .match.semifinale {
-            width: 290px;
+            width: 286px;
         }
 
         .match.finale {
-            width: 260px;
-            min-height: 122px;
+            width: 228px;
+            min-height: 126px;
         }
+
+
+        /* =========================================================
+           ETICHETTA MATCH
+        ========================================================= */
 
         .match-label {
-            padding: 8px 12px 6px;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: .8px;
+            padding: 7px 12px 5px;
+
+            font-size: 12px;
+            font-weight: 900;
+
             text-transform: uppercase;
-            opacity: .75;
+            letter-spacing: .4px;
         }
 
+
+        /* =========================================================
+           SQUADRE
+        ========================================================= */
+
         .team {
-            min-height: 38px;
+            min-height: 37px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             gap: 8px;
-            padding: 7px 12px;
-            font-size: 13px;
+
+            padding: 6px 12px;
+
+            font-size: 14px;
             font-weight: 700;
-            border-top: 1px solid rgba(45,75,90,.12);
+
+            border-top:
+                1px solid rgba(30,84,109,.10);
         }
 
         .team:first-of-type {
@@ -199,17 +471,18 @@
 
         .score {
             flex: 0 0 auto;
+
             min-width: 20px;
+
             text-align: right;
-            font-weight: 800;
+
+            font-weight: 900;
         }
 
-        .placeholder .team-name {
-            color: #47606d;
-            font-weight: 650;
-        }
 
-        /* Progressione della stessa tonalità di blu */
+        /* =========================================================
+           OTTAVI
+        ========================================================= */
 
         .ottavo-1 .team,
         .ottavo-2 .team,
@@ -217,8 +490,14 @@
         .ottavo-4 .team,
         .ottavo-5 .team,
         .ottavo-6 .team {
-            background: #e5f4fb;
-            color: #244c5f;
+            background:
+                linear-gradient(
+                    180deg,
+                    #dff3fb,
+                    #cdebf7
+                );
+
+            color: #123e5d;
         }
 
         .ottavo-1 .match-label,
@@ -227,133 +506,323 @@
         .ottavo-4 .match-label,
         .ottavo-5 .match-label,
         .ottavo-6 .match-label {
-            background: #d7edf7;
-            color: #28566c;
+            background: #d4eef8;
+            color: #145074;
         }
 
+
+        /* =========================================================
+           QUARTI
+        ========================================================= */
+
         .quarto .team {
-            background: #c8e6f2;
-            color: #214c62;
+            background:
+                linear-gradient(
+                    180deg,
+                    #d3f0f5,
+                    #bce5ee
+                );
+
+            color: #164c68;
         }
 
         .quarto .match-label {
-            background: #b9ddea;
-            color: #204e64;
+            background:
+                linear-gradient(
+                    180deg,
+                    #bce7ef,
+                    #a8dce7
+                );
+
+            color: #15506c;
         }
 
+
+        /* =========================================================
+           SEMIFINALI
+           TONALITÀ AZZURRO PIÙ SCURA
+        ========================================================= */
+
         .semifinale .team {
-            background: #a9c9dd;
-            color: #173f58;
+            background:
+                linear-gradient(
+                    180deg,
+                    #d1e0f3,
+                    #bed2ea
+                );
+
+            color: #123e64;
         }
 
         .semifinale .match-label {
-            background: #93b8d0;
-            color: #173f58;
+            background:
+                linear-gradient(
+                    180deg,
+                    #729bd0,
+                    #5d86bd
+                );
+
+            color: #fff;
+        }
+
+        .semifinale .gara-extra {
+            background:
+                rgba(255,255,255,.30);
+
+            color: #1b4d75;
+        }
+
+
+        /* =========================================================
+           FINALE
+        ========================================================= */
+
+        .finale {
+            border: 3px solid #d6a51e;
+
+            box-shadow:
+                0 6px 16px rgba(106,76,4,.22);
         }
 
         .finale .team {
-            background: #6ea8c4;
-            color: #fff;
+            background:
+                linear-gradient(
+                    180deg,
+                    #fff7d4,
+                    #f7e7a7
+                );
+
+            color: #443600;
         }
 
         .finale .match-label {
-            background: #4f91b5;
+            background:
+                linear-gradient(
+                    180deg,
+                    #d9ad26,
+                    #c49513
+                );
+
             color: #fff;
+        }
+
+        .finale .gara-extra {
+            background: #efd36d;
+
+            color: #554400;
         }
 
         .finale .score {
-            color: #fff;
+            color: #493900;
         }
 
-        /* Accessi diretti */
+
+        /* =========================================================
+           SQUADRE DIRETTE AI QUARTI
+        ========================================================= */
 
         .team.direct {
-            background: #dcefdc !important;
-            color: #304f30;
+            background:
+                linear-gradient(
+                    180deg,
+                    #dff2e2,
+                    #c9e7ce
+                ) !important;
+
+            color: #214b2b;
         }
 
         .team.direct .team-name {
-            color: #304f30;
+            color: #214b2b;
+            font-weight: 900;
         }
 
         .direct-badge {
             display: inline-block;
-            margin-left: 6px;
+
+            margin-left: 5px;
+
             padding: 2px 6px;
-            border-radius: 8px;
-            background: #e7c95c;
-            color: #5e4d00;
+
+            border-radius: 7px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #e9c64e,
+                    #d2a916
+                );
+
+            color: #fff;
+
             font-size: 9px;
             font-weight: 900;
-            letter-spacing: .3px;
+
             vertical-align: middle;
         }
 
-        /* Posizionamento */
+        .placeholder .team-name {
+            font-weight: 650;
+        }
 
-        .ottavo-1 { left: 0; top: 70px; }
-        .ottavo-2 { left: 0; top: 220px; }
-        .ottavo-3 { left: 0; top: 370px; }
-        .ottavo-4 { left: 0; top: 610px; }
-        .ottavo-5 { left: 0; top: 760px; }
-        .ottavo-6 { left: 0; top: 910px; }
 
-        .quarto-1 { left: 340px; top: 145px; }
-        .quarto-2 { left: 340px; top: 370px; }
-        .quarto-3 { left: 340px; top: 610px; }
-        .quarto-4 { left: 340px; top: 835px; }
-
-        .semifinale-1 { left: 710px; top: 255px; }
-        .semifinale-2 { left: 710px; top: 700px; }
-
-        .finale { left: 1080px; top: 475px; }
-
-        /* Partite di andata/ritorno */
+        /* =========================================================
+           GARE ANDATA / RITORNO / FINALE
+        ========================================================= */
 
         .gara-extra {
             display: flex;
+
             justify-content: space-between;
             align-items: center;
+
             padding: 7px 12px;
-            background: rgba(255,255,255,.38);
-            border-top: 1px solid rgba(45,75,90,.14);
-            font-size: 11px;
-            font-weight: 700;
+
+            background: rgba(255,255,255,.35);
+
+            border-top:
+                1px solid rgba(40,80,105,.12);
+
+            font-size: 10px;
+            font-weight: 800;
         }
 
         .gara-extra strong {
             font-size: 12px;
         }
 
-        /* Coppa sopra la finale */
+
+        /* =========================================================
+           POSIZIONAMENTO OTTAVI
+        ========================================================= */
+
+        .ottavo-1 {
+            left: 0;
+            top: 48px;
+        }
+
+        .ottavo-2 {
+            left: 0;
+            top: 148px;
+        }
+
+        .ottavo-3 {
+            left: 0;
+            top: 248px;
+        }
+
+        .ottavo-4 {
+            left: 0;
+            top: 348px;
+        }
+
+        .ottavo-5 {
+            left: 0;
+            top: 448px;
+        }
+
+        .ottavo-6 {
+            left: 0;
+            top: 548px;
+        }
+
+
+        /* =========================================================
+           POSIZIONAMENTO QUARTI
+        ========================================================= */
+
+        .quarto-1 {
+            left: 328px;
+            top: 72px;
+        }
+
+        .quarto-2 {
+            left: 328px;
+            top: 220px;
+        }
+
+        .quarto-3 {
+            left: 328px;
+            top: 372px;
+        }
+
+        .quarto-4 {
+            left: 328px;
+            top: 520px;
+        }
+
+
+        /* =========================================================
+           POSIZIONAMENTO SEMIFINALI
+        ========================================================= */
+
+        .semifinale-1 {
+            left: 660px;
+            top: 110px;
+        }
+
+        .semifinale-2 {
+            left: 660px;
+            top: 390px;
+        }
+
+
+        /* =========================================================
+           POSIZIONAMENTO FINALE
+        ========================================================= */
+
+        .finale {
+            left: 992px;
+            top: 285px;
+        }
+
+
+        /* =========================================================
+           TROFEO
+        ========================================================= */
 
         .trofeo-finale {
             position: absolute;
-            left: 1080px;
-            top: 285px;
-            width: 260px;
-            height: 170px;
+
+            left: 970px;
+            top: 45px;
+
+            width: 270px;
+            height: 215px;
+
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+
             z-index: 3;
+
             pointer-events: none;
         }
 
         .trofeo-finale img {
             display: block;
-            width: 125px;
+
+            width: 170px;
             height: auto;
+
+            filter:
+                drop-shadow(
+                    0 6px 5px rgba(67,70,25,.20)
+                );
         }
 
-        /* =====================================================
+
+        /* =========================================================
            LINEE DEL TABELLONE
-        ====================================================== */
+        ========================================================= */
 
         .line {
             position: absolute;
-            background: #6f9eb5;
+
+            background: #23678c;
+
             z-index: 1;
+
             pointer-events: none;
         }
 
@@ -365,477 +834,1053 @@
             width: 2px;
         }
 
-        /* Ottavo 1 -> Quarto 1 */
+
+        /* ---------------------------------------------------------
+           OTTAVI -> QUARTI
+        --------------------------------------------------------- */
 
         .q1-h1 {
-            left: 260px;
-            top: 123px;
-            width: 40px;
+            left: 268px;
+            top: 78px;
+            width: 30px;
         }
 
         .q1-v {
-            left: 300px;
-            top: 123px;
-            height: 76px;
+            left: 298px;
+            top: 78px;
+            height: 42px;
         }
 
         .q1-h2 {
-            left: 300px;
-            top: 199px;
-            width: 40px;
+            left: 298px;
+            top: 120px;
+            width: 30px;
         }
 
-        /* Ottavi 2-3 -> Quarto 2 */
 
         .q2-h1 {
-            left: 260px;
-            top: 273px;
-            width: 40px;
+            left: 268px;
+            top: 178px;
+            width: 30px;
         }
 
         .q2-v {
-            left: 300px;
-            top: 273px;
-            height: 151px;
+            left: 298px;
+            top: 178px;
+            height: 92px;
         }
 
         .q2-h2 {
-            left: 260px;
-            top: 423px;
-            width: 80px;
+            left: 298px;
+            top: 270px;
+            width: 30px;
         }
 
-        /* Ottavi 4-5 -> Quarto 3 */
 
         .q3-h1 {
-            left: 260px;
-            top: 663px;
-            width: 80px;
+            left: 268px;
+            top: 278px;
+            width: 30px;
         }
 
         .q3-v {
-            left: 300px;
-            top: 663px;
-            height: 151px;
+            left: 298px;
+            top: 278px;
+            height: 92px;
         }
 
         .q3-h2 {
-            left: 260px;
-            top: 813px;
-            width: 40px;
+            left: 298px;
+            top: 370px;
+            width: 30px;
         }
 
-        /* Ottavo 6 -> Quarto 4 */
 
         .q4-h1 {
-            left: 260px;
-            top: 963px;
-            width: 40px;
+            left: 268px;
+            top: 378px;
+            width: 30px;
         }
 
         .q4-v {
-            left: 300px;
-            top: 963px;
-            height: 76px;
+            left: 298px;
+            top: 378px;
+            height: 92px;
         }
 
         .q4-h2 {
-            left: 300px;
-            top: 1039px;
-            width: 40px;
+            left: 298px;
+            top: 470px;
+            width: 30px;
         }
 
-        /* Quarti -> Semifinali */
+
+        .q5-h1 {
+            left: 268px;
+            top: 478px;
+            width: 30px;
+        }
+
+        .q5-v {
+            left: 298px;
+            top: 478px;
+            height: 42px;
+        }
+
+        .q5-h2 {
+            left: 298px;
+            top: 520px;
+            width: 30px;
+        }
+
+
+        .q6-h1 {
+            left: 268px;
+            top: 578px;
+            width: 30px;
+        }
+
+        .q6-v {
+            left: 298px;
+            top: 520px;
+            height: 58px;
+        }
+
+        .q6-h2 {
+            left: 298px;
+            top: 520px;
+            width: 30px;
+        }
+
+
+        /* ---------------------------------------------------------
+           QUARTI -> SEMIFINALI
+        --------------------------------------------------------- */
 
         .s1-h1 {
-            left: 630px;
-            top: 199px;
-            width: 40px;
+            left: 614px;
+            top: 113px;
+            width: 28px;
         }
 
         .s1-v {
-            left: 670px;
-            top: 199px;
-            height: 110px;
+            left: 642px;
+            top: 113px;
+            height: 67px;
         }
 
         .s1-h2 {
-            left: 670px;
-            top: 309px;
-            width: 40px;
+            left: 642px;
+            top: 180px;
+            width: 18px;
         }
 
+
         .s1-h3 {
-            left: 630px;
-            top: 424px;
-            width: 40px;
+            left: 614px;
+            top: 261px;
+            width: 28px;
         }
 
         .s1-v2 {
-            left: 670px;
-            top: 309px;
-            height: 115px;
+            left: 642px;
+            top: 180px;
+            height: 81px;
         }
 
+
         .s2-h1 {
-            left: 630px;
-            top: 664px;
-            width: 40px;
+            left: 614px;
+            top: 413px;
+            width: 28px;
         }
 
         .s2-v {
-            left: 670px;
-            top: 664px;
-            height: 110px;
+            left: 642px;
+            top: 413px;
+            height: 67px;
         }
 
         .s2-h2 {
-            left: 670px;
-            top: 774px;
-            width: 40px;
+            left: 642px;
+            top: 480px;
+            width: 18px;
         }
 
+
         .s2-h3 {
-            left: 630px;
-            top: 889px;
-            width: 40px;
+            left: 614px;
+            top: 561px;
+            width: 28px;
         }
 
         .s2-v2 {
-            left: 670px;
-            top: 774px;
-            height: 115px;
+            left: 642px;
+            top: 480px;
+            height: 81px;
         }
 
-        /* Semifinali -> Finale */
+
+        /* ---------------------------------------------------------
+           SEMIFINALI -> FINALE
+        --------------------------------------------------------- */
 
         .f-h1 {
-            left: 1000px;
-            top: 335px;
-            width: 40px;
+            left: 946px;
+            top: 181px;
+            width: 46px;
         }
 
         .f-v {
-            left: 1040px;
-            top: 335px;
-            height: 445px;
+            left: 992px;
+            top: 181px;
+            height: 169px;
         }
 
         .f-mid {
-            left: 1040px;
-            top: 536px;
-            width: 40px;
+            left: 992px;
+            top: 350px;
+            width: 0;
         }
 
         .f-h2 {
-            left: 1000px;
-            top: 780px;
-            width: 40px;
+            left: 946px;
+            top: 482px;
+            width: 46px;
         }
+
+
+        /* =========================================================
+           REGOLAMENTO
+        ========================================================= */
 
         .nota {
-            margin-top: 10px;
-            line-height: 1.6;
+            position: relative;
+
+            margin-top: 5px;
+
+            padding: 16px 24px 17px;
+
+            background: rgba(255,255,255,.78);
+
+            border: 1px solid rgba(255,255,255,.7);
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 5px 15px rgba(29,87,112,.10);
+
+            color: #104d73;
         }
+
+        .nota h2 {
+            margin: 0 0 7px;
+
+            color: #07527d;
+
+            font-size: 21px;
+        }
+
+        .nota p {
+            position: relative;
+
+            margin: 5px 0;
+            padding-left: 19px;
+
+            font-size: 14px;
+            line-height: 1.35;
+        }
+
+        .nota p::before {
+            content: "•";
+
+            position: absolute;
+            left: 4px;
+            top: 0;
+
+            font-size: 17px;
+            font-weight: 900;
+
+            color: #12648f;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
 
         footer {
-            margin-top: 40px;
-            padding: 25px 20px;
-            background: #111;
-            color: #aaa;
+            position: relative;
+
+            margin-top: 15px;
+
+            padding: 17px 20px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #084d70,
+                    #063b5a
+                );
+
+            color: #d9eff9;
+
             text-align: center;
-            font-size: 13px;
+
+            font-size: 14px;
+
+            box-shadow:
+                0 -4px 12px rgba(25,79,103,.12);
         }
 
-        @media (max-width: 700px) {
+        footer::before,
+        footer::after {
+            content: "";
+
+            display: inline-block;
+
+            width: 31%;
+
+            height: 2px;
+
+            vertical-align: middle;
+
+            background: rgba(255,255,255,.3);
+
+            margin: 0 20px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            header {
+                width: 88%;
+                max-width: 680px;
+            }
+
             header h1 {
-                font-size: 25px;
+                font-size: 34px;
+            }
+
+            header p {
+                font-size: 18px;
+            }
+
+            .back-link {
+                margin-top: -55px;
+                margin-bottom: 35px;
             }
 
             .container {
-                padding: 0 12px;
-            }
-
-            .intro,
-            .nota {
-                padding: 18px;
+                padding-left: 15px;
+                padding-right: 15px;
             }
         }
+
+
+        @media (max-width: 600px) {
+
+            header {
+                width: 94%;
+                max-width: none;
+
+                padding: 18px 15px 20px;
+
+                border-radius: 0 0 30px 30px;
+            }
+
+            header h1 {
+                font-size: 29px;
+            }
+
+            header p {
+                font-size: 15px;
+                gap: 10px;
+            }
+
+            header p::before,
+            header p::after {
+                width: 30px;
+            }
+
+            .back-link {
+                margin-top: -50px;
+                padding: 11px 15px;
+
+                font-size: 14px;
+            }
+
+            .intro {
+                padding: 14px 16px;
+            }
+
+            .intro h2 {
+                font-size: 20px;
+            }
+
+            .intro p {
+                font-size: 14px;
+            }
+
+            .round-title {
+                font-size: 17px;
+            }
+
+            .nota {
+                padding: 15px 17px;
+            }
+
+            .nota h2 {
+                font-size: 19px;
+            }
+
+            .nota p {
+                font-size: 13px;
+            }
+
+            footer::before,
+            footer::after {
+                display: none;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
 
+
+<!-- =============================================================
+     HEADER
+============================================================= -->
+
 <header>
+
     <h1>Torneo di Apertura</h1>
-    <p>Lega Fantacalcio Barriera dell'M</p>
+
+    <p>
+        Lega Fantacalcio Barriera dell'M
+    </p>
+
 </header>
+
+
+<!-- =============================================================
+     CONTENUTO
+============================================================= -->
 
 <div class="container">
 
-    <a href="index.html" class="back-link">← Torna alla Home</a>
+
+    <!-- =========================================================
+         TORNA ALLA HOME
+    ========================================================= -->
+
+    <a href="index.html" class="back-link">
+        ← &nbsp;Torna alla Home
+    </a>
+
+
+    <!-- =========================================================
+         INTRO
+    ========================================================= -->
 
     <section class="intro">
-        <h2>Torneo di Apertura 2026/27</h2>
+
+        <h2>
+            Torneo di Apertura 2026/27
+        </h2>
 
         <p>
             Tabellone a eliminazione diretta del Torneo di Apertura.
         </p>
 
         <p>
-            Gli ottavi di finale prevedono sei sfide. PROFONDA e INTERTOR
+            Gli ottavi di finale prevedono sei sfide.
+            <strong>PROFONDA</strong> e
+            <strong>INTERTOR</strong>
             accedono direttamente ai quarti di finale.
         </p>
 
         <p>
-            Le fasi successive conducono ai quarti di finale, alle semifinali
-            e alla finale.
+            Le fasi successive conducono ai quarti di finale,
+            alle semifinali e alla finale.
         </p>
+
     </section>
 
+
+    <!-- =========================================================
+         TABELLONE
+    ========================================================= -->
+
     <section class="tabellone-section">
+
         <div class="tabellone-scroll">
+
             <div class="tabellone">
 
-                <div class="round-title title-ottavi">Ottavi di finale</div>
-                <div class="round-title title-quarti">Quarti di finale</div>
-                <div class="round-title title-semifinali">Semifinali</div>
-                <div class="round-title title-finale">Finale</div>
 
-                <!-- OTTAVI -->
+                <!-- =================================================
+                     TITOLI FASI
+                ================================================= -->
+
+                <div class="round-title title-ottavi">
+                    Ottavi di finale
+                </div>
+
+                <div class="round-title title-quarti">
+                    Quarti di finale
+                </div>
+
+                <div class="round-title title-semifinali">
+                    Semifinali
+                </div>
+
+                <div class="round-title title-finale">
+                    Finale
+                </div>
+
+
+                <!-- =================================================
+                     OTTAVO 1
+                ================================================= -->
 
                 <div class="match ottavo-1">
-                    <div class="match-label">Ottavo 1</div>
-                    <div class="team">
-                        <span class="team-name">TOMCAT</span>
-                        <span class="score">–</span>
+
+                    <div class="match-label">
+                        Ottavo 1
                     </div>
+
                     <div class="team">
-                        <span class="team-name">REAL DORATOM</span>
-                        <span class="score">–</span>
+                        <span class="team-name">
+                            TOMCAT
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
                     </div>
+
+                    <div class="team">
+                        <span class="team-name">
+                            REAL DORATOM
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+                    </div>
+
                 </div>
+
+
+                <!-- =================================================
+                     OTTAVO 2
+                ================================================= -->
 
                 <div class="match ottavo-2">
-                    <div class="match-label">Ottavo 2</div>
-                    <div class="team">
-                        <span class="team-name">WILD EAGLES</span>
-                        <span class="score">–</span>
+
+                    <div class="match-label">
+                        Ottavo 2
                     </div>
+
                     <div class="team">
-                        <span class="team-name">LOBE</span>
-                        <span class="score">–</span>
+                        <span class="team-name">
+                            WILD EAGLES
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
                     </div>
+
+                    <div class="team">
+                        <span class="team-name">
+                            LOBE
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+                    </div>
+
                 </div>
+
+
+                <!-- =================================================
+                     OTTAVO 3
+                ================================================= -->
 
                 <div class="match ottavo-3">
-                    <div class="match-label">Ottavo 3</div>
-                    <div class="team">
-                        <span class="team-name">TAURINORUM</span>
-                        <span class="score">–</span>
+
+                    <div class="match-label">
+                        Ottavo 3
                     </div>
+
                     <div class="team">
-                        <span class="team-name">SPARTAK</span>
-                        <span class="score">–</span>
+                        <span class="team-name">
+                            TAURINORUM
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
                     </div>
+
+                    <div class="team">
+                        <span class="team-name">
+                            SPARTAK
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+                    </div>
+
                 </div>
+
+
+                <!-- =================================================
+                     OTTAVO 4
+                ================================================= -->
 
                 <div class="match ottavo-4">
-                    <div class="match-label">Ottavo 4</div>
-                    <div class="team">
-                        <span class="team-name">DINAMO</span>
-                        <span class="score">–</span>
+
+                    <div class="match-label">
+                        Ottavo 4
                     </div>
+
                     <div class="team">
-                        <span class="team-name">VAIENTUS</span>
-                        <span class="score">–</span>
+                        <span class="team-name">
+                            DINAMO
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
                     </div>
+
+                    <div class="team">
+                        <span class="team-name">
+                            VAIENTUS
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+                    </div>
+
                 </div>
+
+
+                <!-- =================================================
+                     OTTAVO 5
+                ================================================= -->
 
                 <div class="match ottavo-5">
-                    <div class="match-label">Ottavo 5</div>
-                    <div class="team">
-                        <span class="team-name">CASTEL</span>
-                        <span class="score">–</span>
+
+                    <div class="match-label">
+                        Ottavo 5
                     </div>
+
                     <div class="team">
-                        <span class="team-name">MONACO DB</span>
-                        <span class="score">–</span>
+                        <span class="team-name">
+                            CASTEL
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
                     </div>
+
+                    <div class="team">
+                        <span class="team-name">
+                            MONACO DB
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+                    </div>
+
                 </div>
+
+
+                <!-- =================================================
+                     OTTAVO 6
+                ================================================= -->
 
                 <div class="match ottavo-6">
-                    <div class="match-label">Ottavo 6</div>
-                    <div class="team">
-                        <span class="team-name">EVERTOR</span>
-                        <span class="score">–</span>
+
+                    <div class="match-label">
+                        Ottavo 6
                     </div>
+
                     <div class="team">
-                        <span class="team-name">ZULUZEBRA</span>
-                        <span class="score">–</span>
+                        <span class="team-name">
+                            EVERTOR
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
                     </div>
+
+                    <div class="team">
+                        <span class="team-name">
+                            ZULUZEBRA
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+                    </div>
+
                 </div>
 
-                <!-- QUARTI -->
+
+                <!-- =================================================
+                     QUARTO 1
+                ================================================= -->
 
                 <div class="match quarto quarto-1">
-                    <div class="match-label">Quarto 1</div>
+
+                    <div class="match-label">
+                        Quarto 1
+                    </div>
+
                     <div class="team direct">
+
                         <span class="team-name">
                             PROFONDA
-                            <span class="direct-badge">DIRETTO</span>
+
+                            <span class="direct-badge">
+                                DIRETTO
+                            </span>
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
+
                     <div class="team placeholder">
+
                         <span class="team-name">
                             Vincente TOMCAT / REAL DORATOM
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
+
                 </div>
 
+
+                <!-- =================================================
+                     QUARTO 2
+                ================================================= -->
+
                 <div class="match quarto quarto-2">
-                    <div class="match-label">Quarto 2</div>
+
+                    <div class="match-label">
+                        Quarto 2
+                    </div>
+
                     <div class="team placeholder">
+
                         <span class="team-name">
                             Vincente WILD EAGLES / LOBE
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
+
                     <div class="team placeholder">
+
                         <span class="team-name">
                             Vincente TAURINORUM / SPARTAK
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
+
                 </div>
 
+
+                <!-- =================================================
+                     QUARTO 3
+                ================================================= -->
+
                 <div class="match quarto quarto-3">
-                    <div class="match-label">Quarto 3</div>
+
+                    <div class="match-label">
+                        Quarto 3
+                    </div>
+
                     <div class="team placeholder">
+
                         <span class="team-name">
                             Vincente DINAMO / VAIENTUS
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
+
                     <div class="team placeholder">
+
                         <span class="team-name">
                             Vincente CASTEL / MONACO DB
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
+
                 </div>
 
+
+                <!-- =================================================
+                     QUARTO 4
+                ================================================= -->
+
                 <div class="match quarto quarto-4">
-                    <div class="match-label">Quarto 4</div>
+
+                    <div class="match-label">
+                        Quarto 4
+                    </div>
+
                     <div class="team placeholder">
+
                         <span class="team-name">
                             Vincente EVERTOR / ZULUZEBRA
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
+
                     <div class="team direct">
+
                         <span class="team-name">
                             INTERTOR
-                            <span class="direct-badge">DIRETTO</span>
+
+                            <span class="direct-badge">
+                                DIRETTO
+                            </span>
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
+
                 </div>
 
-                <!-- SEMIFINALI -->
+
+                <!-- =================================================
+                     SEMIFINALE 1
+                ================================================= -->
 
                 <div class="match semifinale semifinale-1">
-                    <div class="match-label">Semifinale 1</div>
+
+                    <div class="match-label">
+                        Semifinale 1
+                    </div>
 
                     <div class="team placeholder">
+
                         <span class="team-name">
                             Vincente QUARTO 1
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
 
                     <div class="team placeholder">
+
                         <span class="team-name">
                             Vincente QUARTO 2
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
 
                     <div class="gara-extra">
-                        <span>ANDATA</span>
-                        <strong>—</strong>
+
+                        <span>
+                            ANDATA:
+                        </span>
+
+                        <strong>
+                            —
+                        </strong>
+
+                        <span>
+                            RITORNO:
+                        </span>
+
+                        <strong>
+                            —
+                        </strong>
+
                     </div>
 
-                    <div class="gara-extra">
-                        <span>RITORNO</span>
-                        <strong>—</strong>
-                    </div>
                 </div>
 
+
+                <!-- =================================================
+                     SEMIFINALE 2
+                ================================================= -->
+
                 <div class="match semifinale semifinale-2">
-                    <div class="match-label">Semifinale 2</div>
+
+                    <div class="match-label">
+                        Semifinale 2
+                    </div>
 
                     <div class="team placeholder">
+
                         <span class="team-name">
                             Vincente QUARTO 3
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
 
                     <div class="team placeholder">
+
                         <span class="team-name">
                             Vincente QUARTO 4
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
 
                     <div class="gara-extra">
-                        <span>ANDATA</span>
-                        <strong>—</strong>
+
+                        <span>
+                            ANDATA:
+                        </span>
+
+                        <strong>
+                            —
+                        </strong>
+
+                        <span>
+                            RITORNO:
+                        </span>
+
+                        <strong>
+                            —
+                        </strong>
+
                     </div>
 
-                    <div class="gara-extra">
-                        <span>RITORNO</span>
-                        <strong>—</strong>
-                    </div>
                 </div>
 
-                <!-- TROFEO -->
+
+                <!-- =================================================
+                     TROFEO
+                ================================================= -->
 
                 <div class="trofeo-finale">
+
                     <img
                         src="trofeo-apertura.png"
-                        alt="Trofeo del Torneo di Apertura">
+                        alt="Trofeo del Torneo di Apertura"
+                    >
+
                 </div>
 
-                <!-- FINALE -->
+
+                <!-- =================================================
+                     FINALE
+                ================================================= -->
 
                 <div class="match finale">
-                    <div class="match-label">Finale · Gara unica</div>
+
+                    <div class="match-label">
+                        Finale · Gara unica
+                    </div>
 
                     <div class="team placeholder">
+
                         <span class="team-name">
                             Vincente SEMIFINALE 1
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
 
                     <div class="team placeholder">
+
                         <span class="team-name">
                             Vincente SEMIFINALE 2
                         </span>
-                        <span class="score">–</span>
+
+                        <span class="score">
+                            –
+                        </span>
+
                     </div>
 
                     <div class="gara-extra">
-                        <span>FINALE</span>
-                        <strong>—</strong>
+
+                        <span>
+                            FINALE:
+                        </span>
+
+                        <strong>
+                            —
+                        </strong>
+
                     </div>
+
                 </div>
 
-                <!-- LINEE TABELLONE -->
+
+                <!-- =================================================
+                     LINEE OTTAVI -> QUARTI
+                ================================================= -->
 
                 <span class="line line-h q1-h1"></span>
                 <span class="line line-v q1-v"></span>
@@ -853,32 +1898,61 @@
                 <span class="line line-v q4-v"></span>
                 <span class="line line-h q4-h2"></span>
 
+                <span class="line line-h q5-h1"></span>
+                <span class="line line-v q5-v"></span>
+                <span class="line line-h q5-h2"></span>
+
+                <span class="line line-h q6-h1"></span>
+                <span class="line line-v q6-v"></span>
+                <span class="line line-h q6-h2"></span>
+
+
+                <!-- =================================================
+                     LINEE QUARTI -> SEMIFINALI
+                ================================================= -->
+
                 <span class="line line-h s1-h1"></span>
                 <span class="line line-v s1-v"></span>
                 <span class="line line-h s1-h2"></span>
+
                 <span class="line line-h s1-h3"></span>
                 <span class="line line-v s1-v2"></span>
+
 
                 <span class="line line-h s2-h1"></span>
                 <span class="line line-v s2-v"></span>
                 <span class="line line-h s2-h2"></span>
+
                 <span class="line line-h s2-h3"></span>
                 <span class="line line-v s2-v2"></span>
+
+
+                <!-- =================================================
+                     LINEE SEMIFINALI -> FINALE
+                ================================================= -->
 
                 <span class="line line-h f-h1"></span>
                 <span class="line line-v f-v"></span>
                 <span class="line line-h f-mid"></span>
                 <span class="line line-h f-h2"></span>
 
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- REGOLAMENTO -->
+
+    <!-- =========================================================
+         REGOLAMENTO
+    ========================================================= -->
 
     <section class="nota">
 
-        <h2>Regole della competizione</h2>
+        <h2>
+            📋 &nbsp;Regole della competizione
+        </h2>
 
         <p>
             Il Torneo di Apertura si disputa con formula a eliminazione diretta.
@@ -892,18 +1966,27 @@
         </p>
 
         <p>
-            La finale viene disputata in gara unica. In caso di parità,
-            si applicano i criteri DTS e, se necessario, i rigori.
+            La finale viene disputata in gara unica.
+            In caso di parità, si applicano i criteri DTS e,
+            se necessario, i rigori.
         </p>
 
     </section>
 
+
 </div>
 
+
+<!-- =============================================================
+     FOOTER
+============================================================= -->
+
 <footer>
+
     Lega Fantacalcio Barriera dell'M
+
 </footer>
+
 
 </body>
 </html>
-```
