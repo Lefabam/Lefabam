@@ -3,364 +3,271 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Lega Fantacalcio Barriera dell'M - Portale ufficiale della Lega dal 1995.">
+<meta name="description" content="Lega Fantacalcio Barriera dell'M - Portale ufficiale della lega.">
 <title>Lega Fantacalcio Barriera dell'M</title>
 
 <style>
     :root {
-        --blue-dark: #061f3d;
-        --blue: #0b4f8a;
-        --blue-light: #1677bd;
-        --blue-soft: #eaf5ff;
-        --gold: #d6a928;
+        --blue-dark: #063b91;
+        --blue: #084aa8;
+        --blue-light: #0b58bd;
+        --yellow: #ffe500;
+        --yellow-soft: #fff06a;
         --white: #ffffff;
-        --text: #10233d;
     }
 
-    * {
-        box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html, body {
-        margin: 0;
-        padding: 0;
-        min-height: 100%;
-    }
+    html, body { margin: 0; min-height: 100%; }
 
     body {
+        min-height: 100vh;
         font-family: Arial, Helvetica, sans-serif;
-        color: var(--text);
+        color: var(--white);
         background:
-            radial-gradient(circle at 50% 45%, rgba(255,255,255,.98) 0%, rgba(239,248,255,.96) 38%, rgba(209,232,248,.96) 100%);
+            radial-gradient(circle at 50% 43%, rgba(22, 101, 210, .95) 0%, rgba(9, 75, 170, .92) 34%, rgba(4, 48, 119, 1) 100%);
         overflow-x: hidden;
     }
 
-    /* =====================================================
-       MENU PRINCIPALE
-    ===================================================== */
-
+    /* =========================
+       NAVIGAZIONE
+    ========================= */
     .topbar {
         position: sticky;
         top: 0;
         z-index: 1000;
-        width: 100%;
-        background: linear-gradient(180deg, #062a50 0%, #073b68 100%);
-        border-bottom: 3px solid rgba(214,169,40,.85);
-        box-shadow: 0 8px 25px rgba(4,32,59,.22);
+        background: linear-gradient(180deg, #04377f 0%, #063f91 100%);
+        border-bottom: 2px solid var(--yellow);
+        box-shadow: 0 5px 18px rgba(0,0,0,.22);
     }
 
-    .nav-wrap {
+    .nav {
         width: min(1500px, 100%);
         margin: 0 auto;
-        padding: 0 18px;
-    }
-
-    .main-nav {
         display: flex;
         align-items: stretch;
-        justify-content: center;
-        min-height: 68px;
+        min-height: 74px;
         overflow-x: auto;
         scrollbar-width: thin;
-        scrollbar-color: rgba(255,255,255,.35) transparent;
+        scrollbar-color: rgba(255,229,0,.65) transparent;
     }
 
-    .main-nav::-webkit-scrollbar {
-        height: 5px;
-    }
-
-    .main-nav::-webkit-scrollbar-thumb {
-        background: rgba(255,255,255,.35);
-        border-radius: 10px;
-    }
-
-    .main-nav a {
+    .nav a {
         position: relative;
+        flex: 1 0 auto;
+        min-width: 118px;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 68px;
-        padding: 0 17px;
-        color: rgba(255,255,255,.92);
+        padding: 0 16px;
+        color: var(--white);
         text-decoration: none;
         text-transform: uppercase;
-        font-size: .78rem;
-        font-weight: 700;
-        letter-spacing: .035em;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: .25px;
         white-space: nowrap;
+        border-right: 1px solid rgba(255,255,255,.11);
         transition: background .2s ease, color .2s ease, transform .2s ease;
     }
 
-    .main-nav a::after {
-        content: "";
-        position: absolute;
-        left: 16px;
-        right: 16px;
-        bottom: 0;
-        height: 3px;
-        background: var(--gold);
-        transform: scaleX(0);
-        transition: transform .2s ease;
+    .nav a:first-child {
+        min-width: 76px;
+        font-size: 25px;
+        color: var(--yellow);
     }
 
-    .main-nav a:hover {
-        color: #fff;
-        background: rgba(255,255,255,.08);
+    .nav a:hover,
+    .nav a:focus-visible {
+        background: rgba(255,229,0,.12);
+        color: var(--yellow);
+        outline: none;
     }
 
-    .main-nav a:hover::after {
-        transform: scaleX(1);
+    .nav a:first-child:hover,
+    .nav a:first-child:focus-visible {
+        color: var(--white);
     }
 
-    /* =====================================================
+    /* =========================
        HOME
-    ===================================================== */
-
-    .home {
-        position: relative;
-        min-height: calc(100vh - 68px);
+    ========================= */
+    main {
+        width: min(1500px, 100%);
+        min-height: calc(100vh - 76px);
+        margin: 0 auto;
+        padding: 54px 30px 70px;
         display: flex;
+        justify-content: flex-start;
         align-items: center;
-        justify-content: center;
-        padding: 42px 20px 55px;
-        overflow: hidden;
+        flex-direction: column;
     }
 
-    .home::before,
-    .home::after {
-        content: "";
-        position: absolute;
-        border-radius: 50%;
-        pointer-events: none;
-        filter: blur(2px);
-    }
-
-    .home::before {
-        width: 520px;
-        height: 520px;
-        top: -210px;
-        left: -180px;
-        background: radial-gradient(circle, rgba(22,119,189,.15), transparent 68%);
-    }
-
-    .home::after {
-        width: 600px;
-        height: 600px;
-        right: -260px;
-        bottom: -280px;
-        background: radial-gradient(circle, rgba(11,79,138,.13), transparent 68%);
-    }
-
-    .home-content {
-        position: relative;
-        z-index: 2;
-        width: min(920px, 100%);
+    .intro {
+        width: 100%;
         text-align: center;
     }
 
     .league-title {
         margin: 0;
-        color: var(--blue-dark);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: clamp(2rem, 4.2vw, 4rem);
-        font-weight: 700;
+        color: var(--yellow);
+        font-size: clamp(2.15rem, 4.2vw, 4.15rem);
         line-height: 1.05;
-        letter-spacing: -.025em;
-        text-shadow: 0 2px 0 rgba(255,255,255,.75);
+        font-weight: 900;
+        letter-spacing: -.8px;
+        white-space: nowrap;
+        text-shadow: 0 3px 0 rgba(0,0,0,.14), 0 8px 25px rgba(0,0,0,.22);
     }
 
-    .league-subtitle {
-        margin: 14px 0 0;
-        color: var(--blue);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: clamp(1rem, 2vw, 1.45rem);
+    .subtitle {
+        margin: 12px 0 0;
+        color: rgba(255,255,255,.88);
+        font-size: clamp(.78rem, 1.2vw, 1rem);
         font-weight: 700;
-        letter-spacing: .08em;
         text-transform: uppercase;
+        letter-spacing: 4px;
     }
 
     .title-line {
-        width: min(620px, 80%);
-        height: 1px;
-        margin: 25px auto 25px;
-        background: linear-gradient(90deg, transparent, rgba(11,79,138,.65), transparent);
+        width: min(970px, 75%);
+        height: 2px;
+        margin: 17px auto 0;
+        background: linear-gradient(90deg, transparent, var(--yellow), transparent);
     }
 
-    .founded {
-        margin: 0;
-        color: #28486a;
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 1rem;
-        font-weight: 700;
-        letter-spacing: .05em;
+    .foundation {
+        margin-top: 25px;
+        text-align: center;
     }
 
-    .founded strong {
+    .foundation-label {
         display: block;
-        margin-top: 4px;
-        color: var(--blue);
-        font-size: 1.45rem;
+        color: var(--white);
+        font-size: clamp(1.05rem, 1.8vw, 1.55rem);
+        font-weight: 800;
     }
 
-    .logo-frame {
-        width: min(500px, 78vw);
-        min-height: 300px;
-        margin: 30px auto 0;
+    .foundation-year {
+        display: block;
+        margin-top: 3px;
+        color: var(--yellow);
+        font-size: clamp(2.3rem, 4vw, 3.7rem);
+        line-height: 1;
+        font-weight: 900;
+        text-shadow: 0 3px 12px rgba(0,0,0,.2);
+    }
+
+    /* =========================
+       LOGO
+    ========================= */
+    .logo-area {
+        width: min(500px, 80vw);
+        aspect-ratio: 1 / 1;
+        margin-top: 34px;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 24px;
-        border: 1px solid rgba(11,79,138,.14);
-        border-radius: 32px;
-        background: rgba(255,255,255,.64);
+        background: linear-gradient(145deg, #fff200 0%, #ffe000 100%);
+        border: 3px solid rgba(255,255,255,.92);
+        border-radius: 24px;
         box-shadow:
-            0 24px 65px rgba(6,31,61,.13),
-            inset 0 1px 0 rgba(255,255,255,.95);
-        backdrop-filter: blur(8px);
+            0 0 0 2px rgba(255,229,0,.9),
+            0 16px 45px rgba(0,0,0,.30);
+        overflow: hidden;
     }
 
-    .logo-frame img {
-        display: block;
-        width: auto;
-        max-width: 100%;
-        max-height: 310px;
+    .logo-area img {
+        width: 86%;
+        height: 86%;
         object-fit: contain;
+        display: block;
     }
 
-    .home-note {
-        margin: 24px 0 0;
-        color: #52708e;
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: .95rem;
-        font-style: italic;
+    /* Fallback shown only if the original logo is not available. */
+    .logo-fallback {
+        display: none;
+        width: 82%;
+        height: 82%;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: var(--blue-dark);
+        text-align: center;
+        border: 5px solid var(--blue-dark);
+        border-radius: 50%;
+        font-weight: 900;
     }
 
-    /* =====================================================
+    .logo-fallback .ball { font-size: 6rem; line-height: 1; }
+    .logo-fallback strong { font-size: 1.55rem; margin-top: 8px; }
+    .logo-fallback span { font-size: .9rem; margin-top: 5px; }
+
+    /* =========================
        RESPONSIVE
-    ===================================================== */
+    ========================= */
+    @media (max-width: 900px) {
+        .nav { justify-content: flex-start; }
+        .nav a { min-width: 128px; }
+        .nav a:first-child { min-width: 68px; }
 
-    @media (max-width: 1050px) {
-        .main-nav {
-            justify-content: flex-start;
-        }
-
-        .main-nav a {
-            padding: 0 14px;
-            font-size: .74rem;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .topbar {
-            border-bottom-width: 2px;
-        }
-
-        .nav-wrap {
-            padding: 0 8px;
-        }
-
-        .main-nav {
-            min-height: 58px;
-        }
-
-        .main-nav a {
-            min-height: 58px;
-            padding: 0 12px;
-            font-size: .68rem;
-        }
-
-        .main-nav a::after {
-            left: 11px;
-            right: 11px;
-        }
-
-        .home {
-            min-height: calc(100vh - 58px);
-            padding: 35px 16px 45px;
-        }
+        main { padding-top: 42px; }
 
         .league-title {
-            font-size: clamp(1.75rem, 8vw, 2.5rem);
+            white-space: normal;
+            font-size: clamp(2rem, 7vw, 3.3rem);
         }
+    }
 
-        .league-subtitle {
-            font-size: .88rem;
-        }
+    @media (max-width: 560px) {
+        .nav { min-height: 62px; }
+        .nav a { min-width: 120px; padding: 0 12px; font-size: 12px; }
+        .nav a:first-child { min-width: 62px; font-size: 22px; }
 
-        .title-line {
-            margin: 19px auto;
-        }
-
-        .founded {
-            font-size: .88rem;
-        }
-
-        .founded strong {
-            font-size: 1.2rem;
-        }
-
-        .logo-frame {
-            width: min(430px, 94vw);
-            min-height: 255px;
-            margin-top: 24px;
-            padding: 18px;
-            border-radius: 24px;
-        }
-
-        .logo-frame img {
-            max-height: 260px;
-        }
-
-        .home-note {
-            font-size: .82rem;
-        }
+        main { padding: 34px 16px 45px; }
+        .subtitle { letter-spacing: 2px; }
+        .title-line { width: 88%; }
+        .logo-area { margin-top: 28px; border-radius: 18px; }
     }
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     FASCIA DI NAVIGAZIONE
-===================================================== -->
 <header class="topbar">
-    <div class="nav-wrap">
-        <nav class="main-nav" aria-label="Navigazione principale">
-            <a href="la-pagina-sportiva.html">La Pagina Sportiva</a>
-            <a href="risultati.html">I Risultati</a>
-            <a href="competizioni.html">Le Competizioni</a>
-            <a href="rose.html">Rose</a>
-            <a href="albo-doro.html">Albo d'Oro</a>
-            <a href="societa.html">Le Società</a>
-            <a href="regolamento.html">Regolamento</a>
-            <a href="galleria-foto.html">Galleria Foto</a>
-            <a href="contatti.html">Contatti</a>
-        </nav>
-    </div>
+    <nav class="nav" aria-label="Navigazione principale">
+        <a href="index.html" aria-label="Home" title="Home">⌂</a>
+        <a href="la-pagina-sportiva.html">La Pagina Sportiva</a>
+        <a href="risultati.html">I Risultati</a>
+        <a href="competizioni.html">Le Competizioni</a>
+        <a href="rose.html">Rose</a>
+        <a href="albo-doro.html">Albo d'Oro</a>
+        <a href="societa.html">Le Società</a>
+        <a href="regolamento.html">Regolamento</a>
+        <a href="galleria-foto.html">Galleria Foto</a>
+        <a href="contatti.html">Contatti</a>
+    </nav>
 </header>
 
-<!-- =====================================================
-     PAGINA INIZIALE
-===================================================== -->
-<main class="home">
-    <div class="home-content">
-
+<main>
+    <section class="intro" aria-label="Presentazione della Lega">
         <h1 class="league-title">Lega Fantacalcio Barriera dell'M</h1>
-        <p class="league-subtitle">Portale ufficiale della Lega</p>
+        <p class="subtitle">Portale ufficiale della Lega</p>
+        <div class="title-line" aria-hidden="true"></div>
 
-        <div class="title-line"></div>
-
-        <p class="founded">
-            Anno di fondazione
-            <strong>1995</strong>
-        </p>
-
-        <div class="logo-frame">
-            <img src="leganet.gif" alt="Logo della Lega Fantacalcio Barriera dell'M">
+        <div class="foundation">
+            <span class="foundation-label">Anno di fondazione</span>
+            <span class="foundation-year">1995</span>
         </div>
+    </section>
 
-        <p class="home-note">Una storia di fantacalcio, rivalità e amicizia dal 1995.</p>
-
+    <div class="logo-area" aria-label="Logo della Lega Fantacalcio Barriera dell'M">
+        <img src="leganet.gif" alt="Logo Lega Fantacalcio Barriera dell'M"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="logo-fallback" aria-hidden="true">
+            <div class="ball">⚽</div>
+            <strong>LE.FA.BA.M</strong>
+            <span>TORINO · 1995</span>
+        </div>
     </div>
 </main>
 
