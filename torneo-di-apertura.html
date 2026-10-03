@@ -58,6 +58,10 @@
             background: #444;
         }
 
+        /* =========================================
+           INTRO
+        ========================================= */
+
         .intro {
             background: white;
             padding: 22px;
@@ -70,272 +74,412 @@
             margin-top: 0;
         }
 
-        /* =========================
-           TABELLONE
-        ========================== */
+        /* =========================================
+           SEZIONE TABELLONE
+        ========================================= */
 
         .fase {
             margin-bottom: 40px;
         }
 
-        .fase h2 {
+        .fase > h2 {
             margin-bottom: 20px;
             font-size: 22px;
         }
 
         .tabellone-wrapper {
             overflow-x: auto;
-            padding: 10px 0 30px;
+            padding: 15px 10px 35px;
         }
 
+        /*
+         * Il tabellone utilizza una griglia fissa.
+         * Le quattro colonne sono:
+         * OTTAVI - QUARTI - SEMIFINALI - FINALE
+         */
         .tabellone {
-            min-width: 1350px;
-            display: grid;
-            grid-template-columns: 270px 270px 270px 270px;
-            gap: 55px;
-            align-items: start;
             position: relative;
+
+            min-width: 1380px;
+            height: 980px;
+
+            display: grid;
+            grid-template-columns: 260px 290px 290px 260px;
+            column-gap: 80px;
         }
 
-        .colonna {
-            position: relative;
-        }
+        /* =========================================
+           TITOLI DELLE COLONNE
+        ========================================= */
 
         .colonna-titolo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+
             text-align: center;
-            font-size: 15px;
+
+            font-size: 14px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 20px;
+
             color: #555;
         }
 
-        /* =========================
-           SFIDE
-        ========================== */
+        /* =========================================
+           MATCH CARD
+        ========================================= */
 
-        .sfida {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            overflow: hidden;
+        .match {
+            position: absolute;
+            width: 260px;
+
+            background: #fff;
+
+            border: 1px solid #d8d8d8;
+            border-radius: 9px;
+
             box-shadow: 0 2px 7px rgba(0,0,0,0.07);
-            position: relative;
+
+            overflow: visible;
+
+            z-index: 2;
         }
 
-        .squadra {
+        .team {
             min-height: 43px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             gap: 8px;
+
             padding: 9px 11px;
+
             background: #fafafa;
-            border-bottom: 1px solid #eee;
-            font-size: 13px;
+
+            font-size: 12px;
             font-weight: bold;
         }
 
-        .squadra:last-child {
-            border-bottom: none;
+        .team + .team {
+            border-top: 1px solid #e9e9e9;
         }
 
-        .squadra .nome {
+        .team-name {
             flex: 1;
+            line-height: 1.25;
         }
 
-        .squadra .risultato {
+        .score {
             min-width: 20px;
             text-align: center;
-            font-weight: bold;
+            color: #555;
         }
 
-        .da-definire {
-            color: #888;
-            font-weight: normal;
-            font-style: italic;
-        }
-
-        .vincente {
+        .placeholder {
             color: #777;
             font-style: italic;
             font-weight: normal;
         }
 
-        /* =========================
+        /* =========================================
            ACCESSO DIRETTO
-        ========================== */
+        ========================================= */
 
-        .diretto {
+        .team.direct {
             background: #fffdf2;
         }
 
-        .diretto .nome {
-            color: #8b6f00;
+        .team.direct .team-name {
+            color: #806700;
         }
 
-        .badge-diretto {
+        .direct-badge {
             display: inline-block;
-            margin-left: 6px;
-            padding: 3px 6px;
+
+            margin-left: 5px;
+            padding: 3px 5px;
+
             border-radius: 4px;
-            background: #f1e4a8;
-            color: #7a6200;
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+
+            background: #f0e4a8;
+            color: #725b00;
+
+            font-size: 8px;
             font-weight: bold;
+
+            text-transform: uppercase;
+            letter-spacing: .4px;
+
             white-space: nowrap;
         }
 
-        /* =========================
+        /* =========================================
+           ETICHETTA TURNO
+        ========================================= */
+
+        .match-label {
+            position: absolute;
+
+            left: 0;
+            right: 0;
+
+            top: -20px;
+
+            text-align: center;
+
+            font-size: 9px;
+            color: #999;
+
+            text-transform: uppercase;
+            letter-spacing: .7px;
+        }
+
+        /* =========================================
            OTTAVI
-        ========================== */
+        ========================================= */
 
-        .colonna-ottavi .sfida {
-            margin-bottom: 28px;
+        .ottavi-title {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 260px;
         }
 
-        .ottavo-spazio-1 {
-            margin-top: 0;
+        .ottavo-1 {
+            left: 0;
+            top: 70px;
         }
 
-        .ottavo-spazio-2 {
-            margin-top: 0;
+        .ottavo-2 {
+            left: 0;
+            top: 220px;
         }
 
-        .ottavo-spazio-3 {
-            margin-top: 0;
+        .ottavo-3 {
+            left: 0;
+            top: 370px;
         }
 
-        .ottavo-spazio-4 {
-            margin-top: 75px;
+        .ottavo-4 {
+            left: 0;
+            top: 610px;
         }
 
-        .ottavo-spazio-5 {
-            margin-top: 0;
+        .ottavo-5 {
+            left: 0;
+            top: 760px;
         }
 
-        .ottavo-spazio-6 {
-            margin-top: 0;
+        .ottavo-6 {
+            left: 0;
+            top: 910px;
         }
 
-        /* =========================
+        /* =========================================
            QUARTI
-        ========================== */
+        ========================================= */
 
-        .colonna-quarti {
-            padding-top: 65px;
+        .quarti-title {
+            position: absolute;
+            left: 340px;
+            top: 0;
+            width: 290px;
         }
 
-        .colonna-quarti .sfida {
-            margin-bottom: 165px;
+        .quarto {
+            width: 290px;
         }
 
-        .colonna-quarti .sfida:last-child {
-            margin-bottom: 0;
+        /*
+         * PROFONDA AURORA è volutamente la squadra
+         * superiore del primo quarto.
+         */
+        .quarto-1 {
+            left: 340px;
+            top: 145px;
         }
 
-        /* =========================
+        .quarto-2 {
+            left: 340px;
+            top: 370px;
+        }
+
+        .quarto-3 {
+            left: 340px;
+            top: 610px;
+        }
+
+        .quarto-4 {
+            left: 340px;
+            top: 835px;
+        }
+
+        /* =========================================
            SEMIFINALI
-        ========================== */
+        ========================================= */
 
-        .colonna-semifinali {
-            padding-top: 155px;
+        .semifinali-title {
+            position: absolute;
+            left: 710px;
+            top: 0;
+            width: 290px;
         }
 
-        .colonna-semifinali .sfida {
-            margin-bottom: 320px;
+        .semifinale {
+            width: 290px;
         }
 
-        .colonna-semifinali .sfida:last-child {
-            margin-bottom: 0;
+        .semifinale-1 {
+            left: 710px;
+            top: 255px;
         }
 
-        /* =========================
+        .semifinale-2 {
+            left: 710px;
+            top: 700px;
+        }
+
+        /* =========================================
            FINALE
-        ========================== */
+        ========================================= */
 
-        .colonna-finale {
-            padding-top: 290px;
+        .finale-title {
+            position: absolute;
+            left: 1080px;
+            top: 0;
+            width: 260px;
         }
 
-        .finale .sfida {
+        .finale {
+            left: 1080px;
+            top: 475px;
+
             border: 2px solid #c6a227;
-            box-shadow: 0 4px 12px rgba(198,162,39,0.18);
+
+            box-shadow:
+                0 4px 14px rgba(198,162,39,0.18);
         }
 
-        .finale .colonna-titolo {
-            color: #a07c00;
+        .finale .team {
+            background: #fffdf7;
         }
 
-        /* =========================
-           GARE SEMIFINALI / FINALE
-        ========================== */
+        /* =========================================
+           ANDATA / RITORNO / FINALE
+        ========================================= */
 
         .gara-extra {
             padding: 7px 10px;
-            background: #f7f7f7;
+
             border-top: 1px solid #eee;
+
+            background: #f7f7f7;
+
             text-align: center;
-            font-size: 10px;
+
+            font-size: 9px;
             color: #777;
+
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: .5px;
         }
 
         .gara-extra strong {
             color: #444;
-            font-size: 12px;
+            font-size: 11px;
         }
 
-        /* =========================
-           COLLEGAMENTI
-        ========================== */
+        /* =========================================
+           LINEE DEL BRACKET
+        ========================================= */
 
-        .colonna-ottavi .sfida,
-        .colonna-quarti .sfida,
-        .colonna-semifinali .sfida {
-            position: relative;
-        }
+        /*
+         * Le linee orizzontali collegano le sfide
+         * al turno successivo.
+         */
 
-        .colonna-ottavi .sfida::after {
+        .match.to-right::after {
             content: "";
+
             position: absolute;
-            right: -55px;
+
+            right: -80px;
             top: 50%;
-            width: 55px;
-            border-top: 2px solid #bbb;
+
+            width: 80px;
+
+            border-top: 2px solid #bdbdbd;
         }
 
-        .colonna-quarti .sfida::after {
-            content: "";
+        /*
+         * Collegamento verticale tra due partite
+         * che confluiscono nella stessa sfida.
+         */
+
+        .bracket-line {
             position: absolute;
-            right: -55px;
-            top: 50%;
-            width: 55px;
-            border-top: 2px solid #bbb;
+
+            width: 40px;
+
+            border-right: 2px solid #bdbdbd;
+
+            z-index: 1;
         }
 
-        .colonna-semifinali .sfida::after {
-            content: "";
-            position: absolute;
-            right: -55px;
-            top: 50%;
-            width: 55px;
-            border-top: 2px solid #bbb;
+        /* Ottavo 2 + Ottavo 3 -> Quarto 2 */
+        .line-q2 {
+            left: 300px;
+            top: 241px;
+            height: 151px;
         }
 
-        /* =========================
+        /* Ottavo 4 + Ottavo 5 -> Quarto 3 */
+        .line-q3 {
+            left: 300px;
+            top: 631px;
+            height: 151px;
+        }
+
+        /* Quarto 1 + Quarto 2 -> Semifinale 1 */
+        .line-s1 {
+            left: 640px;
+            top: 196px;
+            height: 209px;
+        }
+
+        /* Quarto 3 + Quarto 4 -> Semifinale 2 */
+        .line-s2 {
+            left: 640px;
+            top: 661px;
+            height: 209px;
+        }
+
+        /* Semifinale 1 + Semifinale 2 -> Finale */
+        .line-finale {
+            left: 1010px;
+            top: 343px;
+            height: 414px;
+        }
+
+        /* =========================================
            REGOLAMENTO
-        ========================== */
+        ========================================= */
 
         .nota {
             background: white;
+
             padding: 20px;
+
             border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.08);
+
             line-height: 1.5;
         }
 
@@ -343,16 +487,30 @@
             margin-top: 0;
         }
 
+        /* =========================================
+           FOOTER
+        ========================================= */
+
         footer {
             margin-top: 40px;
+
             padding: 25px 20px;
+
             background: #111;
+
             color: #aaa;
+
             text-align: center;
+
             font-size: 13px;
         }
 
-        @media (max-width: 950px) {
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 700px) {
+
             .container {
                 padding: 0 12px;
             }
@@ -367,30 +525,43 @@
 <body>
 
 <header>
+
     <h1>Torneo di Apertura</h1>
-    <p>Lega Fantacalcio Barriera dell'M</p>
+
+    <p>
+        Lega Fantacalcio Barriera dell'M
+    </p>
+
 </header>
 
 
 <div class="container">
+
 
     <a href="index.html" class="back-link">
         ← Torna alla Home
     </a>
 
 
+    <!-- =========================================
+         INTRODUZIONE
+    ========================================== -->
+
     <section class="intro">
 
-        <h2>Torneo di Apertura 2026/27</h2>
+        <h2>
+            Torneo di Apertura 2026/27
+        </h2>
 
         <p>
             Tabellone a eliminazione diretta del Torneo di Apertura.
         </p>
 
         <p>
-            Gli ottavi di finale prevedono sei sfide. Due squadre,
-            <strong>PROFONDA AURORA</strong> e <strong>INTERTOR</strong>,
-            accedono direttamente ai quarti di finale.
+            Gli ottavi di finale prevedono sei sfide.
+            <strong>PROFONDA AURORA</strong> e
+            <strong>INTERTOR</strong> accedono direttamente ai quarti
+            di finale.
         </p>
 
         <p>
@@ -401,410 +572,566 @@
     </section>
 
 
-    <!-- =====================================================
-         OTTAVI DI FINALE
-    ====================================================== -->
+    <!-- =========================================
+         TABELLONE
+    ========================================== -->
 
     <section class="fase">
 
-        <h2>Ottavi di finale</h2>
+        <h2>
+            Tabellone
+        </h2>
+
 
         <div class="tabellone-wrapper">
 
+
             <div class="tabellone">
 
-                <!-- =========================
-                     COLONNA OTTAVI
-                ========================== -->
 
-                <div class="colonna colonna-ottavi">
+                <!-- =====================================
+                     TITOLI
+                ====================================== -->
 
-                    <div class="colonna-titolo">
-                        Ottavi di finale
+                <div class="colonna-titolo ottavi-title">
+                    Ottavi di finale
+                </div>
+
+                <div class="colonna-titolo quarti-title">
+                    Quarti di finale
+                </div>
+
+                <div class="colonna-titolo semifinali-title">
+                    Semifinali
+                </div>
+
+                <div class="colonna-titolo finale-title">
+                    Finale
+                </div>
+
+
+                <!-- =====================================
+                     LINEE BRACKET
+                ====================================== -->
+
+                <div class="bracket-line line-q2"></div>
+
+                <div class="bracket-line line-q3"></div>
+
+                <div class="bracket-line line-s1"></div>
+
+                <div class="bracket-line line-s2"></div>
+
+                <div class="bracket-line line-finale"></div>
+
+
+                <!-- =====================================
+                     OTTAVO 1
+                ====================================== -->
+
+                <div class="match ottavo-1 to-right">
+
+                    <div class="match-label">
+                        Ottavo 1
                     </div>
 
+                    <div class="team">
 
-                    <!-- OTTAVO 1 -->
+                        <span class="team-name">
+                            TOMCAT
+                        </span>
 
-                    <div class="sfida ottavo-spazio-1">
-
-                        <div class="squadra">
-                            <span class="nome">
-                                TOMCAT
-                            </span>
-                            <span class="risultato">–</span>
-                        </div>
-
-                        <div class="squadra">
-                            <span class="nome">
-                                REAL DORATOM
-                            </span>
-                            <span class="risultato">–</span>
-                        </div>
-
-                    </div>
-
-
-                    <!-- OTTAVO 2 -->
-
-                    <div class="sfida ottavo-spazio-2">
-
-                        <div class="squadra">
-                            <span class="nome">
-                                WILD EAGLES
-                            </span>
-                            <span class="risultato">–</span>
-                        </div>
-
-                        <div class="squadra">
-                            <span class="nome">
-                                LOBE UNITED
-                            </span>
-                            <span class="risultato">–</span>
-                        </div>
-
-                    </div>
-
-
-                    <!-- OTTAVO 3 -->
-
-                    <div class="sfida ottavo-spazio-3">
-
-                        <div class="squadra">
-                            <span class="nome">
-                                TAURINORUM
-                            </span>
-                            <span class="risultato">–</span>
-                        </div>
-
-                        <div class="squadra">
-                            <span class="nome">
-                                SPARTAK PISA
-                            </span>
-                            <span class="risultato">–</span>
-                        </div>
+                        <span class="score">
+                            –
+                        </span>
 
                     </div>
 
+                    <div class="team">
 
-                    <!-- OTTAVO 4 -->
+                        <span class="team-name">
+                            REAL DORATOM
+                        </span>
 
-                    <div class="sfida ottavo-spazio-4">
-
-                        <div class="squadra">
-                            <span class="nome">
-                                DINAMO SIENA
-                            </span>
-                            <span class="risultato">–</span>
-                        </div>
-
-                        <div class="squadra">
-                            <span class="nome">
-                                VAIENTUS
-                            </span>
-                            <span class="risultato">–</span>
-                        </div>
-
-                    </div>
-
-
-                    <!-- OTTAVO 5 -->
-
-                    <div class="sfida ottavo-spazio-5">
-
-                        <div class="squadra">
-                            <span class="nome">
-                                CASTEL DI IEMMA
-                            </span>
-                            <span class="risultato">–</span>
-                        </div>
-
-                        <div class="squadra">
-                            <span class="nome">
-                                MONACO DI BARRIERA
-                            </span>
-                            <span class="risultato">–</span>
-                        </div>
-
-                    </div>
-
-
-                    <!-- OTTAVO 6 -->
-
-                    <div class="sfida ottavo-spazio-6">
-
-                        <div class="squadra">
-                            <span class="nome">
-                                EVERTOR
-                            </span>
-                            <span class="risultato">–</span>
-                        </div>
-
-                        <div class="squadra">
-                            <span class="nome">
-                                ZULUZEBRA
-                            </span>
-                            <span class="risultato">–</span>
-                        </div>
+                        <span class="score">
+                            –
+                        </span>
 
                     </div>
 
                 </div>
 
 
-                <!-- =========================
-                     COLONNA QUARTI
-                ========================== -->
+                <!-- =====================================
+                     OTTAVO 2
+                ====================================== -->
 
-                <div class="colonna colonna-quarti">
+                <div class="match ottavo-2 to-right">
 
-                    <div class="colonna-titolo">
-                        Quarti di finale
+                    <div class="match-label">
+                        Ottavo 2
                     </div>
 
+                    <div class="team">
 
-                    <!-- QUARTO 1 -->
+                        <span class="team-name">
+                            WILD EAGLES
+                        </span>
 
-                    <div class="sfida">
-
-                        <div class="squadra diretto">
-
-                            <span class="nome">
-                                PROFONDA AURORA
-                            </span>
-
-                            <span class="badge-diretto">
-                                Accesso diretto
-                            </span>
-
-                        </div>
-
-                        <div class="squadra">
-
-                            <span class="nome vincente">
-                                Vincente TOMCAT / REAL DORATOM
-                            </span>
-
-                            <span class="risultato">–</span>
-
-                        </div>
+                        <span class="score">
+                            –
+                        </span>
 
                     </div>
 
+                    <div class="team">
 
-                    <!-- QUARTO 2 -->
+                        <span class="team-name">
+                            LOBE UNITED
+                        </span>
 
-                    <div class="sfida">
-
-                        <div class="squadra">
-
-                            <span class="nome vincente">
-                                Vincente WILD EAGLES / LOBE UNITED
-                            </span>
-
-                            <span class="risultato">–</span>
-
-                        </div>
-
-                        <div class="squadra">
-
-                            <span class="nome vincente">
-                                Vincente TAURINORUM / SPARTAK PISA
-                            </span>
-
-                            <span class="risultato">–</span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- QUARTO 3 -->
-
-                    <div class="sfida">
-
-                        <div class="squadra">
-
-                            <span class="nome vincente">
-                                Vincente DINAMO SIENA / VAIENTUS
-                            </span>
-
-                            <span class="risultato">–</span>
-
-                        </div>
-
-                        <div class="squadra">
-
-                            <span class="nome vincente">
-                                Vincente CASTEL DI IEMMA / MONACO DI BARRIERA
-                            </span>
-
-                            <span class="risultato">–</span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- QUARTO 4 -->
-
-                    <div class="sfida">
-
-                        <div class="squadra">
-
-                            <span class="nome vincente">
-                                Vincente EVERTOR / ZULUZEBRA
-                            </span>
-
-                            <span class="risultato">–</span>
-
-                        </div>
-
-                        <div class="squadra diretto">
-
-                            <span class="nome">
-                                INTERTOR
-                            </span>
-
-                            <span class="badge-diretto">
-                                Accesso diretto
-                            </span>
-
-                        </div>
+                        <span class="score">
+                            –
+                        </span>
 
                     </div>
 
                 </div>
 
 
-                <!-- =========================
-                     COLONNA SEMIFINALI
-                ========================== -->
+                <!-- =====================================
+                     OTTAVO 3
+                ====================================== -->
 
-                <div class="colonna colonna-semifinali">
+                <div class="match ottavo-3 to-right">
 
-                    <div class="colonna-titolo">
-                        Semifinali
+                    <div class="match-label">
+                        Ottavo 3
                     </div>
 
+                    <div class="team">
 
-                    <!-- SEMIFINALE 1 -->
+                        <span class="team-name">
+                            TAURINORUM
+                        </span>
 
-                    <div class="sfida">
-
-                        <div class="squadra">
-
-                            <span class="nome vincente">
-                                Vincente QUARTO 1
-                            </span>
-
-                            <span class="risultato">–</span>
-
-                        </div>
-
-                        <div class="squadra">
-
-                            <span class="nome vincente">
-                                Vincente QUARTO 2
-                            </span>
-
-                            <span class="risultato">–</span>
-
-                        </div>
-
-                        <div class="gara-extra">
-                            ANDATA:
-                            <strong>—</strong>
-                        </div>
-
-                        <div class="gara-extra">
-                            RITORNO:
-                            <strong>—</strong>
-                        </div>
+                        <span class="score">
+                            –
+                        </span>
 
                     </div>
 
+                    <div class="team">
 
-                    <!-- SEMIFINALE 2 -->
+                        <span class="team-name">
+                            SPARTAK PISA
+                        </span>
 
-                    <div class="sfida">
-
-                        <div class="squadra">
-
-                            <span class="nome vincente">
-                                Vincente QUARTO 3
-                            </span>
-
-                            <span class="risultato">–</span>
-
-                        </div>
-
-                        <div class="squadra">
-
-                            <span class="nome vincente">
-                                Vincente QUARTO 4
-                            </span>
-
-                            <span class="risultato">–</span>
-
-                        </div>
-
-                        <div class="gara-extra">
-                            ANDATA:
-                            <strong>—</strong>
-                        </div>
-
-                        <div class="gara-extra">
-                            RITORNO:
-                            <strong>—</strong>
-                        </div>
+                        <span class="score">
+                            –
+                        </span>
 
                     </div>
 
                 </div>
 
 
-                <!-- =========================
-                     COLONNA FINALE
-                ========================== -->
+                <!-- =====================================
+                     OTTAVO 4
+                ====================================== -->
 
-                <div class="colonna colonna-finale finale">
+                <div class="match ottavo-4 to-right">
 
-                    <div class="colonna-titolo">
-                        Finale
+                    <div class="match-label">
+                        Ottavo 4
                     </div>
 
+                    <div class="team">
 
-                    <div class="sfida">
+                        <span class="team-name">
+                            DINAMO SIENA
+                        </span>
 
-                        <div class="squadra">
+                        <span class="score">
+                            –
+                        </span>
 
-                            <span class="nome vincente">
-                                Vincente SEMIFINALE 1
-                            </span>
+                    </div>
 
-                            <span class="risultato">–</span>
+                    <div class="team">
 
-                        </div>
+                        <span class="team-name">
+                            VAIENTUS
+                        </span>
 
-                        <div class="squadra">
-
-                            <span class="nome vincente">
-                                Vincente SEMIFINALE 2
-                            </span>
-
-                            <span class="risultato">–</span>
-
-                        </div>
-
-                        <div class="gara-extra">
-                            GARA UNICA:
-                            <strong>—</strong>
-                        </div>
+                        <span class="score">
+                            –
+                        </span>
 
                     </div>
 
                 </div>
+
+
+                <!-- =====================================
+                     OTTAVO 5
+                ====================================== -->
+
+                <div class="match ottavo-5 to-right">
+
+                    <div class="match-label">
+                        Ottavo 5
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name">
+                            CASTEL DI IEMMA
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name">
+                            MONACO DI BARRIERA
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     OTTAVO 6
+                ====================================== -->
+
+                <div class="match ottavo-6 to-right">
+
+                    <div class="match-label">
+                        Ottavo 6
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name">
+                            EVERTOR
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name">
+                            ZULUZEBRA
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     QUARTO 1
+                     PROFONDA AURORA IN ALTO
+                ====================================== -->
+
+                <div class="match quarto quarto-1 to-right">
+
+                    <div class="match-label">
+                        Quarto 1
+                    </div>
+
+                    <div class="team direct">
+
+                        <span class="team-name">
+                            PROFONDA AURORA
+                        </span>
+
+                        <span class="direct-badge">
+                            Diretto
+                        </span>
+
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name placeholder">
+                            Vincente TOMCAT / REAL DORATOM
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     QUARTO 2
+                ====================================== -->
+
+                <div class="match quarto quarto-2 to-right">
+
+                    <div class="match-label">
+                        Quarto 2
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name placeholder">
+                            Vincente WILD EAGLES / LOBE UNITED
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name placeholder">
+                            Vincente TAURINORUM / SPARTAK PISA
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     QUARTO 3
+                ====================================== -->
+
+                <div class="match quarto quarto-3 to-right">
+
+                    <div class="match-label">
+                        Quarto 3
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name placeholder">
+                            Vincente DINAMO SIENA / VAIENTUS
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name placeholder">
+                            Vincente CASTEL DI IEMMA / MONACO DI BARRIERA
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     QUARTO 4
+                     INTERTOR IN BASSO
+                ====================================== -->
+
+                <div class="match quarto quarto-4 to-right">
+
+                    <div class="match-label">
+                        Quarto 4
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name placeholder">
+                            Vincente EVERTOR / ZULUZEBRA
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                    <div class="team direct">
+
+                        <span class="team-name">
+                            INTERTOR
+                        </span>
+
+                        <span class="direct-badge">
+                            Diretto
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     SEMIFINALE 1
+                ====================================== -->
+
+                <div class="match semifinale semifinale-1 to-right">
+
+                    <div class="match-label">
+                        Semifinale 1
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name placeholder">
+                            Vincente QUARTO 1
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name placeholder">
+                            Vincente QUARTO 2
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                    <div class="gara-extra">
+                        ANDATA:
+                        <strong>—</strong>
+                    </div>
+
+                    <div class="gara-extra">
+                        RITORNO:
+                        <strong>—</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     SEMIFINALE 2
+                ====================================== -->
+
+                <div class="match semifinale semifinale-2 to-right">
+
+                    <div class="match-label">
+                        Semifinale 2
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name placeholder">
+                            Vincente QUARTO 3
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name placeholder">
+                            Vincente QUARTO 4
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                    <div class="gara-extra">
+                        ANDATA:
+                        <strong>—</strong>
+                    </div>
+
+                    <div class="gara-extra">
+                        RITORNO:
+                        <strong>—</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     FINALE
+                ====================================== -->
+
+                <div class="match finale">
+
+                    <div class="match-label">
+                        Finale · Gara unica
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name placeholder">
+                            Vincente SEMIFINALE 1
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                    <div class="team">
+
+                        <span class="team-name placeholder">
+                            Vincente SEMIFINALE 2
+                        </span>
+
+                        <span class="score">
+                            –
+                        </span>
+
+                    </div>
+
+                    <div class="gara-extra">
+                        FINALE:
+                        <strong>—</strong>
+                    </div>
+
+                </div>
+
 
             </div>
 
@@ -813,13 +1140,15 @@
     </section>
 
 
-    <!-- =====================================================
+    <!-- =========================================
          REGOLAMENTO
-    ====================================================== -->
+    ========================================== -->
 
     <section class="nota">
 
-        <h2>Regole della competizione</h2>
+        <h2>
+            Regole della competizione
+        </h2>
 
         <p>
             Il Torneo di Apertura si disputa con formula a eliminazione
@@ -840,12 +1169,14 @@
 
     </section>
 
+
 </div>
 
 
 <footer>
     Lega Fantacalcio Barriera dell'M
 </footer>
+
 
 </body>
 </html>
