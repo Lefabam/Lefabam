@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rose — Lega Fantacalcio Barriera dell'M</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#063b69,#0b5b91,#0d78a5);color:#123b58}
+header{background:#062c52;padding:18px;border-radius:0 0 32px 32px}.nav{max-width:1250px;margin:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}.nav a{color:#fff;text-decoration:none;font-weight:700;padding:9px 12px;border-radius:20px;background:#ffffff14}.nav a:hover{background:#f5c928;color:#082f50}
+.hero{text-align:center;color:#fff;padding:32px 15px 22px}.hero h1{margin:0;color:#ffd329;font-size:clamp(2rem,5vw,3.5rem)}.hero p{margin:8px 0}
+.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 15px 24px}.controls button{border:0;border-radius:24px;padding:12px 20px;font-weight:800;cursor:pointer;background:#fff;color:#06456d}.controls .active,.controls button:hover{background:#f5c928;color:#082f51}
+.section{max-width:1250px;margin:0 auto 40px;padding:0 18px}.section-title{color:#fff;text-align:center}.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}
+.team-card{background:#eef8fc;border:2px solid #ffffffaa;border-radius:14px;overflow:hidden;box-shadow:0 6px 16px #0003;min-width:0}.team-head{background:linear-gradient(135deg,#f5c928,#e6ae18);padding:14px 16px;display:flex;justify-content:space-between;align-items:center}.team-head h3{margin:0;color:#082e50;font-size:.88rem;line-height:1.1}.team-head span{display:none}
+.players{padding:8px 10px}.player{display:grid;grid-template-columns:24px 1fr;align-items:center;min-height:28px;border-bottom:1px solid #d5e6ee}.player:last-child{border:0}.num{font-weight:900;color:#24749a;text-align:center;font-size:.72rem}.name{font-size:.76rem;line-height:1.08;overflow-wrap:anywhere}.role{font-size:.68rem;font-weight:900;text-align:center}.goalkeeper{background:#fff4c9;border-radius:8px}.goalkeeper .name{font-weight:bold;color:#735900;font-size:.72rem}
+.note{max-width:1250px;margin:0 auto 25px;padding:0 18px}.note-box{background:#fffffff2;border-left:6px solid #f5c928;border-radius:12px;padding:14px 18px;box-shadow:0 5px 18px #0002}
+footer{text-align:center;color:#dff3fb;padding:10px 20px 35px;font-size:.9rem}@media(max-width:1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:650px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nav a{font-size:.78rem;padding:8px 9px}}
+</style></head><body>
+<header><nav class="nav">
+<a href="index.html">Home</a><a href="la-pagina-sportiva.html">La Pagina Sportiva</a><a href="risultati.html">I Risultati</a><a href="competizioni.html">Le Competizioni</a><a href="rose.html">Rose</a><a href="albo-doro.html">Albo d'Oro</a><a href="societa.html">Le Società</a><a href="regolamento.html">Regolamento</a><a href="galleria-foto.html">Galleria Foto</a><a href="contatti.html">Contatti</a>
+</nav></header>
+<main><section class="hero"><h1>Le Rose</h1><p>Lega Fantacalcio Barriera dell'M · Stagione 2026/27</p></section>
+<div style="text-align:center;color:#fff;font-weight:800;margin:-4px 15px 14px;font-size:.88rem">P = Portieri &nbsp; · &nbsp; D = Difensori &nbsp; · &nbsp; C = Centrocampisti &nbsp; · &nbsp; A = Attaccanti</div>
+<div class="controls"><button class="active" onclick="show('maxima',this)">Serie Maxima</button><button onclick="show('minus',this)">Serie Minus</button></div>
+<div class="note"><div class="note-box"><strong>Serie Minus:</strong> il posto n. 1 è riservato al portiere della società di Serie Maxima collegata e rimane temporaneamente da completare.</div></div>
+<section id="maxima" class="section"><h2 class="section-title">Serie Maxima · 14 società</h2><div id="maxGrid" class="grid"></div></section>
+<section id="minus" class="section" style="display:none"><h2 class="section-title">Serie Minus · 14 società</h2><div id="minusGrid" class="grid"></div></section></main>
+<footer>Lega Fantacalcio Barriera dell'M · Stagione 2026/27</footer>
+<script>
+const maxima = {
+"CASTEL DI IEMMA": ["Okoye","Padelli","Piana","Celik","Kalulu","Kempf","Lucumì","Stones","Bartesaghi","Belghali","Conceicao","Kalstrom","Modric","Pulisic","Diouf","Folorusho","Ferguson","Vitinha O.","Raspadori","Santos A","Rrahmani Al.","Waltemade"],
+"DINAMO SIENA": ["Mandas","Motta","Renzetti","Bastoni","Comuzzo","Kamara","Miranda","Theate","Valdepenas","Tavares N.","Basic","De Bruyne","Jashari","Saelemaekers","Zielinski","Calò","Ndour","Dovbyk","Ngonge","Romero D.","Beto","Kevin Carlos"],
+"EVERTOR": ["Perri","Israel","Mascardi","Bremer","Buongiorno","Delprato","Fortini","Zanoli","Chalobah","Molina","Brescianini","Cristante","Pellegrini Lo.","Taylor","Volpato","Pisilli","Venturino","De Kaetelare","Kulenovic","Malen","Arena An. (under 20)","Maldini"],
+"INTERTOR": ["Carnesecchi","Sportiello","Vismara","Cambiaso","Gila","Mancini","Obrador","Ghilardi","Floriani M.","Veiga","Gudmundsson","Politano","Zaniolo","Cambiaghi","Kessie","Njie","Odgaard","Castro S.","Berardi","Thuram","Osmajnic","Lang"],
+"LOBE UNITED": ["Butez","Audero","Vigorito","Kossonou","Ostigard","Rrahmani","Birindelli","Leysen","Bracaglia","Jimenez","Atta","De Roon","Frendrup","Lobotka","Zalewski","Colpani","Cisse","Hojlund","Zapata","Colombo","Kvernadze","Stulic"],
+"MONACO DI BARRIERA": ["De Gea","Christensen O.","Lezzerini","Bellanova","Bernasconi","Mina","Valeri","Vojvoda","Doekhi","Heggem","Gaetano","Kone M.","Vlasic","Busio","Goncalves","Romano","Alajbegovic","Martinez L.","Pellegrino","Lontani","Mota","Geubbels"],
+"PROFONDA AURORA": ["Vicario","Grabara","Pinsoglio","Bisseck","Spinazzola","Mangas","Provstgaard","Marcandalli","Abankwah","Doig","Barella","Locatelli","Orsolini","Paz N.","Sucic","Mora","Adzic","Kristovic","Soulè","Diao","Raimondo","Bayo"],
+"REAL DORATOM": ["Svilar","Gollini","De Marzi","Akanji","Hermoso","Tomori","Ramon J.","Spence","Walukiewicz","Puczka","Koopmeiners","Perrone","Samardcic","Rodriguez Je.","Ekkelenkamp","Moreira","Fini","Yldiz","Kean","Neres","Bonny","Nzola"],
+"SPARTAK PISA": ["Sommer","Provedel","Di Gennaro","Dimarco","Scalvini","Tiago-Gabriel","Lulli","Zortea","Sutalo","De Winter","Baldanzi","Baturina","Cancellieri","Pasalic","Rowe","Dominguez","ElSharawi","Pinamonti","Scamacca","Varela","Lucca","Bowie"],
+"TAURINORUM": ["Caprile","Sherry","Radunovic","Joao Mario","Solet","Wesley","Badiashile","Balerdi","Correia","Terzic","Anguissa","Bernardeschi","McTominay","Rovella","Thuram K.","Nico Gonzales","Sarr","Camarda","Esposito Se.","Mendy","Yeboah","G. Ramos"],
+"TOMCAT": ["Skorupski","Happonen","Pessina","Di Lorenzo","Dodò","Gatti","Gallo","Obert","Marusic","Zappacosta","Bernabè","Da Cunha","Loftus Check","Oristanio","Thorstvedt","Schmid","Vergara","Boga","Douvikas","El Bilal Tourè","Adams A.","Gueye"],
+"VAIENTUS": ["Maignan","Terracciano","Torriani","Carlos Augusto","Kristensen T.","Pavlovic","Couto Yan","Careta Var","Holm","Haps","Frattesi","Isaksen","Mandragora","Zaccagni","Abankwah","Chukwueze","Mastantuono","Simeone","Esposito Pio","Piccoli","Cutrone","Adorante"],
+"WILD EAGLES": ["Muric","Turati","Satalino","Acerbi (Svincolato)","Kabasele","N'Dicka","Valle","Vazquez","Monterisi","Bella-Kotchap","Calhanoglu","Ederson D.S.","Matic","Rabiot","Liberali","Cacciamani","Massolin","Dybala","Kolo Muani","Aghedemjs","Robinson","Gnonto"],
+"ZULUZEBRA": ["Meret","Milinkovic-Savic","Contini","Cabal","Gaspar K.","Kelly","Hien","Idzes","Kolasinac","Kofler","Caqueret","Casadei","Fazzini","Mckennie","Piotrovski","Duglas Luis","Kone I.","Davis K.","Adams C.","Laurientè","Bobcek","Ekhator"]
+};
+const minus = {
+"Santos F.C.":["Akpoguma","Beukema","Dembelè A.","Smolcic I.","Aboukhlal","Cataldi","Dagasso","Przyborek","Borrelli"],
+"Bostonese S.C.":["Diego Carlos","Viery","Ismajli","Oiono","Fagioli","Jones C.","Miller","Oulai","Birligea","Zeballos"],
+"Evertor Under":["Troilo","Comert","Cittadini","Calvani","Winks","Nicolussi Caviglia","Ricci","Ilic","Milik","Elphege"],
+"Intertor Under":["Rodriguez Je.","Coco","Ndaba","Ze Pedro","Pessina","Unai Gomez","Pierotti","Adopo","Robinho Junior"],
+"Sportaki F.C.":["Amey","Britschgi","Drobnic","Sverko","Akinsanmiro","Cichella","Dele-Bashiru","Stankovic A.","Giovane"],
+"Scialc 104 F.C.":["Cinquegrano","Palma","Drameh","Siebert","Belhayane","Elmas","Braganha","Perez K.","Fatah","Frigan"],
+"Cohiba F.C.":["Antov","Candè","Estupinan","Tchato","Almqvist","Ciervo","Diallo O.","Sulemana I.","Lauberbach"],
+"Skibidibodi F.C.":["Alhassane","Biraghi","Diawara S.","Sugawara","Addai","Chakvetadze","Deiola","Sow","Enem"],
+"CSKA Pisa":["Sabelli","Pavard","Schingtienne","Kaiki","Mbangula","Traorè Hj.","Tourè I.","Hutchinson","Havel","De Martis"],
+"Atlantica B.P.":["Arizala","Carboni A.","Favasuli","Terracciano F.","Amondarain","Ciurria","Duncan","Zarraga","Lisman"],
+"Jumbo A.F.T.":["Aurelio","Carboni F.","Franjic","Valenti","Amorim","Colombo L.","El Azzouzi A.","Zerbin","Trepy","Noslin"],
+"Bin Faita F.C.":["Bakoune","Casale","Gabbia","Vitik","Fadera","Berisha M.","Comotto","El Azzouzi O."],
+"Atletico Bizantino":["Bertola","De Silvestri","Goglichidze","Ziolkowski","Bakola","Boloca","Cremaschi","Fabbian"],
+"F.C. Ippo Thamus 1996":["Van Der Brempt","Dragusin","Ebosse","Sagrado","Zegrhova","Fitz-Jim","Sohm","Coulibaly L.","Sulemana K.","N'Dri"]
+};
+function roleForMaxima(n){
+ if(n<=3) return "P";
+ if(n<=10) return "D";
+ if(n<=17) return "C";
+ return "A";
+}
+function roleForMinus(n){
+ // Per la Minus il n.1 è il portiere collegato alla società Maxima.
+ // Per ora manteniamo le fasce successive secondo la struttura disponibile.
+ return "";
+}
+function makeCard(name,players,isMinus){
+ let rows=isMinus?`<div class="player goalkeeper"><span class="num">P</span><span class="name">Portiere — da collegare alla società di Serie Maxima</span></div>`:"";
+ players.forEach((p,i)=>{
+   let n=isMinus?i+2:i+1;
+   let role=isMinus?roleForMinus(n):roleForMaxima(n);
+   rows+=`<div class="player"><span class="num">${role}</span><span class="name">${p}</span></div>`;
+ });
+ return `<article class="team-card"><div class="team-head"><h3>${name}</h3><span>${isMinus?players.length+1:22} posti</span></div><div class="players">${rows}</div></article>`;
+}
+for(const [n,p] of Object.entries(maxima))document.getElementById("maxGrid").innerHTML+=makeCard(n,p,false);
+for(const [n,p] of Object.entries(minus))document.getElementById("minusGrid").innerHTML+=makeCard(n,p,true);
+function show(id,btn){document.querySelectorAll(".section").forEach(s=>s.style.display="none");document.getElementById(id).style.display="block";document.querySelectorAll(".controls button").forEach(b=>b.classList.remove("active"));btn.classList.add("active");scrollTo({top:0,behavior:"smooth"})}
+</script></body></html>
