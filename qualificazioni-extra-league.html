@@ -1,579 +1,741 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qualificazioni Extra League 2026/27</title>
 
-    <title>Qualificazioni Extra League - Lega Fantacalcio Barriera dell'M</title>
+<style>
+:root{
+    --blue:#073b5a;
+    --blue2:#084c6d;
+    --azure:#438eb1;
+    --azure2:#347ea2;
+    --gold:#d5a51e;
+    --text:#17384d;
+    --line:#cfe4ec;
+}
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+*{box-sizing:border-box}
 
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f4f4;
-            color: #222;
-        }
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 72% 30%,rgba(255,255,255,.22),transparent 28%),
+        linear-gradient(135deg,#dff5fc 0%,#b9e5f2 35%,#80cbe0 70%,#5aaed0 100%);
+}
 
-        header {
-            background: #111;
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
-        }
+header{
+    background:linear-gradient(180deg,var(--blue),var(--blue2));
+    color:#fff;
+    text-align:center;
+    padding:30px 20px 34px;
+    border-radius:0 0 42px 42px;
+    box-shadow:0 8px 24px rgba(0,50,80,.16);
+}
 
-        header h1 {
-            margin: 0 0 8px;
-            font-size: 30px;
-        }
+header h1{
+    margin:0;
+    font-size:38px;
+}
 
-        header p {
-            margin: 0;
-            color: #ccc;
-            font-size: 15px;
-        }
+header p{
+    margin:8px 0 0;
+    font-size:17px;
+    opacity:.9;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
+.container{
+    max-width:1220px;
+    margin:auto;
+    padding:28px 20px 42px;
+}
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 25px;
-            padding: 10px 16px;
-            background: #222;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
-        }
+.back-link{
+    display:inline-block;
+    margin-bottom:22px;
+    color:#07527d;
+    font-weight:700;
+    text-decoration:none;
+}
 
-        .back-link:hover {
-            background: #444;
-        }
+.intro,
+.regolamento,
+.final-group{
+    background:rgba(255,255,255,.92);
+    border-radius:18px;
+    padding:22px 26px;
+    box-shadow:0 8px 25px rgba(0,50,80,.10);
+}
 
-        .intro {
-            background: white;
-            padding: 22px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
+.intro h2,
+.regolamento h2,
+.final-group h2{
+    margin:0 0 10px;
+    color:#07527d;
+}
 
-        .intro h2 {
-            margin-top: 0;
-        }
+p{
+    line-height:1.55;
+}
 
-        .gironi {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
+.gironi{
+    margin-top:24px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
 
-        .girone {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
+.girone{
+    background:rgba(255,255,255,.95);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,50,80,.12);
+}
 
-        .girone-header {
-            background: #222;
-            color: white;
-            padding: 16px;
-            text-align: center;
-        }
+.girone h3{
+    margin:0;
+    padding:16px;
+    text-align:center;
+    color:white;
+    background:linear-gradient(180deg,var(--azure),var(--azure2));
+    font-size:20px;
+}
 
-        .girone-header h3 {
-            margin: 0;
-            font-size: 21px;
-        }
+.girone-body{
+    padding:16px;
+}
 
-        .squadre {
-            padding: 15px;
-        }
+.classifica-title{
+    margin:0 0 10px;
+    color:#07527d;
+    font-size:15px;
+}
 
-        .squadra {
-            padding: 13px 10px;
-            border-bottom: 1px solid #eee;
-            font-weight: bold;
-        }
+.table-wrap{
+    overflow-x:auto;
+}
 
-        .squadra:last-child {
-            border-bottom: none;
-        }
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+    background:#f8fcfd;
+}
 
-        .classifica {
-            margin-top: 35px;
-            background: white;
-            padding: 22px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
+th{
+    background:#e4f2f7;
+    color:#31586d;
+    padding:8px 5px;
+    text-align:center;
+    font-size:11px;
+}
 
-        .classifica h2 {
-            margin-top: 0;
-        }
+td{
+    padding:8px 5px;
+    border-top:1px solid #dbeaf0;
+    text-align:center;
+}
 
-        .table-wrapper {
-            overflow-x: auto;
-        }
+td.team{
+    text-align:left;
+    font-weight:700;
+    white-space:nowrap;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
+tr.first{
+    background:#eef9fc;
+}
 
-        th,
-        td {
-            padding: 11px 8px;
-            border-bottom: 1px solid #ddd;
-            text-align: center;
-        }
+.matches{
+    margin-top:18px;
+}
 
-        th {
-            background: #222;
-            color: white;
-        }
+.matches h4{
+    margin:0 0 10px;
+    color:#07527d;
+    font-size:15px;
+}
 
-        td:nth-child(2) {
-            text-align: left;
-            font-weight: bold;
-        }
+.match{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    gap:8px;
+    padding:9px 10px;
+    margin-bottom:7px;
+    background:#f8fcfd;
+    border:2px solid var(--line);
+    border-radius:10px;
+    font-size:12px;
+    font-weight:700;
+}
 
-        .nota {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f7f7f7;
-            border-left: 4px solid #222;
-            font-size: 14px;
-            line-height: 1.5;
-        }
+.match .home{
+    text-align:right;
+}
 
-        footer {
-            margin-top: 40px;
-            padding: 25px 20px;
-            background: #111;
-            color: #aaa;
-            text-align: center;
-            font-size: 13px;
-        }
+.match .away{
+    text-align:left;
+}
 
-        @media (max-width: 900px) {
-            .gironi {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+.score{
+    min-width:46px;
+    padding:5px 7px;
+    text-align:center;
+    border-radius:7px;
+    background:#e5f3f8;
+    color:#123f57;
+    font-size:12px;
+}
+
+.match.future{
+    border-style:dashed;
+}
+
+.score.future-score{
+    color:#76909d;
+    background:#edf5f7;
+}
+
+.qualification-split{
+    margin-top:24px;
+    background:rgba(255,255,255,.92);
+    border-radius:18px;
+    padding:22px 26px;
+    box-shadow:0 8px 25px rgba(0,50,80,.10);
+}
+
+.qualification-split h2{
+    margin:0 0 8px;
+    color:#07527d;
+}
+
+.qualification-note{
+    margin:0 0 20px;
+    color:#476574;
+}
+
+.qualification-columns{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+.qualification-box{
+    border-radius:16px;
+    padding:18px;
+    border:2px solid #b9dbe8;
+    background:#f8fcfd;
+}
+
+.qualification-box.extra{
+    border-color:#78bfd6;
+}
+
+.qualification-box.cup{
+    border-color:#d8bd69;
+    background:#fffaf0;
+}
+
+.qualification-box h3{
+    margin:0 0 14px;
+    font-size:20px;
+    color:#07527d;
+}
+
+.qualification-box.cup h3{
+    color:#806719;
+}
+
+.qualified-team{
+    border-radius:10px;
+    padding:13px 15px;
+    margin-top:9px;
+    background:#fff;
+    border:1px solid #d2e6ed;
+    font-weight:800;
+}
+
+.qualification-box.cup .qualified-team{
+    border-color:#eadcae;
+}
+
+.qualified-team span{
+    display:block;
+    margin-top:4px;
+    font-size:11px;
+    font-weight:600;
+    color:#68808a;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+}
+
+.regolamento{
+    margin-top:24px;
+}
+
+footer{
+    padding:20px;
+    background:linear-gradient(180deg,var(--blue2),var(--blue));
+    color:#d9eff9;
+    text-align:center;
+    font-size:14px;
+}
+
+@media(max-width:700px){
+    .gironi{
+        grid-template-columns:1fr;
+    }
+
+    .qualification-columns{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+    header h1{
+        font-size:30px;
+    }
+
+    .container{
+        padding:20px 14px 30px;
+    }
+
+    .intro,
+    .regolamento,
+    .final-group{
+        padding:18px;
+    }
+
+
+
+    .match{
+        font-size:11px;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
     <h1>Qualificazioni Extra League</h1>
-    <p>Lega Fantacalcio Barriera dell'M</p>
+    <p>Lega Fantacalcio Barriera dell'M · Stagione 2026/27</p>
 </header>
 
-<div class="container">
+<main class="container">
 
-    <a href="index.html" class="back-link">
-        ← Torna alla Home
-    </a>
+<a href="index.html" class="back-link">← Torna alla Home</a>
 
-    <section class="classifica">
-
-    <h2>Risultati</h2>
-
-    <!-- GIRONE A -->
-    <h3>Girone A</h3>
-
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Partita</th>
-                    <th>Risultato</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td>INTERTOR – EVERTOR</td>
-                    <td>2–2</td>
-                </tr>
-
-                <tr>
-                    <td>DINAMO SIENA – LOBE UNITED</td>
-                    <td>3–1</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<section class="intro">
+    <h2>Qualificazioni Extra League 2026/27</h2>
+    <p>
+        Fase di qualificazione all'Extra League e alla Lefabam Cup.
+        Il tabellone mantiene i gironi, i risultati già disputati,
+        le classifiche aggiornate e le partite ancora da giocare.
+    </p>
+</section>
 
 
-    <!-- GIRONE B -->
-    <h3>Girone B</h3>
+<!-- =========================================================
+     GIRONI
+========================================================= -->
 
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Partita</th>
-                    <th>Risultato</th>
-                </tr>
-            </thead>
+<section class="gironi">
 
-            <tbody>
-                <tr>
-                    <td>ZULUZEBRA – CASTEL DI IEMMA</td>
-                    <td>1–1</td>
-                </tr>
+    <!-- ===================== GIRONE A ===================== -->
 
-                <tr>
-                    <td>SPARTAK PISA – WILD EAGLES</td>
-                    <td>2–1</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <article class="girone">
 
+        <h3>GIRONE A</h3>
 
-    <!-- GIRONE C -->
-    <h3>Girone C</h3>
+        <div class="girone-body">
 
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Partita</th>
-                    <th>Risultato</th>
-                </tr>
-            </thead>
+            <h4 class="classifica-title">Classifica Girone A</h4>
 
-            <tbody>
-                <tr>
-                    <td>TOMCAT – TAURINORUM</td>
-                    <td>1–2</td>
-                </tr>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rk</th>
+                            <th>Squadra</th>
+                            <th>Pt</th>
+                            <th>V</th>
+                            <th>N</th>
+                            <th>P</th>
+                            <th>GF</th>
+                            <th>GS</th>
+                            <th>Diff.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="first">
+                            <td>1</td>
+                            <td class="team">DINAMO SIENA</td>
+                            <td>3</td>
+                            <td>1</td><td>0</td><td>0</td>
+                            <td>3</td><td>1</td><td>+2</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="team">EVERTOR</td>
+                            <td>1</td>
+                            <td>0</td><td>1</td><td>0</td>
+                            <td>2</td><td>2</td><td>0</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="team">INTERTOR</td>
+                            <td>1</td>
+                            <td>0</td><td>1</td><td>0</td>
+                            <td>2</td><td>2</td><td>0</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="team">LOBE UNITED</td>
+                            <td>0</td>
+                            <td>0</td><td>0</td><td>1</td>
+                            <td>1</td><td>3</td><td>-2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <tr>
-                    <td>VAIENTUS – MONACO DI BARRIERA</td>
-                    <td>2–3</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+            <div class="matches">
+                <h4>Partite</h4>
 
+                <div class="match">
+                    <span class="home">INTERTOR</span>
+                    <span class="score">2 - 2</span>
+                    <span class="away">EVERTOR</span>
+                </div>
 
-        <!-- CLASSIFICA GIRONE A -->
-    <h3>Classifica Girone A</h3>
+                <div class="match">
+                    <span class="home">DINAMO SIENA</span>
+                    <span class="score">3 - 1</span>
+                    <span class="away">LOBE UNITED</span>
+                </div>
 
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Pos.</th>
-                    <th>Squadra</th>
-                    <th>PT</th>
-                    <th>PG</th>
-                    <th>V</th>
-                    <th>N</th>
-                    <th>P</th>
-                    <th>GF</th>
-                    <th>GS</th>
-                    <th>DG</th>
-                </tr>
-            </thead>
+                <div class="match future">
+                    <span class="home">LOBE UNITED</span>
+                    <span class="score future-score">—</span>
+                    <span class="away">INTERTOR</span>
+                </div>
 
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>DINAMO SIENA</td>
-                    <td>3</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>3</td>
-                    <td>1</td>
-                    <td>+2</td>
-                </tr>
+                <div class="match future">
+                    <span class="home">EVERTOR</span>
+                    <span class="score future-score">—</span>
+                    <span class="away">DINAMO SIENA</span>
+                </div>
 
-                <tr>
-                    <td>2</td>
-                    <td>INTERTOR</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>0</td>
-                </tr>
+                <div class="match future">
+                    <span class="home">INTERTOR</span>
+                    <span class="score future-score">—</span>
+                    <span class="away">DINAMO SIENA</span>
+                </div>
 
-                <tr>
-                    <td>3</td>
-                    <td>EVERTOR</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>0</td>
-                </tr>
+                <div class="match future">
+                    <span class="home">LOBE UNITED</span>
+                    <span class="score future-score">—</span>
+                    <span class="away">EVERTOR</span>
+                </div>
 
-                <tr>
-                    <td>4</td>
-                    <td>LOBE UNITED</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>3</td>
-                    <td>-2</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+            </div>
+
+        </div>
+
+    </article>
 
 
-    <!-- CLASSIFICA GIRONE B -->
-    <h3>Classifica Girone B</h3>
+    <!-- ===================== GIRONE B ===================== -->
 
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Pos.</th>
-                    <th>Squadra</th>
-                    <th>PT</th>
-                    <th>PG</th>
-                    <th>V</th>
-                    <th>N</th>
-                    <th>P</th>
-                    <th>GF</th>
-                    <th>GS</th>
-                    <th>DG</th>
-                </tr>
-            </thead>
+    <article class="girone">
 
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>SPARTAK PISA</td>
-                    <td>3</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>+1</td>
-                </tr>
+        <h3>GIRONE B</h3>
 
-                <tr>
-                    <td>2</td>
-                    <td>ZULUZEBRA</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>0</td>
-                </tr>
+        <div class="girone-body">
 
-                <tr>
-                    <td>3</td>
-                    <td>CASTEL DI IEMMA</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>0</td>
-                </tr>
+            <h4 class="classifica-title">Classifica Girone B</h4>
 
-                <tr>
-                    <td>4</td>
-                    <td>WILD EAGLES</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>-1</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rk</th>
+                            <th>Squadra</th>
+                            <th>Pt</th>
+                            <th>V</th>
+                            <th>N</th>
+                            <th>P</th>
+                            <th>GF</th>
+                            <th>GS</th>
+                            <th>Diff.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="first">
+                            <td>1</td>
+                            <td class="team">SPARTAK PISA</td>
+                            <td>3</td>
+                            <td>1</td><td>0</td><td>0</td>
+                            <td>2</td><td>1</td><td>+1</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="team">CASTEL DI IEMMA</td>
+                            <td>1</td>
+                            <td>0</td><td>1</td><td>0</td>
+                            <td>1</td><td>1</td><td>0</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="team">ZULUZEBRA</td>
+                            <td>1</td>
+                            <td>0</td><td>1</td><td>0</td>
+                            <td>1</td><td>1</td><td>0</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="team">WILD EAGLES</td>
+                            <td>0</td>
+                            <td>0</td><td>0</td><td>1</td>
+                            <td>1</td><td>2</td><td>-1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="matches">
+                <h4>Partite</h4>
+
+                <div class="match">
+                    <span class="home">ZULUZEBRA</span>
+                    <span class="score">1 - 1</span>
+                    <span class="away">CASTEL DI IEMMA</span>
+                </div>
+
+                <div class="match">
+                    <span class="home">SPARTAK PISA</span>
+                    <span class="score">2 - 1</span>
+                    <span class="away">WILD EAGLES</span>
+                </div>
+
+                <div class="match future">
+                    <span class="home">WILD EAGLES</span>
+                    <span class="score future-score">—</span>
+                    <span class="away">ZULUZEBRA</span>
+                </div>
+
+                <div class="match future">
+                    <span class="home">CASTEL DI IEMMA</span>
+                    <span class="score future-score">—</span>
+                    <span class="away">SPARTAK PISA</span>
+                </div>
+
+                <div class="match future">
+                    <span class="home">ZULUZEBRA</span>
+                    <span class="score future-score">—</span>
+                    <span class="away">SPARTAK PISA</span>
+                </div>
+
+                <div class="match future">
+                    <span class="home">WILD EAGLES</span>
+                    <span class="score future-score">—</span>
+                    <span class="away">CASTEL DI IEMMA</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
 
 
-    <!-- CLASSIFICA GIRONE C -->
-    <h3>Classifica Girone C</h3>
+    <!-- ===================== GIRONE C ===================== -->
 
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Pos.</th>
-                    <th>Squadra</th>
-                    <th>PT</th>
-                    <th>PG</th>
-                    <th>V</th>
-                    <th>N</th>
-                    <th>P</th>
-                    <th>GF</th>
-                    <th>GS</th>
-                    <th>DG</th>
-                </tr>
-            </thead>
+    <article class="girone">
 
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>MONACO DI BARRIERA</td>
-                    <td>3</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>+1</td>
-                </tr>
+        <h3>GIRONE C</h3>
 
-                <tr>
-                    <td>2</td>
-                    <td>TAURINORUM</td>
-                    <td>3</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>+1</td>
-                </tr>
+        <div class="girone-body">
 
-                <tr>
-                    <td>3</td>
-                    <td>VAIENTUS</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>-1</td>
-                </tr>
+            <h4 class="classifica-title">Classifica Girone C</h4>
 
-                <tr>
-                    <td>4</td>
-                    <td>TOMCAT</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>-1</td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rk</th>
+                            <th>Squadra</th>
+                            <th>Pt</th>
+                            <th>V</th>
+                            <th>N</th>
+                            <th>P</th>
+                            <th>GF</th>
+                            <th>GS</th>
+                            <th>Diff.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="first">
+                            <td>1</td>
+                            <td class="team">TAURINORUM</td>
+                            <td>3</td>
+                            <td>1</td><td>0</td><td>0</td>
+                            <td>2</td><td>1</td><td>+1</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="team">MONACO DI BARRIERA</td>
+                            <td>3</td>
+                            <td>1</td><td>0</td><td>0</td>
+                            <td>3</td><td>2</td><td>+1</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="team">TOMCAT</td>
+                            <td>0</td>
+                            <td>0</td><td>0</td><td>1</td>
+                            <td>1</td><td>2</td><td>-1</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="team">VAIENTUS</td>
+                            <td>0</td>
+                            <td>0</td><td>0</td><td>1</td>
+                            <td>2</td><td>3</td><td>-1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="matches">
+                <h4>Partite</h4>
+
+                <div class="match">
+                    <span class="home">TOMCAT</span>
+                    <span class="score">1 - 2</span>
+                    <span class="away">TAURINORUM</span>
+                </div>
+
+                <div class="match">
+                    <span class="home">VAIENTUS</span>
+                    <span class="score">2 - 3</span>
+                    <span class="away">MONACO DI BARRIERA</span>
+                </div>
+
+                <div class="match future">
+                    <span class="home">MONACO DI BARRIERA</span>
+                    <span class="score future-score">—</span>
+                    <span class="away">TOMCAT</span>
+                </div>
+
+                <div class="match future">
+                    <span class="home">TAURINORUM</span>
+                    <span class="score future-score">—</span>
+                    <span class="away">VAIENTUS</span>
+                </div>
+
+                <div class="match future">
+                    <span class="home">TOMCAT</span>
+                    <span class="score future-score">—</span>
+                    <span class="away">VAIENTUS</span>
+                </div>
+
+                <div class="match future">
+                    <span class="home">MONACO DI BARRIERA</span>
+                    <span class="score future-score">—</span>
+                    <span class="away">TAURINORUM</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+<!-- =========================================================
+     QUALIFICATE
+========================================================= -->
+
+<section class="qualification-split">
+
+    <h2>Qualificate alle fasi finali</h2>
+
+    <p class="qualification-note">
+        Le prime due classificate di ciascun girone accedono al girone finale
+        dell'Extra League. Le altre squadre proseguono nel tabellone finale
+        della Lefabam Cup. Profonda Aurora e Real Doratom sono già qualificate
+        direttamente al girone finale dell'Extra League.
+    </p>
+
+    <div class="qualification-columns">
+
+        <div class="qualification-box extra">
+            <h3>Extra League · Girone finale</h3>
+            <div class="qualified-team">PROFONDA AURORA<span>Vincitrice Serie Maxima · Accesso diretto</span></div>
+            <div class="qualified-team">REAL DORATOM<span>Vincitrice Lefabam Cup · Accesso diretto</span></div>
+            <div class="qualified-team">DINAMO SIENA<span>1ª classificata · Girone A</span></div>
+            <div class="qualified-team">EVERTOR<span>2ª classificata · Girone A</span></div>
+            <div class="qualified-team">SPARTAK PISA<span>1ª classificata · Girone B</span></div>
+            <div class="qualified-team">CASTEL DI IEMMA<span>2ª classificata · Girone B</span></div>
+            <div class="qualified-team">TAURINORUM<span>1ª classificata · Girone C</span></div>
+            <div class="qualified-team">MONACO DI BARRIERA<span>2ª classificata · Girone C</span></div>
+        </div>
+
+        <div class="qualification-box cup">
+            <h3>Lefabam Cup · Tabellone finale</h3>
+            <div class="qualified-team">LOBE UNITED<span>Girone A · non qualificata all'Extra League</span></div>
+            <div class="qualified-team">INTERTOR<span>Girone A · non qualificata all'Extra League</span></div>
+            <div class="qualified-team">ZULUZEBRA<span>Girone B · non qualificata all'Extra League</span></div>
+            <div class="qualified-team">WILD EAGLES<span>Girone B · non qualificata all'Extra League</span></div>
+            <div class="qualified-team">TOMCAT<span>Girone C · non qualificata all'Extra League</span></div>
+            <div class="qualified-team">VAIENTUS<span>Girone C · non qualificata all'Extra League</span></div>
+        </div>
+
     </div>
 
 </section>
 
-    <section class="gironi">
 
-        <!-- GIRONE A -->
-        <div class="girone">
+<!-- =========================================================
+     REGOLAMENTO
+========================================================= -->
 
-            <div class="girone-header">
-                <h3>Girone A</h3>
-            </div>
+<section class="regolamento">
 
-            <div class="squadre">
-                <div class="squadra">INTERTOR</div>
-                <div class="squadra">EVERTOR</div>
-                <div class="squadra">DINAMO SIENA</div>
-                <div class="squadra">LOBE UNITED</div>
-            </div>
+    <h2>Regole della competizione</h2>
 
-        </div>
+    <p>
+        Profonda Aurora, vincitrice della Serie Maxima, e Real Doratom,
+        vincitrice della Lefabam Cup, sono qualificate direttamente
+        al girone finale.
+    </p>
 
-        <!-- GIRONE B -->
-        <div class="girone">
+    <p>
+        Le altre dodici squadre sono suddivise nei tre gironi
+        di qualificazione.
+    </p>
 
-            <div class="girone-header">
-                <h3>Girone B</h3>
-            </div>
+    <p>
+        Le prime due classificate di ciascun girone accedono
+        al girone finale dell'Extra League.
+    </p>
 
-            <div class="squadre">
-                <div class="squadra">ZULUZEBRA</div>
-                <div class="squadra">CASTEL DI IEMMA</div>
-                <div class="squadra">SPARTAK PISA</div>
-                <div class="squadra">WILD EAGLES</div>
-            </div>
+    <p>
+        Le squadre eliminate dalle qualificazioni all'Extra League
+        vengono inserite nel girone finale della Lefabam Cup.
+    </p>
 
-        </div>
+</section>
 
-        <!-- GIRONE C -->
-        <div class="girone">
-
-            <div class="girone-header">
-                <h3>Girone C</h3>
-            </div>
-
-            <div class="squadre">
-                <div class="squadra">TOMCAT</div>
-                <div class="squadra">TAURINORUM</div>
-                <div class="squadra">VAIENTUS</div>
-                <div class="squadra">MONACO DI BARRIERA</div>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="classifica">
-
-        <h2>Risultati e classifiche</h2>
-
-        <p>
-            I risultati delle gare e le classifiche dei tre gironi saranno
-            aggiornati durante lo svolgimento della fase di qualificazione.
-        </p>
-
-        <div class="nota">
-            <strong>Formula:</strong>
-            le prime due squadre di ogni girone ottengono l'accesso
-            alla fase finale dell'Extra League. Le altre squadre vengono
-            inserite nella fase finale della Lefabam Cup.
-        </div>
-
-    </section>
-
-</div>
+</main>
 
 <footer>
     Lega Fantacalcio Barriera dell'M
@@ -581,3 +743,4 @@
 
 </body>
 </html>
+
