@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Pagina Sportiva - LEFABAM</title>
 <style>
-:root{--blue:#0756b8;--deep:#06366f;--yellow:#ffd21a;--paper:#fffdf8;--ink:#152238;--line:#d9dee7}
+:root{--blue:#0756b8;--deep:#06366f;--yellow:#ffd21a;--paper:#fffdf8;--ink:#152238;--line:#d9dee7;--soft:#f3f7fc}
 *{box-sizing:border-box}
 body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
 .topnav{background:linear-gradient(180deg,#06366f,#07529d);padding:14px 20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;position:sticky;top:0;z-index:10;box-shadow:0 3px 14px #0002}
@@ -14,27 +14,141 @@ body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);fon
 .masthead{width:100%;display:block;height:auto;max-height:250px;object-fit:cover;object-position:center 32%;border-bottom:1px solid #d8dde6}
 .edition{display:flex;justify-content:space-between;align-items:center;border-bottom:4px solid var(--blue);padding:9px 2px 8px;font-size:13px;font-weight:700;letter-spacing:.4px}.edition span:nth-child(2){color:#555}
 .hero{text-align:center;padding:22px 8px 18px;border-bottom:1px solid var(--line)}.kicker{font-size:13px;color:var(--blue);font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-family:Georgia,serif;font-size:clamp(34px,5vw,62px);line-height:.98;margin:8px 0 10px;color:#082e62}.hero .dek{font-size:18px;color:#46546b;max-width:850px;margin:auto;line-height:1.4}
-.main-grid{display:grid;grid-template-columns:1.7fr .9fr;gap:22px;padding-top:22px}.article{border-bottom:1px solid var(--line);padding-bottom:20px}.article h2,.side h2,.opinion h2,.strip h2{font-family:Georgia,serif;margin:0 0 9px;color:#082e62}.article h2{font-size:30px}.article .lead{font-size:18px;font-weight:700;line-height:1.45}.article p,.side p,.opinion p{line-height:1.62;margin:9px 0}.photo{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#d8e8fb,#9fc4eb);display:flex;align-items:center;justify-content:center;color:#24568e;font-weight:800;font-size:18px;border:1px solid #b8cbe0;margin:15px 0}.caption{font-size:12px;color:#68768b;font-style:italic}
+.main-grid{display:grid;grid-template-columns:1.7fr .9fr;gap:22px;padding-top:22px}.article{border-bottom:1px solid var(--line);padding-bottom:20px}.article h2,.side h2,.section-title{font-family:Georgia,serif;margin:0 0 9px;color:#082e62}.article h2{font-size:30px}.article .lead{font-size:18px;font-weight:700;line-height:1.45}.article p,.side p,.story p{line-height:1.62;margin:9px 0}
+.photo{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#d8e8fb,#9fc4eb);display:flex;align-items:center;justify-content:center;color:#24568e;font-weight:800;font-size:18px;border:1px solid #b8cbe0;margin:15px 0}.caption{font-size:12px;color:#68768b;font-style:italic}
 .side{border-left:4px solid var(--yellow);padding-left:18px}.side .box{border-bottom:1px solid var(--line);padding:0 0 15px;margin-bottom:16px}.side .box:last-child{border-bottom:0}.tag{display:inline-block;background:var(--blue);color:#fff;font-size:11px;font-weight:800;padding:5px 8px;margin-bottom:7px;text-transform:uppercase}
-.opinions{margin-top:24px;border-top:5px solid var(--blue);padding-top:16px}.opinion-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.opinion{background:#f3f7fc;border:1px solid #d7e0ec;padding:16px;position:relative}.opinion:before{content:'“';position:absolute;right:12px;top:-9px;font:700 60px Georgia;color:#cbd9ec}.opinion .name{font-weight:800;color:var(--blue);font-size:13px}.opinion h3{font-family:Georgia,serif;margin:5px 0 8px;font-size:20px}
-.strip{margin-top:24px;background:#083a76;color:#fff;padding:18px 20px}.strip h2{color:#fff}.briefs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.brief{border-top:2px solid var(--yellow);padding-top:9px}.brief b{display:block;color:var(--yellow);margin-bottom:5px}.footer{text-align:center;margin-top:25px;color:#657287;font-size:12px}
-@media(max-width:800px){.main-grid{grid-template-columns:1fr}.side{border-left:0;border-top:4px solid var(--yellow);padding:16px 0 0}.opinion-grid,.briefs{grid-template-columns:1fr}.edition{flex-direction:column;gap:5px}.paper{padding:12px}.masthead{max-height:180px}}
+.stories{margin-top:26px}.story{border-top:5px solid var(--blue);padding:17px 0 20px}.story h2{font-family:Georgia,serif;font-size:29px;color:#082e62;margin:0 0 6px}.story .intro{font-weight:700;font-size:17px;margin-bottom:13px}.story-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}.mini{background:var(--soft);border:1px solid #d7e0ec;padding:15px}.mini h3{font-family:Georgia,serif;color:#082e62;margin:0 0 7px;font-size:20px}.mini p{margin:0}.signature{margin-top:13px;font-weight:800;color:var(--blue)}
+.opinions{margin-top:24px;border-top:5px solid var(--blue);padding-top:16px}.opinion-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.opinion{background:#f3f7fc;border:1px solid #d7e0ec;padding:16px;position:relative}.opinion:before{content:'“';position:absolute;right:12px;top:-9px;font:700 60px Georgia;color:#cbd9ec}.opinion .name{font-weight:800;color:var(--blue);font-size:13px}.opinion h3{font-family:Georgia,serif;margin:5px 0 8px;font-size:20px}.opinion p{line-height:1.62;margin:0}
+.editorial{margin-top:24px;background:#083a76;color:#fff;padding:20px 22px;border-left:8px solid var(--yellow)}.editorial h2{font-family:Georgia,serif;margin:0 0 7px;color:#fff;font-size:28px}.editorial .label{color:var(--yellow);font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:1.4px}.editorial p{line-height:1.65;margin:9px 0}.editorial .signature{color:var(--yellow)}
+.strip{margin-top:24px;background:#083a76;color:#fff;padding:18px 20px}.strip h2{color:#fff;font-family:Georgia,serif;margin:0 0 12px}.briefs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.brief{border-top:2px solid var(--yellow);padding-top:9px}.brief b{display:block;color:var(--yellow);margin-bottom:5px}.footer{text-align:center;margin-top:25px;color:#657287;font-size:12px}
+@media(max-width:800px){.main-grid,.story-grid,.opinion-grid,.briefs{grid-template-columns:1fr}.side{border-left:0;border-top:4px solid var(--yellow);padding:16px 0 0}.edition{flex-direction:column;gap:5px}.paper{padding:12px}.masthead{max-height:180px}}
 </style>
 </head>
 <body>
 <nav class="topnav">
 <a href="index.html">Home</a><a href="la-pagina-sportiva.html" class="active">La Pagina Sportiva</a><a href="risultati.html">I Risultati</a><a href="competizioni.html">Le Competizioni</a><a href="rose.html">Rose</a><a href="albo-doro.html">Albo d'Oro</a><a href="societa.html">Le Società</a><a href="regolamento.html">Regolamento</a><a href="galleria-foto.html">Galleria Foto</a><a href="contatti.html">Contatti</a>
 </nav>
+
 <main class="page"><section class="paper">
 <img class="masthead" src="pagina_sportiva_testata.png" alt="La Pagina Sportiva - testata">
-<div class="edition"><span>PERIODICO INFORMATICO UFFICIALE DELLA LEFABAM</span><span>EDIZIONE DELLA SETTIMANA · 4 OTTOBRE 2026</span></div>
-<header class="hero"><div class="kicker">Prima pagina · Edizione n. 01</div><h1>TITOLO DELLA GIORNATA</h1><div class="dek">Qui inseriremo il grande titolo della settimana e il sottotitolo che introduce gli avvenimenti più importanti della LEFABAM.</div></header>
-<div class="main-grid">
-<article class="article"><span class="tag">Articolo principale</span><h2>La settimana della LEFABAM è tutta da raccontare</h2><p class="lead">Questo sarà lo spazio dedicato alla notizia più importante della settimana, con un vero articolo giornalistico e una fotografia centrale.</p><div class="photo">SPAZIO PER LA FOTO PRINCIPALE</div><div class="caption">Didascalia della fotografia della settimana.</div><p>Il testo dell'articolo principale potrà essere aggiornato ogni settimana senza modificare la struttura della pagina. Qui troveranno spazio cronaca, retroscena, protagonisti e tutto ciò che rende la LEFABAM una lega da raccontare.</p><p><strong>Firma dell'articolo:</strong> Nome dell'autore</p></article>
-<aside class="side"><div class="box"><span class="tag">Il Direttore</span><h2>Il commento del Direttore</h2><p><strong>“Il titolo che apre la settimana”</strong></p><p>Lo spazio per l'editoriale del Direttore, con un commento personale sugli avvenimenti della giornata.</p><p><strong>Candito Cannatò</strong></p></div><div class="box"><span class="tag">Dal campo</span><h2>Le notizie più importanti</h2><p><strong>Una sfida che fa discutere</strong><br>Breve richiamo a una partita o a un episodio significativo.</p><p><strong>La sorpresa della settimana</strong><br>Un secondo richiamo rapido.</p></div></aside>
+
+<div class="edition">
+<span>PERIODICO INFORMATICO UFFICIALE DELLA LEFABAM</span>
+<span>EDIZIONE DELLA SETTIMANA · 4 OTTOBRE 2026</span>
 </div>
-<section class="opinions"><h2>Gli opinionisti della LEFABAM</h2><div class="opinion-grid"><article class="opinion"><div class="name">OPINIONISTA · COMPETIZIONE 1</div><h3>Il punto sul Torneo di Apertura</h3><p>Commento della settimana sulla competizione, con spazio per analisi, pronostici e ironia.</p></article><article class="opinion"><div class="name">OPINIONISTA · COMPETIZIONE 2</div><h3>Extra League sotto i riflettori</h3><p>Il punto di vista dell'opinionista sugli incontri e sulle squadre protagoniste.</p></article><article class="opinion"><div class="name">OPINIONISTA · COMPETIZIONE 3</div><h3>Chi sale e chi scende</h3><p>Un commento libero sulla settimana della lega, con protagonisti e delusioni.</p></article></div></section>
-<section class="strip"><h2>Dalle altre competizioni</h2><div class="briefs"><div class="brief"><b>PROTAGONISTA</b>Il personaggio della settimana.</div><div class="brief"><b>LA PARTITA</b>La gara che ha lasciato il segno.</div><div class="brief"><b>LA FRASE</b>La dichiarazione più curiosa della settimana.</div></div></section>
-<div class="footer">Lega Fantacalcio Barriera dell'M · La Pagina Sportiva</div>
+
+<header class="hero">
+<div class="kicker">Prima pagina · Edizione n. 01</div>
+<h1>QUALIFICAZIONI, COPPA E CORSA AL TITOLO</h1>
+<div class="dek">La prima giornata delle Qualificazioni Extra, gli ottavi di OMNIS Cup e una Serie Maxima che comincia già a regalare i primi verdetti.</div>
+</header>
+
+<div class="main-grid">
+<article class="article">
+<span class="tag">Apertura della settimana</span>
+<h2>La LEFABAM riparte: subito sorprese e grandi sfide</h2>
+<p class="lead">Qualificazioni Extra, OMNIS Cup e Serie Maxima hanno acceso la stagione. Dopo il primo turno, nessuno può ancora sentirsi al sicuro.</p>
+<div class="photo">SPAZIO PER LA FOTO PRINCIPALE</div>
+<div class="caption">La nuova stagione LEFABAM entra nel vivo.</div>
+<p>La prima giornata delle qualificazioni ha già lasciato indicazioni importanti, mentre l'OMNIS Cup ha iniziato a delineare il quadro dei quarti. In Serie Maxima, invece, i campioni in carica non sono più soli in vetta.</p>
+<p>Tre competizioni, tre storie diverse, ma una costante: la stagione 2026/27 è già pronta a regalare rivalità, sorprese e sfide decisive.</p>
+<p><strong>Redazione:</strong> La Pagina Sportiva</p>
+</article>
+
+<aside class="side">
+<div class="box">
+<span class="tag">Il Direttore</span>
+<h2>Il commento del Direttore</h2>
+<p><strong>Una stagione già tutta da raccontare</strong></p>
+<p>Qualificazioni, coppa e campionato stanno mostrando fin dalle prime giornate quanto sarà importante ogni singolo risultato. La nuova stagione è partita con il piede giusto e la nostra redazione torna a raccontarla con ancora più voci.</p>
+<p><strong>Candito Cannatò</strong></p>
+</div>
+<div class="box">
+<span class="tag">Dalla redazione</span>
+<h2>Le notizie più importanti</h2>
+<p><strong>Dinamo sola al comando</strong><br>Successo su Lobe e primo posto nel Girone A.</p>
+<p><strong>Spartak in vetta</strong><br>Le aquile calabresi vengono superate di misura.</p>
+<p><strong>Vaientus aggancia i campioni</strong><br>La corsa alla Serie Maxima si fa subito interessante.</p>
+</div>
+</aside>
+</div>
+
+<section class="stories">
+<div class="story">
+<span class="tag">Qualificazioni Extra · 1ª giornata</span>
+<h2>Tre gironi, tre storie diverse</h2>
+<p class="intro">La prima giornata ha già consegnato le prime gerarchie. Ma dopo la pausa delle nazionali il quadro potrebbe cambiare ancora.</p>
+<div class="story-grid">
+<div class="mini"><h3>Girone A</h3><p>Vince in maniera convincente la Dinamo Siena contro un comunque buon Lobe che cede solo sul finale e, a seguito del pari nel derby sansoniano, si issa sola al comando in questa prima giornata di qualificazioni. Dopo la pausa delle nazionali la capolista andrà a far visita all'Evertor e vedremo se sarà capace di confermare questo buon avvio.</p></div>
+<div class="mini"><h3>Girone B</h3><p>Lo Spartak supera di misura le aquile calabresi e approfittando del pari tra Zulu e Castel prende il comando del girone. Alla ripresa sarà il Castel a testare il polso dei pisani, mentre Zulu e Wild si affronteranno in terra calabra.</p></div>
+<div class="mini"><h3>Girone C</h3><p>Girone sicuramente meno equilibrato, almeno per ora. Due sorprendenti, per un certo verso, vittorie in trasferta per Taurinorum e Monaco e classifica già delineata nettamente. Alla ripresa però le capofila si troveranno una di fronte all'altra, mentre per Vaientus e Tomcat sarà già un possibile dentro o fuori per la corsa alla fase finale di Extra.</p></div>
+</div>
+<div class="signature">✍ Natis Rich · Redattore Capo</div>
+</div>
+
+<div class="story">
+<span class="tag">OMNIS Cup · Ottavi</span>
+<h2>La nuova formula fa subito rumore</h2>
+<p class="intro">Il torneo di apertura della stagione LEFABAM offre tante sorprese: tra le squadre di Maxima resistono in cinque, mentre tre posti nei quarti sono occupati da squadre provenienti dalla Minus.</p>
+<p>Tomcat, Real Doratom, Taurinorum, Profonda e Castel sono le cinque squadre di Maxima ancora in corsa. Gli altri tre posti nei quarti sono occupati dall'Under dell'Intertor, dal CSKA Pisa e dal Cohiba.</p>
+<p>La sfida in famiglia tra Tomcat e Real porterà all'eliminazione sicuramente di una squadra di Maxima, così come quella tra Profonda e Taurinorum, mentre una squadra di Minus arriverà sicuramente fino alle semifinali vista la sfida diretta tra Intertor Under e CSKA. L'ultimo spot se lo giocheranno Castel e Cohiba, ma il risultato non è per nulla scontato.</p>
+<div class="signature">✍ Rob Incazzatus · Opinionista di punta</div>
+</div>
+
+<div class="story">
+<span class="tag">Serie Maxima · 3ª giornata</span>
+<h2>Vaientus aggancia i campioni: la vetta si infiamma</h2>
+<p class="intro">Brusco rallentamento dei campioni in carica e leader del campionato, che si fanno affiancare in testa da una superba Vaientus.</p>
+<p>Vaientus proverà a calzare i campioni già dal prossimo turno, a rimarcare la forte rivalità presente tra le due società. Dietro si rivede il Monaco, che rimane per molti una delle favorite al titolo. Il Real perde una posizione e si vede inoltre avvicinare dalla coppia Evertor-Dinamo, apparse tra le più in forma in questo avvio di stagione.</p>
+<p>Scivolano più giù di una posizione Spartak, Lobe, Intertor e Taurinorum, mentre Tomcat e Wild non riescono ancora a cambiare passo. In fondo a questo turno troviamo la Zulu, estremamente anonima in questo avvio di stagione, oltre che molto sfortunata a causa dei tanti infortuni.</p>
+<div class="signature">✍ Kiara Velaconto · Redattrice</div>
+</div>
+</section>
+
+<section class="opinions">
+<h2 class="section-title">Le voci della redazione</h2>
+<div class="opinion-grid">
+<article class="opinion">
+<div class="name">CANDITO CANNATÒ · DIRETTORE</div>
+<h3>Una redazione con più voci</h3>
+<p>La Pagina Sportiva torna a raccontare la LEFABAM allargando lo sguardo: cronaca, analisi e opinioni diverse per seguire ogni settimana ciò che succede sui campi.</p>
+</article>
+<article class="opinion">
+<div class="name">NATIS RICH · REDATTORE CAPO</div>
+<h3>La prima fotografia della stagione</h3>
+<p>Le prime giornate non danno ancora sentenze definitive, ma iniziano a far emergere squadre in forma, sorprese e possibili protagoniste.</p>
+</article>
+<article class="opinion">
+<div class="name">ROB INCAZZATUS · OPINIONISTA DI PUNTA</div>
+<h3>La coppa non fa sconti</h3>
+<p>La nuova formula dell'OMNIS Cup sta già dimostrando che per arrivare fino in fondo non basta il blasone: bisogna superare ogni ostacolo.</p>
+</article>
+<article class="opinion">
+<div class="name">KIARA VELACONTO · REDATTRICE</div>
+<h3>Occhi puntati sulla Maxima</h3>
+<p>La vetta affollata e il gruppo che insegue fanno pensare a un campionato ancora tutto da scrivere.</p>
+</article>
+</div>
+</section>
+
+<section class="editorial">
+<div class="label">Editoriale del Direttore</div>
+<h2>Una nuova Pagina Sportiva</h2>
+<p>La stagione 2026/27 inaugura anche una nuova fase per questo periodico. La Pagina Sportiva vuole tornare a essere il luogo nel quale la LEFABAM non si limita a riportare i risultati, ma racconta le storie, le rivalità, le sorprese e i protagonisti che rendono unica questa lega.</p>
+<p>Da oggi saranno più voci a raccontare la giornata: il Direttore, il Redattore Capo, gli opinionisti e la redazione. Perché un campionato si può leggere in classifica, ma una stagione si racconta attraverso le persone.</p>
+<div class="signature">Candito Cannatò · Direttore</div>
+</section>
+
+<section class="strip">
+<h2>Dalle altre competizioni</h2>
+<div class="briefs">
+<div class="brief"><b>PROTAGONISTA</b>Dinamo Siena, prima capolista solitaria delle Qualificazioni Extra.</div>
+<div class="brief"><b>LA SFIDA</b>Vaientus contro i campioni: la prossima giornata promette scintille.</div>
+<div class="brief"><b>LA FRASE</b>“Sarà già un possibile dentro o fuori per la corsa alla fase finale di Extra.”</div>
+</div>
+</section>
+
+<div class="footer">Lega Fantacalcio Barriera dell'M · La Pagina Sportiva · Edizione n. 01</div>
 </section></main>
-</body></html>
+</body>
+</html>
