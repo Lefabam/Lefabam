@@ -3,113 +3,518 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zuluzebra | Lega Fantacalcio Barriera dell'M</title>
+<title>Zuluzebra</title>
 <style>
-:root {
-  --blue:#073b5a; --blue2:#0a5d83; --cyan:#55b7d5;
-  --light:#eaf7fb; --yellow:#f5c400; --gold:#d5a51e; --ink:#12364a;
+:root{
+  --blue:#073b5a;
+  --blue2:#0b6388;
+  --blue3:#174f70;
+  --sky:#8fd3e7;
+  --light:#f3fbfd;
+  --yellow:#f5c400;
+  --gold:#d4a51d;
+  --ink:#173d52;
+  --line:#c9e4ec;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#dff5fc,#8ed0e4 55%,#5aaed0);color:var(--ink)}
-header{background:linear-gradient(180deg,#073b5a,#084c6d);color:white;padding:16px 28px;border-radius:0 0 34px 34px;box-shadow:0 8px 24px #174e6a33}
-nav{max-width:1250px;margin:auto;display:flex;justify-content:center;gap:22px;flex-wrap:wrap;font-weight:700;font-size:13px}
-nav a{color:white;text-decoration:none}
-main{max-width:1180px;margin:26px auto 50px;padding:0 18px}
-.hero{background:rgba(255,255,255,.92);border-radius:26px;padding:28px;text-align:center;box-shadow:0 12px 30px #164e6822}
-.logo-wrap{height:210px;display:flex;align-items:center;justify-content:center}
-.logo-wrap img{max-width:210px;max-height:195px;object-fit:contain}
-h1{margin:6px 0 4px;font-size:38px;color:var(--blue);letter-spacing:.5px}
-.subtitle{font-weight:700;color:#4d7182}
-.section{background:rgba(255,255,255,.94);border-radius:22px;margin-top:22px;padding:24px;box-shadow:0 10px 25px #164e681c}
-.section h2{margin:0 0 16px;color:var(--blue);font-size:24px;border-left:6px solid var(--yellow);padding-left:12px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.info{background:var(--light);border:1px solid #b9dce8;border-radius:14px;padding:14px}
-.info b{display:block;color:var(--blue);font-size:12px;text-transform:uppercase;margin-bottom:4px}
-.info span{font-size:16px;font-weight:700}
-.story{line-height:1.65}
-table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:14px;font-size:13px}
-th{background:var(--blue);color:white;padding:11px 8px}
-td{padding:9px 7px;text-align:center;background:#f7fcfe;border-bottom:1px solid #d5eaf1}
-tr:nth-child(even) td{background:#edf8fb}
-td.season{background:#55b7d5!important;color:#06384f;font-weight:800}
-.palmares{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.trophy{background:linear-gradient(145deg,#fff9d9,#fff);border:1px solid #e5cf68;border-radius:16px;padding:18px;text-align:center}
-.trophy .n{font-size:30px;font-weight:900;color:var(--blue)}
-.trophy .label{font-weight:700;margin-top:4px}
-.note{font-size:13px;color:#607b87;margin-top:12px}
-footer{text-align:center;color:#315e70;padding:15px;font-size:13px}
-@media(max-width:800px){.grid,.palmares{grid-template-columns:1fr}table{font-size:11px}th,td{padding:7px 4px}h1{font-size:29px}}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 15% 10%,rgba(255,255,255,.8),transparent 30%),
+    linear-gradient(135deg,#dff6fb 0%,#a8ddeb 48%,#72bfd8 100%);
+}
+.topbar{
+  background:linear-gradient(180deg,var(--blue),#084c6d);
+  border-radius:0 0 32px 32px;
+  box-shadow:0 8px 25px rgba(7,59,90,.18);
+  padding:14px 20px;
+}
+.nav{
+  max-width:1180px;
+  margin:auto;
+  display:flex;
+  justify-content:center;
+  gap:28px;
+  flex-wrap:wrap;
+}
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.2px;
+}
+main{max-width:1180px;margin:24px auto 45px;padding:0 18px}
+
+/* TESTATA SOCIETÀ */
+.identity{
+  position:relative;
+  background:rgba(255,255,255,.96);
+  border-radius:28px;
+  padding:28px 25px 25px;
+  text-align:center;
+  box-shadow:0 14px 34px rgba(7,59,90,.15);
+  overflow:hidden;
+}
+.identity:before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;
+  height:8px;
+  background:var(--yellow);
+}
+.identity h1{
+  margin:0;
+  padding-top:5px;
+  font-size:42px;
+  color:var(--blue);
+  letter-spacing:1px;
+}
+.logo-box{
+  width:250px;
+  height:235px;
+  margin:12px auto 2px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.logo-box img{
+  max-width:220px;
+  max-height:215px;
+  object-fit:contain;
+}
+.foundation{
+  display:inline-block;
+  padding:8px 20px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--light);
+  color:#486d7d;
+  font-size:14px;
+}
+.foundation strong{color:var(--blue)}
+
+
+/* STADIO */
+.stadium{
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:24px;
+  align-items:center;
+}
+.stadium-photo{
+  background:#f7fcfd;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:14px;
+  text-align:center;
+}
+.stadium-photo img{
+  display:block;
+  width:100%;
+  max-width:430px;
+  max-height:300px;
+  object-fit:contain;
+  margin:auto;
+}
+.stadium-info{
+  background:linear-gradient(145deg,#f4fbfd,#e8f6fa);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:24px;
+}
+.stadium-label{
+  color:var(--blue2);
+  font-size:11px;
+  text-transform:uppercase;
+  font-weight:900;
+  letter-spacing:.8px;
+  margin-bottom:7px;
+}
+.stadium-name{
+  color:var(--blue);
+  font-size:27px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+.stadium-capacity{
+  color:#526f7d;
+  font-size:15px;
+  line-height:1.5;
+}
+@media(max-width:850px){
+  .stadium{grid-template-columns:1fr}
+}
+
+
+/* MAGLIE */
+.kits{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+.kit-card{
+  background:linear-gradient(145deg,#f7fcfd,#e9f6fa);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+}
+.kit-card img{
+  width:min(520px,100%);
+  height:auto;
+  max-height:390px;
+  object-fit:contain;
+}
+.kit-caption{
+  margin-top:8px;
+  color:#587786;
+  font-size:13px;
+  font-weight:700;
+}
+
+/* SEZIONI */
+.section{
+  margin-top:22px;
+  background:rgba(255,255,255,.96);
+  border-radius:24px;
+  padding:25px;
+  box-shadow:0 10px 28px rgba(7,59,90,.12);
+}
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+}
+.section-title .bar{
+  width:7px;
+  height:34px;
+  background:var(--yellow);
+  border-radius:5px;
+}
+.section-title h2{
+  margin:0;
+  color:var(--blue);
+  font-size:25px;
+  letter-spacing:.2px;
+}
+.section-subtitle{
+  margin:-9px 0 19px 19px;
+  color:#67828e;
+  font-size:13px;
+}
+
+/* QUADRI */
+.board{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.board-card{
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:15px 16px;
+  background:linear-gradient(145deg,#f7fcfd,#e9f6fa);
+}
+.board-card .role{
+  color:var(--blue2);
+  font-size:11px;
+  text-transform:uppercase;
+  font-weight:900;
+  letter-spacing:.7px;
+  margin-bottom:6px;
+}
+.board-card .person{
+  color:var(--ink);
+  font-size:16px;
+  font-weight:800;
+}
+
+/* STORIA */
+.history{
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:22px;
+  align-items:stretch;
+}
+.history-text{
+  font-size:15px;
+  line-height:1.72;
+}
+.history-text p{margin:0 0 13px}
+.archive-box{
+  border-radius:20px;
+  min-height:190px;
+  border:2px dashed #a9d4e0;
+  background:
+    linear-gradient(145deg,rgba(7,59,90,.06),rgba(245,196,0,.10));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+  color:#607c89;
+  font-weight:700;
+}
+.archive-box span{
+  display:block;
+  color:var(--blue);
+  font-size:20px;
+  margin-bottom:7px;
+}
+
+/* STAGIONI */
+.table-wrap{
+  overflow-x:auto;
+  border:1px solid var(--line);
+  border-radius:17px;
+}
+table{
+  width:100%;
+  min-width:850px;
+  border-collapse:collapse;
+  font-size:13px;
+}
+th{
+  background:var(--blue);
+  color:#fff;
+  padding:12px 8px;
+  font-size:12px;
+}
+td{
+  padding:10px 8px;
+  text-align:center;
+  border-bottom:1px solid #dcecf1;
+  background:#fff;
+}
+tr:nth-child(even) td{background:#f1fafc}
+td.season{
+  background:#65bdd7!important;
+  color:#073b5a;
+  font-weight:900;
+  white-space:nowrap;
+}
+td:not(.season){font-weight:700}
+
+/* PALMARES */
+.palmares{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.trophy{
+  position:relative;
+  border:1px solid #e5d37d;
+  border-radius:18px;
+  padding:20px 14px;
+  text-align:center;
+  background:linear-gradient(145deg,#fffdf0,#fff);
+}
+.trophy .icon{font-size:24px}
+.trophy .number{
+  color:var(--blue);
+  font-size:34px;
+  font-weight:900;
+  line-height:1;
+  margin:8px 0 5px;
+}
+.trophy .label{
+  font-size:13px;
+  line-height:1.3;
+  font-weight:800;
+}
+.trophy.zero{
+  background:#f7fafb;
+  border-color:#d7e5e9;
+}
+.trophy.zero .number,.trophy.zero .label{color:#78909b}
+
+/* FOOTER */
+.back{
+  text-align:center;
+  margin:22px 0 0;
+}
+.back a{
+  display:inline-block;
+  background:var(--blue);
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  padding:11px 22px;
+  border-radius:999px;
+}
+footer{text-align:center;color:#477183;font-size:12px;padding:18px}
+
+/* RESPONSIVE */
+@media(max-width:850px){
+  .board,.palmares{grid-template-columns:repeat(2,1fr)}
+  .history{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  main{padding:0 12px}
+  .nav{gap:15px}
+  .identity h1{font-size:32px}
+  .board,.palmares{grid-template-columns:1fr}
+  .section{padding:19px}
+  .logo-box{height:205px}
+}
 </style>
 </head>
 <body>
-<header>
-<nav>
-<a href="societa.html">LE SOCIETÀ</a>
-<a href="index.html">HOME</a>
-<a href="competizioni.html">COMPETIZIONI</a>
-<a href="albo-doro.html">ALBO D'ORO</a>
-</nav>
+
+<header class="topbar">
+  <nav class="nav">
+    <a href="societa.html">LE SOCIETÀ</a>
+    <a href="index.html">HOME</a>
+    <a href="competizioni.html">COMPETIZIONI</a>
+    <a href="albo-doro.html">ALBO D'ORO</a>
+  </nav>
 </header>
+
 <main>
-<section class="hero">
-  <div class="logo-wrap"><img src="zuluzebra.png" alt="Logo Zuluzebra"></div>
+
+<section class="identity">
   <h1>ZULUZEBRA</h1>
-  <div class="subtitle">Anno di fondazione: 1995</div>
+  <div class="logo-box">
+    <img src="zuluzebra.png" alt="Logo ufficiale Zuluzebra">
+  </div>
+  <div class="foundation">Anno di fondazione <strong>1995</strong></div>
 </section>
 
 <section class="section">
-<h2>Quadri societari</h2>
-<div class="grid">
-<div class="info"><b>Proprietà</b><span>Anelli Interior Design s.r.l.</span></div>
-<div class="info"><b>Presidente Onorario</b><span>Naits Illena</span></div>
-<div class="info"><b>Presidente</b><span>Chrix Anelli</span></div>
-<div class="info"><b>Direttore Sportivo</b><span>Lucio Mogio</span></div>
-<div class="info"><b>Allenatore</b><span>Gian Lu Vial</span></div>
-<div class="info"><b>Preparatore</b><span>Giampi Sventro</span></div>
+  <div class="section-title">
+    <div class="bar"></div>
+    <h2>Quadri societari</h2>
+  </div>
+
+  <div class="board">
+    <div class="board-card"><div class="role">Proprietà</div><div class="person">Anelli Interior Design s.r.l.</div></div>
+    <div class="board-card"><div class="role">Presidente Onorario</div><div class="person">Naits Illena</div></div>
+    <div class="board-card"><div class="role">Presidente</div><div class="person">Chrix Anelli</div></div>
+    <div class="board-card"><div class="role">Direttore Sportivo</div><div class="person">Lucio Mogio</div></div>
+    <div class="board-card"><div class="role">Allenatore</div><div class="person">Gian Lu Vial</div></div>
+    <div class="board-card"><div class="role">Preparatore</div><div class="person">Giampi Sventro</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="bar"></div>
+    <h2>Lo stadio</h2>
+  </div>
+
+  <div class="stadium">
+    <div class="stadium-photo">
+      <img src="stadio-zuluzebra.png" alt="Stadio della Zuluzebra">
+    </div>
+    <div class="stadium-info">
+      <div class="stadium-label">Terreno di gioco</div>
+      <div class="stadium-name">Savanafield</div>
+      <div class="stadium-capacity">Capienza: <strong>95400</strong></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="section-title">
+    <div class="bar"></div>
+    <h2>Le maglie</h2>
+  </div>
+  <div class="kits">
+    <div class="kit-card">
+      <img src="maglie-zuluzebra.png" alt="Maglie storiche della Zuluzebra">
+      <div class="kit-caption">Le divise storiche della Zuluzebra</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="bar"></div>
+    <h2>La storia della Zuluzebra</h2>
+  </div>
+
+  <div class="history">
+    <div class="history-text">
+      <p>La sezione storica della società raccoglierà qui la storia della Zuluzebra, i suoi momenti più importanti e i materiali provenienti dall'archivio originale.</p>
+      <p>La pagina storica fornita documenta inoltre il percorso della società stagione dopo stagione e costituisce la base per la ricostruzione dell'archivio storico.</p>
+      <p><strong>In questa versione non vengono aggiunte informazioni non presenti nelle fonti originali.</strong></p>
+    </div>
+    <div class="archive-box">
+      <div>
+        <span>ARCHIVIO ZULUZEBRA</span>
+        Fotografie e materiali storici<br>
+        da inserire
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="bar"></div>
+    <h2>Le stagioni della Zulu</h2>
+  </div>
+  <div class="section-subtitle">Il percorso storico della società nelle principali competizioni.</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Stagione</th>
+          <th>Serie Maxima</th>
+          <th>Apertura</th>
+          <th>Chiusura</th>
+          <th>Extra League</th>
+          <th>Lefabam Cup</th>
+          <th>Supercoppa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="season">1995/1996</td><td>2°</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td class="season">1996/1997</td><td>1°</td><td>1°</td><td>El</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td class="season">1997/1998</td><td>1°</td><td>1°</td><td>SF</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td class="season">1998/1999</td><td>4°</td><td>SF</td><td>El</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td class="season">1999/2000</td><td>1°</td><td>El</td><td>F</td><td>1°</td><td>—</td><td>-</td></tr>
+        <tr><td class="season">2000/2001</td><td>2°</td><td>F</td><td>1°</td><td>2°</td><td>-</td><td>F</td></tr>
+        <tr><td class="season">2001/2002</td><td>2°</td><td>F</td><td>1°</td><td>1°</td><td>-</td><td>1°</td></tr>
+        <tr><td class="season">2002/2003</td><td>2°</td><td>8/vi</td><td>F</td><td>2°</td><td>-</td><td>1°</td></tr>
+        <tr><td class="season">2003/2004</td><td>5°</td><td>1°</td><td>8/vi</td><td>8°</td><td>-</td><td>-</td></tr>
+        <tr><td class="season">2004/2005</td><td>5°</td><td>8/vi</td><td>F</td><td>7°</td><td>-</td><td>SF</td></tr>
+        <tr><td class="season">2005/2006</td><td>3°</td><td>1°</td><td>4/ti</td><td>2°</td><td>-</td><td>-</td></tr>
+        <tr><td class="season">2006/2007</td><td>4°</td><td>SF</td><td>8/vi</td><td>1°</td><td>-</td><td>1°</td></tr>
+        <tr><td class="season">2007/2008</td><td>1°</td><td>4/ti</td><td>1°</td><td>2°</td><td>-</td><td>1°</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="bar"></div>
+    <h2>Il Palmarès</h2>
+  </div>
+
+  <div class="palmares">
+    <div class="trophy"><div class="icon">🏆</div><div class="number">4</div><div class="label">Campionati di Serie Maxima</div></div>
+    <div class="trophy"><div class="icon">🏆</div><div class="number">4</div><div class="label">Tornei di Apertura</div></div>
+    <div class="trophy"><div class="icon">🏆</div><div class="number">3</div><div class="label">Tornei di Chiusura</div></div>
+    <div class="trophy"><div class="icon">🏆</div><div class="number">3</div><div class="label">Extra League</div></div>
+    <div class="trophy"><div class="icon">🏆</div><div class="number">4</div><div class="label">Supercoppe di Lega</div></div>
+    <div class="trophy zero"><div class="icon">—</div><div class="number">0</div><div class="label">Lefabam Cup</div></div>
+  </div>
+</section>
+
+<div class="back">
+  <a href="societa.html">← Torna alle Società</a>
 </div>
-</section>
 
-<section class="section">
-<h2>La storia della Zuluzebra</h2>
-<div class="story">
-<p>Questa sezione riprende la parte storica della pagina originale e potrà ospitare, nella versione definitiva, il testo storico della società e le immagini d'archivio.</p>
-<p>Per ora non aggiungo informazioni che la pagina fornita non contiene.</p>
-</div>
-</section>
+<footer>Zuluzebra</footer>
 
-<section class="section">
-<h2>Le stagioni della Zulu</h2>
-<table>
-<thead><tr><th>Stagione</th><th>Serie Maxima</th><th>Apertura</th><th>Chiusura</th><th>Extra League</th><th>Lefabam Cup</th><th>Supercoppa</th></tr></thead>
-<tbody><tr><td class='season'>1995/1996</td><td>2°</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td class='season'>1996/1997</td><td>1°</td><td>1°</td><td>El</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td class='season'>1997/1998</td><td>1°</td><td>1°</td><td>SF</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td class='season'>1998/1999</td><td>4°</td><td>SF</td><td>El</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td class='season'>1999/2000</td><td>1°</td><td>El</td><td>F</td><td>1°</td><td>—</td><td>-</td></tr>
-<tr><td class='season'>2000/2001</td><td>2°</td><td>F</td><td>1°</td><td>2°</td><td>-</td><td>F</td></tr>
-<tr><td class='season'>2001/2002</td><td>2°</td><td>F</td><td>1°</td><td>1°</td><td>-</td><td>1°</td></tr>
-<tr><td class='season'>2002/2003</td><td>2°</td><td>8/vi</td><td>F</td><td>2°</td><td>-</td><td>1°</td></tr>
-<tr><td class='season'>2003/2004</td><td>5°</td><td>1°</td><td>8/vi</td><td>8°</td><td>-</td><td>-</td></tr>
-<tr><td class='season'>2004/2005</td><td>5°</td><td>8/vi</td><td>F</td><td>7°</td><td>-</td><td>SF</td></tr>
-<tr><td class='season'>2005/2006</td><td>3°</td><td>1°</td><td>4/ti</td><td>2°</td><td>-</td><td>-</td></tr>
-<tr><td class='season'>2006/2007</td><td>4°</td><td>SF</td><td>8/vi</td><td>1°</td><td>-</td><td>1°</td></tr>
-<tr><td class='season'>2007/2008</td><td>1°</td><td>4/ti</td><td>1°</td><td>2°</td><td>-</td><td>1°</td></tr></tbody>
-</table>
-<div class="note">Tabella ricostruita dai dati presenti nella pagina storica fornita.</div>
-</section>
-
-<section class="section">
-<h2>Il Palmarès</h2>
-<div class="palmares">
-<div class="trophy"><div class="n">4</div><div class="label">Campionati di Serie Maxima</div></div>
-<div class="trophy"><div class="n">4</div><div class="label">Tornei di Apertura</div></div>
-<div class="trophy"><div class="n">3</div><div class="label">Tornei di Chiusura</div></div>
-<div class="trophy"><div class="n">3</div><div class="label">Extra League</div></div>
-<div class="trophy"><div class="n">4</div><div class="label">Supercoppe di Lega</div></div>
-<div class="trophy"><div class="n">0</div><div class="label">Lefabam Cup</div></div>
-</div>
-</section>
-<footer>Lega Fantacalcio Barriera dell'M · Zuluzebra</footer>
 </main>
 </body>
 </html>
