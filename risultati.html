@@ -1,0 +1,445 @@
+```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>I Risultati — Lefabam</title>
+
+<style>
+:root{
+  --blue:#063b67;
+  --blue2:#0b5fa0;
+  --yellow:#f4c51b;
+  --ink:#16384f;
+  --light:#edf5fa;
+  --line:#c9dce9;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(135deg,#dbeaf5,#9fc2dc);
+}
+
+.topbar{
+  background:linear-gradient(180deg,#062d50,#164f78);
+  padding:14px 20px;
+  box-shadow:0 8px 25px #073b5a33;
+}
+
+.nav{
+  max-width:1180px;
+  margin:auto;
+  display:flex;
+  justify-content:center;
+  gap:28px;
+  flex-wrap:wrap;
+}
+
+.nav a{
+  color:white;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:800;
+}
+
+main{
+  max-width:1180px;
+  margin:22px auto 35px;
+  padding:0 18px;
+}
+
+.header{
+  background:#fff;
+  border-radius:22px;
+  padding:20px 30px;
+  text-align:center;
+  box-shadow:0 12px 30px #073b5a22;
+  border-top:7px solid var(--yellow);
+}
+
+.header h1{
+  margin:0;
+  color:var(--blue);
+  font-size:30px;
+  letter-spacing:.5px;
+}
+
+.header p{
+  margin:7px 0 0;
+  color:#668092;
+  font-weight:700;
+  font-size:13px;
+}
+
+.controls{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin:12px 0;
+}
+
+select{
+  border:1px solid var(--line);
+  background:white;
+  border-radius:12px;
+  padding:11px 15px;
+  font-weight:800;
+  color:var(--blue);
+  font-size:13px;
+}
+
+.card{
+  background:rgba(255,255,255,.97);
+  border-radius:22px;
+  padding:17px 18px;
+  box-shadow:0 10px 27px #073b5a20;
+}
+
+.card-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:9px;
+}
+
+.card-title h2{
+  margin:0;
+  color:var(--blue);
+  font-size:19px;
+}
+
+.badge{
+  background:var(--light);
+  padding:7px 10px;
+  border-radius:9px;
+  color:var(--blue2);
+  font-size:11px;
+  font-weight:900;
+}
+
+/* ================================
+   RISULTATI: 1-7 A SINISTRA
+   8-14 A DESTRA
+   ================================ */
+
+.results-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(7,auto);
+  grid-auto-flow:column;
+  gap:7px 10px;
+}
+
+.result-row{
+  display:grid;
+  grid-template-columns:40px 1fr 72px;
+  align-items:center;
+  min-height:47px;
+  border:1px solid #d9e6ee;
+  border-radius:11px;
+  padding:0 10px;
+  background:#fbfdfe;
+  box-shadow:0 2px 7px #073b5a0b;
+}
+
+.result-row:last-child{
+  border-bottom:1px solid #d9e6ee;
+}
+
+.rank{
+  font-size:15px;
+  font-weight:900;
+  color:#7991a0;
+  text-align:center;
+}
+
+.team{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  min-width:0;
+}
+
+.team strong{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#9ab8cb;
+  flex:none;
+}
+
+.score{
+  text-align:right;
+  font-size:19px;
+  font-weight:900;
+  color:var(--blue);
+}
+
+.gold{
+  background:linear-gradient(90deg,#fff8d9,#fff);
+  border-color:#ecd982;
+}
+
+.silver{
+  background:linear-gradient(90deg,#f2f5f7,#fff);
+  border-color:#cbd6dc;
+}
+
+.bronze{
+  background:linear-gradient(90deg,#fff0e6,#fff);
+  border-color:#e7c0a2;
+}
+
+.gold .rank{
+  color:#c89a00;
+}
+
+.silver .rank{
+  color:#71808b;
+}
+
+.bronze .rank{
+  color:#b26b35;
+}
+
+.note{
+  margin-top:10px;
+  text-align:center;
+  color:#708795;
+  font-size:11px;
+}
+
+footer{
+  text-align:center;
+  color:#527589;
+  font-size:12px;
+  margin-top:25px;
+}
+
+/* ================================
+   VERSIONE MOBILE
+   ================================ */
+
+@media(max-width:760px){
+
+  main{
+    margin-top:15px;
+  }
+
+  .results-grid{
+    grid-template-columns:1fr;
+    grid-template-rows:none;
+    grid-auto-flow:row;
+  }
+
+  .result-row{
+    min-height:45px;
+  }
+
+  .header h1{
+    font-size:27px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+<nav class="nav">
+<a href="index.html">HOME</a>
+<a href="competizioni.html">COMPETIZIONI</a>
+<a href="risultati.html">I RISULTATI</a>
+<a href="societa.html">LE SOCIETÀ</a>
+<a href="albo-doro.html">ALBO D'ORO</a>
+</nav>
+</header>
+
+<main>
+
+<section class="header">
+<h1>🏆 I RISULTATI</h1>
+<p>Serie Maxima · Stagione 2026/27</p>
+</section>
+
+<div class="controls">
+
+<select>
+<option>3ª Giornata</option>
+<option>2ª Giornata</option>
+<option>1ª Giornata</option>
+</select>
+
+<select>
+<option>Serie Maxima</option>
+<option>Serie Minus</option>
+</select>
+
+</div>
+
+<section class="card">
+
+<div class="card-title">
+<h2>3ª Giornata — Punteggi di giornata</h2>
+<span class="badge">14 SOCIETÀ</span>
+</div>
+
+<div class="results-grid">
+
+<div class="result-row gold">
+<div class="rank">1</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Monaco di Barriera</strong>
+</div>
+<div class="score">81.0</div>
+</div>
+
+<div class="result-row silver">
+<div class="rank">2</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Dinamo Siena</strong>
+</div>
+<div class="score">80.5</div>
+</div>
+
+<div class="result-row bronze">
+<div class="rank">3</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Evertor</strong>
+</div>
+<div class="score">74.5</div>
+</div>
+
+<div class="result-row">
+<div class="rank">4</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Taurinorum</strong>
+</div>
+<div class="score">73.5</div>
+</div>
+
+<div class="result-row">
+<div class="rank">5</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Castel di Iemma</strong>
+</div>
+<div class="score">70.5</div>
+</div>
+
+<div class="result-row">
+<div class="rank">6</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Intertor</strong>
+</div>
+<div class="score">70.5</div>
+</div>
+
+<div class="result-row">
+<div class="rank">7</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Spartak Pisa</strong>
+</div>
+<div class="score">70.5</div>
+</div>
+
+<div class="result-row">
+<div class="rank">8</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Vaientus</strong>
+</div>
+<div class="score">70.0</div>
+</div>
+
+<div class="result-row">
+<div class="rank">9</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Lobe United</strong>
+</div>
+<div class="score">69.0</div>
+</div>
+
+<div class="result-row">
+<div class="rank">10</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Profonda Aurora</strong>
+</div>
+<div class="score">69.0</div>
+</div>
+
+<div class="result-row">
+<div class="rank">11</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Real Doratom</strong>
+</div>
+<div class="score">67.5</div>
+</div>
+
+<div class="result-row">
+<div class="rank">12</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Tomcat</strong>
+</div>
+<div class="score">67.5</div>
+</div>
+
+<div class="result-row">
+<div class="rank">13</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Wild Eagles</strong>
+</div>
+<div class="score">67.0</div>
+</div>
+
+<div class="result-row">
+<div class="rank">14</div>
+<div class="team">
+<span class="dot"></span>
+<strong>Zuluzebra</strong>
+</div>
+<div class="score">65.0</div>
+</div>
+
+</div>
+</section>
+
+<div class="note">
+Dati di prova ricavati dal PDF della 3ª giornata.
+Nella versione definitiva questa tabella verrà alimentata automaticamente dal Google Sheet.
+</div>
+
+<footer>
+Lega Fantacalcio Barriera dell'M · Lefabam
+</footer>
+
+</main>
+
+</body>
+</html>
+```
