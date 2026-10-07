@@ -475,7 +475,12 @@ Lega Fantacalcio Barriera dell'M · Lefabam
 const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAZ6gsykXzy3L8hGuAKKGMWyMEq16dfuO24xdggjvhE9RzyxgTf0VMd5q-s-zZGQf_ckiXobLIfKUZ/pub?gid=390833399&single=true&output=csv";
 
 console.log("Collegamento Google Sheet:", SHEET_URL);
-</script>
-
-</body>
-</html>
+fetch(SHEET_URL)
+  .then(response => response.text())
+  .then(data => {
+    console.log("DATI GOOGLE SHEET:");
+    console.log(data);
+  })
+  .catch(error => {
+    console.error("ERRORE GOOGLE SHEET:", error);
+  });
