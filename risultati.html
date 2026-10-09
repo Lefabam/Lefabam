@@ -1,257 +1,290 @@
-```html
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>I Risultati — Lefabam</title>
 
 <style>
-:root{
-  --blue:#063b67;
-  --blue2:#0b5fa0;
-  --yellow:#f4c51b;
-  --ink:#16384f;
-  --light:#edf5fa;
-  --line:#c9dce9;
+:root {
+  --blue: #063b67;
+  --blue2: #0b5fa0;
+  --yellow: #f4c51b;
+  --ink: #16384f;
+  --light: #edf5fa;
+  --line: #c9dce9;
 }
 
-*{
-  box-sizing:border-box;
+* {
+  box-sizing: border-box;
 }
 
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  color:var(--ink);
-  background:linear-gradient(135deg,#dbeaf5,#9fc2dc);
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(135deg, #dbeaf5, #9fc2dc);
 }
 
-.topbar{
-  background:linear-gradient(180deg,#062d50,#164f78);
-  padding:14px 20px;
-  box-shadow:0 8px 25px #073b5a33;
+.topbar {
+  background: linear-gradient(180deg, #062d50, #164f78);
+  padding: 14px 20px;
+  box-shadow: 0 8px 25px #073b5a33;
 }
 
-.nav{
-  max-width:1180px;
-  margin:auto;
-  display:flex;
-  justify-content:center;
-  gap:28px;
-  flex-wrap:wrap;
+.nav {
+  max-width: 1180px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
 }
 
-.nav a{
-  color:white;
-  text-decoration:none;
-  font-size:13px;
-  font-weight:800;
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
 }
 
-main{
-  max-width:1180px;
-  margin:22px auto 35px;
-  padding:0 18px;
+.nav a:hover {
+  color: var(--yellow);
 }
 
-.header{
-  background:#fff;
-  border-radius:22px;
-  padding:20px 30px;
-  text-align:center;
-  box-shadow:0 12px 30px #073b5a22;
-  border-top:7px solid var(--yellow);
+main {
+  max-width: 1180px;
+  margin: 22px auto 35px;
+  padding: 0 18px;
 }
 
-.header h1{
-  margin:0;
-  color:var(--blue);
-  font-size:30px;
-  letter-spacing:.5px;
+.header {
+  background: white;
+  border-radius: 22px;
+  padding: 20px 30px;
+  text-align: center;
+  box-shadow: 0 12px 30px #073b5a22;
+  border-top: 7px solid var(--yellow);
 }
 
-.header p{
-  margin:7px 0 0;
-  color:#668092;
-  font-weight:700;
-  font-size:13px;
+.header h1 {
+  margin: 0;
+  color: var(--blue);
+  font-size: 30px;
+  letter-spacing: .5px;
 }
 
-.controls{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin:12px 0;
+.header p {
+  margin: 7px 0 0;
+  color: #668092;
+  font-weight: 700;
+  font-size: 13px;
 }
 
-select{
-  border:1px solid var(--line);
-  background:white;
-  border-radius:12px;
-  padding:11px 15px;
-  font-weight:800;
-  color:var(--blue);
-  font-size:13px;
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 16px 0;
 }
 
-.card{
-  background:rgba(255,255,255,.97);
-  border-radius:22px;
-  padding:17px 18px;
-  box-shadow:0 10px 27px #073b5a20;
+select {
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 12px;
+  padding: 11px 15px;
+  font-weight: 800;
+  color: var(--blue);
+  font-size: 13px;
+  max-width: 100%;
 }
 
-.card-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:9px;
+.card {
+  background: rgba(255, 255, 255, .97);
+  border-radius: 22px;
+  padding: 17px 18px;
+  box-shadow: 0 10px 27px #073b5a20;
 }
 
-.card-title h2{
-  margin:0;
-  color:var(--blue);
-  font-size:19px;
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
-.badge{
-  background:var(--light);
-  padding:7px 10px;
-  border-radius:9px;
-  color:var(--blue2);
-  font-size:11px;
-  font-weight:900;
+.card-title h2 {
+  margin: 0;
+  color: var(--blue);
+  font-size: 19px;
 }
 
-/* ================================
-   RISULTATI: 1-7 A SINISTRA
-   8-14 A DESTRA
-   ================================ */
-
-.results-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  grid-template-rows:repeat(7,auto);
-  grid-auto-flow:column;
-  gap:7px 10px;
+.badge {
+  background: var(--light);
+  padding: 7px 10px;
+  border-radius: 9px;
+  color: var(--blue2);
+  font-size: 11px;
+  font-weight: 900;
+  white-space: nowrap;
 }
 
-.result-row{
-  display:grid;
-  grid-template-columns:40px 1fr 72px;
-  align-items:center;
-  min-height:47px;
-  border:1px solid #d9e6ee;
-  border-radius:11px;
-  padding:0 10px;
-  background:#fbfdfe;
-  box-shadow:0 2px 7px #073b5a0b;
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(7, auto);
+  grid-auto-flow: column;
+  gap: 7px 10px;
 }
 
-.result-row:last-child{
-  border-bottom:1px solid #d9e6ee;
+.result-row {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 72px;
+  align-items: center;
+  min-height: 47px;
+  border: 1px solid #d9e6ee;
+  border-radius: 11px;
+  padding: 0 10px;
+  background: #fbfdfe;
+  box-shadow: 0 2px 7px #073b5a0b;
 }
 
-.rank{
-  font-size:15px;
-  font-weight:900;
-  color:#7991a0;
-  text-align:center;
+.rank {
+  font-size: 15px;
+  font-weight: 900;
+  color: #7991a0;
+  text-align: center;
 }
 
-.team{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:13px;
-  min-width:0;
+.team {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: 13px;
 }
 
-.team strong{
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+.team strong {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#9ab8cb;
-  flex:none;
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9ab8cb;
+  flex: none;
 }
 
-.score{
-  text-align:right;
-  font-size:19px;
-  font-weight:900;
-  color:var(--blue);
+.score {
+  text-align: right;
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--blue);
 }
 
-.gold{
-  background:linear-gradient(90deg,#fff8d9,#fff);
-  border-color:#ecd982;
+.gold {
+  background: linear-gradient(90deg, #fff8d9, #fff);
+  border-color: #ecd982;
 }
 
-.silver{
-  background:linear-gradient(90deg,#f2f5f7,#fff);
-  border-color:#cbd6dc;
+.silver {
+  background: linear-gradient(90deg, #f2f5f7, #fff);
+  border-color: #cbd6dc;
 }
 
-.bronze{
-  background:linear-gradient(90deg,#fff0e6,#fff);
-  border-color:#e7c0a2;
+.bronze {
+  background: linear-gradient(90deg, #fff0e6, #fff);
+  border-color: #e7c0a2;
 }
 
-.gold .rank{
-  color:#c89a00;
+.gold .rank {
+  color: #c89a00;
 }
 
-.silver .rank{
-  color:#71808b;
+.silver .rank {
+  color: #71808b;
 }
 
-.bronze .rank{
-  color:#b26b35;
+.bronze .rank {
+  color: #b26b35;
 }
 
-.note{
-  margin-top:10px;
-  text-align:center;
-  color:#708795;
-  font-size:11px;
+.message {
+  margin: 18px 0 4px;
+  padding: 15px;
+  text-align: center;
+  border-radius: 12px;
+  background: #edf5fa;
+  color: #527589;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
-footer{
-  text-align:center;
-  color:#527589;
-  font-size:12px;
-  margin-top:25px;
+.message.error {
+  background: #fff0e6;
+  color: #8b3e20;
 }
 
-/* ================================
-   VERSIONE MOBILE
-   ================================ */
+.note {
+  margin-top: 10px;
+  text-align: center;
+  color: #708795;
+  font-size: 11px;
+  line-height: 1.5;
+}
 
-@media(max-width:760px){
+footer {
+  text-align: center;
+  color: #527589;
+  font-size: 12px;
+  margin-top: 25px;
+}
 
-  main{
-    margin-top:15px;
+@media (max-width: 760px) {
+  main {
+    margin-top: 15px;
+    padding: 0 12px;
   }
 
-  .results-grid{
-    grid-template-columns:1fr;
-    grid-template-rows:none;
-    grid-auto-flow:row;
+  .header {
+    padding: 18px 12px;
   }
 
-  .result-row{
-    min-height:45px;
+  .header h1 {
+    font-size: 27px;
   }
 
-  .header h1{
-    font-size:27px;
+  .card {
+    padding: 14px 11px;
+  }
+
+  .card-title {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-flow: row;
+  }
+
+  .result-row {
+    min-height: 45px;
+  }
+
+  .score {
+    font-size: 17px;
+  }
+
+  .nav {
+    gap: 15px;
   }
 }
 </style>
@@ -260,236 +293,413 @@ footer{
 <body>
 
 <header class="topbar">
-<nav class="nav">
-<a href="index.html">HOME</a>
-<a href="competizioni.html">COMPETIZIONI</a>
-<a href="risultati.html">I RISULTATI</a>
-<a href="societa.html">LE SOCIETÀ</a>
-<a href="albo-doro.html">ALBO D'ORO</a>
-</nav>
+  <nav class="nav">
+    <a href="index.html">HOME</a>
+    <a href="competizioni.html">COMPETIZIONI</a>
+    <a href="risultati.html">I RISULTATI</a>
+    <a href="societa.html">LE SOCIETÀ</a>
+    <a href="albo-doro.html">ALBO D'ORO</a>
+  </nav>
 </header>
 
 <main>
 
-<section class="header">
-<h1>🏆 I RISULTATI</h1>
-<p>Serie Maxima · Stagione 2026/27</p>
-</section>
+  <section class="header">
+    <h1>🏆 I RISULTATI</h1>
+    <p>Serie Maxima · Stagione 2026/27</p>
+  </section>
 
-<div class="controls">
+  <div class="controls">
+    <select id="giornataSelect" aria-label="Seleziona giornata">
+      <option value="1">1ª Giornata</option>
+      <option value="2">2ª Giornata</option>
+      <option value="3" selected>3ª Giornata</option>
+      <option value="4">4ª Giornata</option>
+      <option value="5">5ª Giornata</option>
+      <option value="6">6ª Giornata</option>
+      <option value="7">7ª Giornata</option>
+      <option value="8">8ª Giornata</option>
+      <option value="9">9ª Giornata</option>
+      <option value="10">10ª Giornata</option>
+      <option value="11">11ª Giornata</option>
+      <option value="12">12ª Giornata</option>
+      <option value="13">13ª Giornata</option>
+      <option value="14">14ª Giornata</option>
+      <option value="15">15ª Giornata</option>
+      <option value="16">16ª Giornata</option>
+      <option value="17">17ª Giornata</option>
+      <option value="18">18ª Giornata</option>
+      <option value="19">19ª Giornata</option>
+      <option value="20">20ª Giornata</option>
+      <option value="21">21ª Giornata</option>
+      <option value="22">22ª Giornata</option>
+      <option value="23">23ª Giornata</option>
+      <option value="24">24ª Giornata</option>
+      <option value="25">25ª Giornata</option>
+      <option value="26">26ª Giornata</option>
+      <option value="27">27ª Giornata</option>
+      <option value="28">28ª Giornata</option>
+      <option value="29">29ª Giornata</option>
+      <option value="30">30ª Giornata</option>
+      <option value="31">31ª Giornata</option>
+      <option value="32">32ª Giornata</option>
+      <option value="33">33ª Giornata</option>
+      <option value="34">34ª Giornata</option>
+      <option value="35">35ª Giornata</option>
+      <option value="36">36ª Giornata</option>
+    </select>
 
-  <option value="1">1ª Giornata</option>
-  <option value="2">2ª Giornata</option>
-  <option value="3" selected>3ª Giornata</option>
-  <option value="4">4ª Giornata</option>
-  <option value="5">5ª Giornata</option>
-  <option value="6">6ª Giornata</option>
-  <option value="7">7ª Giornata</option>
-  <option value="8">8ª Giornata</option>
-  <option value="9">9ª Giornata</option>
-  <option value="10">10ª Giornata</option>
-  <option value="11">11ª Giornata</option>
-  <option value="12">12ª Giornata</option>
-  <option value="13">13ª Giornata</option>
-  <option value="14">14ª Giornata</option>
-  <option value="15">15ª Giornata</option>
-  <option value="16">16ª Giornata</option>
-  <option value="17">17ª Giornata</option>
-  <option value="18">18ª Giornata</option>
-  <option value="19">19ª Giornata</option>
-  <option value="20">20ª Giornata</option>
-  <option value="21">21ª Giornata</option>
-  <option value="22">22ª Giornata</option>
-  <option value="23">23ª Giornata</option>
-  <option value="24">24ª Giornata</option>
-  <option value="25">25ª Giornata</option>
-  <option value="26">26ª Giornata</option>
-  <option value="27">27ª Giornata</option>
-  <option value="28">28ª Giornata</option>
-  <option value="29">29ª Giornata</option>
-  <option value="30">30ª Giornata</option>
-  <option value="31">31ª Giornata</option>
-  <option value="32">32ª Giornata</option>
-  <option value="33">33ª Giornata</option>
-  <option value="34">34ª Giornata</option>
-  <option value="35">35ª Giornata</option>
-  <option value="36">36ª Giornata</option>
-</select>
-<select id="competizioneSelect">
-  <option value="Serie Maxima">Serie Maxima</option>
-  <option value="Serie Minus">Serie Minus</option>
-</select>
+    <select id="competizioneSelect" aria-label="Seleziona competizione">
+      <option value="Serie Maxima">Serie Maxima</option>
+      <option value="Serie Minus">Serie Minus</option>
+    </select>
+  </div>
 
-</div>
+  <section class="card">
+    <div class="card-title">
+      <h2 id="titoloRisultati">3ª Giornata — Punteggi di giornata</h2>
+      <span class="badge" id="numeroSocieta">CARICAMENTO…</span>
+    </div>
 
-<section class="card">
+    <div id="risultati" class="results-grid"></div>
 
-<div class="card-title">
-<h2>3ª Giornata — Punteggi di giornata</h2>
-<span class="badge">14 SOCIETÀ</span>
-</div>
+    <div id="messaggio" class="message">
+      Caricamento dei risultati dal Google Sheet…
+    </div>
+  </section>
 
-<div class="results-grid">
+  <div class="note" id="notaDati">
+    Risultati aggiornati automaticamente dal foglio ufficiale della lega.
+  </div>
 
-<div class="result-row gold">
-<div class="rank">1</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Monaco di Barriera</strong>
-</div>
-<div class="score">81.0</div>
-</div>
-
-<div class="result-row silver">
-<div class="rank">2</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Dinamo Siena</strong>
-</div>
-<div class="score">80.5</div>
-</div>
-
-<div class="result-row bronze">
-<div class="rank">3</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Evertor</strong>
-</div>
-<div class="score">74.5</div>
-</div>
-
-<div class="result-row">
-<div class="rank">4</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Taurinorum</strong>
-</div>
-<div class="score">73.5</div>
-</div>
-
-<div class="result-row">
-<div class="rank">5</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Castel di Iemma</strong>
-</div>
-<div class="score">70.5</div>
-</div>
-
-<div class="result-row">
-<div class="rank">6</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Intertor</strong>
-</div>
-<div class="score">70.5</div>
-</div>
-
-<div class="result-row">
-<div class="rank">7</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Spartak Pisa</strong>
-</div>
-<div class="score">70.5</div>
-</div>
-
-<div class="result-row">
-<div class="rank">8</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Vaientus</strong>
-</div>
-<div class="score">70.0</div>
-</div>
-
-<div class="result-row">
-<div class="rank">9</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Lobe United</strong>
-</div>
-<div class="score">69.0</div>
-</div>
-
-<div class="result-row">
-<div class="rank">10</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Profonda Aurora</strong>
-</div>
-<div class="score">69.0</div>
-</div>
-
-<div class="result-row">
-<div class="rank">11</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Real Doratom</strong>
-</div>
-<div class="score">67.5</div>
-</div>
-
-<div class="result-row">
-<div class="rank">12</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Tomcat</strong>
-</div>
-<div class="score">67.5</div>
-</div>
-
-<div class="result-row">
-<div class="rank">13</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Wild Eagles</strong>
-</div>
-<div class="score">67.0</div>
-</div>
-
-<div class="result-row">
-<div class="rank">14</div>
-<div class="team">
-<span class="dot"></span>
-<strong>Zuluzebra</strong>
-</div>
-<div class="score">65.0</div>
-</div>
-
-</div>
-</section>
-
-<div class="note">
-Dati di prova ricavati dal PDF della 3ª giornata.
-Nella versione definitiva questa tabella verrà alimentata automaticamente dal Google Sheet.
-</div>
-
-<footer>
-Lega Fantacalcio Barriera dell'M · Lefabam
-</footer>
+  <footer>
+    Lega Fantacalcio Barriera dell'M · Lefabam
+  </footer>
 
 </main>
 
 <script>
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAZ6gsykXzy3L8hGuAKKGMWyMEq16dfuO24xdggjvhE9RzyxgTf0VMd5q-s-zZGQf_ckiXobLIfKUZ/pub?gid=390833399&single=true&output=csv";
+const SHEET_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAZ6gsykXzy3L8hGuAKKGMWyMEq16dfuO24xdggjvhE9RzyxgTf0VMd5q-s-zZGQf_ckiXobLIfKUZ/pub?gid=390833399&single=true&output=csv";
 
-console.log("Collegamento Google Sheet:", SHEET_URL);
+const giornataSelect = document.getElementById("giornataSelect");
+const competizioneSelect = document.getElementById("competizioneSelect");
+const risultatiEl = document.getElementById("risultati");
+const titoloEl = document.getElementById("titoloRisultati");
+const numeroEl = document.getElementById("numeroSocieta");
+const messaggioEl = document.getElementById("messaggio");
+const notaEl = document.getElementById("notaDati");
 
-document.body.insertAdjacentHTML(
-  "beforeend",
-  "<p style='color:red;text-align:center;font-size:20px'>TEST SCRIPT OK</p>"
-);
+let risultatiCompleti = [];
+let risultatiOrdinati = [];
+let datiConFiltri = false;
+
+/* Legge il CSV rispettando le virgolette e le virgole nei nomi. */
+function leggiCSV(testo) {
+  const righe = testo.replace(/^\uFEFF/, "").trim().split(/\r?\n/);
+
+  return righe.map(riga => {
+    const celle = [];
+    let valore = "";
+    let virgolette = false;
+
+    for (let i = 0; i < riga.length; i++) {
+      const carattere = riga[i];
+
+      if (carattere === '"') {
+        if (virgolette && riga[i + 1] === '"') {
+          valore += '"';
+          i++;
+        } else {
+          virgolette = !virgolette;
+        }
+      } else if (carattere === "," && !virgolette) {
+        celle.push(valore.trim());
+        valore = "";
+      } else {
+        valore += carattere;
+      }
+    }
+
+    celle.push(valore.trim());
+    return celle;
+  });
+}
+
+function normalizza(testo) {
+  return String(testo ?? "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function numeroPunteggio(valore) {
+  if (valore === undefined || valore === null || valore.trim() === "") {
+    return NaN;
+  }
+
+  return Number(valore.replace(",", ".").replace(/[^\d.-]/g, ""));
+}
+
+function estraiGiornata(valore) {
+  const corrispondenza = String(valore ?? "").match(/\d+/);
+  return corrispondenza ? Number(corrispondenza[0]) : NaN;
+}
+
+function formattaPunteggio(valore) {
+  return Number(valore).toLocaleString("it-IT", {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1
+  });
+}
+
+function mostraMessaggio(testo, errore = false) {
+  messaggioEl.textContent = testo;
+  messaggioEl.className = errore ? "message error" : "message";
+  messaggioEl.hidden = false;
+}
+
+function nascondiMessaggio() {
+  messaggioEl.hidden = true;
+}
+
+function aggiornaTitolo() {
+  const giornata = giornataSelect.value;
+  const competizione = competizioneSelect.value;
+
+  titoloEl.textContent =
+    giornata + "ª Giornata — " + competizione;
+}
+
+function disegnaRisultati(lista) {
+  risultatiEl.replaceChildren();
+  numeroEl.textContent = lista.length + " SOCIETÀ";
+
+  if (lista.length === 0) {
+    mostraMessaggio(
+      "Non sono ancora disponibili risultati per questa giornata e competizione."
+    );
+    return;
+  }
+
+  nascondiMessaggio();
+
+  lista.forEach((risultato, indice) => {
+    const riga = document.createElement("div");
+    riga.className = "result-row";
+
+    if (risultato.posizione === 1) {
+      riga.classList.add("gold");
+    } else if (risultato.posizione === 2) {
+      riga.classList.add("silver");
+    } else if (risultato.posizione === 3) {
+      riga.classList.add("bronze");
+    }
+
+    const posizione = document.createElement("div");
+    posizione.className = "rank";
+    posizione.textContent = risultato.posizione;
+
+    const squadra = document.createElement("div");
+    squadra.className = "team";
+
+    const pallino = document.createElement("span");
+    pallino.className = "dot";
+
+    const nome = document.createElement("strong");
+    nome.textContent = risultato.societa;
+
+    squadra.append(pallino, nome);
+
+    const punteggio = document.createElement("div");
+    punteggio.className = "score";
+    punteggio.textContent = formattaPunteggio(risultato.punteggio);
+
+    riga.append(posizione, squadra, punteggio);
+    risultatiEl.appendChild(riga);
+  });
+}
+
+function aggiornaPagina() {
+  aggiornaTitolo();
+
+  const giornata = Number(giornataSelect.value);
+  const competizione = competizioneSelect.value;
+
+  if (datiConFiltri) {
+    const filtrati = risultatiCompleti
+      .filter(r =>
+        r.giornata === giornata &&
+        normalizza(r.competizione) === normalizza(competizione)
+      )
+      .sort((a, b) =>
+        a.posizione - b.posizione || b.punteggio - a.punteggio
+      );
+
+    disegnaRisultati(filtrati);
+    return;
+  }
+
+  /*
+   * Se il foglio contiene soltanto la classifica ordinata G:I,
+   * questi dati sono utilizzabili come risultati della 3ª giornata
+   * di Serie Maxima, che è quella attualmente pubblicata.
+   * Non mostriamo gli stessi punteggi per altre giornate.
+   */
+  if (giornata === 3 &&
+      normalizza(competizione) === normalizza("Serie Maxima")) {
+    disegnaRisultati(risultatiOrdinati);
+    return;
+  }
+
+  risultatiEl.replaceChildren();
+  numeroEl.textContent = "0 SOCIETÀ";
+  mostraMessaggio(
+    "Il foglio pubblicato contiene una classifica corrente, ma non distingue ancora questa giornata e competizione. Quando saranno presenti i relativi dati nel foglio, verranno mostrati qui."
+  );
+}
+
+function caricaDati(testo) {
+  const righe = leggiCSV(testo);
+
+  if (righe.length < 2) {
+    throw new Error("Il foglio non contiene risultati.");
+  }
+
+  const intestazioni = righe[0].map(normalizza);
+
+  const indiceGiornata = intestazioni.indexOf("giornata");
+  const indiceCompetizione = intestazioni.indexOf("competizione");
+  const indicePosizione = intestazioni.indexOf("posizione");
+  const indiceSocieta = intestazioni.indexOf("societa");
+  const indicePunteggio = intestazioni.indexOf("punteggio");
+
+  const indiceSocietaOrdinata = intestazioni.lastIndexOf("societa");
+  const indicePunteggioOrdinato = intestazioni.lastIndexOf("punteggio");
+  const indicePosizioneOrdinata = intestazioni.lastIndexOf("posizione");
+
+  risultatiCompleti = [];
+  risultatiOrdinati = [];
+
+  for (const celle of righe.slice(1)) {
+    const giornata = estraiGiornata(celle[indiceGiornata]);
+    const competizione = celle[indiceCompetizione] || "";
+    const societa = celle[indiceSocieta] || "";
+    const punteggio = numeroPunteggio(celle[indicePunteggio]);
+    const posizione = Number(celle[indicePosizione]);
+
+    if (
+      Number.isFinite(giornata) &&
+      competizione &&
+      societa &&
+      Number.isFinite(punteggio)
+    ) {
+      risultatiCompleti.push({
+        giornata,
+        competizione,
+        posizione: Number.isFinite(posizione) && posizione > 0
+          ? posizione
+          : 0,
+        societa,
+        punteggio
+      });
+    }
+
+    const societaOrdinata = celle[indiceSocietaOrdinata] || "";
+    const punteggioOrdinato = numeroPunteggio(
+      celle[indicePunteggioOrdinato]
+    );
+    const posizioneOrdinata = Number(celle[indicePosizioneOrdinata]);
+
+    if (
+      societaOrdinata &&
+      Number.isFinite(punteggioOrdinato)
+    ) {
+      risultatiOrdinati.push({
+        posizione: Number.isFinite(posizioneOrdinata) &&
+          posizioneOrdinata > 0
+          ? posizioneOrdinata
+          : 0,
+        societa: societaOrdinata,
+        punteggio: punteggioOrdinato
+      });
+    }
+  }
+
+  if (risultatiCompleti.length > 0) {
+    datiConFiltri = true;
+
+    risultatiCompleti.sort((a, b) =>
+      a.giornata - b.giornata ||
+      normalizza(a.competizione).localeCompare(normalizza(b.competizione)) ||
+      b.punteggio - a.punteggio
+    );
+
+    /* Ricalcola le posizioni per ciascuna giornata e competizione
+       solo quando nel foglio non sono già indicate. */
+    const gruppi = new Map();
+
+    risultatiCompleti.forEach(r => {
+      const chiave = r.giornata + "|" + normalizza(r.competizione);
+      if (!gruppi.has(chiave)) gruppi.set(chiave, []);
+      gruppi.get(chiave).push(r);
+    });
+
+    for (const gruppo of gruppi.values()) {
+      gruppo.sort((a, b) => b.punteggio - a.punteggio);
+
+      gruppo.forEach((r, indice) => {
+        if (!r.posizione) r.posizione = indice + 1;
+      });
+    }
+  } else {
+    datiConFiltri = false;
+
+    risultatiOrdinati.sort((a, b) =>
+      a.posizione - b.posizione || b.punteggio - a.punteggio
+    );
+
+    risultatiOrdinati.forEach((r, indice) => {
+      if (!r.posizione) r.posizione = indice + 1;
+    });
+  }
+
+  if (!risultatiCompleti.length && !risultatiOrdinati.length) {
+    throw new Error(
+      "Non sono state trovate righe con società e punteggi nel CSV pubblicato."
+    );
+  }
+
+  notaEl.textContent =
+    "Dati letti automaticamente dal Google Sheet ufficiale della lega.";
+
+  aggiornaPagina();
+}
+
+giornataSelect.addEventListener("change", aggiornaPagina);
+competizioneSelect.addEventListener("change", aggiornaPagina);
 
 fetch(SHEET_URL)
-  .then(response => response.text())
-  .then(data => {
-    console.log("DATI GOOGLE SHEET:");
-    console.log(data);
+  .then(risposta => {
+    if (!risposta.ok) {
+      throw new Error("Il Google Sheet non è raggiungibile.");
+    }
+    return risposta.text();
   })
-  .catch(error => {
-    console.error("ERRORE GOOGLE SHEET:", error);
+  .then(caricaDati)
+  .catch(errore => {
+    console.error("Errore nel caricamento dei risultati:", errore);
+    risultatiEl.replaceChildren();
+    numeroEl.textContent = "NON DISPONIBILE";
+    mostraMessaggio(
+      "Non è stato possibile caricare i risultati dal Google Sheet. Riprova più tardi.",
+      true
+    );
+    notaEl.textContent =
+      "Se il problema persiste, verifica che il foglio SITO_RISULTATI sia pubblicato sul web.";
   });
 </script>
+
 </body>
 </html>
