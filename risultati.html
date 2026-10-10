@@ -82,22 +82,19 @@ footer{text-align:center;color:#527589;font-size:12px;margin-top:25px}
     <div class="logo-trio" aria-label="Serie Maxima, Torneo di Apertura, Qualificazioni Extra League">
       <div class="competition-mark"><img src="serie-maxima.png" alt="Serie Maxima" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">SERIE MAXIMA</span></div>
       <div class="competition-mark"><img src="apertura-trasparente.png" alt="Torneo di Apertura" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">APERTURA</span></div>
-      <div class="competition-mark"><img src="qualificazioni-extra-league.png" alt="Qualificazioni Extra League" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">QUALIFICAZIONI EXTRA</span></div>
+      <div class="competition-mark"><img src="qualificazioni.png" alt="Qualificazioni Extra League" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">QUALIFICAZIONI EXTRA</span></div>
     </div>
     <div class="banner-heading"><h1>RISULTATI</h1><p>Serie Maxima · Stagione 2026/27</p></div>
     <div class="logo-trio" aria-label="Extra League, Torneo di Chiusura, Lefabam Cup">
       <div class="competition-mark"><img src="extra-league.png" alt="Extra League" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">EXTRA LEAGUE</span></div>
       <div class="competition-mark"><img src="chiusura-trasparente.png" alt="Torneo di Chiusura" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">CHIUSURA</span></div>
-      <div class="competition-mark"><img src="LefabamCup.png" alt="Lefabam Cup" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">LEFABAM CUP</span></div>
+      <div class="competition-mark"><img src="lefabam-cup.png" alt="Lefabam Cup" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">LEFABAM CUP</span></div>
     </div>
   </div>
 </section>
 <div class="controls">
 <select id="giornataSelect" aria-label="Seleziona giornata">
 <option value="1">1ª Giornata</option><option value="2">2ª Giornata</option><option value="3" selected>3ª Giornata</option>
-</select>
-<select id="competizioneSelect" aria-label="Seleziona competizione">
-<option value="Serie Maxima" selected>Serie Maxima</option>
 </select>
 </div>
 <section class="card">
@@ -123,7 +120,6 @@ const PLAYER_DATA = {
 const DAY3_FALLBACK = [{"team":"Monaco di Barriera","total":81.0},{"team":"Dinamo Siena","total":80.5},{"team":"Evertor","total":74.5},{"team":"Taurinorum","total":73.5},{"team":"Castel di Iemma","total":70.5},{"team":"Intertor","total":70.5},{"team":"Spartak Pisa","total":70.5},{"team":"Vaientus","total":70.0},{"team":"Lobe United","total":69.0},{"team":"Profonda Aurora","total":69.0},{"team":"Real Doratom","total":67.5},{"team":"Tomcat","total":67.5},{"team":"Wild Eagles","total":67.0},{"team":"Zuluzebra","total":65.0}];
 
 const giornataSelect = document.getElementById("giornataSelect");
-const competizioneSelect = document.getElementById("competizioneSelect");
 const risultatiEl = document.getElementById("risultati");
 const titoloEl = document.getElementById("titoloRisultati");
 const numeroEl = document.getElementById("numeroSocieta");
@@ -294,7 +290,6 @@ function chiudiTabellino() {
 
 document.getElementById("chiudiDettaglio").addEventListener("click", chiudiTabellino);
 giornataSelect.addEventListener("change", aggiornaPagina);
-competizioneSelect.addEventListener("change", aggiornaPagina);
 
 /* Il CSV pubblicato contiene la classifica ordinata nelle colonne G:I.
    Se la lettura non riesce, rimangono visibili i punteggi di terza giornata
