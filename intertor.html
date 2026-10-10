@@ -1,0 +1,683 @@
+```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intertor | Lefabam</title>
+
+  <style>
+    :root {
+      --blu: #123b78;
+      --blu-scuro: #071b35;
+      --blu-medio: #1e4f91;
+      --giallo: #ffd447;
+      --sfondo: #eef3f9;
+      --bianco: #ffffff;
+      --testo: #17263c;
+      --grigio: #64748b;
+      --bordo: #d8e1ed;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #e5edf7 0%, #f5f7fb 100%);
+      color: var(--testo);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(110deg, #071b35, #172b46);
+      color: var(--bianco);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      color: var(--giallo);
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      background: var(--giallo);
+      color: var(--blu-scuro);
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 28px auto 50px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 28px;
+    }
+
+    .panel {
+      background: var(--bianco);
+      border: 1px solid var(--bordo);
+      border-radius: 20px;
+      box-shadow: 0 8px 26px rgba(20, 45, 80, 0.08);
+      padding: 26px;
+    }
+
+    .club-identity {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(150deg, #ffffff, #f3f7fc);
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--blu-medio);
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      color: var(--blu);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+    }
+
+    .logo-frame {
+      width: 210px;
+      height: 210px;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      background: #fff;
+      border: 3px solid var(--giallo);
+      border-radius: 50%;
+      box-shadow: 0 8px 24px rgba(18, 59, 120, 0.12);
+      margin: 0 auto 18px;
+    }
+
+    .logo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .foundation {
+      color: var(--grigio);
+      font-size: 0.95rem;
+    }
+
+    .foundation strong {
+      color: var(--blu);
+    }
+
+    .section-title {
+      color: var(--blu);
+      font-size: 1.45rem;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--giallo);
+    }
+
+    .management-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .management-card {
+      background: #f4f7fc;
+      border: 1px solid #dfe7f2;
+      border-radius: 13px;
+      padding: 16px;
+      min-height: 96px;
+    }
+
+    .management-card .role {
+      display: block;
+      color: var(--grigio);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 5px;
+    }
+
+    .management-card .person {
+      display: block;
+      color: var(--blu-scuro);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .management-card.pending .person {
+      color: #7b8797;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    .showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .image-card {
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .image-card h2 {
+      padding: 20px 22px 8px;
+      color: var(--blu);
+      font-size: 1.35rem;
+    }
+
+    .image-description {
+      padding: 0 22px 16px;
+      color: var(--grigio);
+      font-size: 0.92rem;
+    }
+
+    .image-area {
+      width: 100%;
+      height: 280px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #e5edf7, #f8fafc);
+      border-top: 1px solid var(--bordo);
+    }
+
+    .image-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .quick-link {
+      background: var(--blu);
+      color: var(--bianco);
+      text-align: center;
+      padding: 15px 10px;
+      border-radius: 12px;
+      font-weight: 800;
+      border: 2px solid transparent;
+      transition: transform 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .quick-link:hover {
+      background: var(--giallo);
+      color: var(--blu-scuro);
+      border-color: var(--blu);
+      transform: translateY(-2px);
+    }
+
+    .content-section {
+      margin-bottom: 24px;
+    }
+
+    .content-section p {
+      margin-bottom: 12px;
+    }
+
+    .placeholder {
+      border: 1px dashed #b7c5d8;
+      background: #f7f9fc;
+      color: var(--grigio);
+      padding: 18px;
+      border-radius: 12px;
+    }
+
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .people-card {
+      background: #f5f8fc;
+      border: 1px solid var(--bordo);
+      padding: 18px;
+      border-radius: 12px;
+    }
+
+    .people-card h3 {
+      color: var(--blu);
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .people-card p {
+      color: var(--grigio);
+      font-size: 0.92rem;
+      margin-bottom: 0;
+    }
+
+    .palmares-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .trophy-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 16px 18px;
+      background: #f5f8fc;
+      border: 1px solid var(--bordo);
+      border-radius: 12px;
+    }
+
+    .trophy-name {
+      font-weight: 800;
+      color: var(--blu);
+    }
+
+    .trophy-count {
+      color: var(--grigio);
+      font-size: 0.9rem;
+      text-align: right;
+    }
+
+    .back-area {
+      text-align: center;
+      margin: 32px 0 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      background: var(--giallo);
+      color: var(--blu-scuro);
+      border: 2px solid var(--blu);
+      border-radius: 10px;
+      padding: 12px 22px;
+      font-weight: 900;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .back-button:hover {
+      background: var(--blu);
+      color: var(--bianco);
+    }
+
+    footer {
+      background: var(--blu-scuro);
+      color: #dbe5f2;
+      text-align: center;
+      padding: 22px 16px;
+      font-size: 0.88rem;
+    }
+
+    footer strong {
+      color: var(--giallo);
+    }
+
+    @media (max-width: 800px) {
+      .hero,
+      .showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .people-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-container {
+        justify-content: center;
+      }
+
+      .brand {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: min(100% - 20px, 1120px);
+        margin-top: 16px;
+      }
+
+      .panel {
+        padding: 18px;
+      }
+
+      .management-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-frame {
+        width: 175px;
+        height: 175px;
+      }
+
+      .image-area {
+        height: 220px;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .nav-links a {
+        font-size: 0.82rem;
+        padding: 7px 9px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="nav-container">
+      <a class="brand" href="index.html">LEFABAM</a>
+
+      <nav class="nav-links" aria-label="Navigazione principale">
+        <a href="index.html">Home</a>
+        <a href="societa.html">Le Società</a>
+        <a href="competizioni.html">Le Competizioni</a>
+        <a href="albo-doro.html">Albo d'oro</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- IDENTITÀ DELLA SOCIETÀ E QUADRO DIRIGENZIALE -->
+    <section class="hero">
+
+      <div class="panel club-identity">
+        <div class="eyebrow">Le società della Lefabam</div>
+        <h1>INTERTOR</h1>
+
+        <div class="logo-frame">
+          <img
+            src="logo-intertor.png"
+            alt="Logo ufficiale dell'Intertor"
+          >
+        </div>
+
+        <p class="foundation">
+          Anno di fondazione: <strong>Da definire</strong>
+        </p>
+      </div>
+
+      <div class="panel">
+        <h2 class="section-title">Il quadro societario</h2>
+
+        <div class="management-grid">
+
+          <div class="management-card">
+            <span class="role">Proprietà</span>
+            <span class="person">Sansone R. &amp; Figlio</span>
+          </div>
+
+          <div class="management-card">
+            <span class="role">Presidente</span>
+            <span class="person">Roberto Sansone</span>
+          </div>
+
+          <div class="management-card">
+            <span class="role">Allenatore</span>
+            <span class="person">Nicolò Sansone</span>
+          </div>
+
+          <div class="management-card pending">
+            <span class="role">Direttore sportivo</span>
+            <span class="person">Da definire</span>
+          </div>
+
+          <div class="management-card pending">
+            <span class="role">Preparatore</span>
+            <span class="person">Da definire</span>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- STADIO E MAGLIE -->
+    <section class="showcase">
+
+      <article class="panel image-card">
+        <h2>🏟️ Lo stadio</h2>
+        <p class="image-description">
+          La casa dell'Intertor.
+        </p>
+
+        <div class="image-area">
+          <img
+            src="stadio-interpor.png"
+            alt="Stadio dell'Intertor"
+          >
+        </div>
+      </article>
+
+      <article class="panel image-card">
+        <h2>👕 Le maglie ufficiali</h2>
+        <p class="image-description">
+          I colori e le divise della società.
+        </p>
+
+        <div class="image-area">
+          <img
+            src="maglie-intertor.png"
+            alt="Maglie ufficiali dell'Intertor"
+          >
+        </div>
+      </article>
+
+    </section>
+
+    <!-- COLLEGAMENTI RAPIDI -->
+    <nav class="quick-links" aria-label="Sezioni della società">
+      <a class="quick-link" href="#storia">La storia</a>
+      <a class="quick-link" href="#personaggi">I personaggi</a>
+      <a class="quick-link" href="#archivio">L'archivio</a>
+      <a class="quick-link" href="#palmares">Il palmarès</a>
+    </nav>
+
+    <!-- STORIA -->
+    <section class="panel content-section" id="storia">
+      <h2 class="section-title">📖 La storia dell'Intertor</h2>
+
+      <div class="placeholder">
+        La storia della società verrà inserita in seguito.
+        Qui potremo raccontare le origini dell'Intertor, le stagioni
+        più importanti, i momenti memorabili e i protagonisti
+        della sua storia nella Lefabam.
+      </div>
+    </section>
+
+    <!-- PERSONAGGI -->
+    <section class="panel content-section" id="personaggi">
+      <h2 class="section-title">⭐ I personaggi della società</h2>
+
+      <div class="people-grid">
+
+        <article class="people-card">
+          <h3>⚽ Calciatori</h3>
+          <p>
+            I calciatori più rappresentativi dell'Intertor
+            saranno aggiunti in seguito.
+          </p>
+        </article>
+
+        <article class="people-card">
+          <h3>📋 Allenatori</h3>
+          <p>
+            <strong>Nicolò Sansone</strong> è l'allenatore attualmente
+            indicato nella scheda societaria.
+            L'eventuale elenco storico sarà completato in seguito.
+          </p>
+        </article>
+
+        <article class="people-card">
+          <h3>🏢 Dirigenti</h3>
+          <p>
+            <strong>Roberto Sansone</strong>, presidente.
+            <br>
+            <strong>Sansone R. &amp; Figlio</strong>, proprietà.
+            <br>
+            Gli altri nominativi saranno aggiunti in seguito.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ARCHIVIO -->
+    <section class="panel content-section" id="archivio">
+      <h2 class="section-title">🗂️ L'archivio della società</h2>
+
+      <div class="placeholder">
+        In questa sezione potranno essere raccolti i dati delle
+        singole stagioni dell'Intertor, le classifiche, i risultati
+        e le partecipazioni alle competizioni.
+        <br><br>
+        I dati saranno inseriti quando saranno disponibili.
+      </div>
+    </section>
+
+    <!-- PALMARES -->
+    <section class="panel content-section" id="palmares">
+      <h2 class="section-title">🏆 Il palmarès</h2>
+
+      <p style="margin-bottom: 16px;">
+        L'albo dei trofei dell'Intertor verrà completato sulla base
+        dei risultati storici della lega.
+      </p>
+
+      <div class="palmares-list">
+
+        <div class="trophy-row">
+          <span class="trophy-name">Serie Maxima</span>
+          <span class="trophy-count">Vittorie da inserire</span>
+        </div>
+
+        <div class="trophy-row">
+          <span class="trophy-name">Torneo di Apertura</span>
+          <span class="trophy-count">Vittorie da inserire</span>
+        </div>
+
+        <div class="trophy-row">
+          <span class="trophy-name">Torneo di Chiusura</span>
+          <span class="trophy-count">Vittorie da inserire</span>
+        </div>
+
+        <div class="trophy-row">
+          <span class="trophy-name">Extra League</span>
+          <span class="trophy-count">Vittorie da inserire</span>
+        </div>
+
+        <div class="trophy-row">
+          <span class="trophy-name">Lefabam Cup</span>
+          <span class="trophy-count">Vittorie da inserire</span>
+        </div>
+
+        <div class="trophy-row">
+          <span class="trophy-name">Supercoppa</span>
+          <span class="trophy-count">Vittorie da inserire</span>
+        </div>
+
+        <div class="trophy-row">
+          <span class="trophy-name">Altre competizioni</span>
+          <span class="trophy-count">Da completare</span>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="back-area">
+      <a class="back-button" href="societa.html">
+        ← Torna a Le Società
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>
+      <strong>INTERTOR</strong> · Una società della Lefabam
+    </p>
+    <p>
+      Lega Fantacalcio Barriera dell'M
+    </p>
+  </footer>
+
+</body>
+</html>
+```
