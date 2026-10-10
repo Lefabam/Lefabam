@@ -38,20 +38,25 @@ header{
 header h1{margin:0 0 5px;font-size:45px;line-height:1.05;font-weight:900;text-shadow:0 2px 2px rgba(0,0,0,.18)}
 header p{display:flex;align-items:center;justify-content:center;gap:22px;margin:0;color:#dff5ff;font-size:24px;font-weight:700}
 header p:before,header p:after{content:"";display:block;width:52px;height:2px;background:rgba(255,255,255,.8)}
+.logo-area{
+    width:100%;display:flex;justify-content:center;align-items:center;
+    padding:18px 20px 8px;position:relative;z-index:2
+}
+.competition-logo{
+    display:block;width:230px;max-width:72vw;height:auto;
+    object-fit:contain;filter:drop-shadow(0 4px 7px rgba(8,55,82,.16))
+}
 .container{width:100%;max-width:1500px;margin:0 auto;padding:0 24px 25px}
 .back-link{
-    display:inline-block;position:relative;z-index:10;margin-top:-74px;margin-bottom:44px;
+    display:inline-block;position:relative;z-index:10;margin-top:12px;margin-bottom:25px;
     padding:14px 20px;background:#073d5e;color:#fff;text-decoration:none;border-radius:10px;
     font-size:16px;font-weight:700;box-shadow:0 5px 12px rgba(0,0,0,.15)
 }
 .back-link:hover{background:#075071}
-.intro,.nota{
+.nota{
     background:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.72);
     border-radius:14px;box-shadow:0 5px 16px rgba(27,86,113,.10);backdrop-filter:blur(4px)
 }
-.intro{margin-bottom:25px;padding:13px 18px}
-.intro h2{margin:0 0 6px;color:#073d5e;font-size:23px}
-.intro p{margin:4px 0;color:#104d73;font-size:15px;line-height:1.32}
 
 /* TABELLONE */
 .tabellone-scroll{
@@ -193,7 +198,7 @@ footer:before,footer:after{
 @media(max-width:900px){
     header{width:88%;max-width:680px}
     header h1{font-size:34px} header p{font-size:18px}
-    .back-link{margin-top:-55px;margin-bottom:35px}
+    .back-link{margin-top:10px;margin-bottom:25px}
     .container{padding-left:15px;padding-right:15px}
 }
 @media(max-width:600px){
@@ -201,9 +206,7 @@ footer:before,footer:after{
     header h1{font-size:29px}
     header p{font-size:15px;gap:10px}
     header p:before,header p:after{width:30px}
-    .back-link{margin-top:-50px;padding:11px 15px;font-size:14px}
-    .intro{padding:14px 16px}
-    .intro h2{font-size:20px}.intro p{font-size:14px}
+    .back-link{margin-top:8px;padding:11px 15px;font-size:14px}
     .round-title{font-size:17px}.nota{padding:15px 17px}
     .nota h2{font-size:19px}.nota p{font-size:13px}
     footer:before,footer:after{display:none}
@@ -216,15 +219,14 @@ footer:before,footer:after{
     <p>Lega Fantacalcio Barriera dell'M</p>
 </header>
 
+<div class="logo-area">
+    <img src="apertura.png" alt="Logo Torneo di Apertura" class="competition-logo">
+</div>
+
 <div class="container">
     <a href="index.html" class="back-link">← &nbsp;Torna alla Home</a>
 
-    <section class="intro">
-        <h2>Torneo di Apertura 2026/27</h2>
-        <p>Tabellone a eliminazione diretta del Torneo di Apertura.</p>
-        <p>Gli ottavi di finale prevedono sei sfide. <strong>PROFONDA</strong> e <strong>INTERTOR</strong> accedono direttamente ai quarti di finale.</p>
-        <p>Le fasi successive conducono ai quarti di finale, alle semifinali e alla finale.</p>
-    </section>
+
 
     <section class="tabellone-section">
         <div class="tabellone-scroll">
