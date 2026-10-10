@@ -30,11 +30,21 @@ body:after{
     pointer-events:none;z-index:-1;
 }
 header{
-    width:680px;max-width:82%;margin:0 auto;padding:18px 24px 20px;
+    width:100%;max-width:none;margin:0 auto;padding:20px 220px 22px;
     text-align:center;color:#fff;background:linear-gradient(180deg,#073b5a,#084c6d);
-    border-radius:0 0 42px 42px;box-shadow:0 8px 20px rgba(8,55,82,.18);
+    border-radius:0 0 28px 28px;box-shadow:0 8px 20px rgba(8,55,82,.18);
     position:relative;z-index:5;
 }
+.header-nav{
+    position:absolute;left:24px;right:24px;top:50%;transform:translateY(-50%);
+    display:flex;align-items:center;justify-content:space-between;gap:14px;pointer-events:none
+}
+.header-nav a{
+    display:inline-block;padding:11px 16px;border-radius:9px;background:#0b6288;color:#fff;
+    text-decoration:none;font-size:15px;font-weight:800;box-shadow:0 4px 10px rgba(0,0,0,.16);
+    pointer-events:auto;white-space:nowrap
+}
+.header-nav a:hover{background:#11769e}
 header h1{margin:0 0 5px;font-size:45px;line-height:1.05;font-weight:900;text-shadow:0 2px 2px rgba(0,0,0,.18)}
 header p{display:flex;align-items:center;justify-content:center;gap:22px;margin:0;color:#dff5ff;font-size:24px;font-weight:700}
 header p:before,header p:after{content:"";display:block;width:52px;height:2px;background:rgba(255,255,255,.8)}
@@ -196,17 +206,19 @@ footer:before,footer:after{
 }
 
 @media(max-width:900px){
-    header{width:88%;max-width:680px}
+    header{padding-left:175px;padding-right:175px}
+    .header-nav{left:14px;right:14px}
+    .header-nav a{padding:10px 12px;font-size:14px}
     header h1{font-size:34px} header p{font-size:18px}
-    .back-link{margin-top:10px;margin-bottom:25px}
     .container{padding-left:15px;padding-right:15px}
 }
 @media(max-width:600px){
-    header{width:94%;padding:18px 15px 20px;border-radius:0 0 30px 30px}
+    header{padding:14px 12px 18px;border-radius:0 0 24px 24px}
+    .header-nav{position:relative;left:auto;right:auto;top:auto;transform:none;margin-bottom:14px;gap:8px}
+    .header-nav a{padding:9px 10px;font-size:12px}
     header h1{font-size:29px}
     header p{font-size:15px;gap:10px}
     header p:before,header p:after{width:30px}
-    .back-link{margin-top:8px;padding:11px 15px;font-size:14px}
     .round-title{font-size:17px}.nota{padding:15px 17px}
     .nota h2{font-size:19px}.nota p{font-size:13px}
     footer:before,footer:after{display:none}
@@ -215,6 +227,10 @@ footer:before,footer:after{
 </head>
 <body>
 <header>
+    <nav class="header-nav" aria-label="Navigazione">
+        <a href="index.html" aria-label="Torna alla Home">⌂ Home</a>
+        <a href="competizioni.html">← Le Competizioni</a>
+    </nav>
     <h1>Torneo di Apertura</h1>
     <p>Lega Fantacalcio Barriera dell'M</p>
 </header>
@@ -224,10 +240,6 @@ footer:before,footer:after{
 </div>
 
 <div class="container">
-    <a href="index.html" class="back-link">← &nbsp;Torna alla Home</a>
-
-
-
     <section class="tabellone-section">
         <div class="tabellone-scroll">
             <div class="tabellone">
