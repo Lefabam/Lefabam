@@ -40,8 +40,17 @@ select{border:1px solid var(--line);background:white;border-radius:12px;padding:
 .details-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
 .details h3{margin:0;color:var(--blue);font-size:18px}
 .details-subtitle{margin-top:5px;font-size:12px;color:#668092}
+.carte-giocate{margin:0 0 14px;padding:11px 13px;border:1px solid #d9c36a;background:#fffbea;border-radius:11px;color:#264b7b;font-size:13px;line-height:1.45}
+.carte-giocate strong{display:block;color:#084AA8;font-size:11px;letter-spacing:.6px;margin-bottom:3px}
 .close-details{border:1px solid var(--line);background:#f4f8fb;color:var(--blue);font-weight:800;border-radius:9px;padding:7px 10px;cursor:pointer}
-.player-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px}
+.player-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+.player-group{border:1px solid #c8dceb;border-radius:12px;padding:10px;min-width:0}
+.player-group.starters{background:#e8f3ff;border-color:#a9c9eb}
+.player-group.bench{background:#f2f4f6;border-color:#d8dee4}
+.player-group-title{font-size:13px;font-weight:900;color:#084AA8;margin:0 0 9px;padding:5px 4px 9px;border-bottom:2px solid #c1d8ee}
+.player-group.bench .player-group-title{color:#596d7b;border-bottom-color:#d3dce2}
+.player-group .player-row{margin-bottom:6px}
+.player-group .player-row:last-child{margin-bottom:0}
 .player-row{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid #e1ebf1;background:#fbfdfe;border-radius:8px;padding:8px 10px;font-size:13px}
 .player-name{min-width:0;overflow-wrap:anywhere}
 .player-score{flex:none;font-weight:900;color:var(--blue);min-width:40px;text-align:right}
@@ -103,6 +112,7 @@ footer{text-align:center;color:#527589;font-size:12px;margin-top:25px}
 <div id="messaggio" class="message" hidden></div>
 <div id="dettaglio" class="details" hidden aria-live="polite">
 <div class="details-head"><div><h3 id="titoloDettaglio">Tabellino</h3><div id="sottotitoloDettaglio" class="details-subtitle"></div></div><button id="chiudiDettaglio" class="close-details" type="button">Chiudi ✕</button></div>
+<div id="carteGiocate" class="carte-giocate" hidden></div>
 <div id="giocatori" class="player-grid"></div>
 </div>
 </section>
@@ -110,7 +120,7 @@ footer{text-align:center;color:#527589;font-size:12px;margin-top:25px}
 <footer>Lega Fantacalcio Barriera dell'M · Lefabam</footer>
 </main>
 <script>
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAZ6gsykXzy3L8hGuAKKGMWyMEq16dfuO24xdggjvhE9RzyxgTf0VMd5q-s-zZGQf_ckiXobLIfKUZ/pub?gid=390833399&single=true&output=csv";
+const RISULTATI_API_URL = "https://script.google.com/macros/s/AKfycbwWlKhPmKDPf7-tzbppLgsMz7wjB_g3eVj2QvsgrdKLk-aPbuhAoRpUcNZQq1TJLd6Zlw/exec";
 
 const PLAYER_DATA = {
   "1": [{"team":"Monaco di Barriera","total":80.5,"players":[{"name":"De Gea","score":4.0},{"name":"Doekhi","score":7.5},{"name":"Vojvoda","score":4.5},{"name":"Heggem","score":5.0},{"name":"Valeri","score":6.5},{"name":"Romano","score":6.5},{"name":"Konè M.","score":6.0},{"name":"Busio","score":7.0},{"name":"Goncalves P.","score":null},{"name":"Pellegrino M.","score":9.5},{"name":"Martinez L.","score":13.0},{"name":"Alajbegovic","score":5.5},{"name":"Lontani","score":10.0},{"name":"Vlasic","score":null},{"name":"Gaetano","score":null},{"name":"Bellanova","score":null},{"name":"Bernasconi","score":null},{"name":"Mota","score":null},{"name":"Mina","score":null},{"name":"Geubbels","score":null},{"name":"Christensen O.","score":null},{"name":"Lezzerini","score":null}]},{"team":"Castel di Iemma","total":69.0,"players":[{"name":"OKOYE","score":4.0},{"name":"Celik","score":5.5},{"name":"Kalulu","score":6.5},{"name":"Bartesaghi","score":null},{"name":"Conceicao","score":6.5},{"name":"Diouf","score":6.0},{"name":"Modric","score":6.0},{"name":"Karlstrom","score":9.5},{"name":"Vitinha O.","score":5.5},{"name":"Santos A.","score":6.0},{"name":"Woltemade","score":6.0},{"name":"Raspadori","score":null},{"name":"Ferguson","score":null},{"name":"Rrahmani Al.","score":null},{"name":"pulisic","score":null},{"name":"Belghali","score":7.5},{"name":"Stones","score":null},{"name":"Lucumì","score":null},{"name":"Folorunsho","score":null},{"name":"Kempf","score":null},{"name":"Mrozek","score":null},{"name":"Padelli","score":null}]},{"team":"Dinamo Siena","total":68.5,"players":[{"name":"MANDAS","score":5.5},{"name":"TAVARES N.","score":6.5},{"name":"THEATE","score":5.5},{"name":"VALDEPENAS","score":5.0},{"name":"ZIELINSKI","score":6.5},{"name":"DE BRUYNE","score":6.0},{"name":"CALÒ","score":6.5},{"name":"BASIC","score":null},{"name":"NGONGE","score":null},{"name":"ROMERO D.","score":5.5},{"name":"KEVIN CARLOS","score":null},{"name":"BETO","score":5.5},{"name":"DOVBYK","score":9.5},{"name":"SAELEMAEKERS","score":5.5},{"name":"NDOUR","score":5.5},{"name":"JASHARI","score":null},{"name":"KAMARA H.","score":6.5},{"name":"MIRANDA J.","score":null},{"name":"COMUZZO","score":null},{"name":"BASTONI","score":null},{"name":"MOTTA","score":null},{"name":"RENZETTI","score":null}]},{"team":"Evertor","total":69.5,"players":[{"name":"Perri","score":4.5},{"name":"BREMER","score":6.0},{"name":"FORTINI","score":6.5},{"name":"DELPRATO","score":6.0},{"name":"CHALOBAH T.","score":6.0},{"name":"MOLINA N.","score":6.0},{"name":"PISILLI","score":null},{"name":"CRISTANTE","score":6.0},{"name":"VOLPATO","score":6.5},{"name":"DE KETELAERE","score":6.0},{"name":"MALDINI","score":10.0},{"name":"MALEN","score":6.0},{"name":"TAYLOR K.","score":6.0},{"name":"KULENOVIC","score":null},{"name":"PELLEGRINI LO.","score":null},{"name":"VENTURINO","score":null},{"name":"ARENA Ant.","score":null},{"name":"BRESCIANINI","score":6.0},{"name":"ZANOLI","score":null},{"name":"BUONGIORNO","score":null},{"name":"MASCARDI","score":null},{"name":"SIVIERO","score":null}]},{"team":"Real Doratom","total":71.5,"players":[{"name":"Svilar","score":5.0},{"name":"Akanji","score":7.5},{"name":"Hermoso","score":10.0},{"name":"Ramon","score":6.0},{"name":"Moreira","score":5.0},{"name":"Samardzic","score":6.0},{"name":"Rodriguez Ju.","score":6.0},{"name":"Fini","score":6.0},{"name":"Perrone","score":6.5},{"name":"Neres","score":5.5},{"name":"Kean","score":7.5},{"name":"Nzola","score":null},{"name":"Bonny","score":null},{"name":"Yildiz","score":null},{"name":"Ekkelenkamp","score":5.5},{"name":"Koopmeiners","score":null},{"name":"Tomori","score":null},{"name":"Spence","score":null},{"name":"Walukiewicz","score":null},{"name":"Puczka","score":null},{"name":"Gollini","score":null},{"name":"De Marzi","score":null}]},{"team":"Intertor","total":80.0,"players":[{"name":"Carnesecchi","score":5.0},{"name":"Floriani Mussolini","score":5.5},{"name":"Mancini","score":5.0},{"name":"Gila","score":6.5},{"name":"Veiga D.","score":5.5},{"name":"Politano","score":9.5},{"name":"Odgaard","score":5.5},{"name":"Cambiaghi","score":6.0},{"name":"Gudmundsson","score":10.0},{"name":"Njie","score":6.0},{"name":"Berardi","score":6.5},{"name":"Thuram","score":10.0},{"name":"Osmajic","score":9.5},{"name":"Lang","score":null},{"name":"Castro S.","score":null},{"name":"Kessiè","score":null},{"name":"Obrador","score":null},{"name":"Ghilardi","score":null},{"name":"Cambiaso","score":null},{"name":"Zaniolo","score":null},{"name":"Sportiello","score":null},{"name":"POMPEI","score":null}]},{"team":"Lobe United","total":75.5,"players":[{"name":"Butez","score":5.0},{"name":"Birindelli","score":6.0},{"name":"Kossounou","score":5.5},{"name":"Ostigard","score":4.0},{"name":"Rrahmani","score":5.5},{"name":"Lobotka","score":6.5},{"name":"Frendrup","score":5.0},{"name":"Colpani","score":6.0},{"name":"A. Colombo","score":7.5},{"name":"Kvernadze","score":10.0},{"name":"Stulic","score":5.5},{"name":"Cissè A.","score":9.5},{"name":"Hojlund","score":10.0},{"name":"Zapata D.","score":null},{"name":"De Roon","score":null},{"name":"Zalewski","score":null},{"name":"Atta","score":null},{"name":"Leysen F.","score":null},{"name":"Bracaglia","score":null},{"name":"Jimenez A.","score":null},{"name":"Sanchez Ro.","score":null},{"name":"Vigorito","score":null}]},{"team":"Profonda Aurora","total":89.5,"players":[{"name":"Vicario","score":5.0},{"name":"Bisseck","score":6.5},{"name":"Spinazzola","score":5.5},{"name":"Mangas","score":7.0},{"name":"Barella","score":5.5},{"name":"Mora","score":6.0},{"name":"Locatelli","score":5.5},{"name":"Paz N.","score":10.0},{"name":"Soulè","score":11.5},{"name":"Raimondo","score":13.5},{"name":"Diao","score":13.5},{"name":"Krstovic","score":null},{"name":"Bayo V.","score":null},{"name":"Adzic","score":null},{"name":"Sucic P.","score":null},{"name":"Orsolini","score":null},{"name":"Provstgaard","score":null},{"name":"Abankwah","score":null},{"name":"Marcandalli","score":null},{"name":"Doig","score":null},{"name":"Grabara","score":null},{"name":"Pinsoglio","score":null}]},{"team":"Spartak Pisa","total":70.0,"players":[{"name":"Martinez Jo.","score":4.5},{"name":"Zortea","score":null},{"name":"Tiago Gabriel","score":5.0},{"name":"De Winter","score":6.0},{"name":"Lulli","score":6.0},{"name":"Baldanzi","score":6.0},{"name":"Rowe","score":null},{"name":"Cancellieri","score":6.0},{"name":"Pinamonti","score":5.0},{"name":"Scamacca","score":6.0},{"name":"Bowie","score":7.0},{"name":"Baturina","score":9.5},{"name":"Dimarco","score":7.5},{"name":"El Shaarawy","score":null},{"name":"Lucca","score":null},{"name":"Varela G.","score":null},{"name":"Pasalic","score":5.5},{"name":"Dominguez B.","score":null},{"name":"Scalvini","score":6.5},{"name":"Sutalo J.","score":null},{"name":"Provedel","score":null},{"name":"Di Gennaro","score":null}]},{"team":"Taurinorum","total":70.5,"players":[{"name":"Caprile","score":6.0},{"name":"Solet","score":6.0},{"name":"Correia T.","score":null},{"name":"Joao Mario","score":5.5},{"name":"Bernardeschi","score":6.0},{"name":"Zambo Anguissa","score":5.5},{"name":"Gonzalez N.","score":6.5},{"name":"Sarr P.","score":null},{"name":"Yeboah J.","score":10.0},{"name":"Esposito Se.","score":null},{"name":"Mendy P.","score":6.5},{"name":"Ramos G.","score":5.0},{"name":"Camarda","score":null},{"name":"Rovella","score":null},{"name":"McTominay","score":null},{"name":"Thuram K.","score":null},{"name":"Wesley","score":7.0},{"name":"Badiashile","score":5.0},{"name":"Balerdi","score":6.5},{"name":"Terzic","score":null},{"name":"Sherri","score":null},{"name":"Radunovic","score":null}]},{"team":"Tomcat","total":67.5,"players":[{"name":"Skorupski","score":4.5},{"name":"Di Lorenzo","score":7.0},{"name":"Zappacosta","score":5.5},{"name":"Obert","score":6.5},{"name":"Da Cunha","score":6.5},{"name":"Oristanio","score":null},{"name":"Thorstvedt","score":6.0},{"name":"Vergara","score":5.0},{"name":"Douvikas","score":5.5},{"name":"Boga","score":5.5},{"name":"Tourè E.","score":6.0},{"name":"Adams A.","score":null},{"name":"Gueye","score":null},{"name":"Bernabè","score":null},{"name":"Loftus-Cheek","score":5.5},{"name":"Schmid","score":null},{"name":"Dodò","score":null},{"name":"Gatti","score":9.5},{"name":"Gallo","score":null},{"name":"Marusic","score":null},{"name":"Happonen","score":null},{"name":"Pessina Mas.","score":null}]},{"team":"Vaientus","total":83.0,"players":[{"name":"Maignan","score":5.0},{"name":"Pavlovic","score":6.0},{"name":"Couto","score":8.0},{"name":"Haps","score":5.5},{"name":"Zaccagni","score":7.5},{"name":"Chukwueze","score":7.5},{"name":"Mandragora","score":10.5},{"name":"Frattesi","score":10.0},{"name":"Simeone","score":6.0},{"name":"Piccoli","score":9.5},{"name":"Cutrone","score":null},{"name":"Esposito F.P.","score":6.0},{"name":"Adorante","score":null},{"name":"Mastantuono","score":5.5},{"name":"Ellertsson","score":null},{"name":"Isaksen","score":null},{"name":"Carlos Augusto","score":7.5},{"name":"Caleta-Car","score":null},{"name":"Holm","score":null},{"name":"Terracciano","score":null},{"name":"Torriani","score":null},{"name":"Abankwah","score":null}]},{"team":"Wild Eagles","total":68.0,"players":[{"name":"muric","score":3.5},{"name":"monterisi","score":null},{"name":"kabasele","score":5.5},{"name":"valle","score":8.0},{"name":"rabiot","score":5.0},{"name":"liberali","score":null},{"name":"Ederson D.S.","score":10.0},{"name":"calhanoglu","score":6.0},{"name":"cacciamani","score":6.5},{"name":"dybala","score":8.0},{"name":"kolo muani","score":4.5},{"name":"ghedjemis","score":6.0},{"name":"robinson j.","score":null},{"name":"gnonto","score":null},{"name":"matic","score":null},{"name":"massolin","score":null},{"name":"vasquez","score":5.0},{"name":"n'dicka","score":null},{"name":"bella-kotchap","score":null},{"name":"acerbi","score":null},{"name":"turati","score":null},{"name":"satalino","score":null}]},{"team":"Zuluzebra","total":70.5,"players":[{"name":"Meret","score":4.0},{"name":"Gaspar K.","score":4.5},{"name":"Idzes","score":5.5},{"name":"Kelly L.","score":null},{"name":"Fazzini","score":8.0},{"name":"Mckennie","score":null},{"name":"Piotrowski","score":null},{"name":"Douglas Luiz","score":5.5},{"name":"Bobcek","score":null},{"name":"Laurientè","score":6.5},{"name":"Adams C.","score":10.0},{"name":"Davis K.","score":7.5},{"name":"Caqueret","score":6.5},{"name":"Casadei","score":null},{"name":"Kolasinac","score":6.5},{"name":"Kofler","score":6.0},{"name":"Ekhator","score":null},{"name":"Konè I.","score":null},{"name":"Cabal","score":null},{"name":"Hien","score":null},{"name":"Milinkovic-Savic V.","score":null},{"name":"Contini","score":null}]}],
@@ -131,6 +141,8 @@ const giocatoriEl = document.getElementById("giocatori");
 const notaEl = document.getElementById("notaDati");
 
 let risultatiTerza = DAY3_FALLBACK.map(r => ({...r}));
+const risultatiArchivio = new Map();
+const tabelliniArchivio = new Map();
 let selezioneCorrente = null;
 
 function normalizza(testo) {
@@ -175,10 +187,41 @@ function formattaPunteggio(valore) {
 }
 
 function classificaGiornata(giornata) {
-  if (giornata === 1) return PLAYER_DATA["1"].map(t => ({...t}));
-  if (giornata === 2) return PLAYER_DATA["2"].map(t => ({...t}));
-  if (giornata === 3) return PLAYER_DATA["3"].map(t => ({...t}));
-  return risultatiTerza.map(t => ({...t}));
+  const locali = PLAYER_DATA[String(giornata)] || [];
+  const archivio = risultatiArchivio.get(giornata);
+  const tabellini = tabelliniArchivio.get(giornata) || [];
+  const combina = r => {
+    const storico = tabellini.find(t => normalizza(t.societa) === normalizza(r.team));
+    const locale = locali.find(t => normalizza(t.team) === normalizza(r.team));
+    if (storico && Array.isArray(storico.giocatori) && storico.giocatori.length) {
+      return {...r, carte: storico.carte || "", players: storico.giocatori.map(g => ({
+        name: g.nome, score: parsePunteggio(g.voto),
+        color: g.colore, titolare: g.titolare,
+        votoOriginale: g.voto
+      }))};
+    }
+    return locale ? {...locale, total: r.total} : {...r};
+  };
+  if (archivio && archivio.length) {
+    return archivio.map(combina);
+  }
+  if (locali.length) return locali.map(combina);
+  if (giornata === 3) return risultatiTerza.map(t => ({...t}));
+  return [];
+}
+
+function aggiornaMenuGiornate() {
+  const precedente = Number(giornataSelect.value) || 3;
+  const giorni = new Set([1, 2, 3, ...risultatiArchivio.keys()]);
+  const ordinati = [...giorni].sort((a, b) => a - b);
+  giornataSelect.replaceChildren();
+  ordinati.forEach(g => {
+    const opzione = document.createElement("option");
+    opzione.value = String(g);
+    opzione.textContent = g + "ª Giornata";
+    giornataSelect.appendChild(opzione);
+  });
+  giornataSelect.value = String(giorni.has(precedente) ? precedente : Math.max(...ordinati));
 }
 
 function aggiornaPagina() {
@@ -245,6 +288,19 @@ function apriTabellino(giornata, squadra, pulsante) {
   titoloDettaglioEl.textContent = "Tabellino — " + squadra.team;
   sottotitoloDettaglioEl.textContent = giornata + "ª Giornata · Serie Maxima";
   giocatoriEl.replaceChildren();
+  const carteEl = document.getElementById("carteGiocate");
+  carteEl.replaceChildren();
+  const carte = String(squadra.carte || "").trim();
+  if (carte) {
+    const etichetta = document.createElement("strong");
+    etichetta.textContent = "CARTE GIOCATE";
+    const descrizione = document.createElement("span");
+    descrizione.textContent = carte;
+    carteEl.append(etichetta, descrizione);
+    carteEl.hidden = false;
+  } else {
+    carteEl.hidden = true;
+  }
 
   if (!squadra.players || !squadra.players.length) {
     const avviso = document.createElement("div");
@@ -253,7 +309,21 @@ function apriTabellino(giornata, squadra, pulsante) {
     avviso.textContent = "Il punteggio della squadra è disponibile, ma per questa giornata non è ancora stato caricato il PDF con i voti dei singoli giocatori.";
     giocatoriEl.appendChild(avviso);
   } else {
-    squadra.players.forEach(giocatore => {
+    // I primi 11 nomi del tabellino sono la formazione iniziale;
+    // i successivi sono i panchinari, anche se entrati in campo.
+    const titolari = document.createElement("div");
+    titolari.className = "player-group starters";
+    const panchina = document.createElement("div");
+    panchina.className = "player-group bench";
+    const titoloTitolari = document.createElement("h4");
+    titoloTitolari.className = "player-group-title";
+    titoloTitolari.textContent = "FORMAZIONE INIZIALE · 11 TITOLARI";
+    const titoloPanchina = document.createElement("h4");
+    titoloPanchina.className = "player-group-title";
+    titoloPanchina.textContent = "PANCHINA · RISERVE";
+    titolari.appendChild(titoloTitolari);
+    panchina.appendChild(titoloPanchina);
+    squadra.players.forEach((giocatore, indice) => {
       const riga = document.createElement("div");
       riga.className = "player-row";
       const nome = document.createElement("span");
@@ -268,13 +338,23 @@ function apriTabellino(giornata, squadra, pulsante) {
       } else {
         voto.textContent = formattaPunteggio(giocatore.score);
       }
+      // I colori sono quelli originali del testo nel foglio STORICO_Gxx.
+      if (giocatore.color && /^#[0-9a-fA-F]{6}$/.test(giocatore.color)) {
+        nome.style.color = giocatore.color;
+        voto.style.color = giocatore.color;
+        nome.style.fontWeight = "800";
+      }
+      if (giocatore.votoOriginale !== undefined) {
+        voto.textContent = giocatore.votoOriginale || "—";
+      }
       riga.append(nome, voto);
-      giocatoriEl.appendChild(riga);
+      ((giocatore.titolare ?? (indice < 11)) ? titolari : panchina).appendChild(riga);
     });
+    giocatoriEl.append(titolari, panchina);
     const nota = document.createElement("div");
     nota.className = "details-subtitle";
     nota.style.gridColumn = "1 / -1";
-    nota.textContent = "Il trattino indica che nel PDF non è riportato un voto.";
+    nota.textContent = "Il trattino indica un voto assente. I colori originali sono mostrati per le giornate archiviate raggiungibili dal servizio Google; le altre mantengono i dati già presenti nella pagina.";
     giocatoriEl.appendChild(nota);
   }
 
@@ -284,6 +364,7 @@ function apriTabellino(giornata, squadra, pulsante) {
 
 function chiudiTabellino() {
   dettaglioEl.hidden = true;
+  document.getElementById("carteGiocate").hidden = true;
   selezioneCorrente = null;
   document.querySelectorAll(".team-button").forEach(b => b.setAttribute("aria-expanded", "false"));
 }
@@ -291,45 +372,51 @@ function chiudiTabellino() {
 document.getElementById("chiudiDettaglio").addEventListener("click", chiudiTabellino);
 giornataSelect.addEventListener("change", aggiornaPagina);
 
-/* Il CSV pubblicato contiene la classifica ordinata nelle colonne G:I.
-   Se la lettura non riesce, rimangono visibili i punteggi di terza giornata
-   già presenti nella pagina. */
-fetch(SHEET_URL)
-  .then(risposta => {
-    if (!risposta.ok) throw new Error("Google Sheet non raggiungibile");
-    return risposta.text();
-  })
-  .then(testo => {
-    const righe = leggiCSV(testo);
-    if (!righe.length) return;
+/* Caricamento delle giornate archiviate dal servizio LEFABAM.
+   In caso di blocco CORS o servizio non raggiungibile, restano disponibili
+   le giornate 1–3 già presenti nel file. */
+async function caricaRisultatiArchiviati() {
+  try {
+    const risposta = await fetch(RISULTATI_API_URL, {redirect: "follow", cache: "no-store"});
+    if (!risposta.ok) throw new Error("Servizio risultati non raggiungibile");
+    const dati = await risposta.json();
+    if (!dati || !Array.isArray(dati.risultati)) throw new Error("Formato risultati non valido");
 
-    const intestazioni = righe[0].map(normalizza);
-    const idxPos = intestazioni.lastIndexOf("posizione");
-    const idxTeam = intestazioni.lastIndexOf("societa");
-    const idxScore = intestazioni.lastIndexOf("punteggio");
-
-    if (idxTeam < 0 || idxScore < 0) return;
-
-    const nuoviRisultati = [];
-    righe.slice(1).forEach(celle => {
-      const team = celle[idxTeam] || "";
-      const total = parsePunteggio(celle[idxScore]);
-      if (team && Number.isFinite(total)) nuoviRisultati.push({team, total});
+    const perGiornata = new Map();
+    dati.risultati.forEach(r => {
+      const giornata = Number(r.giornata);
+      const team = String(r.societa || "").trim();
+      const total = Number(r.punteggio);
+      if (!Number.isInteger(giornata) || giornata < 1 || giornata > 38 ||
+          r.competizione !== "Serie Maxima" || !team || !Number.isFinite(total)) return;
+      if (!perGiornata.has(giornata)) perGiornata.set(giornata, []);
+      perGiornata.get(giornata).push({team, total});
     });
 
-    if (nuoviRisultati.length) {
-      risultatiTerza = nuoviRisultati.map(r => {
-        const datiPDF = PLAYER_DATA["3"].find(t => normalizza(t.team) === normalizza(r.team));
-        return datiPDF ? {...datiPDF, total:r.total} : r;
-      });
-      aggiornaPagina();
-      notaEl.textContent = "Risultati della 3ª giornata aggiornati automaticamente dal Google Sheet. I tabellini delle prime tre giornate sono ricavati dai PDF ufficiali.";
+    // Una giornata è pubblicata soltanto se sono presenti tutte le 14 società.
+    for (const [giornata, squadre] of perGiornata) {
+      if (squadre.length === 14 && new Set(squadre.map(s => normalizza(s.team))).size === 14) {
+        risultatiArchivio.set(giornata, squadre);
+      }
     }
-  })
-  .catch(errore => {
-    console.warn("Non è stato possibile aggiornare i risultati dal Google Sheet:", errore);
-    notaEl.textContent = "La pagina mostra i punteggi salvati e i tabellini delle prime tre giornate ricavati dai PDF ufficiali.";
-  });
+    if (dati.tabellini && typeof dati.tabellini === "object") {
+      Object.entries(dati.tabellini).forEach(([giorno, squadre]) => {
+        if (Array.isArray(squadre)) tabelliniArchivio.set(Number(giorno), squadre);
+      });
+    }
+    aggiornaMenuGiornate();
+    aggiornaPagina();
+    if (risultatiArchivio.size) {
+      notaEl.textContent = "Punteggi delle giornate archiviate letti dal servizio ufficiale LEFABAM. I tabellini archiviati includono i colori e le carte giocate quando il servizio Google è raggiungibile.";
+    }
+  } catch (errore) {
+    console.warn("Impossibile leggere l'archivio risultati:", errore);
+    notaEl.textContent = "Sono visibili i risultati e i tabellini delle prime tre giornate già salvati nella pagina. Collegamento all'archivio Google non disponibile: verificare l'accesso dal sito GitHub.";
+  }
+}
+
+aggiornaMenuGiornate();
+caricaRisultatiArchiviati();
 
 aggiornaPagina();
 </script>
