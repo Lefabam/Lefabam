@@ -223,6 +223,23 @@ footer:before,footer:after{
     .nota h2{font-size:19px}.nota p{font-size:13px}
     footer:before,footer:after{display:none}
 }
+
+/* Logo e titolo affiancati nella fascia superiore */
+.header-brand{display:flex;align-items:center;justify-content:center;gap:7px;transform:translateX(28px)}
+.header-logo{width:84px;height:84px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 3px 5px rgba(0,0,0,.2))}
+.header-brand-text{text-align:center}
+@media(max-width:900px){
+    .header-logo{width:76px;height:76px}
+    .header-brand{gap:6px;transform:translateX(12px)}
+}
+@media(max-width:600px){
+    .header-logo{width:66px;height:66px}
+    .header-brand{gap:5px;transform:none}
+    .header-brand-text{min-width:0}
+    .header-brand-text h1{font-size:clamp(20px,5.5vw,29px)}
+    .header-brand-text p{font-size:12px;gap:5px}
+    .header-brand-text p:before,.header-brand-text p:after{display:none}
+}
 </style>
 </head>
 <body>
@@ -231,13 +248,15 @@ footer:before,footer:after{
         <a href="index.html" aria-label="Torna alla Home">⌂ Home</a>
         <a href="competizioni.html">← Le Competizioni</a>
     </nav>
-    <h1>Torneo di Apertura</h1>
-    <p>Lega Fantacalcio Barriera dell'M</p>
+    <div class="header-brand">
+        <img src="apertura.png" alt="Logo Torneo di Apertura" class="header-logo">
+        <div class="header-brand-text">
+            <h1>Torneo di Apertura</h1>
+            <p>Lega Fantacalcio Barriera dell'M</p>
+        </div>
+    </div>
 </header>
 
-<div class="logo-area">
-    <img src="apertura.png" alt="Logo Torneo di Apertura" class="competition-logo">
-</div>
 
 <div class="container">
     <section class="tabellone-section">
