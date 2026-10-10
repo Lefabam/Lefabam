@@ -1,9 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Supercoppa di Lega - Lega Fantacalcio Barriera dell'M</title>
 
     <style>
@@ -18,60 +18,65 @@
             color: #1f2937;
         }
 
-        header {
-            background: linear-gradient(135deg, #111827, #374151);
-            color: white;
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 22px;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 16px;
+            background: #084aa8;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 9px;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .nav-link:hover {
+            background: #063b91;
+        }
+
+        .home-link {
+            min-width: 46px;
+            font-size: 23px;
+            padding: 7px 12px;
+        }
+
+        .competition-link {
+            margin-left: auto;
+        }
+
+        .logo-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 30px 20px;
-            text-align: center;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
         }
 
-        header h1 {
-            margin: 0 0 8px;
-            font-size: 32px;
-        }
-
-        header p {
-            margin: 0;
-            opacity: 0.85;
+        .competition-logo {
+            display: block;
+            width: min(100%, 430px);
+            max-height: 260px;
+            object-fit: contain;
         }
 
         .container {
             max-width: 1200px;
             margin: 30px auto;
             padding: 0 20px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 10px 16px;
-            background: white;
-            color: #374151;
-            text-decoration: none;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .back-link:hover {
-            background: #f9fafb;
-        }
-
-        .hero {
-            background: white;
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .hero h2 {
-            margin-top: 0;
-            font-size: 28px;
-        }
-
-        .hero p {
-            line-height: 1.6;
-            margin-bottom: 0;
         }
 
         .section {
@@ -147,24 +152,6 @@
             font-size: 25px;
         }
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-        }
-
-        .info-card {
-            padding: 18px;
-            border-radius: 10px;
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-        }
-
-        .info-card strong {
-            display: block;
-            margin-bottom: 6px;
-        }
-
         footer {
             text-align: center;
             padding: 30px 20px;
@@ -173,13 +160,26 @@
         }
 
         @media (max-width: 700px) {
-
-            header h1 {
-                font-size: 25px;
+            .topbar {
+                padding: 12px;
             }
 
-            .hero h2 {
-                font-size: 23px;
+            .nav-link {
+                padding: 10px 11px;
+                font-size: 13px;
+            }
+
+            .home-link {
+                font-size: 21px;
+                padding: 7px 10px;
+            }
+
+            .logo-area {
+                padding: 24px 15px;
+            }
+
+            .competition-logo {
+                max-height: 210px;
             }
 
             .section {
@@ -201,34 +201,30 @@
 
 <body>
 
-<header>
-    <h1>Supercoppa di Lega</h1>
-    <p>Lega Fantacalcio Barriera dell'M</p>
+<nav class="topbar" aria-label="Navigazione">
+    <a href="index.html"
+       class="nav-link home-link"
+       aria-label="Torna alla Home"
+       title="Torna alla Home">⌂</a>
+
+    <a href="competizioni.html"
+       class="nav-link competition-link">← Le Competizioni</a>
+</nav>
+
+<header class="logo-area">
+    <img
+        src="supercoppa.png"
+        alt="Logo Supercoppa di Lega"
+        class="competition-logo"
+    >
 </header>
 
 <div class="container">
 
-    <a href="index.html" class="back-link">
-        ← Torna alla Home
-    </a>
-
-    <section class="hero">
-        <h2>🏆 Supercoppa di Lega</h2>
-
-        <p>
-            La Supercoppa di Lega mette di fronte le squadre vincitrici
-            delle principali competizioni della stagione.
-        </p>
-    </section>
-
-
     <section class="section">
-
         <h3>Semifinali</h3>
 
-
         <div class="match">
-
             <div class="team home">
                 PROFONDA AURORA
             </div>
@@ -240,12 +236,9 @@
             <div class="team">
                 SPARTAK PISA
             </div>
-
         </div>
 
-
         <div class="match">
-
             <div class="team home">
                 LOBE UNITED
             </div>
@@ -257,86 +250,39 @@
             <div class="team">
                 REAL DORATOM
             </div>
-
         </div>
-
     </section>
 
-
     <section class="section">
-
         <h3>Finale</h3>
 
         <div class="match winner">
-
             <div class="team home">
                 PROFONDA AURORA
             </div>
 
             <div class="score">
                 3 – 2
-                <span class="result-note">
-                    d.t.s.
-                </span>
+                <span class="result-note">d.t.s.</span>
             </div>
 
             <div class="team">
                 LOBE UNITED
             </div>
-
         </div>
 
-
         <div class="winner-box">
-
-            <div class="trophy">
-                🏆
-            </div>
+            <div class="trophy">🏆</div>
 
             <h4>PROFONDA AURORA</h4>
 
             <div>
                 Vincitrice della Supercoppa di Lega
             </div>
-
         </div>
-
     </section>
 
-
     <section class="section">
-
-        <h3>Informazioni sulla competizione</h3>
-
-        <div class="info-grid">
-
-            <div class="info-card">
-                <strong>🏆 Formula</strong>
-                Semifinali e finale.
-            </div>
-
-            <div class="info-card">
-                <strong>⚽ Finale</strong>
-                PROFONDA AURORA 3–2 LOBE UNITED, d.t.s.
-            </div>
-
-            <div class="info-card">
-                <strong>👑 Vincitrice</strong>
-                PROFONDA AURORA
-            </div>
-
-            <div class="info-card">
-                <strong>📅 Stagione</strong>
-                Stagione 2026/2027
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="section">
-
         <h3>Regolamento</h3>
 
         <p>
@@ -350,11 +296,9 @@
             complessiva si procede secondo i criteri previsti dal
             regolamento ufficiale.
         </p>
-
     </section>
 
 </div>
-
 
 <footer>
     Lega Fantacalcio Barriera dell'M
@@ -362,3 +306,5 @@
 
 </body>
 </html>
+```
+
