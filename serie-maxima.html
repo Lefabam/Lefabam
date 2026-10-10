@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -17,60 +18,65 @@
             color: #1f2937;
         }
 
-        header {
-            background: linear-gradient(135deg, #111827, #374151);
-            color: white;
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 22px;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 16px;
+            background: #084aa8;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 9px;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .nav-link:hover {
+            background: #063b91;
+        }
+
+        .home-link {
+            min-width: 46px;
+            font-size: 23px;
+            padding: 7px 12px;
+        }
+
+        .competition-link {
+            margin-left: auto;
+        }
+
+        .logo-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 30px 20px;
-            text-align: center;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
         }
 
-        header h1 {
-            margin: 0 0 8px;
-            font-size: 32px;
-        }
-
-        header p {
-            margin: 0;
-            opacity: 0.85;
+        .competition-logo {
+            display: block;
+            width: min(100%, 430px);
+            max-height: 260px;
+            object-fit: contain;
         }
 
         .container {
             max-width: 1200px;
             margin: 30px auto;
             padding: 0 20px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 10px 16px;
-            background: white;
-            color: #374151;
-            text-decoration: none;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .back-link:hover {
-            background: #f9fafb;
-        }
-
-        .hero {
-            background: white;
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .hero h2 {
-            margin-top: 0;
-            font-size: 28px;
-        }
-
-        .hero p {
-            line-height: 1.6;
-            margin-bottom: 0;
         }
 
         .section {
@@ -163,12 +169,26 @@
         }
 
         @media (max-width: 700px) {
-            header h1 {
-                font-size: 25px;
+            .topbar {
+                padding: 12px;
             }
 
-            .hero h2 {
-                font-size: 23px;
+            .nav-link {
+                padding: 10px 11px;
+                font-size: 13px;
+            }
+
+            .home-link {
+                font-size: 21px;
+                padding: 7px 10px;
+            }
+
+            .logo-area {
+                padding: 24px 15px;
+            }
+
+            .competition-logo {
+                max-height: 210px;
             }
 
             .section {
@@ -180,274 +200,266 @@
 
 <body>
 
-<header>
-    <h1>Serie Maxima</h1>
-    <p>Lega Fantacalcio Barriera dell'M</p>
+<nav class="topbar" aria-label="Navigazione">
+    <a href="index.html" class="nav-link home-link" aria-label="Torna alla Home" title="Torna alla Home">⌂</a>
+    <a href="competizioni.html" class="nav-link competition-link">← Le Competizioni</a>
+</nav>
+
+<header class="logo-area">
+    <img
+        src="serie-maxima.png"
+        alt="Logo Serie Maxima"
+        class="competition-logo"
+    >
 </header>
 
 <div class="container">
 
-    <a href="index.html" class="back-link">
-        ← Torna alla Home
-    </a>
+    <section class="section">
+        <h3>Classifica Serie Maxima</h3>
 
-    <section class="hero">
-        <h2>🏆 Serie Maxima</h2>
         <p>
-            Il campionato principale della Lega Fantacalcio Barriera dell'M.
-            La classifica viene determinata dalla somma dei punteggi ottenuti
-            dalle squadre nelle singole giornate.
+            <strong>Classifica aggiornata alla 3ª giornata</strong>
         </p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pos.</th>
+                        <th>Squadra</th>
+                        <th>PT</th>
+                        <th>PP</th>
+                        <th>PG</th>
+                        <th>CA</th>
+                        <th>CC</th>
+                        <th>CD</th>
+                        <th>TC</th>
+                        <th>J</th>
+                        <th>D</th>
+                        <th>Diff.</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="champion">
+                        <td class="position">1</td>
+                        <td>PROFONDA AURORA</td>
+                        <td><strong>237</strong></td>
+                        <td><strong>168</strong></td>
+                        <td><strong>69</strong></td>
+                        <td></td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr class="top-four">
+                        <td class="position">2</td>
+                        <td>VAIENTUS</td>
+                        <td><strong>237</strong></td>
+                        <td><strong>167</strong></td>
+                        <td><strong>70</strong></td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr class="top-four">
+                        <td class="position">3</td>
+                        <td>MONACO DI BARRIERA</td>
+                        <td><strong>231,5</strong></td>
+                        <td><strong>150,5</strong></td>
+                        <td><strong>81</strong></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>5,5</td>
+                    </tr>
+
+                    <tr class="top-four">
+                        <td class="position">4</td>
+                        <td>REAL DORATOM</td>
+                        <td><strong>222,5</strong></td>
+                        <td><strong>155</strong></td>
+                        <td><strong>67,5</strong></td>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>9</td>
+                    </tr>
+
+                    <tr>
+                        <td class="position">5</td>
+                        <td>EVERTOR</td>
+                        <td><strong>220,5</strong></td>
+                        <td><strong>146</strong></td>
+                        <td><strong>74,5</strong></td>
+                        <td></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>2</td>
+                    </tr>
+
+                    <tr>
+                        <td class="position">6</td>
+                        <td>DINAMO SIENA</td>
+                        <td><strong>219,5</strong></td>
+                        <td><strong>139</strong></td>
+                        <td><strong>80,5</strong></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+
+                    <tr>
+                        <td class="position">7</td>
+                        <td>SPARTAK PISA</td>
+                        <td><strong>218,5</strong></td>
+                        <td><strong>148</strong></td>
+                        <td><strong>70,5</strong></td>
+                        <td></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+
+                    <tr>
+                        <td class="position">8</td>
+                        <td>LOBE UNITED</td>
+                        <td><strong>217</strong></td>
+                        <td><strong>148</strong></td>
+                        <td><strong>69</strong></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1,5</td>
+                    </tr>
+
+                    <tr>
+                        <td class="position">9</td>
+                        <td>TAURINORUM</td>
+                        <td><strong>217</strong></td>
+                        <td><strong>143,5</strong></td>
+                        <td><strong>73,5</strong></td>
+                        <td>3</td>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td>3</td>
+                        <td></td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td class="position">10</td>
+                        <td>INTERTOR</td>
+                        <td><strong>213,5</strong></td>
+                        <td><strong>143</strong></td>
+                        <td><strong>70,5</strong></td>
+                        <td>1</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>3,5</td>
+                    </tr>
+
+                    <tr>
+                        <td class="position">11</td>
+                        <td>TOMCAT</td>
+                        <td><strong>205</strong></td>
+                        <td><strong>137,5</strong></td>
+                        <td><strong>67,5</strong></td>
+                        <td>1</td>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>8,5</td>
+                    </tr>
+
+                    <tr>
+                        <td class="position">12</td>
+                        <td>WILD EAGLES</td>
+                        <td><strong>203,5</strong></td>
+                        <td><strong>136,5</strong></td>
+                        <td><strong>67</strong></td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1,5</td>
+                    </tr>
+
+                    <tr class="minus-zone">
+                        <td class="position">13</td>
+                        <td>CASTEL DI IEMMA</td>
+                        <td><strong>200,5</strong></td>
+                        <td><strong>130</strong></td>
+                        <td><strong>70,5</strong></td>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>3</td>
+                    </tr>
+
+                    <tr class="minus-zone">
+                        <td class="position">14</td>
+                        <td>ZULUZEBRA</td>
+                        <td><strong>198,5</strong></td>
+                        <td><strong>133,5</strong></td>
+                        <td><strong>65</strong></td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td></td>
+                        <td>2</td>
+                        <td></td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
-
-  <section class="section">
-    <h3>Classifica Serie Maxima</h3>
-
-    <p>
-        <strong>Classifica aggiornata alla 3ª giornata</strong>
-    </p>
-
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Pos.</th>
-                    <th>Squadra</th>
-                    <th>PT</th>
-                    <th>PP</th>
-                    <th>PG</th>
-                    <th>CA</th>
-                    <th>CC</th>
-                    <th>CD</th>
-                    <th>TC</th>
-                    <th>J</th>
-                    <th>D</th>
-                    <th>Diff.</th>
-                </tr>
-            </thead>
-
-            <tbody>
-
-                <tr class="champion">
-                    <td class="position">1</td>
-                    <td>PROFONDA AURORA</td>
-                    <td><strong>237</strong></td>
-                    <td><strong>168</strong></td>
-                    <td><strong>69</strong></td>
-                    <td></td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>-</td>
-                </tr>
-
-                <tr class="top-four">
-                    <td class="position">2</td>
-                    <td>VAIENTUS</td>
-                    <td><strong>237</strong></td>
-                    <td><strong>167</strong></td>
-                    <td><strong>70</strong></td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>0</td>
-                </tr>
-
-                <tr class="top-four">
-                    <td class="position">3</td>
-                    <td>MONACO DI BARRIERA</td>
-                    <td><strong>231,5</strong></td>
-                    <td><strong>150,5</strong></td>
-                    <td><strong>81</strong></td>
-                    <td></td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>5,5</td>
-                </tr>
-
-                <tr class="top-four">
-                    <td class="position">4</td>
-                    <td>REAL DORATOM</td>
-                    <td><strong>222,5</strong></td>
-                    <td><strong>155</strong></td>
-                    <td><strong>67,5</strong></td>
-                    <td></td>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>9</td>
-                </tr>
-
-                <tr>
-                    <td class="position">5</td>
-                    <td>EVERTOR</td>
-                    <td><strong>220,5</strong></td>
-                    <td><strong>146</strong></td>
-                    <td><strong>74,5</strong></td>
-                    <td></td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>2</td>
-                </tr>
-
-                <tr>
-                    <td class="position">6</td>
-                    <td>DINAMO SIENA</td>
-                    <td><strong>219,5</strong></td>
-                    <td><strong>139</strong></td>
-                    <td><strong>80,5</strong></td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>1</td>
-                </tr>
-
-                <tr>
-                    <td class="position">7</td>
-                    <td>SPARTAK PISA</td>
-                    <td><strong>218,5</strong></td>
-                    <td><strong>148</strong></td>
-                    <td><strong>70,5</strong></td>
-                    <td></td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>1</td>
-                </tr>
-
-                <tr>
-                    <td class="position">8</td>
-                    <td>LOBE UNITED</td>
-                    <td><strong>217</strong></td>
-                    <td><strong>148</strong></td>
-                    <td><strong>69</strong></td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>1,5</td>
-                </tr>
-
-                <tr>
-                    <td class="position">9</td>
-                    <td>TAURINORUM</td>
-                    <td><strong>217</strong></td>
-                    <td><strong>143,5</strong></td>
-                    <td><strong>73,5</strong></td>
-                    <td>3</td>
-                    <td></td>
-                    <td>1</td>
-                    <td></td>
-                    <td>3</td>
-                    <td></td>
-                    <td>0</td>
-                </tr>
-
-                <tr>
-                    <td class="position">10</td>
-                    <td>INTERTOR</td>
-                    <td><strong>213,5</strong></td>
-                    <td><strong>143</strong></td>
-                    <td><strong>70,5</strong></td>
-                    <td>1</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>3,5</td>
-                </tr>
-
-                <tr>
-                    <td class="position">11</td>
-                    <td>TOMCAT</td>
-                    <td><strong>205</strong></td>
-                    <td><strong>137,5</strong></td>
-                    <td><strong>67,5</strong></td>
-                    <td>1</td>
-                    <td></td>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td>1</td>
-                    <td>8,5</td>
-                </tr>
-
-                <tr>
-                    <td class="position">12</td>
-                    <td>WILD EAGLES</td>
-                    <td><strong>203,5</strong></td>
-                    <td><strong>136,5</strong></td>
-                    <td><strong>67</strong></td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>1,5</td>
-                </tr>
-
-                <tr class="minus-zone">
-                    <td class="position">13</td>
-                    <td>CASTEL DI IEMMA</td>
-                    <td><strong>200,5</strong></td>
-                    <td><strong>130</strong></td>
-                    <td><strong>70,5</strong></td>
-                    <td></td>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>3</td>
-                </tr>
-
-                <tr class="minus-zone">
-                    <td class="position">14</td>
-                    <td>ZULUZEBRA</td>
-                    <td><strong>198,5</strong></td>
-                    <td><strong>133,5</strong></td>
-                    <td><strong>65</strong></td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td></td>
-                    <td>2</td>
-                    <td></td>
-                    <td>2</td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-</section>
 
     <section class="section">
         <h3>Informazioni sulla competizione</h3>
 
         <div class="info-grid">
-
             <div class="info-card">
                 <strong>📊 Classifica</strong>
                 La graduatoria è determinata dalla somma dei punteggi
@@ -470,7 +482,6 @@
                 <strong>📅 Stagione</strong>
                 Stagione 2026/2027
             </div>
-
         </div>
     </section>
 
@@ -496,3 +507,4 @@
 
 </body>
 </html>
+```
