@@ -252,10 +252,10 @@
 
     <section class="section archive-section">
         <h3>📚 Archivio storico Serie Minus</h3>
-        <p>Consulta le precedenti stagioni quando saranno disponibili le rispettive pagine.</p>
+        <p>Seleziona una stagione per consultare le classifiche storiche giornata per giornata.</p>
         <div class="archive-controls">
             <label for="archivio">Seleziona stagione</label>
-            <select id="archivio" aria-label="Stagione archivio"><option value="">Nessuna stagione ancora disponibile</option></select>
+            <select id="archivio" aria-label="Stagione archivio"><option value="">Scegli una stagione</option><option value="serie-minus-2023-2024.html">2023/2024</option></select>
             <button type="button" id="apriArchivio" disabled>Apri archivio →</button>
         </div>
     </section>
@@ -266,5 +266,15 @@
     Lega Fantacalcio Barriera dell'M
 </footer>
 
+<script>
+  const archivio = document.getElementById("archivio");
+  const apriArchivio = document.getElementById("apriArchivio");
+  archivio.addEventListener("change", () => {
+    apriArchivio.disabled = !archivio.value;
+  });
+  apriArchivio.addEventListener("click", () => {
+    if (archivio.value) window.location.href = archivio.value;
+  });
+</script>
 </body>
 </html>
