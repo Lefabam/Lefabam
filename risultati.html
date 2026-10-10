@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>I Risultati — Lefabam</title>
 <style>
-:root{--blue:#063b67;--blue2:#0b5fa0;--yellow:#f4c51b;--ink:#16384f;--light:#edf5fa;--line:#c9dce9}
+:root{--blue:#084AA8;--blue2:#063B91;--yellow:#FFE500;--ink:#16384f;--light:#edf5fa;--line:#c9dce9}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:linear-gradient(135deg,#dbeaf5,#9fc2dc)}
-.topbar{background:linear-gradient(180deg,#062d50,#164f78);padding:14px 20px;box-shadow:0 8px 25px #073b5a33}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:linear-gradient(135deg,#eaf2ff,#b8d2f5)}
+.topbar{background:#084AA8;padding:14px 20px;box-shadow:0 8px 25px #073b5a33}
 .nav{max-width:1180px;margin:auto;display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
 .nav a{color:white;text-decoration:none;font-size:13px;font-weight:800}
 .nav a:hover{color:var(--yellow)}
 main{max-width:1180px;margin:22px auto 35px;padding:0 18px}
-.header{background:#fff;border-radius:22px;padding:20px 30px;text-align:center;box-shadow:0 12px 30px #073b5a22;border-top:7px solid var(--yellow)}
+.header{background:#fff;border-radius:22px;padding:20px 30px;text-align:center;box-shadow:0 12px 30px #073b5a22;border-top:7px solid var(--blue)}
 .header h1{margin:0;color:var(--blue);font-size:30px;letter-spacing:.5px}
 .header p{margin:7px 0 0;color:#668092;font-weight:700;font-size:13px}
 .controls{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:16px 0}
@@ -35,7 +35,7 @@ select{border:1px solid var(--line);background:white;border-radius:12px;padding:
 .silver{background:linear-gradient(90deg,#f2f5f7,#fff);border-color:#cbd6dc}
 .bronze{background:linear-gradient(90deg,#fff0e6,#fff);border-color:#e7c0a2}
 .gold .rank{color:#c89a00}.silver .rank{color:#71808b}.bronze .rank{color:#b26b35}
-.details{margin-top:16px;border:1px solid var(--line);border-top:5px solid var(--yellow);border-radius:15px;padding:16px;background:#fff}
+.details{margin-top:16px;border:1px solid var(--line);border-top:5px solid var(--blue);border-radius:15px;padding:16px;background:#fff}
 .details[hidden]{display:none}
 .details-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
 .details h3{margin:0;color:var(--blue);font-size:18px}
@@ -51,6 +51,21 @@ select{border:1px solid var(--line);background:white;border-radius:12px;padding:
 .note{margin-top:10px;text-align:center;color:#708795;font-size:11px;line-height:1.5}
 footer{text-align:center;color:#527589;font-size:12px;margin-top:25px}
 @media(max-width:760px){main{margin-top:15px;padding:0 12px}.header{padding:18px 12px}.header h1{font-size:27px}.card{padding:14px 11px}.card-title{align-items:flex-start;flex-wrap:wrap}.results-grid{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}.result-row{min-height:45px}.score{font-size:17px}.nav{gap:15px}.player-grid{grid-template-columns:1fr}.details{padding:12px}}
+
+/* Testata con i sei loghi delle competizioni principali */
+.header{padding:20px 18px 16px}
+.results-banner{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:18px;width:100%}
+.logo-trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;justify-items:center;gap:12px;min-width:0}
+.competition-mark{display:flex;align-items:center;justify-content:center;width:100%;height:110px;min-width:0}
+.competition-mark img{display:block;max-width:100%;max-height:105px;width:auto;height:auto;object-fit:contain}
+.competition-mark .logo-fallback{display:none;color:var(--blue);font-size:11px;font-weight:800;line-height:1.3;text-align:center}
+.competition-mark.missing img{display:none}
+.competition-mark.missing .logo-fallback{display:block}
+.banner-heading{min-width:0;text-align:center}
+.banner-heading h1{font-size:clamp(22px,2.6vw,36px);color:var(--blue);letter-spacing:1px}
+.banner-heading p{font-size:12px;white-space:nowrap}
+@media(max-width:900px){.results-banner{gap:8px}.logo-trio{gap:5px}.competition-mark{height:78px}.competition-mark img{max-height:74px}.competition-mark .logo-fallback{font-size:9px}}
+@media(max-width:620px){.results-banner{grid-template-columns:1fr;gap:10px}.banner-heading{grid-row:1}.logo-trio{gap:8px}.competition-mark{height:78px}.competition-mark img{max-height:74px}.banner-heading p{white-space:normal}}
 </style>
 </head>
 <body>
@@ -62,7 +77,21 @@ footer{text-align:center;color:#527589;font-size:12px;margin-top:25px}
 <a href="albo-doro.html">ALBO D'ORO</a>
 </nav></header>
 <main>
-<section class="header"><h1>🏆 I RISULTATI</h1><p>Serie Maxima · Stagione 2026/27</p></section>
+<section class="header" aria-label="Risultati delle competizioni LEFABAM">
+  <div class="results-banner">
+    <div class="logo-trio" aria-label="Serie Maxima, Torneo di Apertura, Qualificazioni Extra League">
+      <div class="competition-mark"><img src="serie-maxima.png" alt="Serie Maxima" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">SERIE MAXIMA</span></div>
+      <div class="competition-mark"><img src="apertura-trasparente.png" alt="Torneo di Apertura" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">APERTURA</span></div>
+      <div class="competition-mark"><img src="qualificazioni-extra-league.png" alt="Qualificazioni Extra League" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">QUALIFICAZIONI EXTRA</span></div>
+    </div>
+    <div class="banner-heading"><h1>RISULTATI</h1><p>Serie Maxima · Stagione 2026/27</p></div>
+    <div class="logo-trio" aria-label="Extra League, Torneo di Chiusura, Lefabam Cup">
+      <div class="competition-mark"><img src="extra-league.png" alt="Extra League" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">EXTRA LEAGUE</span></div>
+      <div class="competition-mark"><img src="chiusura-trasparente.png" alt="Torneo di Chiusura" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">CHIUSURA</span></div>
+      <div class="competition-mark"><img src="LefabamCup.png" alt="Lefabam Cup" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">LEFABAM CUP</span></div>
+    </div>
+  </div>
+</section>
 <div class="controls">
 <select id="giornataSelect" aria-label="Seleziona giornata">
 <option value="1">1ª Giornata</option><option value="2">2ª Giornata</option><option value="3" selected>3ª Giornata</option>
