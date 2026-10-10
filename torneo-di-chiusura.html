@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Torneo di Chiusura 2026/27 - Lega Fantacalcio Barriera dell'M</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#123d5c;
+    min-height:100vh;
+    overflow-x:hidden;
+    background:
+        radial-gradient(circle at 72% 42%,rgba(255,255,255,.18),transparent 28%),
+        linear-gradient(135deg,#dff5fc 0%,#b9e5f2 30%,#80cbe0 67%,#5aaed0 100%);
+}
+body:before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;
+    background:
+      linear-gradient(132deg,transparent 0 18%,rgba(255,255,255,.14) 18.2%,transparent 31%),
+      linear-gradient(312deg,transparent 0 66%,rgba(255,255,255,.09) 66.2%,transparent 84%);
+}
+body:after{
+    content:"";position:fixed;right:-120px;bottom:-180px;width:330px;height:330px;
+    border:15px solid rgba(255,255,255,.12);border-radius:50%;
+    box-shadow:0 0 0 16px rgba(255,255,255,.06),0 0 0 32px rgba(255,255,255,.035);
+    pointer-events:none;z-index:-1;
+}
+header{
+    width:100%;max-width:none;margin:0 auto;padding:20px 220px 22px;
+    text-align:center;color:#fff;background:linear-gradient(180deg,#073b5a,#084c6d);
+    border-radius:0 0 28px 28px;box-shadow:0 8px 20px rgba(8,55,82,.18);
+    position:relative;z-index:5;
+}
+.header-nav{
+    position:absolute;left:24px;right:24px;top:50%;transform:translateY(-50%);
+    display:flex;align-items:center;justify-content:space-between;gap:14px;pointer-events:none
+}
+.header-nav a{
+    display:inline-block;padding:11px 16px;border-radius:9px;background:#0b6288;color:#fff;
+    text-decoration:none;font-size:15px;font-weight:800;box-shadow:0 4px 10px rgba(0,0,0,.16);
+    pointer-events:auto;white-space:nowrap
+}
+.header-nav a:hover{background:#11769e}
+header h1{margin:0 0 5px;font-size:45px;line-height:1.05;font-weight:900;text-shadow:0 2px 2px rgba(0,0,0,.18)}
+header p{display:flex;align-items:center;justify-content:center;gap:22px;margin:0;color:#dff5ff;font-size:24px;font-weight:700}
+header p:before,header p:after{content:"";display:block;width:52px;height:2px;background:rgba(255,255,255,.8)}
+.logo-area{
+    width:100%;display:flex;justify-content:center;align-items:center;
+    padding:18px 20px 8px;position:relative;z-index:2
+}
+.competition-logo{
+    display:block;width:230px;max-width:72vw;height:auto;
+    object-fit:contain;filter:drop-shadow(0 4px 7px rgba(8,55,82,.16))
+}
+.container{width:100%;max-width:1500px;margin:0 auto;padding:0 24px 25px}
+.back-link{
+    display:inline-block;position:relative;z-index:10;margin-top:12px;margin-bottom:25px;
+    padding:14px 20px;background:#073d5e;color:#fff;text-decoration:none;border-radius:10px;
+    font-size:16px;font-weight:700;box-shadow:0 5px 12px rgba(0,0,0,.15)
+}
+.back-link:hover{background:#075071}
+.nota{
+    background:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.72);
+    border-radius:14px;box-shadow:0 5px 16px rgba(27,86,113,.10);backdrop-filter:blur(4px)
+}
+
+/* TABELLONE */
+.tabellone-scroll{
+    width:100%;overflow-x:auto;overflow-y:hidden;padding:0 4px 15px;
+    scrollbar-width:thin;scrollbar-color:#347ea1 rgba(255,255,255,.3)
+}
+.tabellone-scroll::-webkit-scrollbar{height:9px}
+.tabellone-scroll::-webkit-scrollbar-track{background:rgba(255,255,255,.3);border-radius:10px}
+.tabellone-scroll::-webkit-scrollbar-thumb{background:#347ea1;border-radius:10px}
+.tabellone{
+    position:relative;width:1220px;height:720px;margin:0 auto
+}
+.round-title{
+    position:absolute;top:0;height:36px;display:flex;align-items:center;justify-content:center;
+    border-radius:10px;color:#fff;font-size:19px;font-weight:900;text-transform:uppercase;
+    box-shadow:0 3px 8px rgba(23,78,106,.14);z-index:5
+}
+.title-ottavi{left:0;width:268px;background:linear-gradient(180deg,#438eb1,#347ea2)}
+.title-quarti{left:328px;width:286px;background:linear-gradient(180deg,#3caebe,#2c9bad)}
+/* AZZURRO/BLU: volutamente senza componenti viola/lilla */
+.title-semifinali{left:660px;width:286px;background:linear-gradient(180deg,#2f83b4,#176b9d)}
+/* La finale ha il suo titolo sotto il trofeo */
+.title-finale{left:992px;top:232px;width:228px;background:linear-gradient(180deg,#11618d,#075071)}
+
+.match{
+    position:absolute;width:268px;border-radius:12px;overflow:hidden;
+    border:2px solid rgba(255,255,255,.92);
+    box-shadow:0 5px 13px rgba(29,91,119,.16);z-index:4
+}
+.match.quarto,.match.semifinale{width:286px}
+.match.finale{width:228px;border:3px solid #d5a51e;box-shadow:0 6px 16px rgba(106,76,4,.22)}
+.match-label{padding:6px 11px 5px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.4px}
+.team{
+    min-height:31px;display:flex;align-items:center;justify-content:space-between;gap:8px;
+    padding:5px 11px;font-size:14px;font-weight:700;border-top:1px solid rgba(30,84,109,.10)
+}
+.team:first-of-type{border-top:none}
+.team-name{line-height:1.18}
+.score{flex:0 0 auto;min-width:20px;text-align:right;font-weight:900}
+
+/* OTTAVI */
+.ottavo-1 .team,.ottavo-2 .team,.ottavo-3 .team,.ottavo-4 .team,.ottavo-5 .team,.ottavo-6 .team{
+    background:linear-gradient(180deg,#e4f5fb,#d1ecf7);color:#123e5d
+}
+.ottavo-1 .match-label,.ottavo-2 .match-label,.ottavo-3 .match-label,.ottavo-4 .match-label,.ottavo-5 .match-label,.ottavo-6 .match-label{
+    background:#d5eef8;color:#145074
+}
+
+/* QUARTI */
+.quarto .team{background:linear-gradient(180deg,#d4f0f5,#bfe6ee);color:#164c68}
+.quarto .match-label{background:linear-gradient(180deg,#bce7ef,#a5dbe5);color:#15506c}
+
+/* SEMIFINALI - AZZURRO/BLU */
+.semifinale .team{background:linear-gradient(180deg,#d5e9f5,#c0dbea);color:#123f66}
+.semifinale .match-label{background:linear-gradient(180deg,#4d8fbe,#3278aa);color:#fff}
+.semifinale .gara-extra{background:rgba(255,255,255,.34);color:#164f78}
+
+/* DIRETTI */
+.team.direct{background:linear-gradient(180deg,#e1f3e4,#cbe8d0)!important;color:#214b2b}
+.team.direct .team-name{color:#214b2b;font-weight:900}
+.direct-badge{
+    display:inline-block;margin-left:5px;padding:2px 6px;border-radius:7px;
+    background:linear-gradient(180deg,#e9c64e,#d2a916);color:#fff;font-size:9px;font-weight:900;vertical-align:middle
+}
+.placeholder .team-name{font-weight:650}
+
+/* FINALE */
+.finale .team{background:linear-gradient(180deg,#fff7d4,#f7e7a7);color:#443600}
+.finale .match-label{background:linear-gradient(180deg,#d9ad26,#c49513);color:#fff}
+.finale .gara-extra{background:#efd36d;color:#554400}
+.finale .score{color:#493900}
+.gara-extra{
+    display:flex;justify-content:space-between;align-items:center;padding:6px 11px;
+    background:rgba(255,255,255,.35);border-top:1px solid rgba(40,80,105,.12);
+    font-size:10px;font-weight:800
+}
+.gara-extra strong{font-size:12px}
+
+/* POSIZIONI: schede separate, mai sovrapposte */
+.ottavo-1{left:0;top:48px}.ottavo-2{left:0;top:150px}.ottavo-3{left:0;top:252px}
+.ottavo-4{left:0;top:354px}.ottavo-5{left:0;top:456px}.ottavo-6{left:0;top:558px}
+
+.quarto-1{left:328px;top:76px}.quarto-2{left:328px;top:228px}
+.quarto-3{left:328px;top:380px}.quarto-4{left:328px;top:532px}
+
+.semifinale-1{left:660px;top:152px}.semifinale-2{left:660px;top:452px}
+
+.trofeo-finale{
+    position:absolute;left:992px;top:45px;width:228px;height:175px;
+    display:flex;align-items:center;justify-content:center;z-index:3;pointer-events:none
+}
+.trofeo-finale img{
+    display:block;width:155px;height:auto;filter:drop-shadow(0 5px 4px rgba(67,70,25,.20))
+}
+.finale{left:992px;top:276px}
+
+/* LINEE */
+.line{position:absolute;background:#23678c;z-index:1;pointer-events:none}
+.line-h{height:2px}.line-v{width:2px}
+
+/* OTTAVI -> QUARTI */
+.q1-h1{left:268px;top:83px;width:30px}.q1-v{left:298px;top:83px;height:40px}.q1-h2{left:298px;top:123px;width:30px}
+.q2-h1{left:268px;top:185px;width:30px}.q2-v{left:298px;top:185px;height:92px}.q2-h2{left:298px;top:277px;width:30px}
+.q3-h1{left:268px;top:287px;width:30px}.q3-v{left:298px;top:277px;height:72px}.q3-h2{left:298px;top:349px;width:30px}
+.q4-h1{left:268px;top:389px;width:30px}.q4-v{left:298px;top:349px;height:92px}.q4-h2{left:298px;top:441px;width:30px}
+.q5-h1{left:268px;top:491px;width:30px}.q5-v{left:298px;top:441px;height:92px}.q5-h2{left:298px;top:533px;width:30px}
+.q6-h1{left:268px;top:593px;width:30px}.q6-v{left:298px;top:533px;height:60px}.q6-h2{left:298px;top:593px;width:30px}
+
+/* QUARTI -> SEMIFINALI */
+.s1-a{left:614px;top:109px;width:28px}.s1-b{left:642px;top:109px;height:105px}
+.s1-c{left:642px;top:214px;width:18px}
+.s1-d{left:614px;top:285px;width:28px}.s1-e{left:642px;top:214px;height:71px}
+
+.s2-a{left:614px;top:413px;width:28px}.s2-b{left:642px;top:413px;height:105px}
+.s2-c{left:642px;top:518px;width:18px}
+.s2-d{left:614px;top:589px;width:28px}.s2-e{left:642px;top:518px;height:71px}
+
+/* SEMIFINALI -> FINALE */
+.f-a{left:946px;top:197px;width:46px}.f-b{left:992px;top:197px;height:120px}
+.f-c{left:992px;top:397px;height:120px}
+.f-d{left:946px;top:517px;width:46px}
+
+/* REGOLAMENTO */
+.nota{margin-top:0;padding:15px 22px 16px;color:#104d73}
+.nota h2{margin:0 0 7px;color:#07527d;font-size:21px}
+.nota p{position:relative;margin:4px 0;padding-left:19px;font-size:14px;line-height:1.35}
+.nota p:before{content:"•";position:absolute;left:4px;top:0;font-size:17px;font-weight:900;color:#12648f}
+
+/* FOOTER */
+footer{
+    margin-top:15px;padding:16px 20px;background:linear-gradient(180deg,#084d70,#063b5a);
+    color:#d9eff9;text-align:center;font-size:14px
+}
+footer:before,footer:after{
+    content:"";display:inline-block;width:30%;height:2px;vertical-align:middle;
+    background:rgba(255,255,255,.3);margin:0 20px
+}
+
+@media(max-width:900px){
+    header{padding-left:175px;padding-right:175px}
+    .header-nav{left:14px;right:14px}
+    .header-nav a{padding:10px 12px;font-size:14px}
+    header h1{font-size:34px} header p{font-size:18px}
+    .container{padding-left:15px;padding-right:15px}
+}
+@media(max-width:600px){
+    header{padding:14px 12px 18px;border-radius:0 0 24px 24px}
+    .header-nav{position:relative;left:auto;right:auto;top:auto;transform:none;margin-bottom:14px;gap:8px}
+    .header-nav a{padding:9px 10px;font-size:12px}
+    header h1{font-size:29px}
+    header p{font-size:15px;gap:10px}
+    header p:before,header p:after{width:30px}
+    .round-title{font-size:17px}.nota{padding:15px 17px}
+    .nota h2{font-size:19px}.nota p{font-size:13px}
+    footer:before,footer:after{display:none}
+}
+
+/* Logo e titolo affiancati nella fascia superiore */
+.header-brand{display:flex;align-items:center;justify-content:center;gap:12px;transform:translateX(0)}
+.header-logo{width:122px;height:122px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 3px 5px rgba(0,0,0,.2))}
+.header-brand-text{text-align:center}
+@media(max-width:900px){
+    .header-logo{width:105px;height:105px}
+    .header-brand{gap:10px;transform:translateX(0)}
+}
+@media(max-width:600px){
+    .header-logo{width:88px;height:88px}
+    .header-brand{gap:8px;transform:none}
+    .header-brand-text{min-width:0}
+    .header-brand-text h1{font-size:clamp(20px,5.5vw,29px)}
+    .header-brand-text p{font-size:12px;gap:5px}
+    .header-brand-text p:before,.header-brand-text p:after{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+    <nav class="header-nav" aria-label="Navigazione">
+        <a href="index.html" aria-label="Torna alla Home">⌂ Home</a>
+        <a href="competizioni.html">← Le Competizioni</a>
+    </nav>
+    <div class="header-brand">
+        <img src="chiusura.png" alt="Logo Torneo di Chiusura" class="header-logo">
+        <div class="header-brand-text">
+            <h1>Torneo di Chiusura</h1>
+            <p>Lega Fantacalcio Barriera dell'M</p>
+        </div>
+    </div>
+</header>
+
+
+<div class="container">
+    <section class="tabellone-section" style="margin-top:24px;">
+        <div class="tabellone-scroll">
+            <div class="tabellone">
+
+                <div class="round-title title-ottavi">Ottavi di finale</div>
+                <div class="round-title title-quarti">Quarti di finale</div>
+                <div class="round-title title-semifinali">Semifinali</div>
+                <div class="round-title title-finale">Finale</div>
+
+                <div class="match ottavo-1">
+                    <div class="match-label">Ottavo 1</div>
+                    <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                </div>
+                <div class="match ottavo-2">
+                    <div class="match-label">Ottavo 2</div>
+                    <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                </div>
+                <div class="match ottavo-3">
+                    <div class="match-label">Ottavo 3</div>
+                    <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                </div>
+                <div class="match ottavo-4">
+                    <div class="match-label">Ottavo 4</div>
+                    <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                </div>
+                <div class="match ottavo-5">
+                    <div class="match-label">Ottavo 5</div>
+                    <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                </div>
+                <div class="match ottavo-6">
+                    <div class="match-label">Ottavo 6</div>
+                    <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                </div>
+
+                <div class="match quarto quarto-1">
+                    <div class="match-label">Quarto 1</div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                </div>
+                <div class="match quarto quarto-2">
+                    <div class="match-label">Quarto 2</div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                </div>
+                <div class="match quarto quarto-3">
+                    <div class="match-label">Quarto 3</div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                </div>
+                <div class="match quarto quarto-4">
+                    <div class="match-label">Quarto 4</div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                </div>
+
+                <div class="match semifinale semifinale-1">
+                    <div class="match-label">Semifinale 1</div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="gara-extra"><span>ANDATA:</span><strong>—</strong><span>RITORNO:</span><strong>—</strong></div>
+                </div>
+
+                <div class="match semifinale semifinale-2">
+                    <div class="match-label">Semifinale 2</div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="gara-extra"><span>ANDATA:</span><strong>—</strong><span>RITORNO:</span><strong>—</strong></div>
+                </div>
+
+                <div class="trofeo-finale">
+                    <img src="trofeo-chiusura.png" alt="Trofeo del Torneo di Chiusura">
+                </div>
+
+                <div class="match finale">
+                    <div class="match-label">Finale · Gara unica</div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
+                    <div class="gara-extra"><span>FINALE:</span><strong>—</strong></div>
+                </div>
+
+                <!-- OTTAVI -> QUARTI -->
+                <span class="line line-h q1-h1"></span><span class="line line-v q1-v"></span><span class="line line-h q1-h2"></span>
+                <span class="line line-h q2-h1"></span><span class="line line-v q2-v"></span><span class="line line-h q2-h2"></span>
+                <span class="line line-h q3-h1"></span><span class="line line-v q3-v"></span><span class="line line-h q3-h2"></span>
+                <span class="line line-h q4-h1"></span><span class="line line-v q4-v"></span><span class="line line-h q4-h2"></span>
+                <span class="line line-h q5-h1"></span><span class="line line-v q5-v"></span><span class="line line-h q5-h2"></span>
+                <span class="line line-h q6-h1"></span><span class="line line-v q6-v"></span><span class="line line-h q6-h2"></span>
+
+                <!-- QUARTI -> SEMIFINALI -->
+                <span class="line line-h s1-a"></span><span class="line line-v s1-b"></span><span class="line line-h s1-c"></span>
+                <span class="line line-h s1-d"></span><span class="line line-v s1-e"></span>
+                <span class="line line-h s2-a"></span><span class="line line-v s2-b"></span><span class="line line-h s2-c"></span>
+                <span class="line line-h s2-d"></span><span class="line line-v s2-e"></span>
+
+                <!-- SEMIFINALI -> FINALE -->
+                <span class="line line-h f-a"></span><span class="line line-v f-b"></span>
+                <span class="line line-v f-c"></span><span class="line line-h f-d"></span>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="nota">
+        <h2>📋 &nbsp;Regole della competizione</h2>
+        <p>Il Torneo di Chiusura si disputa con formula a eliminazione diretta. Gli abbinamenti vengono determinati in base alla classifica della Serie Maxima al termine del girone di andata.</p>
+        <p>Nelle fasi a eliminazione diretta vengono applicate le regole previste dal regolamento della Lega per gli incontri internazionali.
+           In caso di parità complessiva, si procede secondo i criteri stabiliti dal regolamento ufficiale.</p>
+        <p>La finale viene disputata in gara unica. In caso di parità, si applicano i criteri DTS e, se necessario, i rigori.</p>
+    </section>
+</div>
+
+<footer>Lega Fantacalcio Barriera dell'M</footer>
+</body>
+</html>
