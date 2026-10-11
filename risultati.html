@@ -75,6 +75,14 @@ footer{text-align:center;color:#527589;font-size:12px;margin-top:25px}
 .banner-heading p{font-size:12px;white-space:nowrap}
 @media(max-width:900px){.results-banner{gap:8px}.logo-trio{gap:5px}.competition-mark{height:78px}.competition-mark img{max-height:74px}.competition-mark .logo-fallback{font-size:9px}}
 @media(max-width:620px){.results-banner{grid-template-columns:1fr;gap:10px}.banner-heading{grid-row:1}.logo-trio{gap:8px}.competition-mark{height:78px}.competition-mark img{max-height:74px}.banner-heading p{white-space:normal}}
+
+/* Legenda ufficiale dei colori dei tabellini */
+.legenda-colori{margin:0 0 15px;padding:12px 14px;border:1px solid #d4e1ef;background:#f7fbff;border-radius:11px}
+.legenda-colori h4{margin:0 0 9px;color:#084AA8;font-size:12px;letter-spacing:.5px}
+.legenda-elenco{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px}
+.legenda-voce{display:flex;align-items:flex-start;gap:8px;color:#25445b;font-size:12px;line-height:1.4}
+.legenda-punto{flex:0 0 11px;width:11px;height:11px;border-radius:3px;margin-top:3px;border:1px solid rgba(0,0,0,.13)}
+@media(max-width:620px){.legenda-elenco{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -113,6 +121,17 @@ footer{text-align:center;color:#527589;font-size:12px;margin-top:25px}
 <div id="dettaglio" class="details" hidden aria-live="polite">
 <div class="details-head"><div><h3 id="titoloDettaglio">Tabellino</h3><div id="sottotitoloDettaglio" class="details-subtitle"></div></div><button id="chiudiDettaglio" class="close-details" type="button">Chiudi ✕</button></div>
 <div id="carteGiocate" class="carte-giocate" hidden></div>
+<section class="legenda-colori" aria-label="Legenda dei colori dei giocatori">
+<h4>LEGENDA COLORI GIOCATORI</h4>
+<div class="legenda-elenco">
+<div class="legenda-voce"><span class="legenda-punto" style="background:#28812b"></span><span><strong>Verde:</strong> titolare con voto</span></div>
+<div class="legenda-voce"><span class="legenda-punto" style="background:#ad4bc6"></span><span><strong>Viola:</strong> titolare sostituito con carta bonus</span></div>
+<div class="legenda-voce"><span class="legenda-punto" style="background:#245de0"></span><span><strong>Blu:</strong> riserva entrata con sostituzione ordinaria</span></div>
+<div class="legenda-voce"><span class="legenda-punto" style="background:#e33434"></span><span><strong>Rosso:</strong> riserva entrata con carta bonus</span></div>
+<div class="legenda-voce"><span class="legenda-punto" style="background:#e69b22"></span><span><strong>Arancione:</strong> Jolly della Serie Minus affiliata</span></div>
+<div class="legenda-voce"><span class="legenda-punto" style="background:#292929"></span><span><strong>Nero:</strong> altro giocatore, non utilizzato o senza condizione evidenziata</span></div>
+</div>
+</section>
 <div id="giocatori" class="player-grid"></div>
 </div>
 </section>
