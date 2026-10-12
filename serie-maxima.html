@@ -8,12 +8,12 @@
     <style>
         :root { --blue:#084aa8; --dark:#063b91; --yellow:#ffe500; }
         body { background:linear-gradient(135deg,#fff6c3 0%,#f9df67 50%,#f0ca3b 100%); color:#123d5c; }
-        .hero { position:relative; background:var(--yellow); padding:22px 205px 26px; text-align:center; border-radius:0 0 26px 26px; box-shadow:0 7px 18px rgba(0,0,0,.12); border-bottom:4px solid #e5b91f; }
+        .hero { position:relative; background:var(--yellow); padding:6px 205px 8px; text-align:center; border-radius:0 0 26px 26px; box-shadow:0 7px 18px rgba(0,0,0,.12); border-bottom:4px solid #e5b91f; }
         .hero-nav { position:absolute; left:22px; right:22px; top:50%; transform:translateY(-50%); display:flex; justify-content:space-between; align-items:center; gap:12px; pointer-events:none; }
         .hero-nav a { pointer-events:auto; background:var(--blue); color:#fff; text-decoration:none; font-weight:800; border-radius:9px; padding:12px 16px; white-space:nowrap; }
         .hero-nav a:hover { background:var(--dark); }
         .hero-brand { display:flex; justify-content:center; align-items:center; gap:18px; }
-        .hero-logo { width:220px; height:220px; object-fit:contain; filter:drop-shadow(0 4px 4px rgba(0,0,0,.15)); }
+        .hero-logo { width:240px; height:240px; object-fit:contain; filter:drop-shadow(0 4px 4px rgba(0,0,0,.15)); }
         .hero h1 { color:var(--blue); font-size:clamp(30px,4vw,48px); margin:0 0 8px; line-height:1.1; }
         .hero p { color:var(--dark); font-size:18px; font-weight:700; margin:0; }
         .container { max-width:1250px; margin:26px auto; padding:0 20px; }
@@ -41,8 +41,8 @@
         .archive-actions button:disabled { opacity:.55; cursor:not-allowed; }
         .archive-note { color:#50677c; font-size:14px; }
         footer { color:var(--dark); text-align:center; padding:10px 15px 30px; font-weight:700; }
-        @media(max-width:900px) { .hero {padding-left:155px;padding-right:155px;} .hero-logo {width:175px;height:175px;} .hero h1 {font-size:33px;} .hero-nav a {font-size:13px;padding:10px 12px;} }
-        @media(max-width:680px) { .hero {padding:14px 12px 22px;} .hero-nav {position:static;transform:none;margin-bottom:14px;} .hero-nav a {font-size:12px;padding:10px;} .hero-brand {gap:8px;} .hero-logo {width:150px;height:150px;} .hero h1 {font-size:25px;} .hero p {font-size:12px;} .container {padding:0 12px;} .section {padding:17px 13px;} }
+        @media(max-width:900px) { .hero {padding-left:155px;padding-right:155px;} .hero-logo {width:205px;height:205px;} .hero h1 {font-size:33px;} .hero-nav a {font-size:13px;padding:10px 12px;} }
+        @media(max-width:680px) { .hero {padding:10px 12px 12px;} .hero-nav {position:static;transform:none;margin-bottom:4px;} .hero-nav a {font-size:12px;padding:10px;} .hero-brand {gap:8px;} .hero-logo {width:180px;height:180px;} .hero h1 {font-size:25px;} .hero p {font-size:12px;} .container {padding:0 12px;} .section {padding:17px 13px;} }
     </style>
 </head>
 
@@ -50,8 +50,8 @@
 
 <header class="hero">
     <nav class="hero-nav" aria-label="Navigazione">
-        <a href="index.html">â Home</a>
-        <a href="competizioni.html">â Le Competizioni</a>
+        <a href="index.html">&#8962; Home</a>
+        <a href="competizioni.html">&#8592; Le Competizioni</a>
     </nav>
     <div class="hero-brand">
         <img class="hero-logo" src="serie-maxima.png" alt="Logo originale Serie Maxima">
