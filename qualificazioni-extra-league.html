@@ -31,34 +31,47 @@ header{
     background:linear-gradient(180deg,var(--blue),var(--blue2));
     color:#fff;
     text-align:center;
-    padding:30px 20px 34px;
+    padding:16px 22px;
     border-radius:0 0 42px 42px;
     box-shadow:0 8px 24px rgba(0,50,80,.16);
 }
 
-header h1{
-    margin:0;
-    font-size:38px;
+/* Navigazione e logo nella fascia superiore */
+.header-bar{
+    max-width:1220px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    gap:16px;
 }
-
-header p{
-    margin:8px 0 0;
-    font-size:17px;
-    opacity:.9;
+.header-logo{
+    display:block;
+    width:min(230px,100%);
+    max-height:155px;
+    object-fit:contain;
+    margin:auto;
 }
+.nav-link{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:11px 16px;
+    border-radius:9px;
+    background:#fff;
+    color:var(--blue);
+    text-decoration:none;
+    font-weight:700;
+    white-space:nowrap;
+}
+.home-link{justify-self:start;font-size:23px;min-width:48px}
+.competition-link{justify-self:end}
+.nav-link:hover{background:#e4f2f7}
 
 .container{
     max-width:1220px;
     margin:auto;
     padding:28px 20px 42px;
-}
-
-.back-link{
-    display:inline-block;
-    margin-bottom:22px;
-    color:#07527d;
-    font-weight:700;
-    text-decoration:none;
 }
 
 .intro,
@@ -296,9 +309,11 @@ footer{
 }
 
 @media(max-width:600px){
-    header h1{
-        font-size:30px;
-    }
+    header{padding:12px 10px}
+    .header-bar{gap:6px;grid-template-columns:1fr minmax(0,1.1fr) 1fr}
+    .header-logo{width:100%;max-width:145px;max-height:105px}
+    .nav-link{font-size:11px;padding:9px 7px;white-space:normal;text-align:center}
+    .home-link{font-size:21px;min-width:35px}
 
     .container{
         padding:20px 14px 30px;
@@ -322,23 +337,14 @@ footer{
 <body>
 
 <header>
-    <h1>Qualificazioni Extra League</h1>
-    <p>Lega Fantacalcio Barriera dell'M · Stagione 2026/27</p>
+    <nav class="header-bar" aria-label="Navigazione">
+        <a href="index.html" class="nav-link home-link" aria-label="Torna alla Home" title="Torna alla Home">⌂</a>
+        <img src="qualificazioni-extra-league.png" alt="Logo Qualificazioni Extra League" class="header-logo">
+        <a href="competizioni.html" class="nav-link competition-link">← Le Competizioni</a>
+    </nav>
 </header>
 
 <main class="container">
-
-<a href="index.html" class="back-link">← Torna alla Home</a>
-
-<section class="intro">
-    <h2>Qualificazioni Extra League 2026/27</h2>
-    <p>
-        Fase di qualificazione all'Extra League e alla Lefabam Cup.
-        Il tabellone mantiene i gironi, i risultati già disputati,
-        le classifiche aggiornate e le partite ancora da giocare.
-    </p>
-</section>
-
 
 <!-- =========================================================
      GIRONI
@@ -743,4 +749,3 @@ footer{
 
 </body>
 </html>
-
