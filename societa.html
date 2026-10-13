@@ -51,6 +51,75 @@ footer{background:#052a4e;border-top:2px solid #d8af34;color:#d6e4f3}
 @media(max-width:1100px){.clubs{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:700px){.clubs{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding:0 12px 28px}.series-switch button{padding:11px 17px}}
 @media(max-width:430px){.clubs{grid-template-columns:repeat(2,minmax(0,1fr))}.club-card{min-height:170px}.logo-link{width:100%;height:112px}.logo-link img{max-width:105px;max-height:105px}.club-card h2{font-size:11px}}
+/* COLORI UFFICIALI LEFABAM */
+
+body {
+    background: linear-gradient(
+        135deg,
+        #020617,
+        #0b3970 55%,
+        #064b83
+    );
+    color: #f8fafc;
+}
+
+nav {
+    background: #062c52;
+    border-bottom: 2px solid #f5c928;
+}
+
+header {
+    background: linear-gradient(
+        180deg,
+        #062c52,
+        #08466f
+    );
+    border-bottom: 2px solid #f5c928;
+}
+
+header h1 {
+    color: #f5c928;
+}
+
+/* RIQUADRI DELLE SOCIETA */
+
+.club-card {
+    background: linear-gradient(
+        145deg,
+        #102c50,
+        #071c36
+    );
+    border: 1px solid #d4ad39;
+    box-shadow: 0 10px 25px #0005;
+}
+
+.club-card h2 {
+    color: #f5c928;
+}
+
+/* SELETTORE SERIE MAXIMA / MINUS */
+
+.series-switch button {
+    background: #092b50;
+    color: #f5c928;
+    border-color: #d4ad39;
+}
+
+.series-switch button[aria-selected="true"] {
+    background: #f5c928;
+    color: #062c52;
+}
+
+/* INDICAZIONI E FOOTER */
+
+.club-note {
+    color: #e2e8f0;
+}
+
+footer {
+    background: #062c52;
+    border-top: 2px solid #f5c928;
+}
 </style>
 </head>
 <body>
