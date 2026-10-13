@@ -2105,7 +2105,7 @@ footer span {
 }
 
 .current-champion::after {
-    content: "🏆";
+    content: "";
 
     position: absolute;
 
@@ -2434,6 +2434,29 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
 .hero,#classifiche,#statistiche,#societa,#regolamento,#contatti{display:none!important;}
 #storia{display:block!important;max-width:1250px;margin:42px auto 60px;}
 .hall-of-fame-section{background:rgba(2,6,23,.78)!important;border:1px solid rgba(255,255,255,.1);}
+
+/* Restyling Albo d'Oro 2026/27 */
+header .header-inner{max-width:1480px;gap:18px}
+header nav{gap:12px;flex-wrap:wrap;justify-content:flex-end}
+header nav a{font-size:.88rem;padding:11px 18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1)}
+#storia{max-width:1480px!important;width:calc(100% - 32px);margin:22px auto 60px!important}
+#storia.hall-of-fame-section{padding:34px 38px}
+.hof-header{margin-bottom:20px}
+.competition-tabs{width:100%;padding:14px;gap:12px;justify-content:center;margin-bottom:30px}
+.competition-tab{font-size:.85rem;padding:14px 18px;flex:1 1 180px;text-align:center}
+.competition-heading{margin-bottom:18px}
+.competition-icon{width:88px;height:88px;padding:7px;border-radius:16px}
+.competition-icon img{width:100%;height:100%;object-fit:contain}
+.competition-icon.logo-missing{display:none}
+.current-champion{margin-bottom:18px}
+.hof-stats{margin-bottom:25px}
+@media(max-width:768px){
+ #storia.hall-of-fame-section{padding:22px 16px}
+ .competition-tabs{flex-wrap:wrap;overflow-x:visible}
+ .competition-tab{flex:1 1 130px;padding:12px 8px}
+ .competition-icon{width:65px;height:65px}
+ header nav{justify-content:center}
+}
 </style>
 </head>
 
@@ -2478,17 +2501,10 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
         </a>
 
 
-        <nav>
+        <nav aria-label="Navigazione principale">
             <a href="index.html">Home</a>
-            <a href="la-pagina-sportiva.html">La Pagina Sportiva</a>
-            <a href="risultati.html">I Risultati</a>
-            <a href="competizioni.html">Le Competizioni</a>
-            <a href="rose.html">Rose</a>
-            <a href="albo-doro.html" class="active">Albo d'Oro</a>
-            <a href="societa.html">Le Società</a>
-            <a href="regolamento.html">Regolamento</a>
-            <a href="galleria-foto.html">Galleria Foto</a>
-            <a href="contatti.html">Contatti</a>
+            <a href="risultati.html">Risultati</a>
+            <a href="competizioni.html">Competizioni</a>
         </nav>
 
     </div>
@@ -2945,37 +2961,45 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
     <div class="hof-header">
         <div>
             <div class="hof-kicker">ARCHIVIO STORICO</div>
-            <h2>📜 Albo d'Oro</h2>
+            <h2>Albo d'Oro</h2>
             <p>Tutti i vincitori delle competizioni della Lega Fantacalcio Barriera dell'M.</p>
-        </div>
-        <div class="hof-badge">
-            <strong>31</strong>
-            <span>EDIZIONI</span>
         </div>
     </div>
 
     <div class="competition-tabs">
-        <button type="button" class="competition-tab active" data-competition="serie-maxima">🏆 Serie Maxima</button>
-        <button type="button" class="competition-tab" data-competition="apertura">🏅 Torneo di Apertura</button>
-        <button type="button" class="competition-tab" data-competition="chiusura">🏅 Torneo di Chiusura</button>
-        <button type="button" class="competition-tab" data-competition="extra-league">⭐ Extra League</button>
-        <button type="button" class="competition-tab" data-competition="lefabam-cup">🏆 Lefabam Cup</button>
-        <button type="button" class="competition-tab" data-competition="supercoppa">👑 Supercoppa di Lega</button>
-        <button type="button" class="competition-tab" data-competition="mestolo">🥄 Mestolo di Latta</button>
-        <button type="button" class="competition-tab" data-competition="serie-minus">📉 Serie Minus</button>
-        <button type="button" class="competition-tab" data-competition="unicum">🍾 Unicum Cup</button>
-        <button type="button" class="competition-tab" data-competition="omnis">🏆 OMNIS Cup</button>
-        <button type="button" class="competition-tab" data-competition="altre">📜 Altre competizioni</button>
+        <button type="button" class="competition-tab active" data-competition="serie-maxima">Serie Maxima</button>
+        <button type="button" class="competition-tab" data-competition="apertura">Torneo di Apertura</button>
+        <button type="button" class="competition-tab" data-competition="chiusura">Torneo di Chiusura</button>
+        <button type="button" class="competition-tab" data-competition="extra-league">Extra League</button>
+        <button type="button" class="competition-tab" data-competition="lefabam-cup">Lefabam Cup</button>
+        <button type="button" class="competition-tab" data-competition="supercoppa">Supercoppa di Lega</button>
+        <button type="button" class="competition-tab" data-competition="mestolo">Mestolo di Latta</button>
+        <button type="button" class="competition-tab" data-competition="serie-minus">Serie Minus</button>
+        <button type="button" class="competition-tab" data-competition="unicum">Unicum Cup</button>
+        <button type="button" class="competition-tab" data-competition="omnis">OMNIS Cup</button>
+        <button type="button" class="competition-tab" data-competition="altre">Altre competizioni</button>
     </div>
 
 
     <div class="competition-panel active" id="competition-serie-maxima">
         <div class="competition-heading">
-            <div class="competition-icon">🏆</div>
+            <div class="competition-icon"><img src="serie-maxima.png" alt="Logo serie maxima" onerror="this.style.display='none';this.parentElement.classList.add('logo-missing')"></div>
             <div>
                 <div class="competition-label">CAMPIONATO PRINCIPALE</div>
                 <h3>Serie Maxima</h3>
                 <p>L'albo storico del massimo campionato della Lega Fantacalcio Barriera dell'M.</p>
+            </div>
+        </div>
+
+        <div class="current-champion">
+            
+            <div class="champion-info">
+                <span>ULTIMO CAMPIONE</span>
+                <strong>Profonda Aurora A.F.</strong>
+                <small>2025/2026</small>
+            </div>
+            <div class="champion-season">
+                2025<br><span>2026</span>
             </div>
         </div>
 
@@ -2998,18 +3022,6 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
             </div>
         </div>
 
-        <div class="current-champion">
-            <div class="champion-trophy">🏆</div>
-            <div class="champion-info">
-                <span>ULTIMO CAMPIONE</span>
-                <strong>Profonda Aurora A.F.</strong>
-                <small>2025/2026</small>
-            </div>
-            <div class="champion-season">
-                2025<br><span>2026</span>
-            </div>
-        </div>
-
         <div class="hof-table-wrapper">
             <table class="hof-table">
                 <thead>
@@ -3027,11 +3039,23 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
 
     <div class="competition-panel" id="competition-apertura">
         <div class="competition-heading">
-            <div class="competition-icon">🏅</div>
+            <div class="competition-icon"><img src="apertura.png" alt="Logo apertura" onerror="this.style.display='none';this.parentElement.classList.add('logo-missing')"></div>
             <div>
                 <div class="competition-label">TORNEO DI APERTURA</div>
                 <h3>Torneo di Apertura</h3>
                 <p>L'albo storico del torneo di apertura della Lega Fantacalcio Barriera dell'M.</p>
+            </div>
+        </div>
+
+        <div class="current-champion">
+            
+            <div class="champion-info">
+                <span>ULTIMO CAMPIONE</span>
+                <strong>Profonda Aurora A.F.</strong>
+                <small>2025/2026</small>
+            </div>
+            <div class="champion-season">
+                2025<br><span>2026</span>
             </div>
         </div>
 
@@ -3054,18 +3078,6 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
             </div>
         </div>
 
-        <div class="current-champion">
-            <div class="champion-trophy">🏅</div>
-            <div class="champion-info">
-                <span>ULTIMO CAMPIONE</span>
-                <strong>Profonda Aurora A.F.</strong>
-                <small>2025/2026</small>
-            </div>
-            <div class="champion-season">
-                2025<br><span>2026</span>
-            </div>
-        </div>
-
         <div class="hof-table-wrapper">
             <table class="hof-table">
                 <thead>
@@ -3083,11 +3095,23 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
 
     <div class="competition-panel" id="competition-chiusura">
         <div class="competition-heading">
-            <div class="competition-icon">🏅</div>
+            <div class="competition-icon"><img src="chiusura.png" alt="Logo chiusura" onerror="this.style.display='none';this.parentElement.classList.add('logo-missing')"></div>
             <div>
                 <div class="competition-label">TORNEO DI CHIUSURA</div>
                 <h3>Torneo di Chiusura</h3>
                 <p>L'albo storico del torneo di chiusura della Lega Fantacalcio Barriera dell'M.</p>
+            </div>
+        </div>
+
+        <div class="current-champion">
+            
+            <div class="champion-info">
+                <span>ULTIMO CAMPIONE</span>
+                <strong>Spartak Pisa</strong>
+                <small>2025/2026</small>
+            </div>
+            <div class="champion-season">
+                2025<br><span>2026</span>
             </div>
         </div>
 
@@ -3110,18 +3134,6 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
             </div>
         </div>
 
-        <div class="current-champion">
-            <div class="champion-trophy">🏅</div>
-            <div class="champion-info">
-                <span>ULTIMO CAMPIONE</span>
-                <strong>Spartak Pisa</strong>
-                <small>2025/2026</small>
-            </div>
-            <div class="champion-season">
-                2025<br><span>2026</span>
-            </div>
-        </div>
-
         <div class="hof-table-wrapper">
             <table class="hof-table">
                 <thead>
@@ -3139,11 +3151,23 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
 
     <div class="competition-panel" id="competition-extra-league">
         <div class="competition-heading">
-            <div class="competition-icon">⭐</div>
+            <div class="competition-icon"><img src="extra-league.png" alt="Logo extra league" onerror="this.style.display='none';this.parentElement.classList.add('logo-missing')"></div>
             <div>
                 <div class="competition-label">COMPETIZIONE STORICA</div>
                 <h3>Extra League</h3>
                 <p>L'albo storico dell'Extra League.</p>
+            </div>
+        </div>
+
+        <div class="current-champion">
+            
+            <div class="champion-info">
+                <span>ULTIMO CAMPIONE</span>
+                <strong>Lobe United</strong>
+                <small>2025/2026</small>
+            </div>
+            <div class="champion-season">
+                2025<br><span>2026</span>
             </div>
         </div>
 
@@ -3166,18 +3190,6 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
             </div>
         </div>
 
-        <div class="current-champion">
-            <div class="champion-trophy">⭐</div>
-            <div class="champion-info">
-                <span>ULTIMO CAMPIONE</span>
-                <strong>Lobe United</strong>
-                <small>2025/2026</small>
-            </div>
-            <div class="champion-season">
-                2025<br><span>2026</span>
-            </div>
-        </div>
-
         <div class="hof-table-wrapper">
             <table class="hof-table">
                 <thead>
@@ -3195,11 +3207,23 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
 
     <div class="competition-panel" id="competition-lefabam-cup">
         <div class="competition-heading">
-            <div class="competition-icon">🏆</div>
+            <div class="competition-icon"><img src="lefabam-cup.png" alt="Logo lefabam cup" onerror="this.style.display='none';this.parentElement.classList.add('logo-missing')"></div>
             <div>
                 <div class="competition-label">COPPA</div>
                 <h3>Lefabam Cup</h3>
                 <p>L'albo storico della Lefabam Cup.</p>
+            </div>
+        </div>
+
+        <div class="current-champion">
+            
+            <div class="champion-info">
+                <span>ULTIMO CAMPIONE</span>
+                <strong>Real Doratom</strong>
+                <small>2025/2026</small>
+            </div>
+            <div class="champion-season">
+                2025<br><span>2026</span>
             </div>
         </div>
 
@@ -3222,18 +3246,6 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
             </div>
         </div>
 
-        <div class="current-champion">
-            <div class="champion-trophy">🏆</div>
-            <div class="champion-info">
-                <span>ULTIMO CAMPIONE</span>
-                <strong>Real Doratom</strong>
-                <small>2025/2026</small>
-            </div>
-            <div class="champion-season">
-                2025<br><span>2026</span>
-            </div>
-        </div>
-
         <div class="hof-table-wrapper">
             <table class="hof-table">
                 <thead>
@@ -3251,11 +3263,23 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
 
     <div class="competition-panel" id="competition-supercoppa">
         <div class="competition-heading">
-            <div class="competition-icon">👑</div>
+            <div class="competition-icon"><img src="supercoppa.png" alt="Logo supercoppa" onerror="this.style.display='none';this.parentElement.classList.add('logo-missing')"></div>
             <div>
                 <div class="competition-label">SUPERCOPPA</div>
                 <h3>Supercoppa di Lega</h3>
                 <p>L'albo storico della Supercoppa di Lega.</p>
+            </div>
+        </div>
+
+        <div class="current-champion">
+            
+            <div class="champion-info">
+                <span>ULTIMO CAMPIONE</span>
+                <strong>Vaientus F.C.</strong>
+                <small>2025/2026</small>
+            </div>
+            <div class="champion-season">
+                2025<br><span>2026</span>
             </div>
         </div>
 
@@ -3278,18 +3302,6 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
             </div>
         </div>
 
-        <div class="current-champion">
-            <div class="champion-trophy">👑</div>
-            <div class="champion-info">
-                <span>ULTIMO CAMPIONE</span>
-                <strong>Vaientus F.C.</strong>
-                <small>2025/2026</small>
-            </div>
-            <div class="champion-season">
-                2025<br><span>2026</span>
-            </div>
-        </div>
-
         <div class="hof-table-wrapper">
             <table class="hof-table">
                 <thead>
@@ -3307,11 +3319,23 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
 
     <div class="competition-panel" id="competition-mestolo">
         <div class="competition-heading">
-            <div class="competition-icon">🥄</div>
+            <div class="competition-icon"><img src="mestolo-di-latta.png" alt="Logo mestolo" onerror="this.style.display='none';this.parentElement.classList.add('logo-missing')"></div>
             <div>
                 <div class="competition-label">PREMIO</div>
                 <h3>Mestolo di Latta o Cucchiaio di Legno</h3>
                 <p>L'albo storico del Mestolo di Latta o Cucchiaio di Legno.</p>
+            </div>
+        </div>
+
+        <div class="current-champion">
+            
+            <div class="champion-info">
+                <span>ULTIMO CAMPIONE</span>
+                <strong>Dinamo Siena</strong>
+                <small>2025/2026</small>
+            </div>
+            <div class="champion-season">
+                2025<br><span>2026</span>
             </div>
         </div>
 
@@ -3334,18 +3358,6 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
             </div>
         </div>
 
-        <div class="current-champion">
-            <div class="champion-trophy">🥄</div>
-            <div class="champion-info">
-                <span>ULTIMO CAMPIONE</span>
-                <strong>Dinamo Siena</strong>
-                <small>2025/2026</small>
-            </div>
-            <div class="champion-season">
-                2025<br><span>2026</span>
-            </div>
-        </div>
-
         <div class="hof-table-wrapper">
             <table class="hof-table">
                 <thead>
@@ -3363,11 +3375,23 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
 
     <div class="competition-panel" id="competition-omnis">
         <div class="competition-heading">
-            <div class="competition-icon">🏆</div>
+            <div class="competition-icon"><img src="omnis-cup.png" alt="Logo omnis" onerror="this.style.display='none';this.parentElement.classList.add('logo-missing')"></div>
             <div>
                 <div class="competition-label">COPPA</div>
                 <h3>OMNIS Cup</h3>
                 <p>L'albo storico della OMNIS Cup, istituita dalla stagione 2021/2022.</p>
+            </div>
+        </div>
+
+        <div class="current-champion">
+            
+            <div class="champion-info">
+                <span>ULTIMO CAMPIONE</span>
+                <strong>Vaientus F.C.</strong>
+                <small>2025/2026</small>
+            </div>
+            <div class="champion-season">
+                2025<br><span>2026</span>
             </div>
         </div>
 
@@ -3390,18 +3414,6 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
             </div>
         </div>
 
-        <div class="current-champion">
-            <div class="champion-trophy">🏆</div>
-            <div class="champion-info">
-                <span>ULTIMO CAMPIONE</span>
-                <strong>Vaientus F.C.</strong>
-                <small>2025/2026</small>
-            </div>
-            <div class="champion-season">
-                2025<br><span>2026</span>
-            </div>
-        </div>
-
         <div class="hof-table-wrapper">
             <table class="hof-table">
                 <thead>
@@ -3419,7 +3431,7 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
 
     <div class="competition-panel" id="competition-serie-minus">
         <div class="empty-competition">
-            <span>📉</span>
+            
             <h3>Serie Minus</h3>
             <p>L'albo storico della Serie Minus sarà inserito qui.</p>
         </div>
@@ -3427,7 +3439,7 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
 
     <div class="competition-panel" id="competition-unicum">
         <div class="empty-competition">
-            <span>🍾</span>
+            
             <h3>Unicum Cup</h3>
             <p>L'albo storico della Unicum Cup sarà inserito qui.</p>
         </div>
@@ -3435,7 +3447,7 @@ nav a.active{background:rgba(245,201,40,.18);color:#ffd329;}
 
     <div class="competition-panel" id="competition-altre">
         <div class="empty-competition">
-            <span>📜</span>
+            
             <h3>Altre competizioni</h3>
             <p>Qui verranno raccolte tutte le altre competizioni disputate nella storia della Lega.</p>
         </div>
