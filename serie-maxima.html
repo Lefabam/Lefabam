@@ -143,7 +143,18 @@ const statoClassifica = document.getElementById("stato-classifica");
 const numero = n => Number(n).toLocaleString("it-IT", {maximumFractionDigits:1});
 const normalizza = s => String(s || "").trim().toLocaleLowerCase("it-IT").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
+// Totali ufficiali al termine della 3Âª giornata: base storica fissa.
+const BASE_G3 = [
+  ["PROFONDA AURORA",237], ["VAIENTUS",237], ["MONACO DI BARRIERA",231.5],
+  ["REAL DORATOM",222.5], ["EVERTOR",220.5], ["DINAMO SIENA",219.5],
+  ["SPARTAK PISA",218.5], ["LOBE UNITED",217], ["TAURINORUM",217],
+  ["INTERTOR",213.5], ["TOMCAT",205], ["WILD EAGLES",203.5],
+  ["CASTEL DI IEMMA",200.5], ["ZULUZEBRA",198.5]
+];
+
 async function aggiornaClassifica() {
+  const totali = new Map(BASE_G3.map(([nome,pt]) => [normalizza(nome), {nome,pt,pp:pt,pg:0}]));
+  let ultima = 3;
   try {
     const risposta = await fetch(API_CLASSIFICA, {cache:"no-store", redirect:"follow"});
     if (!risposta.ok) throw new Error("Servizio non raggiungibile");
@@ -151,57 +162,49 @@ async function aggiornaClassifica() {
     if (!dati || !Array.isArray(dati.risultati)) throw new Error("Dati non validi");
     const giornate = new Map();
     for (const r of dati.risultati) {
-      const g = Number(r.giornata), p = Number(r.punteggio);
+      const g = Number(r.giornata);
+      const p = Number(String(r.punteggio).replace(",","."));
       const squadra = String(r.societa || "").trim();
-      if (!Number.isInteger(g) || g < 1 || g > 38 || r.competizione !== "Serie Maxima" || !squadra || !Number.isFinite(p)) continue;
-      if (!giornate.has(g)) giornate.set(g, new Map());
-      giornate.get(g).set(normalizza(squadra), {nome:squadra, punti:p});
+      if (!Number.isInteger(g) || g < 4 || g > 38 || r.competizione !== "Serie Maxima" || !squadra || !Number.isFinite(p)) continue;
+      if (!giornate.has(g)) giornate.set(g,new Map());
+      giornate.get(g).set(normalizza(squadra),p);
     }
-    // Considera esclusivamente giornate complete con 14 squadre.
-    const complete = [...giornate.entries()].filter(([g, squadre]) => squadre.size === 14).sort((a,b) => a[0]-b[0]);
-    if (!complete.length) throw new Error("Nessuna giornata completa disponibile");
-    const ultima = complete[complete.length-1][0];
-    const totali = new Map();
-    for (const [giornata, squadre] of complete) {
-      for (const [chiave, dato] of squadre) {
-        if (!totali.has(chiave)) totali.set(chiave, {nome:dato.nome, pt:0, pp:0, pg:0, presenze:0});
-        const t = totali.get(chiave);
-        t.pt += dato.punti;
-        if (giornata === ultima) t.pg = dato.punti;
-        else t.pp += dato.punti;
-        t.presenze++;
+    // Applica soltanto le giornate complete e consecutive dalla quarta in avanti.
+    for (let g=4; g<=38; g++) {
+      const valori = giornate.get(g);
+      if (!valori || valori.size !== 14 || [...totali.keys()].some(nome => !valori.has(nome))) break;
+      for (const [nome, squadra] of totali) {
+        squadra.pp = squadra.pt;
+        squadra.pg = valori.get(nome);
+        squadra.pt = Math.round((squadra.pt + squadra.pg)*10)/10;
       }
+      ultima = g;
     }
-    const classifica = [...totali.values()].filter(t => t.presenze === complete.length).sort((a,b) => b.pt-a.pt || a.nome.localeCompare(b.nome,"it"));
-    if (classifica.length !== 14) throw new Error("Classifica incompleta");
-    corpoClassifica.replaceChildren();
-    classifica.forEach((s, i) => {
-      const tr = document.createElement("tr");
-      if (i === 0) tr.className = "champion";
-      else if (i < 4) tr.className = "top-four";
-      else if (i >= 12) tr.className = "minus-zone";
-      const posizione = classifica.findIndex(t => Math.abs(t.pt-s.pt) < 0.00001) + 1;
-      const diff = i === 0 ? "-" : numero(classifica[i-1].pt - s.pt);
-      // I conteggi CA/CC/CD/TC richiedono la codifica ufficiale delle carte.
-      const valori = [posizione, s.nome.toUpperCase(), numero(s.pt), numero(s.pp), numero(s.pg), "-", "-", "-", "-", diff];
-      valori.forEach((val, col) => {
-        const td = document.createElement("td");
-        td.textContent = val;
-        if (col === 0) td.className = "position";
-        if (col === 2 || col === 3 || col === 4) {
-          const strong = document.createElement("strong"); strong.textContent = val; td.replaceChildren(strong);
-        }
-        tr.appendChild(td);
-      });
-      corpoClassifica.appendChild(tr);
-    });
-    statoClassifica.textContent = `Classifica aggiornata alla ${ultima}Âª giornata`;
   } catch (errore) {
-    console.warn("Classifica Serie Maxima:", errore);
-    statoClassifica.textContent = "Classifica temporaneamente non disponibile";
-    corpoClassifica.innerHTML = '<tr><td colspan="10">Impossibile caricare la classifica ufficiale. Riprova ad aggiornare la pagina.</td></tr>';
+    console.warn("Dati recenti non disponibili; visualizzo la base ufficiale:",errore);
   }
+  const classifica = [...totali.values()].sort((a,b)=>b.pt-a.pt || a.nome.localeCompare(b.nome,"it"));
+  corpoClassifica.replaceChildren();
+  classifica.forEach((s,i)=>{
+    const tr = document.createElement("tr");
+    if (i===0) tr.className="champion";
+    else if (i<4) tr.className="top-four";
+    else if (i>=12) tr.className="minus-zone";
+    const posizione = classifica.findIndex(t=>Math.abs(t.pt-s.pt)<0.00001)+1;
+    const diff = i===0 ? "-" : numero(classifica[i-1].pt-s.pt);
+    const valori = [posizione,s.nome,numero(s.pt),ultima===3?"-":numero(s.pp),ultima===3?"-":numero(s.pg),"-","-","-","-",diff];
+    valori.forEach((val,col)=>{
+      const td=document.createElement("td");
+      td.textContent=val;
+      if(col===0) td.className="position";
+      if([2,3,4].includes(col)) {const strong=document.createElement("strong");strong.textContent=val;td.replaceChildren(strong);}
+      tr.appendChild(td);
+    });
+    corpoClassifica.appendChild(tr);
+  });
+  statoClassifica.textContent=`Classifica aggiornata alla ${ultima}Âª giornata`;
 }
+
 aggiornaClassifica();
 </script>
 </body>
