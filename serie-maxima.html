@@ -8,12 +8,29 @@
     <style>
         :root { --blue:#084aa8; --dark:#063b91; --yellow:#ffe500; }
         body { background:linear-gradient(135deg,#fff6c3 0%,#f9df67 50%,#f0ca3b 100%); color:#123d5c; }
-        .hero { position:relative; background:var(--yellow); padding:6px 205px 8px; text-align:center; border-radius:0 0 26px 26px; box-shadow:0 7px 18px rgba(0,0,0,.12); border-bottom:4px solid #e5b91f; }
+        .hero {
+  position: relative;
+  background: var(--yellow);
+  height: 170px;
+  padding: 0 205px;
+  text-align: center;
+  border-radius: 0 0 26px 26px;
+  box-shadow: 0 7px 18px rgba(0,0,0,.12);
+  border-bottom: 4px solid #e5b91f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
         .hero-nav { position:absolute; left:22px; right:22px; top:50%; transform:translateY(-50%); display:flex; justify-content:space-between; align-items:center; gap:12px; pointer-events:none; }
         .hero-nav a { pointer-events:auto; background:var(--blue); color:#fff; text-decoration:none; font-weight:800; border-radius:9px; padding:12px 16px; white-space:nowrap; }
         .hero-nav a:hover { background:var(--dark); }
         .hero-brand { display:flex; justify-content:center; align-items:center; gap:18px; }
-        .hero-logo { width:240px; height:240px; object-fit:contain; filter:drop-shadow(0 4px 4px rgba(0,0,0,.15)); }
+        .hero-logo {
+  width: 280px;
+  height: 155px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 4px rgba(0,0,0,.15));
+}
         .hero h1 { color:var(--blue); font-size:clamp(30px,4vw,48px); margin:0 0 8px; line-height:1.1; }
         .hero p { color:var(--dark); font-size:18px; font-weight:700; margin:0; }
         .container { max-width:1250px; margin:26px auto; padding:0 20px; }
