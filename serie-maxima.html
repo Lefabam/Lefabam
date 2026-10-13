@@ -50,8 +50,8 @@
 
 <header class="hero">
     <nav class="hero-nav" aria-label="Navigazione">
-        <a href="index.html">&#8962; Home</a>
-        <a href="competizioni.html">&#8592; Le Competizioni</a>
+        <a href="index.html">Home</a>
+        <a href="competizioni.html">Le Competizioni</a>
     </nav>
     <div class="hero-brand">
         <img class="hero-logo" src="serie-maxima.png" alt="Logo originale Serie Maxima">
@@ -64,7 +64,7 @@
         <h3>Classifica Serie Maxima</h3>
 
         <p>
-            <strong>Classifica aggiornata alla 3Âª giornata</strong>
+            <strong><span id="stato-classifica">Caricamento classifica ufficiale...</span></strong>
         </p>
 
         <div class="table-wrapper">
@@ -80,223 +80,11 @@
                         <th>CC</th>
                         <th>CD</th>
                         <th>TC</th>
-                        <th>J</th>
-                        <th>D</th>
                         <th>Diff.</th>
                     </tr>
                 </thead>
 
-                <tbody>
-                    <tr class="champion">
-                        <td class="position">1</td>
-                        <td>PROFONDA AURORA</td>
-                        <td><strong>237</strong></td>
-                        <td><strong>168</strong></td>
-                        <td><strong>69</strong></td>
-                        <td></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>-</td>
-                    </tr>
-
-                    <tr class="top-four">
-                        <td class="position">2</td>
-                        <td>VAIENTUS</td>
-                        <td><strong>237</strong></td>
-                        <td><strong>167</strong></td>
-                        <td><strong>70</strong></td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>0</td>
-                    </tr>
-
-                    <tr class="top-four">
-                        <td class="position">3</td>
-                        <td>MONACO DI BARRIERA</td>
-                        <td><strong>231,5</strong></td>
-                        <td><strong>150,5</strong></td>
-                        <td><strong>81</strong></td>
-                        <td></td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>5,5</td>
-                    </tr>
-
-                    <tr class="top-four">
-                        <td class="position">4</td>
-                        <td>REAL DORATOM</td>
-                        <td><strong>222,5</strong></td>
-                        <td><strong>155</strong></td>
-                        <td><strong>67,5</strong></td>
-                        <td></td>
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>9</td>
-                    </tr>
-
-                    <tr>
-                        <td class="position">5</td>
-                        <td>EVERTOR</td>
-                        <td><strong>220,5</strong></td>
-                        <td><strong>146</strong></td>
-                        <td><strong>74,5</strong></td>
-                        <td></td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>2</td>
-                    </tr>
-
-                    <tr>
-                        <td class="position">6</td>
-                        <td>DINAMO SIENA</td>
-                        <td><strong>219,5</strong></td>
-                        <td><strong>139</strong></td>
-                        <td><strong>80,5</strong></td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>1</td>
-                    </tr>
-
-                    <tr>
-                        <td class="position">7</td>
-                        <td>SPARTAK PISA</td>
-                        <td><strong>218,5</strong></td>
-                        <td><strong>148</strong></td>
-                        <td><strong>70,5</strong></td>
-                        <td></td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>1</td>
-                    </tr>
-
-                    <tr>
-                        <td class="position">8</td>
-                        <td>LOBE UNITED</td>
-                        <td><strong>217</strong></td>
-                        <td><strong>148</strong></td>
-                        <td><strong>69</strong></td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>1,5</td>
-                    </tr>
-
-                    <tr>
-                        <td class="position">9</td>
-                        <td>TAURINORUM</td>
-                        <td><strong>217</strong></td>
-                        <td><strong>143,5</strong></td>
-                        <td><strong>73,5</strong></td>
-                        <td>3</td>
-                        <td></td>
-                        <td>1</td>
-                        <td></td>
-                        <td>3</td>
-                        <td></td>
-                        <td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="position">10</td>
-                        <td>INTERTOR</td>
-                        <td><strong>213,5</strong></td>
-                        <td><strong>143</strong></td>
-                        <td><strong>70,5</strong></td>
-                        <td>1</td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>3,5</td>
-                    </tr>
-
-                    <tr>
-                        <td class="position">11</td>
-                        <td>TOMCAT</td>
-                        <td><strong>205</strong></td>
-                        <td><strong>137,5</strong></td>
-                        <td><strong>67,5</strong></td>
-                        <td>1</td>
-                        <td></td>
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td>1</td>
-                        <td>8,5</td>
-                    </tr>
-
-                    <tr>
-                        <td class="position">12</td>
-                        <td>WILD EAGLES</td>
-                        <td><strong>203,5</strong></td>
-                        <td><strong>136,5</strong></td>
-                        <td><strong>67</strong></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>1,5</td>
-                    </tr>
-
-                    <tr class="minus-zone">
-                        <td class="position">13</td>
-                        <td>CASTEL DI IEMMA</td>
-                        <td><strong>200,5</strong></td>
-                        <td><strong>130</strong></td>
-                        <td><strong>70,5</strong></td>
-                        <td></td>
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>3</td>
-                    </tr>
-
-                    <tr class="minus-zone">
-                        <td class="position">14</td>
-                        <td>ZULUZEBRA</td>
-                        <td><strong>198,5</strong></td>
-                        <td><strong>133,5</strong></td>
-                        <td><strong>65</strong></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                        <td>2</td>
-                        <td></td>
-                        <td>2</td>
-                    </tr>
-                </tbody>
+                <tbody id="classifica-corpo"><tr><td colspan="10">Caricamento dati...</td></tr></tbody>
             </table>
         </div>
     </section>
@@ -306,19 +94,19 @@
 
         <div class="info-grid">
             <div class="info-card">
-                <strong>ð Classifica</strong>
+                <strong>Classifica</strong>
                 La graduatoria Ã¨ determinata dalla somma dei punteggi
                 ottenuti nelle singole giornate.
             </div>
 
             <div class="info-card">
-                <strong>â½ Formula</strong>
+                <strong>Formula</strong>
                 La Serie Maxima rappresenta il campionato principale
                 della Lega.
             </div>
 
             <div class="info-card">
-                <strong>ð Titolo</strong>
+                <strong>Titolo</strong>
                 La squadra che conclude la stagione al primo posto
                 conquista lo scudetto ed il Titolo di Campione di Lefabam.
             </div>
@@ -331,12 +119,12 @@
     </section>
 
     <section class="section archive-section" aria-labelledby="archivio-title">
-        <h3 id="archivio-title">ð Archivio storico Serie Maxima</h3>
+        <h3 id="archivio-title">Archivio storico Serie Maxima</h3>
         <p>Consulta le classifiche delle stagioni precedenti.</p>
         <div class="archive-actions">
             <label for="archivio-stagione">Seleziona stagione</label>
             <select id="archivio-stagione"><option value="">2025/2026</option></select>
-            <button type="button" disabled title="La pagina archivio sarÃ  collegata quando disponibile">Apri stagione â</button>
+            <button type="button" disabled title="La pagina archivio sarÃ  collegata quando disponibile">Apri stagione</button>
         </div>
         <p class="archive-note">Il collegamento alla stagione 2025/2026 sarÃ  attivato quando prepareremo la pagina dell'archivio.</p>
     </section>
@@ -348,5 +136,73 @@
     Lega Fantacalcio Barriera dell'M
 </footer>
 
+<script>
+const API_CLASSIFICA = "https://script.google.com/macros/s/AKfycbwWlKhPmKDPf7-tzbppLgsMz7wjB_g3eVj2QvsgrdKLk-aPbuhAoRpUcNZQq1TJLd6Zlw/exec";
+const corpoClassifica = document.getElementById("classifica-corpo");
+const statoClassifica = document.getElementById("stato-classifica");
+const numero = n => Number(n).toLocaleString("it-IT", {maximumFractionDigits:1});
+const normalizza = s => String(s || "").trim().toLocaleLowerCase("it-IT").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+async function aggiornaClassifica() {
+  try {
+    const risposta = await fetch(API_CLASSIFICA, {cache:"no-store", redirect:"follow"});
+    if (!risposta.ok) throw new Error("Servizio non raggiungibile");
+    const dati = await risposta.json();
+    if (!dati || !Array.isArray(dati.risultati)) throw new Error("Dati non validi");
+    const giornate = new Map();
+    for (const r of dati.risultati) {
+      const g = Number(r.giornata), p = Number(r.punteggio);
+      const squadra = String(r.societa || "").trim();
+      if (!Number.isInteger(g) || g < 1 || g > 38 || r.competizione !== "Serie Maxima" || !squadra || !Number.isFinite(p)) continue;
+      if (!giornate.has(g)) giornate.set(g, new Map());
+      giornate.get(g).set(normalizza(squadra), {nome:squadra, punti:p});
+    }
+    // Considera esclusivamente giornate complete con 14 squadre.
+    const complete = [...giornate.entries()].filter(([g, squadre]) => squadre.size === 14).sort((a,b) => a[0]-b[0]);
+    if (!complete.length) throw new Error("Nessuna giornata completa disponibile");
+    const ultima = complete[complete.length-1][0];
+    const totali = new Map();
+    for (const [giornata, squadre] of complete) {
+      for (const [chiave, dato] of squadre) {
+        if (!totali.has(chiave)) totali.set(chiave, {nome:dato.nome, pt:0, pp:0, pg:0, presenze:0});
+        const t = totali.get(chiave);
+        t.pt += dato.punti;
+        if (giornata === ultima) t.pg = dato.punti;
+        else t.pp += dato.punti;
+        t.presenze++;
+      }
+    }
+    const classifica = [...totali.values()].filter(t => t.presenze === complete.length).sort((a,b) => b.pt-a.pt || a.nome.localeCompare(b.nome,"it"));
+    if (classifica.length !== 14) throw new Error("Classifica incompleta");
+    corpoClassifica.replaceChildren();
+    classifica.forEach((s, i) => {
+      const tr = document.createElement("tr");
+      if (i === 0) tr.className = "champion";
+      else if (i < 4) tr.className = "top-four";
+      else if (i >= 12) tr.className = "minus-zone";
+      const posizione = classifica.findIndex(t => Math.abs(t.pt-s.pt) < 0.00001) + 1;
+      const diff = i === 0 ? "-" : numero(classifica[i-1].pt - s.pt);
+      // I conteggi CA/CC/CD/TC richiedono la codifica ufficiale delle carte.
+      const valori = [posizione, s.nome.toUpperCase(), numero(s.pt), numero(s.pp), numero(s.pg), "-", "-", "-", "-", diff];
+      valori.forEach((val, col) => {
+        const td = document.createElement("td");
+        td.textContent = val;
+        if (col === 0) td.className = "position";
+        if (col === 2 || col === 3 || col === 4) {
+          const strong = document.createElement("strong"); strong.textContent = val; td.replaceChildren(strong);
+        }
+        tr.appendChild(td);
+      });
+      corpoClassifica.appendChild(tr);
+    });
+    statoClassifica.textContent = `Classifica aggiornata alla ${ultima}Âª giornata`;
+  } catch (errore) {
+    console.warn("Classifica Serie Maxima:", errore);
+    statoClassifica.textContent = "Classifica temporaneamente non disponibile";
+    corpoClassifica.innerHTML = '<tr><td colspan="10">Impossibile caricare la classifica ufficiale. Riprova ad aggiornare la pagina.</td></tr>';
+  }
+}
+aggiornaClassifica();
+</script>
 </body>
 </html>
