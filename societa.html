@@ -26,6 +26,31 @@ footer{text-align:center;padding:28px;background:#073b5a;color:#fff}
 @media(max-width:1100px){.clubs{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:700px){header h1{font-size:32px}.clubs{grid-template-columns:repeat(2,1fr)}.club-card h2{font-size:13px}}
 @media(max-width:430px){.clubs{grid-template-columns:1fr}}
+
+/* Restyling LEFABAM */
+body{background:radial-gradient(circle at 50% 10%,#116d9d 0%,#0b4778 45%,#052b52 100%);color:#f4f8ff;min-height:100vh}
+nav{background:#052a4e;border-bottom:2px solid #d8af34}
+nav a:hover,nav a.active{background:#f0c947;color:#082e52}
+header{padding:21px 16px 18px;background:linear-gradient(110deg,#06335d,#095b91);border-bottom:2px solid #d9b34c;border-radius:0 0 24px 24px}
+header h1{font-size:clamp(26px,4vw,35px);color:#ffdb65}
+header p{margin-top:5px;font-size:11px;letter-spacing:1.2px;color:#e0e8f6}
+main{max-width:1320px;margin:20px auto;padding:0 18px 38px}
+.series-switch{display:flex;justify-content:center;gap:10px;margin:8px 0 22px}
+.series-switch button{font:800 14px Arial,sans-serif;cursor:pointer;padding:12px 27px;border-radius:12px;border:1px solid #e7bf4a;color:#f3d26a;background:#082d52;transition:.2s}
+.series-switch button[aria-selected="true"]{color:#072e50;background:#f1c94c;box-shadow:0 6px 18px #0003}
+.series-switch button:hover{transform:translateY(-2px)}
+.clubs{grid-template-columns:repeat(7,minmax(0,1fr));gap:13px}
+.club-card{background:linear-gradient(155deg,#fafdff,#e5f0fa);border:2px solid #dfb44c;box-shadow:0 10px 23px #001c3d55}
+.club-card h2{color:#083d67;white-space:normal}
+.logo-placeholder{color:#174b73}
+.club-note{text-align:center;color:#e6edf8;margin:24px auto 0;font-size:14px}
+.series-panel[hidden]{display:none!important}
+.minus-empty{padding:44px 20px;min-height:220px;border:1px dashed #d7b85d;border-radius:20px;text-align:center;background:#052e54aa;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.minus-empty h2{margin:0;color:#ffdb65}.minus-empty p{margin:0;color:#d6e4f3;max-width:560px;line-height:1.6}
+footer{background:#052a4e;border-top:2px solid #d8af34;color:#d6e4f3}
+@media(max-width:1100px){.clubs{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:700px){.clubs{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding:0 12px 28px}.series-switch button{padding:11px 17px}}
+@media(max-width:430px){.clubs{grid-template-columns:repeat(2,minmax(0,1fr))}.club-card{min-height:170px}.logo-link{width:100%;height:112px}.logo-link img{max-width:105px;max-height:105px}.club-card h2{font-size:11px}}
 </style>
 </head>
 <body>
@@ -46,21 +71,22 @@ footer{text-align:center;padding:28px;background:#073b5a;color:#fff}
 <p>LEGA FANTACALCIO BARRIERA DELL'M · STAGIONE 2026/27</p>
 </header>
 <main>
-<section class="intro">
-<strong>Le 14 società della Serie Maxima</strong><br>
-Clicca sul logo per entrare nella pagina dedicata alla società.
-</section>
-<section class="clubs"><article class="club-card">
+<div class="series-switch" role="tablist" aria-label="Seleziona il campionato">
+<button type="button" role="tab" id="tab-maxima" aria-controls="panel-maxima" aria-selected="true" onclick="switchSeries('maxima')">SERIE MAXIMA</button>
+<button type="button" role="tab" id="tab-minus" aria-controls="panel-minus" aria-selected="false" onclick="switchSeries('minus')">SERIE MINUS</button>
+</div>
+<div class="series-panel" id="panel-maxima" role="tabpanel" aria-labelledby="tab-maxima">
+<section class="clubs" id="maxima-clubs" aria-label="Società Serie Maxima"><article class="club-card">
   <h2>CASTEL DI IEMMA</h2>
   <a class="logo-link" href="castel-di-iemma.html" aria-label="Presentazione CASTEL DI IEMMA">
-    <img src="logo-castel.png" alt="Logo CASTEL DI IEMMA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+    <img src="castel-di-iemma.png" alt="Logo CASTEL DI IEMMA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
     <span class="logo-placeholder">LOGO</span>
   </a>
 </article>
 <article class="club-card">
   <h2>DINAMO SIENA</h2>
   <a class="logo-link" href="dinamo-siena.html" aria-label="Presentazione DINAMO SIENA">
-    <img src="logo-dinamo.png" alt="Logo DINAMO SIENA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+    <img src="dinamo-siena.png" alt="Logo DINAMO SIENA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
     <span class="logo-placeholder">LOGO</span>
   </a>
 </article>
@@ -148,7 +174,22 @@ Clicca sul logo per entrare nella pagina dedicata alla società.
     <span class="logo-placeholder">LOGO</span>
   </a>
 </article></section>
+<p class="club-note">Clicca sul logo per entrare nella pagina dedicata alla società.</p>
+</div>
+<div class="series-panel" id="panel-minus" role="tabpanel" aria-labelledby="tab-minus" hidden>
+<div class="minus-empty"><h2>Società della Serie Minus</h2><p>La sezione è pronta: inseriremo qui i loghi e i collegamenti delle società Minus, mantenendo lo stesso schema della Serie Maxima.</p></div>
+<p class="club-note">Clicca sul logo per entrare nella pagina dedicata alla società.</p>
+</div>
 </main>
 <footer>Lega Fantacalcio Barriera dell'M · 1995</footer>
+<script>
+function switchSeries(series){
+  for(const name of ['maxima','minus']){
+    const active=name===series;
+    document.getElementById('panel-'+name).hidden=!active;
+    document.getElementById('tab-'+name).setAttribute('aria-selected',String(active));
+  }
+}
+</script>
 </body>
 </html>
