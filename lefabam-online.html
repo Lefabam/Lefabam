@@ -1,4 +1,4 @@
-tml>
+
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -66,102 +66,56 @@ tml>
     }
     .nav a:first-child:hover, .nav a:first-child:focus-visible { color: var(--white); }
     main {
-        width: min(1500px, 100%);
         min-height: calc(100vh - 76px);
-        margin: 0 auto;
-        padding: 48px 30px 70px;
         display: flex;
+        justify-content: center;
         align-items: center;
-        flex-direction: column;
+        padding: 35px 20px;
     }
-    .intro { width: 100%; text-align: center; }
-    .league-title {
-        margin: 0;
-        color: var(--yellow);
-        font-size: clamp(2.15rem, 4.2vw, 4.15rem);
-        line-height: 1.05;
-        font-weight: 900;
-        letter-spacing: -.8px;
-        white-space: nowrap;
-        text-shadow: 0 3px 0 rgba(0,0,0,.14), 0 8px 25px rgba(0,0,0,.22);
-    }
-    .subtitle {
-        margin: 12px 0 0;
-        color: rgba(255,255,255,.88);
-        font-size: clamp(.78rem, 1.2vw, 1rem);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-    }
-    .title-line {
-        width: min(970px, 75%);
-        height: 2px;
-        margin: 17px auto 0;
-        background: linear-gradient(90deg, transparent, var(--yellow), transparent);
-    }
-    .foundation { margin-top: 23px; text-align: center; }
-    .foundation-label {
-        display: block;
-        font-size: clamp(.88rem, 1.35vw, 1.12rem);
-        font-weight: 800;
-    }
-    .foundation-year {
-        display: block;
-        margin-top: 4px;
-        color: var(--yellow);
-        font-size: clamp(2.3rem, 4vw, 3.7rem);
-        line-height: 1;
-        font-weight: 900;
-        text-shadow: 0 3px 12px rgba(0,0,0,.2);
-    }
-    .access-panel {
-        width: min(540px, 100%);
-        margin-top: 30px;
-        padding: 34px 32px 36px;
-        text-align: center;
-        color: #063b91;
+    .online-circle {
+        width: min(440px, 85vw);
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
         background: linear-gradient(145deg, #fff200 0%, #ffe000 100%);
         border: 3px solid rgba(255,255,255,.92);
-        border-radius: 24px;
         box-shadow: 0 0 0 2px rgba(255,229,0,.9), 0 16px 45px rgba(0,0,0,.30);
-    }
-    .access-panel h2 { margin: 0 0 12px; font-size: clamp(1.45rem, 3vw, 2rem); }
-    .access-panel p { margin: 0 auto 22px; max-width: 410px; font-size: 1rem; line-height: 1.55; }
-    .access-button {
-        display: inline-flex;
+        display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: 54px;
-        padding: 14px 26px;
-        border-radius: 12px;
-        background: #063b91;
-        color: white;
-        font-size: 1rem;
-        font-weight: 800;
+        gap: 12px;
+        text-align: center;
         text-decoration: none;
-        box-shadow: 0 6px 16px rgba(0,0,0,.2);
-        transition: background .2s ease, transform .2s ease;
+        color: var(--blue-dark);
+        padding: 22px;
+        transition: transform .2s ease, box-shadow .2s ease;
     }
-    .access-button:hover, .access-button:focus-visible {
-        background: #0b58bd;
-        transform: translateY(-2px);
+    .online-circle:hover, .online-circle:focus-visible {
+        transform: scale(1.025);
+        box-shadow: 0 0 0 2px rgba(255,229,0,.9), 0 20px 52px rgba(0,0,0,.35);
+        outline-offset: 5px;
     }
-    .access-note { margin: 17px 0 0 !important; font-size: .83rem !important; opacity: .85; }
+    .online-title {
+        font-size: clamp(1.7rem, 4vw, 2.8rem);
+        font-weight: 900;
+        line-height: 1.1;
+    }
+    .online-subtitle {
+        font-size: clamp(.95rem, 2vw, 1.3rem);
+        font-weight: 700;
+        letter-spacing: .5px;
+    }
     @media (max-width: 900px) {
         .nav { justify-content: flex-start; }
         .nav a { min-width: 128px; }
         .nav a:first-child { min-width: 68px; }
-        main { padding-top: 42px; }
-        .league-title { white-space: normal; font-size: clamp(2rem, 7vw, 3.3rem); }
     }
     @media (max-width: 560px) {
         .nav { min-height: 62px; }
         .nav a { min-width: 120px; padding: 0 12px; font-size: 12px; }
         .nav a:first-child { min-width: 62px; font-size: 22px; }
-        main { padding: 34px 16px 45px; }
-        .subtitle { letter-spacing: 2px; }
-        .title-line { width: 88%; }
-        .access-panel { padding: 26px 18px; margin-top: 26px; border-radius: 18px; }
+        main { min-height: calc(100vh - 64px); padding: 24px 12px; }
+        .online-circle { width: min(370px, 88vw); }
     }
 </style>
 </head>
@@ -181,21 +135,10 @@ tml>
     </nav>
 </header>
 <main>
-    <section class="intro" aria-label="Presentazione della Lega">
-        <h1 class="league-title">Lega Fantacalcio Barriera dell'M</h1>
-        <p class="subtitle">Portale ufficiale della Lega</p>
-        <div class="title-line" aria-hidden="true"></div>
-        <div class="foundation">
-            <span class="foundation-label">Anno di fondazione</span>
-            <span class="foundation-year">1995</span>
-        </div>
-    </section>
-    <section class="access-panel" aria-labelledby="access-title">
-        <h2 id="access-title">LEFABAM-ONLINE</h2>
-        <p>Accedi al portale per inserire e gestire le formazioni della tua squadra.</p>
-        <a class="access-button" href="https://www.dosio.com/lefabam/index.php?formazione" rel="noopener noreferrer">â½ Accedi alla gestione formazioni</a>
-        <p class="access-note">L'accesso avviene sul sito di Dosio con le credenziali abituali.</p>
-    </section>
+    <a class="online-circle" href="https://www.dosio.com/lefabam/index.php?formazione" rel="noopener noreferrer" aria-label="LEFABAM-ONLINE: accedi alla gestione formazioni">
+        <span class="online-title">LEFABAM-ONLINE</span>
+        <span class="online-subtitle">Gestione formazioni</span>
+    </a>
 </main>
 </body>
 </html>
