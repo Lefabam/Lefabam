@@ -95,20 +95,30 @@ footer {
     background: #04377f;
     border-top: 2px solid #ffe500;
 }
+
+/* Navigazione in tre gruppi: sinistra, centro, destra */
+.site-nav{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:12px;padding:13px 20px}
+.nav-group{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.nav-left{justify-content:flex-start}
+.nav-center{justify-content:center}
+.nav-right{justify-content:flex-end}
+@media(max-width:760px){.site-nav{grid-template-columns:1fr;gap:7px}.nav-group{justify-content:center}}
 </style>
 </head>
 <body>
-<nav>
-<a href="index.html">Home</a>
-<a href="la-pagina-sportiva.html">La Pagina Sportiva</a>
-<a href="risultati.html">I Risultati</a>
-<a href="competizioni.html">Le Competizioni</a>
-<a href="rose.html">Rose</a>
-<a href="albo-doro.html">Albo d'Oro</a>
-<a href="societa.html" class="active">Le Società</a>
-<a href="regolamento.html">Regolamento</a>
-<a href="galleria-foto.html">Galleria Foto</a>
-<a href="contatti.html">Contatti</a>
+<nav class="site-nav" aria-label="Navigazione principale">
+  <div class="nav-group nav-left">
+    <a href="index.html">Home</a>
+    <a href="la-pagina-sportiva.html">La Pagina Sportiva</a>
+  </div>
+  <div class="nav-group nav-center">
+    <a href="risultati.html">Risultati</a>
+    <a href="competizioni.html">Competizioni</a>
+  </div>
+  <div class="nav-group nav-right">
+    <a href="rose.html">Rose</a>
+    <a href="https://leghe.fantacalcio.it/" target="_blank" rel="noopener noreferrer">Portale OnLine</a>
+  </div>
 </nav>
 <header>
 <h1>Le Società</h1>
