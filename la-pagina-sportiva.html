@@ -23,15 +23,33 @@ body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);fon
 .editorial{margin-top:24px;background:#083a76;color:#fff;padding:20px 22px;border-left:8px solid var(--yellow)}.editorial h2{font-family:Georgia,serif;margin:0 0 7px;color:#fff;font-size:28px}.editorial .label{color:var(--yellow);font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:1.4px}.editorial p{line-height:1.65;margin:9px 0}.editorial .signature{color:var(--yellow)}
 .strip{margin-top:24px;background:#083a76;color:#fff;padding:18px 20px}.strip h2{color:#fff;font-family:Georgia,serif;margin:0 0 12px}.briefs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.brief{border-top:2px solid var(--yellow);padding-top:9px}.brief b{display:block;color:var(--yellow);margin-bottom:5px}.footer{text-align:center;margin-top:25px;color:#657287;font-size:12px}
 @media(max-width:800px){.main-grid,.story-grid,.opinion-grid,.briefs{grid-template-columns:1fr}.side{border-left:0;border-top:4px solid var(--yellow);padding:16px 0 0}.edition{flex-direction:column;gap:5px}.paper{padding:12px}.masthead{max-height:180px}}
+
+/* Fascia istituzionale LEFABAM */
+.lefabam-topbar{background:linear-gradient(180deg,#052c66,#084aa8);border-bottom:4px solid #ffe500;box-shadow:0 3px 14px #0002;padding:14px 20px}
+.lefabam-topbar-inner{max-width:1180px;margin:auto;display:grid;grid-template-columns:1fr minmax(0,2.4fr) 1fr;align-items:center;gap:12px}
+.lefabam-topbar .header-side{display:flex}.lefabam-topbar .header-right{justify-content:flex-end}
+.lefabam-topbar .header-nav-button{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#06366f;border-radius:9px;text-decoration:none;padding:11px 16px;font-weight:800;font-size:14px}
+.lefabam-topbar .header-nav-button:hover{background:#ffe500}
+.lefabam-topbar .header-brand{text-align:center;color:#ffe500}
+.lefabam-topbar .header-title{font-weight:900;letter-spacing:.7px;font-size:clamp(14px,2vw,22px)}
+.lefabam-topbar .header-subtitle{font-size:12px;color:#fff;margin-top:4px}
+@media(max-width:600px){.lefabam-topbar{padding:12px 9px}.lefabam-topbar-inner{grid-template-columns:1fr 1fr;gap:10px}.lefabam-topbar .header-brand{grid-row:1;grid-column:1/-1}.lefabam-topbar .header-left{grid-row:2;grid-column:1}.lefabam-topbar .header-right{grid-row:2;grid-column:2}.lefabam-topbar .header-nav-button{font-size:12px;padding:9px 11px}}
 </style>
 </head>
 <body>
-<nav class="topnav">
-<a href="index.html">Home</a><a class="active" href="la-pagina-sportiva.html">La Pagina Sportiva</a><a href="risultati.html">I Risultati</a><a href="competizioni.html">Le Competizioni</a><a href="rose.html">Rose</a><a href="albo-doro.html">Albo d'Oro</a><a href="societa.html">Le Società</a><a href="regolamento.html">Regolamento</a><a href="galleria-foto.html">Galleria Foto</a><a href="contatti.html">Contatti</a>
-</nav>
+<header class="lefabam-topbar">
+  <div class="lefabam-topbar-inner">
+    <div class="header-side header-left"><a class="header-nav-button" href="index.html">⌂ Home</a></div>
+    <div class="header-brand" aria-label="Lega Fantacalcio Barriera dell'M">
+      <div class="header-title">LEGA FANTACALCIO BARRIERA DELL'M</div>
+      <div class="header-subtitle">Portale ufficiale della lega</div>
+    </div>
+    <div class="header-side header-right"><a class="header-nav-button" href="lefabam-online.html">Portale OnLine</a></div>
+  </div>
+</header>
 <main class="page"><section class="paper">
 <img alt="La Pagina Sportiva - testata" class="masthead" src="pagina_sportiva_testata.png"/>
-<div class="edition"><span>PERIODICO INFORMATICO UFFICIALE DELLA LEFABAM</span><span>EDIZIONE N. 04 · OTTOBRE 2026</span></div>
+<div class="edition"><span>PERIODICO INFORMATICO UFFICIALE DELLA LEFABAM</span><span>EDIZIONE N. 04 · MERCOLEDÌ 14 OTTOBRE 2026</span></div>
 <header class="hero"><div class="kicker">Prima pagina · Edizione n. 04</div><h1>INTERTOR, CHE SPETTACOLO!</h1><div class="dek">Thuram e compagni trascinano i deca-campioni: sette posizioni recuperate nella quarta giornata. La Profonda Aurora resta al comando.</div></header>
 <div class="main-grid"><article class="article"><span class="tag">Serie Maxima · 4ª giornata</span><h2>Intertor da favola: ritorno sul podio</h2>
 <p class="lead">Osmajic, Lang e Thuram trascinano la squadra, che risale sette posizioni e si porta al terzo posto, dietro Profonda Aurora e Vaientus.</p>
