@@ -2463,6 +2463,54 @@ header nav a{font-size:.88rem;padding:11px 18px;background:rgba(255,255,255,.045
  header nav{justify-content:center}
 }
 </style>
+<style>
+/* ===== Aggiornamento colori e fascia LEFABAM ===== */
+:root { --accent:#ffe500; --accent-light:#fff17a; }
+body {
+    background:linear-gradient(135deg,#2a7ee1 0%,#094baa 55%,#043077 100%) !important;
+}
+header {
+    background:linear-gradient(180deg,#04377f,#063f91) !important;
+    border-bottom:2px solid #ffe500;
+    padding:15px 24px;
+}
+header .header-inner.lefabam-header {
+    max-width:1480px;
+    display:grid;
+    grid-template-columns:minmax(150px,1fr) minmax(0,2fr) minmax(150px,1fr);
+    align-items:center;
+    gap:12px;
+}
+.header-side{display:flex;align-items:center}
+.header-left{justify-content:flex-start}
+.header-right{justify-content:flex-end}
+.header-nav-button {
+    display:inline-flex;align-items:center;justify-content:center;
+    color:#fff;text-decoration:none;font-size:.86rem;font-weight:800;
+    padding:12px 17px;border-radius:10px;
+    border:1px solid rgba(255,229,0,.45);
+    background:rgba(255,255,255,.07);
+    white-space:nowrap;
+}
+.header-nav-button:hover,.header-nav-button:focus-visible {
+    background:#ffe500;color:#043077;
+}
+.header-brand{text-align:center;min-width:0}
+.header-brand .header-title{color:#ffe500;font-size:clamp(.95rem,1.65vw,1.35rem);letter-spacing:1px;line-height:1.35}
+.header-brand .header-title span{color:#ffe500;text-shadow:none}
+.header-brand .header-subtitle{color:#fff4a6;letter-spacing:1.7px;font-size:.64rem}
+/* Il pannello delle competizioni resta volutamente scuro. */
+@media(max-width:680px){
+    header{padding:12px 10px}
+    header .header-inner.lefabam-header{grid-template-columns:1fr 1fr;gap:9px}
+    .header-brand{grid-column:1 / -1;grid-row:1}
+    .header-left{grid-column:1;grid-row:2}
+    .header-right{grid-column:2;grid-row:2}
+    .header-nav-button{font-size:.73rem;padding:9px 10px}
+    .header-brand .header-title{font-size:.95rem}
+    .header-brand .header-subtitle{font-size:.54rem}
+}
+</style>
 </head>
 
 
@@ -2489,31 +2537,18 @@ header nav a{font-size:.88rem;padding:11px 18px;background:rgba(255,255,255,.045
 ========================================================= -->
 
 <header>
-
-    <div class="header-inner">
-
-        <a href="index.html" class="brand">
-
-            <div class="header-title">
-                LEGA FANTACALCIO
-                <span>BARRIERA DELL'M</span>
-            </div>
-
-            <div class="header-subtitle">
-                Portale ufficiale della lega
-            </div>
-
-        </a>
-
-
-        <nav aria-label="Navigazione principale">
-            <a href="index.html">Home</a>
-            <a href="risultati.html">Risultati</a>
-            <a href="competizioni.html">Competizioni</a>
-        </nav>
-
+    <div class="header-inner lefabam-header">
+        <div class="header-side header-left">
+            <a class="header-nav-button" href="index.html">⌂ Home</a>
+        </div>
+        <div class="header-brand" aria-label="Lega Fantacalcio Barriera dell'M">
+            <div class="header-title">LEGA FANTACALCIO <span>BARRIERA DELL'M</span></div>
+            <div class="header-subtitle">Portale ufficiale della lega</div>
+        </div>
+        <div class="header-side header-right">
+            <a class="header-nav-button" href="lefabam-online.html">Portale OnLine</a>
+        </div>
     </div>
-
 </header>
 
 
