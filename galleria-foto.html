@@ -13,42 +13,62 @@ main{max-width:1260px;margin:auto;padding:0 20px 70px}.hero{text-align:center;pa
 .note{margin-top:30px;text-align:center;color:#e6efff;font-size:14px}footer{text-align:center;border-top:1px solid #ffffff44;padding:22px;font-size:13px;color:#d9e8ff}
 .lightbox{position:fixed;inset:0;background:#00112aef;z-index:20;display:none;align-items:center;justify-content:center;padding:55px 64px 60px}.lightbox.open{display:flex}.lightbox figure{margin:0;max-width:100%;text-align:center}.lightbox img{display:block;max-width:100%;max-height:calc(100vh - 140px);object-fit:contain;margin:auto;border-radius:6px}.lightbox figcaption{margin-top:12px;color:white}.lightbox button{position:absolute;background:#ffe500;color:#043077;border:0;border-radius:50%;height:43px;width:43px;font-size:26px;font-weight:bold;cursor:pointer}.close{right:17px;top:16px}.prev{left:12px;top:50%}.next{right:12px;top:50%}
 @media(max-width:580px){main{padding:0 12px 45px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo img{height:140px}.photo span{padding:9px;font-size:11px}.lightbox{padding:62px 8px}.prev,.next{top:auto;bottom:8px}.prev{left:calc(50% - 55px)}.next{right:calc(50% - 55px)}}
+
+/* Allineamento grafico con Albo d'Oro LEFABAM */
+.topbar{background:#04377f;border-bottom:2px solid #ffe500;padding:16px 24px;position:sticky;top:0;z-index:4;box-shadow:0 5px 18px #001d4b33}
+.topbar-inner{max-width:1480px;margin:auto;display:grid;grid-template-columns:minmax(160px,1fr) auto minmax(160px,1fr);gap:15px;align-items:center}
+.topbar-side{display:flex}.topbar-side.right{justify-content:flex-end}
+.topbar-button{display:inline-flex;align-items:center;justify-content:center;color:white;text-decoration:none;font-size:14px;font-weight:800;padding:11px 18px;border:1px solid #ffffff55;background:#ffffff13;border-radius:9px;white-space:nowrap}
+.topbar-button:hover,.topbar-button:focus-visible{color:#043077;background:#ffe500;border-color:#ffe500}
+.topbar-brand{text-align:center;color:#ffe500;font-size:clamp(13px,1.65vw,21px);font-weight:900;letter-spacing:1px;line-height:1.3}
+.topbar-brand span{color:#ffe500}.topbar-brand small{display:block;color:#fff1a3;font-size:10px;letter-spacing:2px;margin-top:4px}
+.gallery-panel{background:rgba(2,6,23,.78);border:1px solid #ffffff26;border-radius:22px;padding:32px 30px;box-shadow:0 25px 60px #0004;margin:16px auto 34px}
+.hero{padding:38px 12px 26px}.album-heading h2{color:#ffe500}.album-menu{margin:18px 0 28px}
+.album-menu button{background:#101f3a;color:#e9f0ff;border:1px solid #ffffff33;border-radius:10px}.album-menu button.active,.album-menu button:hover{background:#ffe500;color:#043077;border-color:#ffe500}
+.photo{border:2px solid #ffe500aa}.note{margin-top:24px}
+@media(max-width:720px){.topbar{padding:12px}.topbar-inner{grid-template-columns:1fr 1fr;gap:12px}.topbar-brand{grid-column:1/-1;grid-row:1}.topbar-side.left{grid-column:1;grid-row:2}.topbar-side.right{grid-column:2;grid-row:2}.topbar-brand{font-size:14px}.topbar-brand small{font-size:9px}.topbar-button{font-size:12px;padding:9px 12px}.gallery-panel{padding:20px 12px}}
 </style></head><body>
-<header><nav aria-label="Navigazione principale"><a href="index.html">Home</a><a href="risultati.html">Risultati</a><a href="competizioni.html">Competizioni</a><a href="albo-doro.html">Albo d'Oro</a><a href="societa.html">Le Società</a><a href="rose.html">Le Rose</a><a href="galleria-foto.html" aria-current="page">Galleria Foto</a></nav></header>
+<header class="topbar"><div class="topbar-inner">
+  <div class="topbar-side left"><a class="topbar-button" href="index.html">⌂ Home</a></div>
+  <div class="topbar-brand"><div>LEGA FANTACALCIO <span>BARRIERA DELL'M</span></div><small>PORTALE UFFICIALE DELLA LEGA</small></div>
+  <div class="topbar-side right"><a class="topbar-button" href="lefabam-online.html">Portale OnLine</a></div>
+</div></header>
 <main><section class="hero"><div class="eyebrow">LEGA FANTACALCIO BARRIERA DELL'M</div><h1>Galleria Foto</h1><p>Immagini, incontri e ricordi della storia LEFABAM. Sfoglia le fotografie suddivise per annata.</p></section>
-<div id="albums" class="album-menu" aria-label="Seleziona annata"></div>
+<div class="gallery-panel"><div id="albums" class="album-menu" aria-label="Seleziona annata"></div>
 <section><div class="album-heading"><h2 id="albumTitle">Archivio fotografico</h2><span id="counter" class="count"></span></div><div id="gallery" class="gallery"></div></section>
-<p class="note">Le fotografie sono conservate nel loro formato originale. Clicca su un'immagine per ingrandirla.</p></main>
+<p class="note">Le fotografie sono conservate nel loro formato originale. Clicca su un'immagine per ingrandirla.</p></div></main>
 <footer>LEFABAM · Lega Fantacalcio Barriera dell'M</footer>
 <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Fotografia ingrandita"><button class="close" aria-label="Chiudi">×</button><button class="prev" aria-label="Foto precedente">‹</button><figure><img id="full" alt="Fotografia dell'archivio LEFABAM"><figcaption id="caption"></figcaption></figure><button class="next" aria-label="Foto successiva">›</button></div>
 <script>
+// Carica le foto in foto/AAAA-AAAA/ (es. foto/2014-2015/IMG_0453.jpg).
 // Per aggiungere nuove annate, scrivi la stagione nel campo anno delle foto corrispondenti.
 // Esempio: {file: "IMG_0453.jpg", anno: "2014/2015"}
 const photos = [
-    {file: "IMG_0453.jpg", anno: "2014/2015"},
-    {file: "IMG_0454.jpg", anno: "2014/2015"},
-    {file: "IMG_0455.jpg", anno: "2014/2015"},
-    {file: "IMG_0456.jpg", anno: "2014/2015"},
-    {file: "IMG_0457.jpg", anno: "2014/2015"},
-    {file: "IMG_0458.jpg", anno: "2014/2015"},
-    {file: "IMG_0460.jpg", anno: "2014/2015"},
-    {file: "IMG_0461.jpg", anno: "2014/2015"},
-    {file: "IMG_0462.jpg", anno: "2014/2015"},
-    {file: "IMG_0463.jpg", anno: "2014/2015"},
-    {file: "IMG_0464.jpg", anno: "2014/2015"},
-    {file: "IMG_0465.jpg", anno: "2014/2015"},
-    {file: "IMG_0466.jpg", anno: "2014/2015"},
-    {file: "IMG_0467.jpg", anno: "2014/2015"},
-    {file: "IMG_0468.jpg", anno: "2014/2015"},
-    {file: "IMG_0469.jpg", anno: "2014/2015"},
-    {file: "IMG_0470.jpg", anno: "2014/2015"},
-    {file: "IMG_0471.jpg", anno: "2014/2015"}
+    {file: "IMG_0453.jpg", anno: "Da definire"},
+    {file: "IMG_0454.jpg", anno: "Da definire"},
+    {file: "IMG_0455.jpg", anno: "Da definire"},
+    {file: "IMG_0456.jpg", anno: "Da definire"},
+    {file: "IMG_0457.jpg", anno: "Da definire"},
+    {file: "IMG_0458.jpg", anno: "Da definire"},
+    {file: "IMG_0460.jpg", anno: "Da definire"},
+    {file: "IMG_0461.jpg", anno: "Da definire"},
+    {file: "IMG_0462.jpg", anno: "Da definire"},
+    {file: "IMG_0463.jpg", anno: "Da definire"},
+    {file: "IMG_0464.jpg", anno: "Da definire"},
+    {file: "IMG_0465.jpg", anno: "Da definire"},
+    {file: "IMG_0466.jpg", anno: "Da definire"},
+    {file: "IMG_0467.jpg", anno: "Da definire"},
+    {file: "IMG_0468.jpg", anno: "Da definire"},
+    {file: "IMG_0469.jpg", anno: "Da definire"},
+    {file: "IMG_0470.jpg", anno: "Da definire"},
+    {file: "IMG_0471.jpg", anno: "Da definire"}
 ];
 const albums=document.getElementById('albums'),gallery=document.getElementById('gallery'),title=document.getElementById('albumTitle'),counter=document.getElementById('counter');
 const lightbox=document.getElementById('lightbox'),full=document.getElementById('full'),caption=document.getElementById('caption');
 let visible=[],index=0,selected='Tutte le annate';
-function render(){const years=[...new Set(photos.map(p=>p.anno))];const options=['Tutte le annate',...years];albums.innerHTML='';options.forEach(y=>{const b=document.createElement('button');b.textContent=y;b.className=y===selected?'active':'';b.setAttribute('aria-pressed',String(y===selected));b.onclick=()=>{selected=y;render()};albums.appendChild(b)});visible=photos.filter(p=>selected==='Tutte le annate'||p.anno===selected);title.textContent=selected==='Tutte le annate'?'Archivio fotografico':selected==='Da definire'?'Stagione 2014/2015':'Stagione '+selected;counter.textContent=visible.length+' fotografie';gallery.innerHTML='';visible.forEach((p,i)=>{const b=document.createElement('button');b.className='photo';const im=document.createElement('img');im.src='foto/'+p.file;im.alt='Foto storica LEFABAM '+(i+1);im.loading='lazy';const label=document.createElement('span');label.textContent='Foto '+String(i+1).padStart(2,'0');b.append(im,label);b.onclick=()=>openPhoto(i);gallery.appendChild(b)})}
-function openPhoto(i){index=(i+visible.length)%visible.length;full.src='foto/'+visible[index].file;caption.textContent=(index+1)+' / '+visible.length+' · '+(visible[index].anno==='Da definire'?'Archivio LEFABAM':'Stagione '+visible[index].anno);lightbox.classList.add('open');document.body.style.overflow='hidden'}
+function photoPath(p){return 'foto/'+p.anno.replace('/','-')+'/'+p.file}
+function render(){const years=[...new Set(photos.map(p=>p.anno))];const options=['Tutte le annate',...years];albums.innerHTML='';options.forEach(y=>{const b=document.createElement('button');b.textContent=y;b.className=y===selected?'active':'';b.setAttribute('aria-pressed',String(y===selected));b.onclick=()=>{selected=y;render()};albums.appendChild(b)});visible=photos.filter(p=>selected==='Tutte le annate'||p.anno===selected);title.textContent=selected==='Tutte le annate'?'Archivio fotografico':selected==='Da definire'?'Annata da definire':'Stagione '+selected;counter.textContent=visible.length+' fotografie';gallery.innerHTML='';visible.forEach((p,i)=>{const b=document.createElement('button');b.className='photo';const im=document.createElement('img');im.src=photoPath(p);im.alt='Foto storica LEFABAM '+(i+1);im.loading='lazy';const label=document.createElement('span');label.textContent='Foto '+String(i+1).padStart(2,'0');b.append(im,label);b.onclick=()=>openPhoto(i);gallery.appendChild(b)})}
+function openPhoto(i){index=(i+visible.length)%visible.length;full.src=photoPath(visible[index]);caption.textContent=(index+1)+' / '+visible.length+' · '+(visible[index].anno==='Da definire'?'Archivio LEFABAM':'Stagione '+visible[index].anno);lightbox.classList.add('open');document.body.style.overflow='hidden'}
 function closePhoto(){lightbox.classList.remove('open');document.body.style.overflow=''}
 document.querySelector('.close').onclick=closePhoto;document.querySelector('.prev').onclick=()=>openPhoto(index-1);document.querySelector('.next').onclick=()=>openPhoto(index+1);lightbox.addEventListener('click',e=>{if(e.target===lightbox)closePhoto()});document.addEventListener('keydown',e=>{if(!lightbox.classList.contains('open'))return;if(e.key==='Escape')closePhoto();if(e.key==='ArrowLeft')openPhoto(index-1);if(e.key==='ArrowRight')openPhoto(index+1)});render();
 </script></body></html>
