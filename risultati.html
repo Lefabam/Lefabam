@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I Risultati â Lefabam</title>
+<title>I Risultati della Lefabam</title>
 <style>
 :root{--blue:#084AA8;--blue2:#063B91;--yellow:#FFE500;--ink:#16384f;--light:#edf5fa;--line:#c9dce9}
 *{box-sizing:border-box}
@@ -99,7 +99,7 @@ footer{text-align:center;color:#527589;font-size:12px;margin-top:25px}
       <div class="competition-mark"><img src="apertura-trasparente.png" alt="Torneo di Apertura" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">APERTURA</span></div>
       <div class="competition-mark"><img src="qualificazioni.png" alt="Qualificazioni Extra League" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">QUALIFICAZIONI EXTRA</span></div>
     </div>
-    <div class="banner-heading"><h1>RISULTATI</h1><p>Serie Maxima Â· Stagione 2026/27</p></div>
+    <div class="banner-heading"><h1>RISULTATI</h1><p>Serie Maxima - Stagione 2026/27</p></div>
     <div class="logo-trio" aria-label="Extra League, Torneo di Chiusura, Lefabam Cup">
       <div class="competition-mark"><img src="extra-league.png" alt="Extra League" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">EXTRA LEAGUE</span></div>
       <div class="competition-mark"><img src="chiusura-trasparente.png" alt="Torneo di Chiusura" onerror="this.parentElement.classList.add('missing')"><span class="logo-fallback">CHIUSURA</span></div>
@@ -109,11 +109,11 @@ footer{text-align:center;color:#527589;font-size:12px;margin-top:25px}
 </section>
 <div class="controls">
 <select id="giornataSelect" aria-label="Seleziona giornata">
-<option value="1">1Âª Giornata</option><option value="2">2Âª Giornata</option><option value="3">3Âª Giornata</option>
+<option value="1">1ª Giornata</option><option value="2">2ª Giornata</option><option value="3">3ª Giornata</option>
 </select>
 </div>
 <section class="card">
-<div class="card-title"><h2 id="titoloRisultati">3Âª Giornata â Punteggi di giornata</h2><span class="badge" id="numeroSocieta">14 SOCIETÃ</span></div>
+<div class="card-title"><h2 id="titoloRisultati">3ª Giornata - Punteggi di giornata</h2><span class="badge" id="numeroSocieta">14 SOCIETÃ</span></div>
 <div id="risultati" class="results-grid"></div>
 <div id="messaggio" class="message" hidden></div>
 <div id="dettaglio" class="details" hidden aria-live="polite">
@@ -134,7 +134,7 @@ footer{text-align:center;color:#527589;font-size:12px;margin-top:25px}
 </div>
 </section>
 <div class="note" id="notaDati">Punteggi e tabellini delle prime tre giornate ricavati dai PDF ufficiali. I punteggi della terza giornata possono aggiornarsi anche dal Google Sheet.</div>
-<footer>Lega Fantacalcio Barriera dell'M Â· Lefabam</footer>
+<footer>Lega Fantacalcio Barriera dell'M - Lefabam</footer>
 </main>
 <script>
 const RISULTATI_API_URL = "https://script.google.com/macros/s/AKfycbwWlKhPmKDPf7-tzbppLgsMz7wjB_g3eVj2QvsgrdKLk-aPbuhAoRpUcNZQq1TJLd6Zlw/exec";
@@ -350,8 +350,8 @@ function apriTabellino(giornata, squadra, pulsante) {
       voto.className = "player-score";
       if (giocatore.score === null || giocatore.score === undefined) {
         voto.classList.add("no-vote");
-        voto.textContent = "â";
-        voto.title = "Nel PDF non Ã¨ riportato un voto";
+        voto.textContent = "-";
+        voto.title = "Nel PDF non è riportato un voto";
       } else {
         voto.textContent = formattaPunteggio(giocatore.score);
       }
@@ -362,7 +362,7 @@ function apriTabellino(giornata, squadra, pulsante) {
         nome.style.fontWeight = "800";
       }
       if (giocatore.votoOriginale !== undefined) {
-        voto.textContent = giocatore.votoOriginale || "â";
+        voto.textContent = giocatore.votoOriginale || "-";
       }
       riga.append(nome, voto);
       ((giocatore.titolare ?? (indice < 11)) ? titolari : panchina).appendChild(riga);
@@ -391,7 +391,7 @@ giornataSelect.addEventListener("change", aggiornaPagina);
 
 /* Caricamento delle giornate archiviate dal servizio LEFABAM.
    In caso di blocco CORS o servizio non raggiungibile, restano disponibili
-   le giornate 1â3 giÃ  presenti nel file. */
+   le giornate 1â3 già  presenti nel file. */
 async function caricaRisultatiArchiviati() {
   try {
     const risposta = await fetch(RISULTATI_API_URL, {redirect: "follow", cache: "no-store"});
@@ -421,7 +421,7 @@ async function caricaRisultatiArchiviati() {
         if (Array.isArray(squadre)) tabelliniArchivio.set(Number(giorno), squadre);
       });
     }
-    // Alla prima apertura mostra la giornata pubblicata piÃ¹ recente.
+    // Alla prima apertura mostra la giornata pubblicata più recente.
     giornataSelect.value = "";
     aggiornaMenuGiornate();
     giornataSelect.value = String(Math.max(1, 2, 3, ...risultatiArchivio.keys()));
