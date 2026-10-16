@@ -39,4 +39,5 @@ const tbody=$('standings');tbody.replaceChildren();if(old){archiveStandings.forE
 const select=$('day');select.replaceChildren();for(let i=0;i<14;i++){const o=el('option','',`${i+1}ª giornata · ${i<7?'Andata':'Ritorno'}`);o.value=i;select.appendChild(o);}renderDay();}
 function renderDay(){const old=season==='archive';$('day').value=day;const target=$('fixtures');target.replaceChildren();(old?archiveRounds:currentRounds)[day].forEach(m=>{const row=el('div','fixture');row.appendChild(el('span','team home',m[0]||'—'));row.appendChild(el('span','score',m[2]||'– : –'));row.appendChild(el('span','team away',m[1]||'—'));target.appendChild(row);});$('prev').disabled=day===0;$('next').disabled=day===13;}
 $('day').addEventListener('change',e=>{day=Number(e.target.value);renderDay()});$('prev').addEventListener('click',()=>{if(day>0){day--;renderDay()}});$('next').addEventListener('click',()=>{if(day<13){day++;renderDay()}});render();
-</script></body></html>
+</script><script src="popup-tabellini.js" defer></script>
+</body></html>
