@@ -83,6 +83,25 @@ footer{text-align:center;color:#527589;font-size:12px;margin-top:25px}
 .legenda-voce{display:flex;align-items:flex-start;gap:8px;color:#25445b;font-size:12px;line-height:1.4}
 .legenda-punto{flex:0 0 11px;width:11px;height:11px;border-radius:3px;margin-top:3px;border:1px solid rgba(0,0,0,.13)}
 @media(max-width:620px){.legenda-elenco{grid-template-columns:1fr}}
+
+/* Modalità confronto: riutilizza i tabellini già presenti nei Risultati */
+body.confronto-mode{background:#fff}
+body.confronto-mode .topbar,body.confronto-mode .header,body.confronto-mode .controls,body.confronto-mode .card,body.confronto-mode .note,body.confronto-mode footer{display:none!important}
+body.confronto-mode main{max-width:none;margin:0;padding:12px}
+#confrontoPartita{display:none}
+body.confronto-mode #confrontoPartita{display:block}
+.confronto-intestazione{text-align:center;color:#084AA8;margin:4px 0 14px;font-size:13px}
+.confronto-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.confronto-squadra{min-width:0;border:1px solid #c9dce9;border-radius:12px;overflow:hidden;background:#fff}
+.confronto-squadra header{background:#084AA8;color:#fff;padding:12px;text-align:center;border-radius:0;box-shadow:none}
+.confronto-squadra header strong{display:block;font-size:15px}
+.confronto-squadra header span{font-size:22px;font-weight:900;color:#FFE500}
+.confronto-lista{padding:9px}
+.confronto-lista h4{font-size:12px;margin:10px 0 7px;color:#084AA8}
+.confronto-lista .player-row{padding:6px 7px;margin-bottom:4px;font-size:12px}
+.confronto-carte{background:#fffbea;border:1px solid #d9c36a;border-radius:8px;padding:8px;font-size:12px;margin:8px}
+.confronto-avviso{padding:20px;text-align:center;color:#527589}
+@media(max-width:560px){.confronto-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -107,6 +126,7 @@ footer{text-align:center;color:#527589;font-size:12px;margin-top:25px}
     </div>
   </div>
 </section>
+<section id="confrontoPartita" aria-label="Confronto tabellini delle formazioni"></section>
 <div class="controls">
 <select id="giornataSelect" aria-label="Seleziona giornata">
 <option value="1">1ª Giornata</option><option value="2">2ª Giornata</option><option value="3">3ª Giornata</option>
@@ -426,6 +446,7 @@ async function caricaRisultatiArchiviati() {
     aggiornaMenuGiornate();
     giornataSelect.value = String(Math.max(1, 2, 3, ...risultatiArchivio.keys()));
     aggiornaPagina();
+    mostraConfronto();
     if (risultatiArchivio.size) {
       notaEl.textContent = "Punteggi delle giornate archiviate letti dal servizio ufficiale LEFABAM. I tabellini archiviati includono i colori e le carte giocate quando il servizio Google è raggiungibile.";
     }
@@ -435,8 +456,68 @@ async function caricaRisultatiArchiviati() {
   }
 }
 
+
+// Il confronto usa ESATTAMENTE classificaGiornata(), la stessa sorgente dei Risultati.
+const parametriConfronto = new URLSearchParams(location.search);
+const confrontoAttivo = parametriConfronto.get("confronto") === "1";
+if (confrontoAttivo) document.body.classList.add("confronto-mode");
+function mostraConfronto() {
+  if (!confrontoAttivo) return;
+  const area = document.getElementById("confrontoPartita");
+  area.replaceChildren();
+  const giornata = Number(parametriConfronto.get("giornata"));
+  const casa = parametriConfronto.get("casa") || "";
+  const trasferta = parametriConfronto.get("trasferta") || "";
+  const squadre = classificaGiornata(giornata);
+  const dati = [casa, trasferta].map(nome => squadre.find(s => normalizza(s.team) === normalizza(nome)));
+  const intestazione = document.createElement("div");
+  intestazione.className = "confronto-intestazione";
+  intestazione.textContent = "TABELLINI · " + giornata + "ª GIORNATA SERIE MAXIMA";
+  area.appendChild(intestazione);
+  if (!Number.isInteger(giornata) || !dati.every(Boolean)) {
+    const avviso = document.createElement("div");
+    avviso.className = "confronto-avviso";
+    avviso.textContent = "I tabellini di questa giornata non sono ancora disponibili nell’archivio Risultati.";
+    area.appendChild(avviso); return;
+  }
+  const griglia = document.createElement("div");
+  griglia.className = "confronto-grid";
+  dati.forEach(squadra => {
+    const scheda = document.createElement("section");
+    scheda.className = "confronto-squadra";
+    const head = document.createElement("header");
+    const nome = document.createElement("strong"); nome.textContent = squadra.team;
+    const totale = document.createElement("span"); totale.textContent = formattaPunteggio(squadra.total);
+    head.append(nome, totale); scheda.appendChild(head);
+    if (squadra.carte) {
+      const carte = document.createElement("div"); carte.className = "confronto-carte";
+      carte.textContent = "CARTE GIOCATE: " + squadra.carte; scheda.appendChild(carte);
+    }
+    const lista = document.createElement("div"); lista.className = "confronto-lista";
+    if (!squadra.players || !squadra.players.length) {
+      lista.textContent = "Voti individuali non ancora disponibili.";
+    } else {
+      for (const [titolo, gruppo] of [["TITOLARI", true],["PANCHINA", false]]) {
+        const label = document.createElement("h4"); label.textContent = titolo; lista.appendChild(label);
+        squadra.players.forEach((p,i) => {
+          if (Boolean(p.titolare ?? (i < 11)) !== gruppo) return;
+          const riga = document.createElement("div"); riga.className = "player-row";
+          const n = document.createElement("span"); n.className = "player-name"; n.textContent = p.name;
+          const v = document.createElement("span"); v.className = "player-score";
+          v.textContent = p.votoOriginale !== undefined ? (p.votoOriginale || "–") : (p.score == null ? "–" : formattaPunteggio(p.score));
+          if (p.color && /^#[0-9a-fA-F]{6}$/.test(p.color)) { n.style.color = p.color; v.style.color = p.color; }
+          riga.append(n,v); lista.appendChild(riga);
+        });
+      }
+    }
+    scheda.appendChild(lista); griglia.appendChild(scheda);
+  });
+  area.appendChild(griglia);
+}
+
 aggiornaMenuGiornate();
 aggiornaPagina();
+mostraConfronto();
 caricaRisultatiArchiviati();
 
 aggiornaPagina();

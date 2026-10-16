@@ -331,6 +331,16 @@ footer{
         font-size:11px;
     }
 }
+
+.score-button{border:0;min-width:46px;padding:5px 7px;border-radius:7px;background:#e5f3f8;color:#123f57;font:inherit;font-weight:900;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.score-button:hover,.score-button:focus-visible{background:#d1e9f4;outline:2px solid #084AA8}
+.tabellino-modal[hidden]{display:none}
+.tabellino-modal{position:fixed;inset:0;z-index:9999;background:rgba(5,32,51,.75);display:flex;align-items:center;justify-content:center;padding:12px}
+.tabellino-dialog{width:min(940px,100%);max-height:95vh;display:flex;flex-direction:column;background:white;border-radius:15px;overflow:hidden;box-shadow:0 20px 70px #001a2e70}
+.tabellino-dialog-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:#073b5a;color:#fff;font-weight:800}
+.tabellino-close{border:0;border-radius:8px;background:#ffe500;color:#073b5a;font-weight:900;padding:8px 13px;cursor:pointer}
+.tabellino-frame{width:100%;height:min(76vh,760px);border:0;background:white}
+body.modal-aperto{overflow:hidden}
 </style>
 </head>
 <body>
@@ -597,5 +607,53 @@ footer{
 <footer>
     Lega Fantacalcio Barriera dell'M
 </footer>
+<div class="tabellino-modal" id="modalTabellino" hidden>
+  <div class="tabellino-dialog" role="dialog" aria-modal="true" aria-label="Tabellini della partita">
+    <div class="tabellino-dialog-top"><span id="titoloModalTabellino">Tabellini</span><button type="button" class="tabellino-close" id="chiudiModalTabellino">Chiudi ✕</button></div>
+    <iframe class="tabellino-frame" id="frameTabellino" title="Tabellini delle due squadre" loading="lazy"></iframe>
+  </div>
+</div>
+<script>
+// I turni delle qualificazioni corrispondono alle giornate Serie Maxima 3, 4 e 5.
+// Aggiornare la mappatura qui se il calendario ufficiale indica giornate diverse.
+const giornateQualificazioni = [3,4,5];
+const modalTabellino = document.getElementById("modalTabellino");
+const frameTabellino = document.getElementById("frameTabellino");
+const chiudiModalTabellino = document.getElementById("chiudiModalTabellino");
+let ultimoPulsante = null;
+document.querySelectorAll(".girone").forEach(girone => {
+  girone.querySelectorAll(".match:not(.future)").forEach((partita, indice) => {
+    const punteggio = partita.querySelector(".score");
+    const casa = partita.querySelector(".home")?.textContent.trim();
+    const trasferta = partita.querySelector(".away")?.textContent.trim();
+    const giornata = giornateQualificazioni[Math.floor(indice / 2)];
+    if (!punteggio || !giornata || !casa || !trasferta) return;
+    const pulsante = document.createElement("button");
+    pulsante.type = "button"; pulsante.className = "score-button";
+    pulsante.textContent = punteggio.textContent;
+    pulsante.title = "Visualizza i tabellini di " + casa + " - " + trasferta;
+    pulsante.setAttribute("aria-label",pulsante.title);
+    punteggio.replaceWith(pulsante);
+    pulsante.addEventListener("click", () => {
+      ultimoPulsante = pulsante;
+      const query = new URLSearchParams({confronto:"1",giornata:String(giornata),casa,trasferta});
+      frameTabellino.src = "risultati.html?" + query.toString();
+      document.getElementById("titoloModalTabellino").textContent = casa + " " + pulsante.textContent + " " + trasferta;
+      modalTabellino.hidden = false;
+      document.body.classList.add("modal-aperto");
+      chiudiModalTabellino.focus();
+    });
+  });
+});
+function chiudiTabellinoQualificazioni() {
+  modalTabellino.hidden = true;
+  document.body.classList.remove("modal-aperto");
+  frameTabellino.removeAttribute("src");
+  ultimoPulsante?.focus();
+}
+chiudiModalTabellino.addEventListener("click",chiudiTabellinoQualificazioni);
+modalTabellino.addEventListener("click",e=>{if(e.target===modalTabellino)chiudiTabellinoQualificazioni()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!modalTabellino.hidden)chiudiTabellinoQualificazioni()});
+</script>
 </body>
 </html>
