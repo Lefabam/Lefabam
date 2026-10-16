@@ -25,45 +25,37 @@ main{flex:1;width:min(1080px,100%);margin:0 auto;padding:35px 20px 46px}.page-he
 <div class="panel access-panel"><h2>Gestione formazioni</h2><a class="online-circle" href="https://www.dosio.com/lefabam/index.php?formazione" rel="noopener noreferrer" aria-label="Accedi a LEFABAM Online per la gestione delle formazioni"><img src="lega-online.png" alt="LEFABAM Online - Gestione Formazioni" class="online-logo"></a><p>Tocca il logo per accedere al portale e inviare la tua formazione.</p></div>
 <div class="panel deadline-panel"><p class="deadline-label">⏱ Prossima scadenza formazioni</p><h2 id="deadline-date" class="deadline-date">Scadenza da programmare</h2><div class="countdown" id="countdown" aria-label="Conto alla rovescia"><div class="time-box"><span class="time-number" id="days">--</span><span class="time-unit">Giorni</span></div><div class="time-box"><span class="time-number" id="hours">--</span><span class="time-unit">Ore</span></div><div class="time-box"><span class="time-number" id="minutes">--</span><span class="time-unit">Minuti</span></div><div class="time-box"><span class="time-number" id="seconds">--</span><span class="time-unit">Secondi</span></div></div><p id="deadline-status" class="status" role="status">Il conto alla rovescia sarà attivo appena inseriremo la prossima scadenza ufficiale.</p></div>
 </section>
-<section class="panel next" aria-labelledby="next-title"><div class="next-heading"><h2 id="next-title">🏆 In campo nella prossima giornata</h2><a class="text-link" href="calendario.html">Consulta il calendario →</a></div><div class="competitions" id="competitions"><p class="empty">Le competizioni della prossima giornata saranno visualizzate qui dopo il collegamento al calendario ufficiale della LEFABAM.</p></div><p class="hint">Le informazioni non vengono inventate: il calendario e la scadenza devono essere confermati prima della pubblicazione.</p></section>
+<section class="panel next" aria-labelledby="next-title"><div class="next-heading"><h2 id="next-title">🏆 In campo nella prossima giornata</h2></div><div class="competitions" id="competitions"><p class="empty">Caricamento programma della prossima giornata…</p></div><p class="hint">Programma tratto dal calendario ufficiale LEFABAM. Gli orari delle scadenze sono aggiornati quando confermati.</p></section>
 </main>
 <footer class="nav-band bottom"><nav class="nav" aria-label="Altri collegamenti"><a href="albo-doro.html">Albo d'Oro</a><a href="regolamento.html">Regolamento</a><a href="galleria-foto.html">Galleria Foto</a><a href="contatti.html">Contatti</a></nav></footer>
+<script src="programma-lefabam.js"></script>
 <script>
-/* Scadenze confermate: aggiungere qui le successive, in ordine cronologico.
-   Orari locali italiani: +02:00 fino al 25 ottobre, poi +01:00. */
-const DEADLINES = [
-  '2026-10-16T20:45:00+02:00',
-  '2026-10-23T20:45:00+02:00',
-  '2026-10-27T18:30:00+01:00'
-];
-/* Compilare con dati VERIFICATI dal calendario, ad esempio:
-   {name:'Torneo di Apertura', detail:'Quarti di finale', href:'torneo-di-apertura.html'}
-   Non viene effettuata alcuna lettura automatica del calendario.html. */
-const NEXT_COMPETITIONS = [];
 const $ = id => document.getElementById(id);
 const pad = n => String(n).padStart(2,'0');
-function updateCountdown(){
- const now=Date.now();
- const next=DEADLINES.map(s=>new Date(s)).find(d=>Number.isFinite(d.getTime())&&d.getTime()>now);
- if(!next){
-  $('deadline-date').textContent='In attesa della prossima scadenza';
-  ['days','hours','minutes','seconds'].forEach(id=>$(id).textContent='--');
-  $('deadline-status').textContent='Le date attualmente comunicate sono trascorse. In attesa del prossimo calendario ufficiale.';
-  $('deadline-status').classList.add('warning');
-  return;
- }
- $('deadline-date').textContent=new Intl.DateTimeFormat('it-IT',{timeZone:'Europe/Rome',weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(next);
- const total=Math.max(0,Math.ceil((next.getTime()-now)/1000));
- $('days').textContent=pad(Math.floor(total/86400));
- $('hours').textContent=pad(Math.floor(total%86400/3600));
- $('minutes').textContent=pad(Math.floor(total%3600/60));
- $('seconds').textContent=pad(total%60);
- $('deadline-status').textContent='Le formazioni chiudono esattamente al calcio d’inizio della prima partita. Verifica eventuali variazioni ufficiali.';
- $('deadline-status').classList.remove('warning');
+const entries = (window.CALENDARIO_LEFABAM || []).filter(x=>x.scadenza).sort((a,b)=>new Date(a.scadenza)-new Date(b.scadenza));
+let activeTurn = null;
+const formatDate = d => new Intl.DateTimeFormat('it-IT',{timeZone:'Europe/Rome',weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(d);
+function renderProgramme(x){
+ const target=$('competitions');target.replaceChildren();
+ if(!x){const p=document.createElement('p');p.className='empty';p.textContent='In attesa della programmazione della prossima giornata.';target.append(p);return;}
+ const items=[
+  ['Serie Maxima',x.maxima==='-'?'Non prevista':`Giornata ${x.maxima}`],
+  ...((x.competizioni||'').split(/\s*\+\s*/).filter(Boolean).map((name,i)=>[name,(x.turno||'').split(/\s*\+\s*/)[i]||'Turno in programma'])),
+  ...(x.minus?[['Serie Minus',x.minus]]:[])
+ ].filter(([name,detail])=>detail!=='Non prevista');
+ const header=document.createElement('p');header.className='empty';header.style.gridColumn='1/-1';header.textContent=`Serie A · Giornata ${x.serieA} · Riferimento ${new Date(x.dataRiferimento+'T12:00:00').toLocaleDateString('it-IT',{day:'numeric',month:'long',year:'numeric'})}`;target.append(header);
+ for(const [name,detail] of items){const card=document.createElement('article');card.className='competition';const strong=document.createElement('strong');strong.textContent=name;const p=document.createElement('p');p.textContent=detail;card.append(strong,p);target.append(card)}
 }
-updateCountdown();
-setInterval(updateCountdown,1000);
-if(NEXT_COMPETITIONS.length){const container=$('competitions');container.replaceChildren();NEXT_COMPETITIONS.forEach(item=>{const card=document.createElement('article');card.className='competition';const name=document.createElement('strong');name.textContent=item.name;const detail=document.createElement('p');detail.textContent=item.detail||'';card.append(name,detail);if(item.href){const a=document.createElement('a');a.className='text-link';a.href=item.href;a.textContent='Dettagli →';card.append(a);}container.append(card);});}
+function updateCountdown(){
+ const now=Date.now();const next=entries.find(x=>new Date(x.scadenza).getTime()>now);
+ if(!next){$('deadline-date').textContent='In attesa della prossima scadenza';['days','hours','minutes','seconds'].forEach(id=>$(id).textContent='--');$('deadline-status').textContent='Le scadenze confermate sono trascorse. In attesa del prossimo orario ufficiale.';$('deadline-status').classList.add('warning');if(activeTurn!==null){activeTurn=null;renderProgramme(null)}return}
+ if(activeTurn!==next.serieA){activeTurn=next.serieA;renderProgramme(next)}
+ const date=new Date(next.scadenza);$('deadline-date').textContent=formatDate(date);
+ const total=Math.max(0,Math.ceil((date.getTime()-now)/1000));
+ $('days').textContent=pad(Math.floor(total/86400));$('hours').textContent=pad(Math.floor(total%86400/3600));$('minutes').textContent=pad(Math.floor(total%3600/60));$('seconds').textContent=pad(total%60);
+ $('deadline-status').textContent=`Giornata ${next.serieA} di Serie A · Le formazioni chiudono al calcio d’inizio della prima partita.`;$('deadline-status').classList.remove('warning');
+}
+updateCountdown();setInterval(updateCountdown,1000);
 </script>
 </body>
 </html>
