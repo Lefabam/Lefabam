@@ -240,6 +240,25 @@ footer:before,footer:after{
     .header-brand-text p{font-size:12px;gap:5px}
     .header-brand-text p:before,.header-brand-text p:after{display:none}
 }
+
+/* LEFABAM: andata/ritorno, popup e criteri di qualificazione */
+.match:not(.finale) .team{min-height:25px;padding-top:3px;padding-bottom:3px;font-size:12px}
+.match:not(.finale) .match-label{padding-top:4px;padding-bottom:4px;font-size:11px}
+.match .gara-extra{gap:3px;padding:4px 6px;min-height:24px;font-size:10px}
+.match .gara-extra .leg-result{border:0;border-radius:5px;background:rgba(255,255,255,.72);color:#075071;font-weight:900;font-size:11px;padding:3px 5px;min-width:32px}
+.match .gara-extra button.leg-result{cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.match .gara-extra button.leg-result:hover{background:#ffe500}
+.match .gara-extra button.leg-result:focus-visible{outline:2px solid #075071}
+.match .gara-extra .leg-result:disabled{cursor:default;opacity:.65;text-decoration:none}
+.match .match-label .tie-status{float:right;font-size:9px;letter-spacing:0;text-transform:none}
+.match .score{font-size:12px}
+
+.lefa-overlay[hidden]{display:none!important}.lefa-overlay{position:fixed;inset:0;background:#001b36c9;z-index:9999;display:flex;justify-content:center;align-items:center;padding:12px}
+.lefa-dialog{width:min(1120px,98vw);height:min(850px,95vh);background:white;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 65px #0018}
+.lefa-dialog-head{background:#073b5a;color:white;display:flex;align-items:center;justify-content:space-between;padding:10px 15px;gap:12px}
+.lefa-dialog-head button{border:0;border-radius:7px;background:#ffe500;color:#073b5a;font-weight:900;padding:9px 12px;cursor:pointer}
+.lefa-dialog iframe{border:0;width:100%;flex:1;min-height:0}.lefa-locked{overflow:hidden}
+
 </style>
 </head>
 <body>
@@ -272,67 +291,65 @@ footer:before,footer:after{
                     <div class="match-label">Ottavo 1</div>
                     <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
                     <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
-                </div>
+                <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" disabled>—</button></div></div>
                 <div class="match ottavo-2">
                     <div class="match-label">Ottavo 2</div>
                     <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
                     <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
-                </div>
+                <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" disabled>—</button></div></div>
                 <div class="match ottavo-3">
                     <div class="match-label">Ottavo 3</div>
                     <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
                     <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
-                </div>
+                <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" disabled>—</button></div></div>
                 <div class="match ottavo-4">
                     <div class="match-label">Ottavo 4</div>
                     <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
                     <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
-                </div>
+                <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" disabled>—</button></div></div>
                 <div class="match ottavo-5">
                     <div class="match-label">Ottavo 5</div>
                     <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
                     <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
-                </div>
+                <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" disabled>—</button></div></div>
                 <div class="match ottavo-6">
                     <div class="match-label">Ottavo 6</div>
                     <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
                     <div class="team"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
-                </div>
+                <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" disabled>—</button></div></div>
 
                 <div class="match quarto quarto-1">
                     <div class="match-label">Quarto 1</div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
-                </div>
+                <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" disabled>—</button></div></div>
                 <div class="match quarto quarto-2">
                     <div class="match-label">Quarto 2</div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
-                </div>
+                <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" disabled>—</button></div></div>
                 <div class="match quarto quarto-3">
                     <div class="match-label">Quarto 3</div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
-                </div>
+                <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" disabled>—</button></div></div>
                 <div class="match quarto quarto-4">
                     <div class="match-label">Quarto 4</div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
-                </div>
+                <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" disabled>—</button></div></div>
 
                 <div class="match semifinale semifinale-1">
                     <div class="match-label">Semifinale 1</div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
-                    <div class="gara-extra"><span>ANDATA:</span><strong>—</strong><span>RITORNO:</span><strong>—</strong></div>
-                </div>
+                <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" disabled>—</button></div></div>
 
                 <div class="match semifinale semifinale-2">
                     <div class="match-label">Semifinale 2</div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
-                    <div class="gara-extra"><span>ANDATA:</span><strong>—</strong><span>RITORNO:</span><strong>—</strong></div>
-                </div>
+                <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" disabled>—</button></div></div>
 
                 <div class="trofeo-finale">
                     <img src="trofeo-chiusura.png" alt="Trofeo del Torneo di Chiusura">
@@ -342,8 +359,7 @@ footer:before,footer:after{
                     <div class="match-label">Finale · Gara unica</div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
                     <div class="team placeholder"><span class="team-name">&nbsp;</span><span class="score">–</span></div>
-                    <div class="gara-extra"><span>FINALE:</span><strong>—</strong></div>
-                </div>
+                <div class="gara-extra"><span>GARA UNICA</span><button class="leg-result" type="button" data-leg="finale" disabled>—</button></div></div>
 
                 <!-- OTTAVI -> QUARTI -->
                 <span class="line line-h q1-h1"></span><span class="line line-v q1-v"></span><span class="line line-h q1-h2"></span>
@@ -369,6 +385,9 @@ footer:before,footer:after{
 
     <section class="nota">
         <h2>📋 &nbsp;Regole della competizione</h2>
+        <p>Ottavi, quarti e semifinali: andata e ritorno. Finale: gara unica. I gol in trasferta non valgono doppio.</p>
+        <p>La squadra di casa gode di 3 fantapunti di vantaggio, già compresi nel punteggio ufficiale quando previsto.</p>
+        <p>Parità reti: somma fantapunteggi (dts); ulteriore parità: voti panchinari a numero uguale (rigori), classifica Serie Maxima e, se necessario, ripetizione dell’incontro.</p>
         <p>Il Torneo di Chiusura si disputa con formula a eliminazione diretta. Gli abbinamenti vengono determinati in base alla classifica della Serie Maxima al termine del girone di andata.</p>
         <p>Nelle fasi a eliminazione diretta vengono applicate le regole previste dal regolamento della Lega per gli incontri internazionali.
            In caso di parità complessiva, si procede secondo i criteri stabiliti dal regolamento ufficiale.</p>
@@ -377,5 +396,69 @@ footer:before,footer:after{
 </div>
 
 <footer>Lega Fantacalcio Barriera dell'M</footer>
+<script>
+
+/* Gestione risultati aggregati. I punteggi devono essere già ufficiali: non sommare di nuovo il +3 casa. */
+(()=>{
+ const fmt=n=>Number(n).toLocaleString('it-IT',{maximumFractionDigits:2});
+ document.querySelectorAll('.tabellone .match').forEach(match=>{
+  const legs=[...match.querySelectorAll('.leg-result')];
+  if(!legs.length)return;
+  const names=[...match.querySelectorAll('.team-name')].map(e=>e.textContent.replace(/DIRETTO/g,'').trim());
+  const scores=[...match.querySelectorAll('.team > .score')];
+  const status=document.createElement('span');status.className='tie-status';match.querySelector('.match-label').append(status);
+  // Ogni risultato è riferito alle squadre nell'ordine visualizzato, anche quando cambia la squadra in casa.
+  legs.forEach(btn=>{
+   const valid=/^\d+\s*[-–:]\s*\d+$/.test(btn.dataset.score||'');
+   const day=Number(btn.dataset.maximaGiornata);
+   if(valid){btn.textContent=btn.dataset.score.replace(/\s*[-–:]\s*/,'–');}
+   btn.disabled=!(valid&&Number.isInteger(day)&&day>0&&names.every(n=>n&&!/^Vincente/i.test(n)));
+   if(!btn.disabled){btn.title='Apri i tabellini ufficiali';btn.setAttribute('aria-label',`Apri tabellini ${names[0]} - ${names[1]}, ${btn.dataset.leg}`);}
+  });
+  if(legs.some(b=>!/^\d+\s*[-–:]\s*\d+$/.test(b.dataset.score||'')))return;
+  const parsed=legs.map(b=>b.dataset.score.split(/[-–:]/).map(Number));
+  const goals=[parsed.reduce((s,x)=>s+x[0],0),parsed.reduce((s,x)=>s+x[1],0)];
+  if(scores.length===2){scores[0].textContent=goals[0];scores[1].textContent=goals[1];}
+  const winner=goals[0]===goals[1]?null:goals[0]>goals[1]?0:1;
+  if(winner!==null){status.textContent='· passa '+names[winner];return;}
+  // In parità reti, confrontare solo i fantapunteggi ufficiali di entrambe le gare.
+  const points=legs.map(b=>[Number(b.dataset.puntiA),Number(b.dataset.puntiB)]);
+  const hasPoints=legs.every(b=>b.dataset.puntiA!==undefined&&b.dataset.puntiB!==undefined)&&points.every(pair=>pair.every(Number.isFinite));
+  if(!hasPoints){status.textContent='· parità: dts da verificare';return;}
+  const total=[points.reduce((s,p)=>s+p[0],0),points.reduce((s,p)=>s+p[1],0)];
+  if(total[0]!==total[1]){
+    const w=total[0]>total[1]?0:1;
+    status.textContent=`· ${fmt(total[0])}–${fmt(total[1])} · passa ${names[w]} dts`;
+    if(scores.length===2)scores[w].textContent=goals[w]+1; // Gol supplementare attribuito al vincitore come nell'esempio ufficiale.
+  }else status.textContent='· parità anche dts: rigori / criteri regolamentari';
+ });
+})();
+
+
+/* Collegamento dei singoli incontri alla pagina Risultati. */
+(()=>{
+ const alias={'LOBE':'LOBE UNITED','SPARTAK':'SPARTAK PISA','DINAMO':'DINAMO SIENA','CASTEL':'CASTEL DI IEMMA','MONACO DB':'MONACO DI BARRIERA','PROFONDA':'PROFONDA AURORA'};
+ const norm=s=>(s||'').replace(/\s+/g,' ').trim().toUpperCase();
+ const team=s=>alias[norm(s)]||norm(s);
+ const overlay=document.createElement('div');overlay.className='lefa-overlay';overlay.hidden=true;
+ overlay.innerHTML='<div class="lefa-dialog" role="dialog" aria-modal="true" aria-label="Tabellini partita"><div class="lefa-dialog-head"><strong>Tabellini</strong><button type="button">Chiudi ✕</button></div><iframe title="Tabellini ufficiali LEFABAM"></iframe></div>';
+ document.body.append(overlay);let last=null;
+ const close=()=>{overlay.hidden=true;overlay.querySelector('iframe').removeAttribute('src');document.body.classList.remove('lefa-locked');last?.focus()};
+ overlay.querySelector('button').onclick=close;overlay.addEventListener('click',e=>{if(e.target===overlay)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!overlay.hidden)close()});
+ document.querySelectorAll('.tabellone .match').forEach(match=>{
+  const names=[...match.querySelectorAll('.team-name')].map(e=>e.textContent.replace(/DIRETTO/g,'').trim());
+  match.querySelectorAll('button.leg-result:not(:disabled)').forEach(btn=>btn.addEventListener('click',()=>{
+   last=btn;const [a,b]=names;const day=btn.dataset.maximaGiornata;
+   // In ritorno la squadra di casa è la seconda nell'ordine del tabellone.
+   const reverse=btn.dataset.leg==='ritorno';
+   const params=new URLSearchParams({confronto:'1',giornata:day,casa:team(reverse?b:a),trasferta:team(reverse?a:b)});
+   overlay.querySelector('strong').textContent=`${a} – ${b} · ${btn.dataset.leg==='finale'?'Finale':btn.dataset.leg==='andata'?'Andata':'Ritorno'}`;
+   overlay.querySelector('iframe').src='risultati.html?'+params;
+   overlay.hidden=false;document.body.classList.add('lefa-locked');overlay.querySelector('button').focus();
+  }));
+ });
+})();
+
+</script>
 </body>
 </html>
