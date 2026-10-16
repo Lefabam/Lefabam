@@ -3,139 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="LEFABAM-ONLINE - Accesso alla gestione delle formazioni e al portale della Lega Fantacalcio Barriera dell'M.">
-<title>LEFABAM-ONLINE | Lega Fantacalcio Barriera dell'M</title>
+<meta name="description" content="LEFABAM Online: gestione formazioni, prossima scadenza e competizioni in programma.">
+<title>LEFABAM ONLINE | Lega Fantacalcio Barriera dell'M</title>
 <style>
-  :root {
-    --blue-dark: #063b91;
-    --blue: #084aa8;
-    --yellow: #ffe500;
-    --white: #ffffff;
-  }
-  * { box-sizing: border-box; }
-  html { min-height: 100%; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--white);
-    background: radial-gradient(circle at 50% 43%, rgba(22,101,210,.95) 0%, rgba(9,75,170,.92) 34%, #043077 100%);
-  }
-  .nav-band {
-    width: 100%;
-    background: linear-gradient(180deg, #04377f 0%, #063f91 100%);
-    box-shadow: 0 5px 18px rgba(0,0,0,.22);
-  }
-  .nav-band.top { border-bottom: 2px solid var(--yellow); }
-  .nav-band.bottom { border-top: 2px solid var(--yellow); }
-  .nav {
-    max-width: 1500px;
-    margin: 0 auto;
-    min-height: 74px;
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .nav a {
-    flex: 1 1 auto;
-    min-height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 16px;
-    color: var(--white);
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: .2px;
-    border-right: 1px solid rgba(255,255,255,.11);
-    transition: background .2s, color .2s;
-  }
-  .nav a:last-child { border-right: 0; }
-  .nav a:hover, .nav a:focus-visible {
-    background: rgba(255,229,0,.14);
-    color: var(--yellow);
-    outline-offset: -4px;
-  }
-  .nav .home-link { color: var(--yellow); }
-  .home-icon { width: 23px; height: 23px; flex: none; }
-  main {
-    flex: 1;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 45px 20px;
-  }
-  .online-circle {
-    width: min(460px, 88vw);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 3px solid rgba(255,255,255,.95);
-    background: #fff000;
-    box-shadow: 0 0 0 2px rgba(255,229,0,.9), 0 18px 48px rgba(0,0,0,.32);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    overflow: hidden;
-    text-decoration: none;
-    transition: transform .2s, box-shadow .2s;
-  }
-  .online-circle:hover, .online-circle:focus-visible {
-    transform: scale(1.025);
-    box-shadow: 0 0 0 2px rgba(255,229,0,.9), 0 22px 56px rgba(0,0,0,.38);
-    outline-offset: 5px;
-  }
-  .online-logo {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  @media (max-width: 650px) {
-    .nav { min-height: auto; }
-    .nav a { flex: 1 1 45%; min-height: 52px; padding: 10px; font-size: 12px; }
-    main { min-height: 350px; padding: 35px 14px; }
-    .online-circle { width: min(400px, 88vw); padding: 14px; }
-  }
+:root{--blue-dark:#063b91;--blue:#084aa8;--yellow:#ffe500;--white:#fff}
+*{box-sizing:border-box}html{min-height:100%}body{margin:0;min-height:100vh;display:flex;flex-direction:column;font-family:Arial,Helvetica,sans-serif;color:#fff;background:radial-gradient(circle at 50% 35%,rgba(22,101,210,.95),rgba(9,75,170,.92) 40%,#043077 100%)}
+.nav-band{width:100%;background:linear-gradient(180deg,#04377f,#063f91);box-shadow:0 5px 18px #0003}.nav-band.top{border-bottom:2px solid var(--yellow)}.nav-band.bottom{border-top:2px solid var(--yellow)}.nav{max-width:1500px;margin:auto;min-height:74px;display:flex;align-items:stretch;justify-content:center;flex-wrap:wrap}.nav a{flex:1 1 auto;min-height:64px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;color:white;text-decoration:none;text-transform:uppercase;text-align:center;font-size:13px;font-weight:800;letter-spacing:.2px;border-right:1px solid #ffffff1c;transition:background .2s,color .2s}.nav a:last-child{border-right:0}.nav a:hover,.nav a:focus-visible{background:#ffe50024;color:var(--yellow);outline-offset:-4px}.nav .home-link{color:var(--yellow)}.home-icon{width:23px;height:23px;flex:none}
+main{flex:1;width:min(1080px,100%);margin:0 auto;padding:35px 20px 46px}.page-heading{text-align:center;margin:0 0 24px}.page-heading h1{font-size:clamp(26px,4vw,40px);letter-spacing:1.3px;margin:0 0 9px;color:var(--yellow)}.page-heading p{margin:0;color:#e7efff;line-height:1.5}
+.dashboard{display:grid;grid-template-columns:290px minmax(0,1fr);gap:20px;align-items:stretch}.panel{border:1px solid #ffffff3d;background:linear-gradient(145deg,#ffffff20,#ffffff0d);border-radius:18px;box-shadow:0 12px 30px #001d4b33;padding:24px}.access-panel{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}.access-panel h2,.deadline-panel h2,.next h2{font-size:19px;margin:0 0 17px}.online-circle{width:min(230px,100%);aspect-ratio:1;border-radius:50%;border:3px solid #fff;background:#fff000;box-shadow:0 0 0 2px #ffe500e6,0 12px 30px #0005;display:flex;align-items:center;justify-content:center;padding:12px;overflow:hidden;text-decoration:none;transition:transform .2s}.online-circle:hover,.online-circle:focus-visible{transform:scale(1.035);outline-offset:5px}.online-logo{display:block;width:100%;height:100%;object-fit:contain}.access-panel p{margin:17px 0 0;font-size:14px;line-height:1.5;color:#e6eeff}.deadline-panel{display:flex;flex-direction:column;justify-content:center}.deadline-label{font-size:13px;text-transform:uppercase;font-weight:800;color:var(--yellow);letter-spacing:.8px;margin:0 0 8px}.deadline-date{font-size:17px;margin:0 0 20px}.countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.time-box{background:#062f74;border:1px solid #ffffff36;border-radius:12px;text-align:center;padding:14px 4px}.time-number{font-size:clamp(25px,4vw,38px);font-weight:900;font-variant-numeric:tabular-nums;color:var(--yellow)}.time-unit{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin-top:6px}.status{margin:16px 0 0;color:#e6eeff;line-height:1.5;font-size:14px}.status.warning{color:#ffe59b}.next{margin-top:20px}.next-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}.next-heading h2{margin:0}.text-link{color:var(--yellow);font-weight:700;text-decoration:none}.text-link:hover{text-decoration:underline}.competitions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.competition{border-radius:12px;padding:16px;background:#062f74b8;border:1px solid #ffffff2b}.competition strong{display:block;color:var(--yellow);margin-bottom:7px}.competition p{margin:0;font-size:14px;line-height:1.5;color:#e7efff}.empty{grid-column:1/-1;color:#e7efff;line-height:1.6;margin:0}.hint{font-size:12px;color:#d9e7ff;margin:15px 0 0;line-height:1.5}
+@media(max-width:700px){.dashboard{grid-template-columns:1fr}.access-panel{padding:22px}.online-circle{width:195px}.competitions{grid-template-columns:1fr}.nav{min-height:auto}.nav a{flex:1 1 45%;min-height:52px;padding:10px;font-size:12px}main{padding:26px 14px 36px}.panel{padding:19px}.time-box{padding:12px 2px}.time-unit{font-size:10px}}
 </style>
 </head>
 <body>
-<header class="nav-band top">
-  <nav class="nav" aria-label="Navigazione principale">
-    <a href="index.html" class="home-link" aria-label="Torna alla Home">
-      <svg class="home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/>
-      </svg>
-      Home
-    </a>
-    <a href="la-pagina-sportiva.html">La Pagina Sportiva</a>
-    <a href="calendario.html">Il Calendario</a>
-    <a href="risultati.html">I Risultati</a>
-    <a href="competizioni.html">Le Competizioni</a>
-    <a href="rose.html">Le Rose</a>
-    <a href="societa.html">Le SocietÃ </a>
-  </nav>
-</header>
+<header class="nav-band top"><nav class="nav" aria-label="Navigazione principale">
+<a href="index.html" class="home-link" aria-label="Torna alla Home"><svg class="home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg>Home</a>
+<a href="la-pagina-sportiva.html">La Pagina Sportiva</a><a href="calendario.html">Il Calendario</a><a href="risultati.html">I Risultati</a><a href="competizioni.html">Le Competizioni</a><a href="rose.html">Le Rose</a><a href="societa.html">Le Società</a>
+</nav></header>
 <main>
-  <a class="online-circle" href="https://www.dosio.com/lefabam/index.php?formazione" rel="noopener noreferrer" aria-label="Accedi a LEFABAM Online per la gestione delle formazioni">
-    <img src="lega-online.png" alt="LEFABAM Online - Gestione Formazioni" class="online-logo">
-  </a>
+<div class="page-heading"><h1>LEFABAM ONLINE</h1><p>La tua centrale operativa: invia la formazione e scopri cosa ci aspetta nella prossima giornata.</p></div>
+<section class="dashboard" aria-label="Accesso e scadenza formazioni">
+<div class="panel access-panel"><h2>Gestione formazioni</h2><a class="online-circle" href="https://www.dosio.com/lefabam/index.php?formazione" rel="noopener noreferrer" aria-label="Accedi a LEFABAM Online per la gestione delle formazioni"><img src="lega-online.png" alt="LEFABAM Online - Gestione Formazioni" class="online-logo"></a><p>Tocca il logo per accedere al portale e inviare la tua formazione.</p></div>
+<div class="panel deadline-panel"><p class="deadline-label">⏱ Prossima scadenza formazioni</p><h2 id="deadline-date" class="deadline-date">Scadenza da programmare</h2><div class="countdown" id="countdown" aria-label="Conto alla rovescia"><div class="time-box"><span class="time-number" id="days">--</span><span class="time-unit">Giorni</span></div><div class="time-box"><span class="time-number" id="hours">--</span><span class="time-unit">Ore</span></div><div class="time-box"><span class="time-number" id="minutes">--</span><span class="time-unit">Minuti</span></div><div class="time-box"><span class="time-number" id="seconds">--</span><span class="time-unit">Secondi</span></div></div><p id="deadline-status" class="status" role="status">Il conto alla rovescia sarà attivo appena inseriremo la prossima scadenza ufficiale.</p></div>
+</section>
+<section class="panel next" aria-labelledby="next-title"><div class="next-heading"><h2 id="next-title">🏆 In campo nella prossima giornata</h2><a class="text-link" href="calendario.html">Consulta il calendario →</a></div><div class="competitions" id="competitions"><p class="empty">Le competizioni della prossima giornata saranno visualizzate qui dopo il collegamento al calendario ufficiale della LEFABAM.</p></div><p class="hint">Le informazioni non vengono inventate: il calendario e la scadenza devono essere confermati prima della pubblicazione.</p></section>
 </main>
-<footer class="nav-band bottom">
-  <nav class="nav" aria-label="Altri collegamenti">
-    <a href="albo-doro.html">Albo d'Oro</a>
-    <a href="regolamento.html">Regolamento</a>
-    <a href="galleria-foto.html">Galleria Foto</a>
-    <a href="contatti.html">Contatti</a>
-  </nav>
-</footer>
+<footer class="nav-band bottom"><nav class="nav" aria-label="Altri collegamenti"><a href="albo-doro.html">Albo d'Oro</a><a href="regolamento.html">Regolamento</a><a href="galleria-foto.html">Galleria Foto</a><a href="contatti.html">Contatti</a></nav></footer>
+<script>
+/* Scadenze confermate: aggiungere qui le successive, in ordine cronologico.
+   Orari locali italiani: +02:00 fino al 25 ottobre, poi +01:00. */
+const DEADLINES = [
+  '2026-10-16T20:45:00+02:00',
+  '2026-10-23T20:45:00+02:00',
+  '2026-10-27T18:30:00+01:00'
+];
+/* Compilare con dati VERIFICATI dal calendario, ad esempio:
+   {name:'Torneo di Apertura', detail:'Quarti di finale', href:'torneo-di-apertura.html'}
+   Non viene effettuata alcuna lettura automatica del calendario.html. */
+const NEXT_COMPETITIONS = [];
+const $ = id => document.getElementById(id);
+const pad = n => String(n).padStart(2,'0');
+function updateCountdown(){
+ const now=Date.now();
+ const next=DEADLINES.map(s=>new Date(s)).find(d=>Number.isFinite(d.getTime())&&d.getTime()>now);
+ if(!next){
+  $('deadline-date').textContent='In attesa della prossima scadenza';
+  ['days','hours','minutes','seconds'].forEach(id=>$(id).textContent='--');
+  $('deadline-status').textContent='Le date attualmente comunicate sono trascorse. In attesa del prossimo calendario ufficiale.';
+  $('deadline-status').classList.add('warning');
+  return;
+ }
+ $('deadline-date').textContent=new Intl.DateTimeFormat('it-IT',{timeZone:'Europe/Rome',weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(next);
+ const total=Math.max(0,Math.ceil((next.getTime()-now)/1000));
+ $('days').textContent=pad(Math.floor(total/86400));
+ $('hours').textContent=pad(Math.floor(total%86400/3600));
+ $('minutes').textContent=pad(Math.floor(total%3600/60));
+ $('seconds').textContent=pad(total%60);
+ $('deadline-status').textContent='Le formazioni chiudono esattamente al calcio d’inizio della prima partita. Verifica eventuali variazioni ufficiali.';
+ $('deadline-status').classList.remove('warning');
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+if(NEXT_COMPETITIONS.length){const container=$('competitions');container.replaceChildren();NEXT_COMPETITIONS.forEach(item=>{const card=document.createElement('article');card.className='competition';const name=document.createElement('strong');name.textContent=item.name;const detail=document.createElement('p');detail.textContent=item.detail||'';card.append(name,detail);if(item.href){const a=document.createElement('a');a.className='text-link';a.href=item.href;a.textContent='Dettagli →';card.append(a);}container.append(card);});}
+</script>
 </body>
 </html>
