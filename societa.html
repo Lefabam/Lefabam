@@ -317,6 +317,11 @@ function switchSeries(series){
     document.getElementById('tab-'+name).setAttribute('aria-selected',String(active));
   }
 }
+const serieRichiesta = new URLSearchParams(window.location.search).get('serie');
+
+if (serieRichiesta === 'minus') {
+  switchSeries('minus');
+}
 </script>
 </body>
 </html>
