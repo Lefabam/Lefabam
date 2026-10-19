@@ -9,7 +9,7 @@ nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}nav a{background:
 main{max-width:1260px;margin:auto;padding:0 20px 70px}.hero{text-align:center;padding:38px 12px 23px}.eyebrow{font-size:12px;letter-spacing:3px;font-weight:800;color:#fff;opacity:.9}.hero h1{font-size:clamp(36px,5vw,58px);color:var(--yellow);margin:10px 0}.hero p{max-width:690px;margin:0 auto;line-height:1.6;color:#eaf1ff}
 .album-menu{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:24px 0 30px}.album-menu button{background:white;color:var(--dark);border:2px solid var(--yellow);border-radius:30px;padding:11px 22px;font-weight:800;cursor:pointer}.album-menu button.active,.album-menu button:hover{background:var(--yellow)}
 .album-heading{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:14px 0 18px}.album-heading h2{margin:0;font-size:25px}.count{font-size:14px;color:#dbe8ff}
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}.photo{border:2px solid #ffe500aa;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px #00235c60;padding:0;cursor:pointer;text-align:left;color:var(--dark)}.photo img{width:100%;height:190px;object-fit:cover;display:block;transition:transform .25s}.photo:hover img{transform:scale(1.04)}.photo span{display:block;padding:12px 14px;font-size:13px;font-weight:bold}.photo:focus-visible{outline:4px solid var(--yellow)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}.photo{border:2px solid #ffe500aa;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px #00235c60;padding:0;cursor:pointer;text-align:left;color:var(--dark)}.photo img{width:100%;height:190px;object-fit:cover;display:block;transition:transform .25s}.photo:hover img{transform:scale(1.04)}.photo span{display:block;padding:12px 14px;font-size:13px;font-weight:bold;line-height:1.45}.photo:focus-visible{outline:4px solid var(--yellow)}
 .note{margin-top:30px;text-align:center;color:#e6efff;font-size:14px}footer{text-align:center;border-top:1px solid #ffffff44;padding:22px;font-size:13px;color:#d9e8ff}
 .lightbox{position:fixed;inset:0;background:#00112aef;z-index:20;display:none;align-items:center;justify-content:center;padding:55px 64px 60px}.lightbox.open{display:flex}.lightbox figure{margin:0;max-width:100%;text-align:center}.lightbox img{display:block;max-width:100%;max-height:calc(100vh - 140px);object-fit:contain;margin:auto;border-radius:6px}.lightbox figcaption{margin-top:12px;color:white}.lightbox button{position:absolute;background:#ffe500;color:#043077;border:0;border-radius:50%;height:43px;width:43px;font-size:26px;font-weight:bold;cursor:pointer}.close{right:17px;top:16px}.prev{left:12px;top:50%}.next{right:12px;top:50%}
 @media(max-width:580px){main{padding:0 12px 45px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo img{height:140px}.photo span{padding:9px;font-size:11px}.lightbox{padding:62px 8px}.prev,.next{top:auto;bottom:8px}.prev{left:calc(50% - 55px)}.next{right:calc(50% - 55px)}}
@@ -44,31 +44,271 @@ main{max-width:1260px;margin:auto;padding:0 20px 70px}.hero{text-align:center;pa
 // Per aggiungere nuove annate, scrivi la stagione nel campo anno delle foto corrispondenti.
 // Esempio: {file: "IMG_0453.jpg", anno: "2012/2013"}
 const photos = [
-    {file: "IMG_0453.jpg", anno: "2012/2013"},
-    {file: "IMG_0454.jpg", anno: "2012/2013"},
-    {file: "IMG_0455.jpg", anno: "2012/2013"},
-    {file: "IMG_0456.jpg", anno: "2012/2013"},
-    {file: "IMG_0457.jpg", anno: "2012/2013"},
-    {file: "IMG_0458.jpg", anno: "2012/2013"},
-    {file: "IMG_0460.jpg", anno: "2012/2013"},
-    {file: "IMG_0461.jpg", anno: "2012/2013"},
-    {file: "IMG_0462.jpg", anno: "2012/2013"},
-    {file: "IMG_0463.jpg", anno: "2012/2013"},
-    {file: "IMG_0464.jpg", anno: "2012/2013"},
-    {file: "IMG_0465.jpg", anno: "2012/2013"},
-    {file: "IMG_0466.jpg", anno: "2012/2013"},
-    {file: "IMG_0467.jpg", anno: "2012/2013"},
-    {file: "IMG_0468.jpg", anno: "2012/2013"},
-    {file: "IMG_0469.jpg", anno: "2012/2013"},
-    {file: "IMG_0470.jpg", anno: "2012/2013"},
-    {file: "IMG_0471.jpg", anno: "2012/2013"}
+  {
+    "file": "IMG_0453.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0453.jpg"
+  },
+  {
+    "file": "IMG_0454.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0454.jpg"
+  },
+  {
+    "file": "IMG_0455.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0455.jpg"
+  },
+  {
+    "file": "IMG_0456.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0456.jpg"
+  },
+  {
+    "file": "IMG_0457.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0457.jpg"
+  },
+  {
+    "file": "IMG_0458.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0458.jpg"
+  },
+  {
+    "file": "IMG_0460.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0460.jpg"
+  },
+  {
+    "file": "IMG_0461.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0461.jpg"
+  },
+  {
+    "file": "IMG_0462.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0462.jpg"
+  },
+  {
+    "file": "IMG_0463.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0463.jpg"
+  },
+  {
+    "file": "IMG_0464.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0464.jpg"
+  },
+  {
+    "file": "IMG_0465.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0465.jpg"
+  },
+  {
+    "file": "IMG_0466.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0466.jpg"
+  },
+  {
+    "file": "IMG_0467.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0467.jpg"
+  },
+  {
+    "file": "IMG_0468.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0468.jpg"
+  },
+  {
+    "file": "IMG_0469.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0469.jpg"
+  },
+  {
+    "file": "IMG_0470.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0470.jpg"
+  },
+  {
+    "file": "IMG_0471.jpg",
+    "anno": "2012/2013",
+    "caption": "Gran Galà 2013 — Stagione 2012/2013",
+    "path": "foto/2014-2015/IMG_0471.jpg"
+  },
+  {
+    "file": "2019-001.jpg",
+    "anno": "2018/2019",
+    "caption": "Torneo di Chiusura 2018/2019: Davide del Lobe United, detentore del trofeo, consegna la coppa a Pier del Tomcat, vincitore dell’edizione.",
+    "path": "foto/2018-2019/2019-001.jpg"
+  },
+  {
+    "file": "2019-002.jpg",
+    "anno": "2018/2019",
+    "caption": "Torneo di Chiusura 2018/2019: Davide del Lobe United, detentore del trofeo, consegna la coppa a Pier del Tomcat, vincitore dell’edizione.",
+    "path": "foto/2018-2019/2019-002.jpg"
+  },
+  {
+    "file": "2019-003.jpg",
+    "anno": "2018/2019",
+    "caption": "Torneo di Chiusura 2018/2019: Davide del Lobe United, detentore del trofeo, consegna la coppa a Pier del Tomcat, vincitore dell’edizione.",
+    "path": "foto/2018-2019/2019-003.jpg"
+  },
+  {
+    "file": "2019-004.jpg",
+    "anno": "2018/2019",
+    "caption": "Torneo di Apertura 2018/2019: Roberto «CT», presidente onorario dell’Intertor ed ex AD LEFABAM, premia Christian della Zuluzebra, presidente onorario LEFABAM e AD in questa occasione.",
+    "path": "foto/2018-2019/2019-004.jpg"
+  },
+  {
+    "file": "2019-005.jpg",
+    "anno": "2018/2019",
+    "caption": "Torneo di Apertura 2018/2019: Roberto «CT», presidente onorario dell’Intertor ed ex AD LEFABAM, premia Christian della Zuluzebra, presidente onorario LEFABAM e AD in questa occasione.",
+    "path": "foto/2018-2019/2019-005.jpg"
+  },
+  {
+    "file": "2019-006.jpg",
+    "anno": "2018/2019",
+    "caption": "Supercoppa 2018/2019: Christian consegna il trofeo al Tomcat.",
+    "path": "foto/2018-2019/2019-006.jpg"
+  },
+  {
+    "file": "2019-007.jpg",
+    "anno": "2018/2019",
+    "caption": "Gran Galà 2019: un momento conviviale alla tavolata LEFABAM.",
+    "path": "foto/2018-2019/2019-007.jpg"
+  },
+  {
+    "file": "2019-008.jpg",
+    "anno": "2018/2019",
+    "caption": "Supercoppa 2018/2019: Christian consegna il trofeo al Tomcat.",
+    "path": "foto/2018-2019/2019-008.jpg"
+  },
+  {
+    "file": "2019-009.jpg",
+    "anno": "2018/2019",
+    "caption": "Gran Galà 2019: un momento conviviale alla tavolata LEFABAM.",
+    "path": "foto/2018-2019/2019-009.jpg"
+  },
+  {
+    "file": "2019-010.jpg",
+    "anno": "2018/2019",
+    "caption": "Torneo di Apertura 2018/2019: Roberto «CT», presidente onorario dell’Intertor ed ex AD LEFABAM, premia Christian della Zuluzebra, presidente onorario LEFABAM e AD in questa occasione.",
+    "path": "foto/2018-2019/2019-010.jpg"
+  },
+  {
+    "file": "2019-011.jpg",
+    "anno": "2018/2019",
+    "caption": "Supercoppa 2018/2019: Christian consegna il trofeo al Tomcat.",
+    "path": "foto/2018-2019/2019-011.jpg"
+  },
+  {
+    "file": "2019-012.jpg",
+    "anno": "2018/2019",
+    "caption": "Torneo di Apertura 2018/2019: Christian mostra orgoglioso il trofeo conquistato dalla Zuluzebra.",
+    "path": "foto/2018-2019/2019-012.jpg"
+  },
+  {
+    "file": "2019-013.jpg",
+    "anno": "2018/2019",
+    "caption": "Torneo di Apertura 2018/2019: Roberto «CT», presidente onorario dell’Intertor ed ex AD LEFABAM, premia Christian della Zuluzebra, presidente onorario LEFABAM e AD in questa occasione.",
+    "path": "foto/2018-2019/2019-013.jpg"
+  },
+  {
+    "file": "2019-014.jpg",
+    "anno": "2018/2019",
+    "caption": "Torneo di Chiusura 2018/2019: Davide del Lobe United, detentore del trofeo, consegna la coppa a Pier del Tomcat, vincitore dell’edizione.",
+    "path": "foto/2018-2019/2019-014.jpg"
+  },
+  {
+    "file": "2019-015.jpg",
+    "anno": "2018/2019",
+    "caption": "Torneo di Chiusura 2018/2019: Davide del Lobe United, detentore del trofeo, consegna la coppa a Pier del Tomcat, vincitore dell’edizione.",
+    "path": "foto/2018-2019/2019-015.jpg"
+  },
+  {
+    "file": "2019-016.jpg",
+    "anno": "2018/2019",
+    "caption": "LEFABAM Cup 2018/2019: Diego della Profonda Aurora riceve il trofeo, con il simpatico «disturbo» di Pier del Tomcat, che mostra le sue coppe.",
+    "path": "foto/2018-2019/2019-016.jpg"
+  },
+  {
+    "file": "2019-017.jpg",
+    "anno": "2018/2019",
+    "caption": "LEFABAM Cup 2018/2019: Diego della Profonda Aurora riceve il trofeo, con il simpatico «disturbo» di Pier del Tomcat, che mostra le sue coppe.",
+    "path": "foto/2018-2019/2019-017.jpg"
+  },
+  {
+    "file": "2019-018.jpg",
+    "anno": "2018/2019",
+    "caption": "Extra League 2018/2019: consegna del piatto dei campioni al presidente del Lobe United.",
+    "path": "foto/2018-2019/2019-018.jpg"
+  },
+  {
+    "file": "2019-019.jpg",
+    "anno": "2018/2019",
+    "caption": "LEFABAM Cup 2018/2019: Diego della Profonda Aurora alza finalmente la coppa senza disturbatori!",
+    "path": "foto/2018-2019/2019-019.jpg"
+  },
+  {
+    "file": "2019-020.jpg",
+    "anno": "2018/2019",
+    "caption": "Extra League 2018/2019: consegna del piatto dei campioni al presidente del Lobe United.",
+    "path": "foto/2018-2019/2019-020.jpg"
+  },
+  {
+    "file": "2019-021.jpg",
+    "anno": "2018/2019",
+    "caption": "Serie Maxima 2018/2019: l’Intertor riceve la coppa dei campioni con il neopresidente Nicolò e il padre Roberto «CT», presidente onorario.",
+    "path": "foto/2018-2019/2019-021.jpg"
+  },
+  {
+    "file": "2019-022.jpg",
+    "anno": "2018/2019",
+    "caption": "Serie Maxima 2018/2019: l’Intertor riceve la coppa dei campioni con il neopresidente Nicolò e il padre Roberto «CT», presidente onorario.",
+    "path": "foto/2018-2019/2019-022.jpg"
+  },
+  {
+    "file": "2019-023.jpg",
+    "anno": "2018/2019",
+    "caption": "Il Cucchiaino 2018/2019: il Wild Eagles riceve il riconoscimento per l’ultimo posto in classifica.",
+    "path": "foto/2018-2019/2019-023.jpg"
+  },
+  {
+    "file": "2019-024.jpg",
+    "anno": "2018/2019",
+    "caption": "Serie Maxima 2018/2019: l’Intertor riceve la coppa dei campioni con il neopresidente Nicolò e il padre Roberto «CT», presidente onorario.",
+    "path": "foto/2018-2019/2019-024.jpg"
+  },
+  {
+    "file": "2019-025.jpg",
+    "anno": "2018/2019",
+    "caption": "Il Cucchiaino 2018/2019: il Wild Eagles riceve il riconoscimento per l’ultimo posto in classifica.",
+    "path": "foto/2018-2019/2019-025.jpg"
+  }
 ];
 const albums=document.getElementById('albums'),gallery=document.getElementById('gallery'),title=document.getElementById('albumTitle'),counter=document.getElementById('counter');
 const lightbox=document.getElementById('lightbox'),full=document.getElementById('full'),caption=document.getElementById('caption');
 let visible=[],index=0,selected='Tutte le annate';
-function photoPath(p){return 'foto/2014-2015/'+p.file} // Mantiene il percorso attuale delle immagini
-function render(){const years=[...new Set(photos.map(p=>p.anno))];const options=['Tutte le annate',...years];albums.innerHTML='';options.forEach(y=>{const b=document.createElement('button');b.textContent=y;b.className=y===selected?'active':'';b.setAttribute('aria-pressed',String(y===selected));b.onclick=()=>{selected=y;render()};albums.appendChild(b)});visible=photos.filter(p=>selected==='Tutte le annate'||p.anno===selected);title.textContent=selected==='Tutte le annate'?'Archivio fotografico':selected==='Da definire'?'Annata da definire':(selected==='2012/2013'?'Gran Galà 2013 — Stagione 2012/2013':'Stagione '+selected);counter.textContent=visible.length+' fotografie';gallery.innerHTML='';visible.forEach((p,i)=>{const b=document.createElement('button');b.className='photo';const im=document.createElement('img');im.src=photoPath(p);im.alt='Foto storica LEFABAM '+(i+1);im.loading='lazy';const label=document.createElement('span');label.textContent='Foto '+String(i+1).padStart(2,'0');b.append(im,label);b.onclick=()=>openPhoto(i);gallery.appendChild(b)})}
-function openPhoto(i){index=(i+visible.length)%visible.length;full.src=photoPath(visible[index]);caption.textContent=(index+1)+' / '+visible.length+' · '+(visible[index].anno==='Da definire'?'Archivio LEFABAM':(visible[index].anno==='2012/2013'?'Gran Galà 2013 — Stagione 2012/2013':'Stagione '+visible[index].anno));lightbox.classList.add('open');document.body.style.overflow='hidden'}
+function photoPath(p){return p.path}
+function render(){const years=[...new Set(photos.map(p=>p.anno))];const options=['Tutte le annate',...years];albums.innerHTML='';options.forEach(y=>{const b=document.createElement('button');b.textContent=y;b.className=y===selected?'active':'';b.setAttribute('aria-pressed',String(y===selected));b.onclick=()=>{selected=y;render()};albums.appendChild(b)});visible=photos.filter(p=>selected==='Tutte le annate'||p.anno===selected);title.textContent=selected==='Tutte le annate'?'Archivio fotografico':selected==='Da definire'?'Annata da definire':(selected==='2012/2013'?'Gran Galà 2013 — Stagione 2012/2013':selected==='2018/2019'?'Gran Galà 2019 — Stagione 2018/2019':'Stagione '+selected);counter.textContent=visible.length+' fotografie';gallery.innerHTML='';visible.forEach((p,i)=>{const b=document.createElement('button');b.className='photo';const im=document.createElement('img');im.src=photoPath(p);im.alt='Foto storica LEFABAM '+(i+1);im.loading='lazy';const label=document.createElement('span');label.textContent='Foto '+String(i+1).padStart(2,'0')+(p.anno==='2018/2019'?' · '+p.caption:'');b.append(im,label);b.onclick=()=>openPhoto(i);gallery.appendChild(b)})}
+function openPhoto(i){index=(i+visible.length)%visible.length;full.src=photoPath(visible[index]);caption.textContent=(index+1)+' / '+visible.length+' · '+visible[index].caption;lightbox.classList.add('open');document.body.style.overflow='hidden'}
 function closePhoto(){lightbox.classList.remove('open');document.body.style.overflow=''}
 document.querySelector('.close').onclick=closePhoto;document.querySelector('.prev').onclick=()=>openPhoto(index-1);document.querySelector('.next').onclick=()=>openPhoto(index+1);lightbox.addEventListener('click',e=>{if(e.target===lightbox)closePhoto()});document.addEventListener('keydown',e=>{if(!lightbox.classList.contains('open'))return;if(e.key==='Escape')closePhoto();if(e.key==='ArrowLeft')openPhoto(index-1);if(e.key==='ArrowRight')openPhoto(index+1)});render();
 </script></body></html>
