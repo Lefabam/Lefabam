@@ -40,35 +40,35 @@ main{max-width:1260px;margin:auto;padding:0 20px 70px}.hero{text-align:center;pa
 <footer>LEFABAM · Lega Fantacalcio Barriera dell'M</footer>
 <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Fotografia ingrandita"><button class="close" aria-label="Chiudi">×</button><button class="prev" aria-label="Foto precedente">‹</button><figure><img id="full" alt="Fotografia dell'archivio LEFABAM"><figcaption id="caption"></figcaption></figure><button class="next" aria-label="Foto successiva">›</button></div>
 <script>
-// Carica le foto in foto/AAAA-AAAA/ (es. foto/2014-2015/IMG_0453.jpg).
+// Gran Galà 2013: foto della stagione 2012/2013. I file restano nella cartella foto/2014-2015/ per evitare collegamenti interrotti.
 // Per aggiungere nuove annate, scrivi la stagione nel campo anno delle foto corrispondenti.
-// Esempio: {file: "IMG_0453.jpg", anno: "2014/2015"}
+// Esempio: {file: "IMG_0453.jpg", anno: "2012/2013"}
 const photos = [
-    {file: "IMG_0453.jpg", anno: "2014/2015"},
-    {file: "IMG_0454.jpg", anno: "2014/2015"},
-    {file: "IMG_0455.jpg", anno: "2014/2015"},
-    {file: "IMG_0456.jpg", anno: "2014/2015"},
-    {file: "IMG_0457.jpg", anno: "2014/2015"},
-    {file: "IMG_0458.jpg", anno: "2014/2015"},
-    {file: "IMG_0460.jpg", anno: "2014/2015"},
-    {file: "IMG_0461.jpg", anno: "2014/2015"},
-    {file: "IMG_0462.jpg", anno: "2014/2015"},
-    {file: "IMG_0463.jpg", anno: "2014/2015"},
-    {file: "IMG_0464.jpg", anno: "2014/2015"},
-    {file: "IMG_0465.jpg", anno: "2014/2015"},
-    {file: "IMG_0466.jpg", anno: "2014/2015"},
-    {file: "IMG_0467.jpg", anno: "2014/2015"},
-    {file: "IMG_0468.jpg", anno: "2014/2015"},
-    {file: "IMG_0469.jpg", anno: "2014/2015"},
-    {file: "IMG_0470.jpg", anno: "2014/2015"},
-    {file: "IMG_0471.jpg", anno: "2014/2015"}
+    {file: "IMG_0453.jpg", anno: "2012/2013"},
+    {file: "IMG_0454.jpg", anno: "2012/2013"},
+    {file: "IMG_0455.jpg", anno: "2012/2013"},
+    {file: "IMG_0456.jpg", anno: "2012/2013"},
+    {file: "IMG_0457.jpg", anno: "2012/2013"},
+    {file: "IMG_0458.jpg", anno: "2012/2013"},
+    {file: "IMG_0460.jpg", anno: "2012/2013"},
+    {file: "IMG_0461.jpg", anno: "2012/2013"},
+    {file: "IMG_0462.jpg", anno: "2012/2013"},
+    {file: "IMG_0463.jpg", anno: "2012/2013"},
+    {file: "IMG_0464.jpg", anno: "2012/2013"},
+    {file: "IMG_0465.jpg", anno: "2012/2013"},
+    {file: "IMG_0466.jpg", anno: "2012/2013"},
+    {file: "IMG_0467.jpg", anno: "2012/2013"},
+    {file: "IMG_0468.jpg", anno: "2012/2013"},
+    {file: "IMG_0469.jpg", anno: "2012/2013"},
+    {file: "IMG_0470.jpg", anno: "2012/2013"},
+    {file: "IMG_0471.jpg", anno: "2012/2013"}
 ];
 const albums=document.getElementById('albums'),gallery=document.getElementById('gallery'),title=document.getElementById('albumTitle'),counter=document.getElementById('counter');
 const lightbox=document.getElementById('lightbox'),full=document.getElementById('full'),caption=document.getElementById('caption');
 let visible=[],index=0,selected='Tutte le annate';
-function photoPath(p){return 'foto/'+p.anno.replace('/','-')+'/'+p.file}
-function render(){const years=[...new Set(photos.map(p=>p.anno))];const options=['Tutte le annate',...years];albums.innerHTML='';options.forEach(y=>{const b=document.createElement('button');b.textContent=y;b.className=y===selected?'active':'';b.setAttribute('aria-pressed',String(y===selected));b.onclick=()=>{selected=y;render()};albums.appendChild(b)});visible=photos.filter(p=>selected==='Tutte le annate'||p.anno===selected);title.textContent=selected==='Tutte le annate'?'Archivio fotografico':selected==='Da definire'?'Annata da definire':'Stagione '+selected;counter.textContent=visible.length+' fotografie';gallery.innerHTML='';visible.forEach((p,i)=>{const b=document.createElement('button');b.className='photo';const im=document.createElement('img');im.src=photoPath(p);im.alt='Foto storica LEFABAM '+(i+1);im.loading='lazy';const label=document.createElement('span');label.textContent='Foto '+String(i+1).padStart(2,'0');b.append(im,label);b.onclick=()=>openPhoto(i);gallery.appendChild(b)})}
-function openPhoto(i){index=(i+visible.length)%visible.length;full.src=photoPath(visible[index]);caption.textContent=(index+1)+' / '+visible.length+' · '+(visible[index].anno==='Da definire'?'Archivio LEFABAM':'Stagione '+visible[index].anno);lightbox.classList.add('open');document.body.style.overflow='hidden'}
+function photoPath(p){return 'foto/2014-2015/'+p.file} // Mantiene il percorso attuale delle immagini
+function render(){const years=[...new Set(photos.map(p=>p.anno))];const options=['Tutte le annate',...years];albums.innerHTML='';options.forEach(y=>{const b=document.createElement('button');b.textContent=y;b.className=y===selected?'active':'';b.setAttribute('aria-pressed',String(y===selected));b.onclick=()=>{selected=y;render()};albums.appendChild(b)});visible=photos.filter(p=>selected==='Tutte le annate'||p.anno===selected);title.textContent=selected==='Tutte le annate'?'Archivio fotografico':selected==='Da definire'?'Annata da definire':(selected==='2012/2013'?'Gran Galà 2013 — Stagione 2012/2013':'Stagione '+selected);counter.textContent=visible.length+' fotografie';gallery.innerHTML='';visible.forEach((p,i)=>{const b=document.createElement('button');b.className='photo';const im=document.createElement('img');im.src=photoPath(p);im.alt='Foto storica LEFABAM '+(i+1);im.loading='lazy';const label=document.createElement('span');label.textContent='Foto '+String(i+1).padStart(2,'0');b.append(im,label);b.onclick=()=>openPhoto(i);gallery.appendChild(b)})}
+function openPhoto(i){index=(i+visible.length)%visible.length;full.src=photoPath(visible[index]);caption.textContent=(index+1)+' / '+visible.length+' · '+(visible[index].anno==='Da definire'?'Archivio LEFABAM':(visible[index].anno==='2012/2013'?'Gran Galà 2013 — Stagione 2012/2013':'Stagione '+visible[index].anno));lightbox.classList.add('open');document.body.style.overflow='hidden'}
 function closePhoto(){lightbox.classList.remove('open');document.body.style.overflow=''}
 document.querySelector('.close').onclick=closePhoto;document.querySelector('.prev').onclick=()=>openPhoto(index-1);document.querySelector('.next').onclick=()=>openPhoto(index+1);lightbox.addEventListener('click',e=>{if(e.target===lightbox)closePhoto()});document.addEventListener('keydown',e=>{if(!lightbox.classList.contains('open'))return;if(e.key==='Escape')closePhoto();if(e.key==='ArrowLeft')openPhoto(index-1);if(e.key==='ArrowRight')openPhoto(index+1)});render();
 </script></body></html>
