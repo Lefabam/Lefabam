@@ -275,7 +275,7 @@ footer {
 </article>
 <article class="club-card">
 <h2>ATLANTICA B.P.</h2>
-<a aria-label="Presentazione ATLANTICA B.P." class="logo-link" href="atlantica.html"><span class="minus-logo">ABP</span></a>
+<a aria-label="Presentazione ATLANTICA B.P." class="logo-link" href="atlantica.html"><img alt="Logo ATLANTICA B.P." onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="atlantica.png"/><span class="logo-placeholder">LOGO</span></a>
 </article>
 <article class="club-card">
 <h2>JUMBO A.F.T.</h2>
@@ -298,18 +298,32 @@ footer {
 </main>
 <footer>Lega Fantacalcio Barriera dell'M · 1995</footer>
 <script>
+// Ricorda il campionato scelto anche quando si visita una pagina societaria.
 function switchSeries(series){
-  for(const name of ['maxima','minus']){
-    const active=name===series;
-    document.getElementById('panel-'+name).hidden=!active;
-    document.getElementById('tab-'+name).setAttribute('aria-selected',String(active));
+  const selected = series === 'minus' ? 'minus' : 'maxima';
+  for (const name of ['maxima', 'minus']) {
+    const active = name === selected;
+    document.getElementById('panel-' + name).hidden = !active;
+    document.getElementById('tab-' + name).setAttribute('aria-selected', String(active));
   }
+  try { sessionStorage.setItem('lefabam-societa-serie', selected); } catch (error) {}
 }
-const serieRichiesta = new URLSearchParams(window.location.search).get('serie');
 
-if (serieRichiesta === 'minus') {
-  switchSeries('minus');
+function restoreSeries(){
+  const requested = new URLSearchParams(window.location.search).get('serie');
+  const hash = window.location.hash.toLowerCase();
+  let stored = null;
+  try { stored = sessionStorage.getItem('lefabam-societa-serie'); } catch (error) {}
+  const selected = requested === 'minus' || hash === '#serie-minus'
+    ? 'minus'
+    : requested === 'maxima' || hash === '#serie-maxima'
+      ? 'maxima'
+      : stored === 'minus' ? 'minus' : 'maxima';
+  switchSeries(selected);
 }
+
+restoreSeries();
+window.addEventListener('hashchange', restoreSeries);
 </script>
 </body>
 </html>
