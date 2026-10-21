@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Le Società — LEFABAM</title>
 <style>
 *{box-sizing:border-box}
@@ -106,205 +107,192 @@ footer {
 .nav-center{justify-content:center}
 .nav-right{justify-content:flex-end}
 @media(max-width:760px){.site-nav{grid-template-columns:1fr;gap:7px}.nav-group{justify-content:center}}
+
+/* Collegamenti Serie Minus: pronti anche per le pagine in preparazione */
+#panel-minus .logo-link:focus-visible{outline:3px solid #ffe500;outline-offset:3px}
+#panel-minus .logo-link:hover .minus-logo{border-color:#f5a623;background:#fff3df}
 </style>
 </head>
 <body>
-<nav class="site-nav" aria-label="Navigazione principale">
-  <div class="nav-group nav-left">
-    <a href="index.html">Home</a>
-    <a href="la-pagina-sportiva.html">La Pagina Sportiva</a>
-  </div>
-  <div class="nav-group nav-center">
-    <a href="risultati.html">Risultati</a>
-    <a href="competizioni.html">Competizioni</a>
-  </div>
-  <div class="nav-group nav-right">
-    <a href="rose.html">Rose</a>
-    <a href="lefabam-online.html">Portale OnLine</a>
-  </div>
+<nav aria-label="Navigazione principale" class="site-nav">
+<div class="nav-group nav-left">
+<a href="index.html">Home</a>
+<a href="la-pagina-sportiva.html">La Pagina Sportiva</a>
+</div>
+<div class="nav-group nav-center">
+<a href="risultati.html">Risultati</a>
+<a href="competizioni.html">Competizioni</a>
+</div>
+<div class="nav-group nav-right">
+<a href="rose.html">Rose</a>
+<a href="lefabam-online.html">Portale OnLine</a>
+</div>
 </nav>
 <header>
 <h1>Le Società</h1>
 <p>LEGA FANTACALCIO BARRIERA DELL'M · STAGIONE 2026/27</p>
 </header>
 <main>
-<div class="series-switch" role="tablist" aria-label="Seleziona il campionato">
-<button type="button" role="tab" id="tab-maxima" aria-controls="panel-maxima" aria-selected="true" onclick="switchSeries('maxima')">SERIE MAXIMA</button>
-<button type="button" role="tab" id="tab-minus" aria-controls="panel-minus" aria-selected="false" onclick="switchSeries('minus')">SERIE MINUS</button>
+<div aria-label="Seleziona il campionato" class="series-switch" role="tablist">
+<button aria-controls="panel-maxima" aria-selected="true" id="tab-maxima" onclick="switchSeries('maxima')" role="tab" type="button">SERIE MAXIMA</button>
+<button aria-controls="panel-minus" aria-selected="false" id="tab-minus" onclick="switchSeries('minus')" role="tab" type="button">SERIE MINUS</button>
 </div>
-<div class="series-panel" id="panel-maxima" role="tabpanel" aria-labelledby="tab-maxima">
-<section class="clubs" id="maxima-clubs" aria-label="Società Serie Maxima"><article class="club-card">
-  <h2>CASTEL DI IEMMA</h2>
-  <a class="logo-link" href="castel-di-iemma.html" aria-label="Presentazione CASTEL DI IEMMA">
-    <img src="castel-di-iemma.png" alt="Logo CASTEL DI IEMMA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<div aria-labelledby="tab-maxima" class="series-panel" id="panel-maxima" role="tabpanel">
+<section aria-label="Società Serie Maxima" class="clubs" id="maxima-clubs"><article class="club-card">
+<h2>CASTEL DI IEMMA</h2>
+<a aria-label="Presentazione CASTEL DI IEMMA" class="logo-link" href="castel-di-iemma.html">
+<img alt="Logo CASTEL DI IEMMA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="castel-di-iemma.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article>
 <article class="club-card">
-  <h2>DINAMO SIENA</h2>
-  <a class="logo-link" href="dinamo-siena.html" aria-label="Presentazione DINAMO SIENA">
-    <img src="dinamo-siena.png" alt="Logo DINAMO SIENA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<h2>DINAMO SIENA</h2>
+<a aria-label="Presentazione DINAMO SIENA" class="logo-link" href="dinamo-siena.html">
+<img alt="Logo DINAMO SIENA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="dinamo-siena.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article>
 <article class="club-card">
-  <h2>EVERTOR</h2>
-  <a class="logo-link" href="evertor.html" aria-label="Presentazione EVERTOR">
-    <img src="evertor.png" alt="Logo EVERTOR" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<h2>EVERTOR</h2>
+<a aria-label="Presentazione EVERTOR" class="logo-link" href="evertor.html">
+<img alt="Logo EVERTOR" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="evertor.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article>
 <article class="club-card">
-  <h2>INTERTOR</h2>
-  <a class="logo-link" href="intertor.html" aria-label="Presentazione INTERTOR">
-    <img src="intertor.png" alt="Logo INTERTOR" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<h2>INTERTOR</h2>
+<a aria-label="Presentazione INTERTOR" class="logo-link" href="intertor.html">
+<img alt="Logo INTERTOR" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="intertor.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article>
 <article class="club-card">
-  <h2>LOBE UNITED</h2>
-  <a class="logo-link" href="lobe-united.html" aria-label="Presentazione LOBE UNITED">
-    <img src="lobe-united.png" alt="Logo LOBE UNITED" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<h2>LOBE UNITED</h2>
+<a aria-label="Presentazione LOBE UNITED" class="logo-link" href="lobe-united.html">
+<img alt="Logo LOBE UNITED" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="lobe-united.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article>
 <article class="club-card">
-  <h2>MONACO DI BARRIERA</h2>
-  <a class="logo-link" href="monaco-di-barriera.html" aria-label="Presentazione MONACO DI BARRIERA">
-    <img src="monaco-di-barriera.png" alt="Logo MONACO DI BARRIERA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<h2>MONACO DI BARRIERA</h2>
+<a aria-label="Presentazione MONACO DI BARRIERA" class="logo-link" href="monaco-di-barriera.html">
+<img alt="Logo MONACO DI BARRIERA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="monaco-di-barriera.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article>
 <article class="club-card">
-  <h2>PROFONDA AURORA</h2>
-  <a class="logo-link" href="profonda-aurora.html" aria-label="Presentazione PROFONDA AURORA">
-    <img src="profonda-aurora.png" alt="Logo PROFONDA AURORA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<h2>PROFONDA AURORA</h2>
+<a aria-label="Presentazione PROFONDA AURORA" class="logo-link" href="profonda-aurora.html">
+<img alt="Logo PROFONDA AURORA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="profonda-aurora.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article>
 <article class="club-card">
-  <h2>REAL DORATOM</h2>
-  <a class="logo-link" href="real-doratom.html" aria-label="Presentazione REAL DORATOM">
-    <img src="real-doratom.png" alt="Logo REAL DORATOM" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<h2>REAL DORATOM</h2>
+<a aria-label="Presentazione REAL DORATOM" class="logo-link" href="real-doratom.html">
+<img alt="Logo REAL DORATOM" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="real-doratom.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article>
 <article class="club-card">
-  <h2>SPARTAK PISA</h2>
-  <a class="logo-link" href="spartak-pisa.html" aria-label="Presentazione SPARTAK PISA">
-    <img src="spartak-pisa.png" alt="Logo SPARTAK PISA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<h2>SPARTAK PISA</h2>
+<a aria-label="Presentazione SPARTAK PISA" class="logo-link" href="spartak-pisa.html">
+<img alt="Logo SPARTAK PISA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="spartak-pisa.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article>
 <article class="club-card">
-  <h2>TAURINORUM</h2>
-  <a class="logo-link" href="taurinorum.html" aria-label="Presentazione TAURINORUM">
-    <img src="taurinorum.png" alt="Logo TAURINORUM" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<h2>TAURINORUM</h2>
+<a aria-label="Presentazione TAURINORUM" class="logo-link" href="taurinorum.html">
+<img alt="Logo TAURINORUM" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="taurinorum.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article>
 <article class="club-card">
-  <h2>TOMCAT</h2>
-  <a class="logo-link" href="tomcat.html" aria-label="Presentazione TOMCAT">
-    <img src="tomcat.png" alt="Logo TOMCAT" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<h2>TOMCAT</h2>
+<a aria-label="Presentazione TOMCAT" class="logo-link" href="tomcat.html">
+<img alt="Logo TOMCAT" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="tomcat.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article>
 <article class="club-card">
-  <h2>VAIENTUS</h2>
-  <a class="logo-link" href="vaientus.html" aria-label="Presentazione VAIENTUS">
-    <img src="vaientus.png" alt="Logo VAIENTUS" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<h2>VAIENTUS</h2>
+<a aria-label="Presentazione VAIENTUS" class="logo-link" href="vaientus.html">
+<img alt="Logo VAIENTUS" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="vaientus.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article>
 <article class="club-card">
-  <h2>WILD EAGLES</h2>
-  <a class="logo-link" href="wild-eagles.html" aria-label="Presentazione WILD EAGLES">
-    <img src="wild-eagles.png" alt="Logo WILD EAGLES" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<h2>WILD EAGLES</h2>
+<a aria-label="Presentazione WILD EAGLES" class="logo-link" href="wild-eagles.html">
+<img alt="Logo WILD EAGLES" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="wild-eagles.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article>
 <article class="club-card">
-  <h2>ZULUZEBRA</h2>
-  <a class="logo-link" href="zuluzebra.html" aria-label="Presentazione ZULUZEBRA">
-    <img src="zuluzebra.png" alt="Logo ZULUZEBRA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <span class="logo-placeholder">LOGO</span>
-  </a>
+<h2>ZULUZEBRA</h2>
+<a aria-label="Presentazione ZULUZEBRA" class="logo-link" href="zuluzebra.html">
+<img alt="Logo ZULUZEBRA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="zuluzebra.png"/>
+<span class="logo-placeholder">LOGO</span>
+</a>
 </article></section>
 <p class="club-note">Clicca sul logo per entrare nella pagina dedicata alla società.</p>
 </div>
-<div class="series-panel" id="panel-minus" role="tabpanel" aria-labelledby="tab-minus" hidden>
-
-<section class="clubs" aria-label="Società Serie Minus">
-
-  <article class="club-card">
-    <h2>SANTOS F.C.</h2><a class="logo-link" href="santos.html" aria-label="Presentazione SANTOS F.C."><img src="santos.png" alt="Logo SANTOS F.C." onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span class="logo-placeholder">LOGO</span></a>
-  </article>
-
-  <article class="club-card">
-    <h2>BOSTONESE S.C.</h2>
-    <div class="logo-link"><span class="minus-logo">BSC</span></div>
-  </article>
-
-  <article class="club-card">
-    <h2>EVERTOR UNDER</h2>
-    <div class="logo-link"><span class="minus-logo">EU</span></div>
-  </article>
-
-  <article class="club-card">
-    <h2>INTERTOR UNDER</h2>
-    <div class="logo-link"><span class="minus-logo">IU</span></div>
-  </article>
-
-  <article class="club-card">
-    <h2>SPORTAKI F.C.</h2><a class="logo-link" href="sportaki.html" aria-label="Presentazione SPORTAKI F.C."><img src="sportaki.png" alt="Logo SPORTAKI F.C." onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span class="logo-placeholder">LOGO</span></a>
-  </article>
-
-  <article class="club-card">
-    <h2>SCIALC 104 F.C.</h2>
-    <div class="logo-link"><span class="minus-logo">104</span></div>
-  </article>
-
-  <article class="club-card">
-    <h2>COHIBA F.T.</h2><a class="logo-link" href="cohiba.html" aria-label="Presentazione COHIBA F.C."><img src="cohiba.png" alt="Logo COHIBA F.C." onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span class="logo-placeholder">LOGO</span></a>
-  </article>
-
-  <article class="club-card">
-    <h2>SKIBIDIBODI F.C.</h2>
-    <div class="logo-link"><span class="minus-logo">SKB</span></div>
-  </article>
-
-  <article class="club-card">
-    <h2>CSKA PISA</h2>
-    <div class="logo-link"><span class="minus-logo">CSKA</span></div>
-  </article>
-
-  <article class="club-card">
-    <h2>ATLANTICA B.P.</h2>
-    <div class="logo-link"><span class="minus-logo">ABP</span></div>
-  </article>
-
-  <article class="club-card">
-    <h2>JUMBO A.F.T.</h2>
-    <div class="logo-link"><span class="minus-logo">JAF</span></div>
-  </article>
-
-  <article class="club-card">
-    <h2>BIN FAITA F.C.</h2>
-    <div class="logo-link"><span class="minus-logo">BFC</span></div>
-  </article>
-
-  <article class="club-card">
-    <h2>ATLETICO BIZANTINO</h2>
-    <div class="logo-link"><span class="minus-logo">AB</span></div>
-  </article>
-
-  <article class="club-card">
-    <h2>F.C. IPPO THAMUS 1996</h2><a class="logo-link" href="ippo-thamus.html" aria-label="Presentazione F.C. IPPO THAMUS 1996"><img src="ippo-thamus.png" alt="Logo F.C. IPPO THAMUS 1996" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span class="logo-placeholder">LOGO</span></a>
-  </article>
-
+<div aria-labelledby="tab-minus" class="series-panel" hidden="" id="panel-minus" role="tabpanel">
+<section aria-label="Società Serie Minus" class="clubs">
+<article class="club-card">
+<h2>SANTOS F.C.</h2><a aria-label="Presentazione SANTOS F.C." class="logo-link" href="santos.html"><img alt="Logo SANTOS F.C." onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="santos.png"/><span class="logo-placeholder">LOGO</span></a>
+</article>
+<article class="club-card">
+<h2>BOSTONESE S.C.</h2>
+<a aria-label="Presentazione BOSTONESE S.C." class="logo-link" href="bostonese.html"><span class="minus-logo">BSC</span></a>
+</article>
+<article class="club-card">
+<h2>EVERTOR UNDER</h2>
+<a aria-label="Presentazione EVERTOR UNDER" class="logo-link" href="evertor-under.html"><span class="minus-logo">EU</span></a>
+</article>
+<article class="club-card">
+<h2>INTERTOR UNDER</h2>
+<a aria-label="Presentazione INTERTOR UNDER" class="logo-link" href="intertor-under.html"><span class="minus-logo">IU</span></a>
+</article>
+<article class="club-card">
+<h2>SPORTAKI F.C.</h2><a aria-label="Presentazione SPORTAKI F.C." class="logo-link" href="sportaki.html"><img alt="Logo SPORTAKI F.C." onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="sportaki.png"/><span class="logo-placeholder">LOGO</span></a>
+</article>
+<article class="club-card">
+<h2>SCIALC 104 F.C.</h2>
+<a aria-label="Presentazione SCIALC 104 F.C." class="logo-link" href="scialc-104.html"><span class="minus-logo">104</span></a>
+</article>
+<article class="club-card">
+<h2>COHIBA F.T.</h2><a aria-label="Presentazione COHIBA F.T." class="logo-link" href="cohiba.html"><img alt="Logo COHIBA F.C." onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="cohiba.png"/><span class="logo-placeholder">LOGO</span></a>
+</article>
+<article class="club-card">
+<h2>SKIBIDIBODI F.C.</h2>
+<a aria-label="Presentazione SKIBIDIBODI F.C." class="logo-link" href="skibidibodi.html"><span class="minus-logo">SKB</span></a>
+</article>
+<article class="club-card">
+<h2>CSKA PISA</h2>
+<a aria-label="Presentazione CSKA PISA" class="logo-link" href="cska-pisa.html"><span class="minus-logo">CSKA</span></a>
+</article>
+<article class="club-card">
+<h2>ATLANTICA B.P.</h2>
+<a aria-label="Presentazione ATLANTICA B.P." class="logo-link" href="atlantica-bp.html"><span class="minus-logo">ABP</span></a>
+</article>
+<article class="club-card">
+<h2>JUMBO A.F.T.</h2>
+<a aria-label="Presentazione JUMBO A.F.T." class="logo-link" href="jumbo-aft.html"><span class="minus-logo">JAF</span></a>
+</article>
+<article class="club-card">
+<h2>BIN FAITA F.C.</h2>
+<a aria-label="Presentazione BIN FAITA F.C." class="logo-link" href="bin-faita.html"><img alt="Logo BIN FAITA F.C." onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="binfaita.png"/><span class="logo-placeholder">LOGO</span></a>
+</article>
+<article class="club-card">
+<h2>ATLETICO BIZANTINO</h2>
+<a aria-label="Presentazione ATLETICO BIZANTINO" class="logo-link" href="atletico-bizantino.html"><span class="minus-logo">AB</span></a>
+</article>
+<article class="club-card">
+<h2>F.C. IPPO THAMUS 1996</h2><a aria-label="Presentazione F.C. IPPO THAMUS 1996" class="logo-link" href="ippo-thamus.html"><img alt="Logo F.C. IPPO THAMUS 1996" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="ippo-thamus.png"/><span class="logo-placeholder">LOGO</span></a>
+</article>
 </section>
-
 <p class="club-note">Clicca sul logo per entrare nella pagina dedicata alla società.</p>
 </div>
 </main>
