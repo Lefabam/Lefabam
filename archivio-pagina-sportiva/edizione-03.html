@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+
+
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>La Pagina Sportiva - LEFABAM</title>
 <style>
 :root{--blue:#0756b8;--deep:#06366f;--yellow:#ffd21a;--paper:#fffdf8;--ink:#152238;--line:#d9dee7;--soft:#f3f7fc}
@@ -23,39 +25,43 @@ body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);fon
 .strip{margin-top:24px;background:#083a76;color:#fff;padding:18px 20px}.strip h2{color:#fff;font-family:Georgia,serif;margin:0 0 12px}.briefs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.brief{border-top:2px solid var(--yellow);padding-top:9px}.brief b{display:block;color:var(--yellow);margin-bottom:5px}.footer{text-align:center;margin-top:25px;color:#657287;font-size:12px}
 @media(max-width:800px){.main-grid,.story-grid,.opinion-grid,.briefs{grid-template-columns:1fr}.side{border-left:0;border-top:4px solid var(--yellow);padding:16px 0 0}.edition{flex-direction:column;gap:5px}.paper{padding:12px}.masthead{max-height:180px}}
 </style>
-</head>
-<body>
-<nav class="topnav">
-<a href="../index.html">Home</a><a href="../la-pagina-sportiva.html" class="active">La Pagina Sportiva</a><a href="../risultati.html">I Risultati</a><a href="../competizioni.html">Le Competizioni</a><a href="../rose.html">Rose</a><a href="../albo-doro.html">Albo d'Oro</a><a href="../societa.html">Le Società</a><a href="../regolamento.html">Regolamento</a><a href="../galleria-foto.html">Galleria Foto</a><a href="../contatti.html">Contatti</a>
-</nav>
+<style>
+/* Uniformazione dell'archivio LEFABAM: navigazione e tipografia */
+.lefabam-topbar{background:linear-gradient(180deg,#052c66,#084aa8);border-bottom:4px solid #ffe500;box-shadow:0 3px 14px #0002;padding:14px 20px}
+.lefabam-topbar-inner{max-width:1180px;margin:auto;display:grid;grid-template-columns:1fr minmax(0,2.4fr) 1fr;align-items:center;gap:12px}
+.lefabam-topbar .header-side{display:flex;gap:8px;flex-wrap:wrap}.lefabam-topbar .header-right{justify-content:flex-end}
+.lefabam-topbar .header-nav-button{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#06366f;border-radius:9px;text-decoration:none;padding:11px 14px;font-weight:800;font-size:13px}
+.lefabam-topbar .header-nav-button:hover{background:#ffe500}
+.lefabam-topbar .header-brand{text-align:center;color:#ffe500}.lefabam-topbar .header-title{font-weight:900;letter-spacing:.7px;font-size:clamp(14px,2vw,22px)}
+.lefabam-topbar .header-subtitle{font-size:12px;color:#fff;margin-top:4px}
+.paper p:not(.signature):not(.role):not(.subtitle),.paper .mini p,.paper .opinion p,.paper .editorial p{text-align:justify;hyphens:auto;overflow-wrap:break-word}
+@media(max-width:700px){.lefabam-topbar{padding:12px 9px}.lefabam-topbar-inner{grid-template-columns:1fr 1fr;gap:10px}.lefabam-topbar .header-brand{grid-row:1;grid-column:1/-1}.lefabam-topbar .header-left{grid-row:2;grid-column:1}.lefabam-topbar .header-right{grid-row:2;grid-column:2}.lefabam-topbar .header-nav-button{font-size:11px;padding:9px 9px}}
+</style></head>
+<body><header class="lefabam-topbar"><div class="lefabam-topbar-inner"><div class="header-side header-left"><a class="header-nav-button" href="../index.html">⌂ Home</a></div><div aria-label="Lega Fantacalcio Barriera dell'M" class="header-brand"><div class="header-title">LEGA FANTACALCIO BARRIERA DELL'M</div><div class="header-subtitle">Portale ufficiale della lega</div></div><div class="header-side header-right"><a class="header-nav-button" href="index.html">← Archivio</a><a class="header-nav-button" href="../la-pagina-sportiva.html">Ultimo numero →</a></div></div></header>
 
-<div style="text-align:center;margin:18px auto 0"><a href="../la-pagina-sportiva.html" style="font-weight:800;color:#06366f">← Torna all’ultimo numero</a> &nbsp; · &nbsp; <a href="index.html" style="font-weight:800;color:#06366f">Archivio completo</a></div>
+
 <main class="page"><section class="paper">
-<img class="masthead" src="../pagina_sportiva_testata.png" alt="La Pagina Sportiva - testata">
-
+<img alt="La Pagina Sportiva - testata" class="masthead" src="../pagina_sportiva_testata.png"/>
 <div class="edition">
 <span>PERIODICO INFORMATICO UFFICIALE DELLA LEFABAM</span>
 <span>EDIZIONE DELLA SETTIMANA · 4 OTTOBRE 2026</span>
 </div>
-
 <header class="hero">
 <div class="kicker">Prima pagina · Edizione n. 03</div>
 <h1>QUALIFICAZIONI, COPPA E CORSA AL TITOLO</h1>
 <div class="dek">La prima giornata delle Qualificazioni Extra, gli ottavi di OMNIS Cup e una Serie Maxima che comincia già a regalare i primi verdetti.</div>
 </header>
-
 <div class="main-grid">
 <article class="article">
 <span class="tag">Apertura della settimana</span>
 <h2>La LEFABAM riparte: subito sorprese e grandi sfide</h2>
 <p class="lead">Qualificazioni Extra, OMNIS Cup e Serie Maxima hanno acceso la stagione. Dopo il primo turno, nessuno può ancora sentirsi al sicuro.</p>
-<img class="photo" src="../foto-pagina-sportiva-03.jpg" alt="Calciatore della Profonda Aurora con la maglia celeste ufficiale durante una sfida" style="object-fit:cover;display:block;height:auto;aspect-ratio:16/9;">
+<img alt="Calciatore della Profonda Aurora con la maglia celeste ufficiale durante una sfida" class="photo" src="../foto-pagina-sportiva-03.jpg" style="object-fit:cover;display:block;height:auto;aspect-ratio:16/9;"/>
 <div class="caption">La nuova stagione LEFABAM entra nel vivo.</div>
 <p>La prima giornata delle qualificazioni ha già lasciato indicazioni importanti, mentre l'OMNIS Cup ha iniziato a delineare il quadro dei quarti. In Serie Maxima, invece, i campioni in carica non sono più soli in vetta.</p>
 <p>Tre competizioni, tre storie diverse, ma una costante: la stagione 2026/27 è già pronta a regalare rivalità, sorprese e sfide decisive.</p>
 <p><strong>Redazione:</strong> La Pagina Sportiva</p>
 </article>
-
 <aside class="side">
 <div class="box">
 <span class="tag">Il Direttore</span>
@@ -67,13 +73,12 @@ body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);fon
 <div class="box">
 <span class="tag">Dalla redazione</span>
 <h2>Le notizie più importanti</h2>
-<p><strong>Dinamo sola al comando</strong><br>Successo su Lobe e primo posto nel Girone A.</p>
-<p><strong>Spartak in vetta</strong><br>Le aquile calabresi vengono superate di misura.</p>
-<p><strong>Vaientus aggancia i campioni</strong><br>La corsa alla Serie Maxima si fa subito interessante.</p>
+<p><strong>Dinamo sola al comando</strong><br/>Successo su Lobe e primo posto nel Girone A.</p>
+<p><strong>Spartak in vetta</strong><br/>Le aquile calabresi vengono superate di misura.</p>
+<p><strong>Vaientus aggancia i campioni</strong><br/>La corsa alla Serie Maxima si fa subito interessante.</p>
 </div>
 </aside>
 </div>
-
 <section class="stories">
 <div class="story">
 <span class="tag">Qualificazioni Extra · 1ª giornata</span>
@@ -86,7 +91,6 @@ body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);fon
 </div>
 <div class="signature">✍ Natis Rich · Redattore Capo</div>
 </div>
-
 <div class="story">
 <span class="tag">OMNIS Cup · Ottavi</span>
 <h2>La nuova formula fa subito rumore</h2>
@@ -95,7 +99,6 @@ body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);fon
 <p>La sfida in famiglia tra Tomcat e Real porterà all'eliminazione sicuramente di una squadra di Maxima, così come quella tra Profonda e Taurinorum, mentre una squadra di Minus arriverà sicuramente fino alle semifinali vista la sfida diretta tra Intertor Under e CSKA. L'ultimo spot se lo giocheranno Castel e Cohiba, ma il risultato non è per nulla scontato.</p>
 <div class="signature">✍ Rob Incazzatus · Opinionista di punta</div>
 </div>
-
 <div class="story">
 <span class="tag">Serie Maxima · 3ª giornata</span>
 <h2>Vaientus aggancia i campioni: la vetta si infiamma</h2>
@@ -105,7 +108,6 @@ body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);fon
 <div class="signature">✍ Kiara Velaconto · Redattrice</div>
 </div>
 </section>
-
 <section class="opinions">
 <h2 class="section-title">Le voci della redazione</h2>
 <div class="opinion-grid">
@@ -131,7 +133,6 @@ body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);fon
 </article>
 </div>
 </section>
-
 <section class="editorial">
 <div class="label">Editoriale del Direttore</div>
 <h2>Una nuova Pagina Sportiva</h2>
@@ -139,7 +140,6 @@ body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);fon
 <p>Da oggi saranno più voci a raccontare la giornata: il Direttore, il Redattore Capo, gli opinionisti e la redazione. Perché un campionato si può leggere in classifica, ma una stagione si racconta attraverso le persone.</p>
 <div class="signature">Candito Cannatò · Direttore</div>
 </section>
-
 <section class="strip">
 <h2>Dalle altre competizioni</h2>
 <div class="briefs">
@@ -148,7 +148,6 @@ body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);fon
 <div class="brief"><b>LA FRASE</b>“Sarà già un possibile dentro o fuori per la corsa alla fase finale di Extra.”</div>
 </div>
 </section>
-
 <div class="footer">Lega Fantacalcio Barriera dell'M · La Pagina Sportiva · Edizione n. 03</div>
 </section></main>
 </body>
