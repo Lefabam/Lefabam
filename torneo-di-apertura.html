@@ -115,8 +115,9 @@ header p:before,header p:after{content:"";display:block;width:52px;height:2px;ba
     background:#d5eef8;color:#145074
 }
 
-/* Qualificate agli ottavi */
-.match.ottavo-1 .team:nth-of-type(1),.match.ottavo-2 .team:nth-of-type(2),.match.ottavo-3 .team:nth-of-type(1),.match.ottavo-4 .team:nth-of-type(1),.match.ottavo-5 .team:nth-of-type(1),.match.ottavo-6 .team:nth-of-type(1){background:#d5f1dc;color:#145d30;font-weight:900}
+/* Qualificate agli ottavi: classe esplicita, senza selettori per posizione */
+.match .team.qualificata{background:#d5f1dc!important;color:#145d30!important;font-weight:900}
+.match .team.qualificata .team-name{color:#145d30;font-weight:900}
 
 /* QUARTI */
 .quarto .team{background:linear-gradient(180deg,#d4f0f5,#bfe6ee);color:#164c68}
@@ -128,8 +129,8 @@ header p:before,header p:after{content:"";display:block;width:52px;height:2px;ba
 .semifinale .gara-extra{background:rgba(255,255,255,.34);color:#164f78}
 
 /* DIRETTI */
-.team.direct{background:linear-gradient(180deg,#e1f3e4,#cbe8d0)!important;color:#214b2b}
-.team.direct .team-name{color:#214b2b;font-weight:900}
+.team.direct{background:#d5f1dc!important;color:#145d30!important}
+.team.direct .team-name{color:#145d30;font-weight:900}
 .direct-badge{
     display:inline-block;margin-left:5px;padding:2px 6px;border-radius:7px;
     background:linear-gradient(180deg,#e9c64e,#d2a916);color:#fff;font-size:9px;font-weight:900;vertical-align:middle
@@ -292,32 +293,32 @@ footer:before,footer:after{
 
                 <div class="match ottavo-1">
                     <div class="match-label">Ottavo 1</div>
-                    <div class="team"><span class="team-name">TOMCAT</span><span class="score">–</span></div>
+                    <div class="team qualificata"><span class="team-name">TOMCAT</span><span class="score">–</span></div>
                     <div class="team"><span class="team-name">REAL DORATOM</span><span class="score">–</span></div>
                 <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" data-score="3-0" data-maxima-giornata="6" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" data-score="1-2" data-maxima-giornata="7" disabled>—</button></div></div>
                 <div class="match ottavo-2">
                     <div class="match-label">Ottavo 2</div>
                     <div class="team"><span class="team-name">WILD EAGLES</span><span class="score">–</span></div>
-                    <div class="team"><span class="team-name">LOBE</span><span class="score">–</span></div>
+                    <div class="team qualificata"><span class="team-name">LOBE</span><span class="score">–</span></div>
                 <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" data-score="2-1" data-maxima-giornata="6" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" data-score="1-4" data-maxima-giornata="7" disabled>—</button></div></div>
                 <div class="match ottavo-3">
                     <div class="match-label">Ottavo 3</div>
-                    <div class="team"><span class="team-name">TAURINORUM</span><span class="score">–</span></div>
+                    <div class="team qualificata"><span class="team-name">TAURINORUM</span><span class="score">–</span></div>
                     <div class="team"><span class="team-name">SPARTAK</span><span class="score">–</span></div>
                 <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" data-score="5-1" data-maxima-giornata="6" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" data-score="1-4" data-maxima-giornata="7" disabled>—</button></div></div>
                 <div class="match ottavo-4">
                     <div class="match-label">Ottavo 4</div>
-                    <div class="team"><span class="team-name">DINAMO</span><span class="score">–</span></div>
+                    <div class="team qualificata"><span class="team-name">DINAMO</span><span class="score">–</span></div>
                     <div class="team"><span class="team-name">VAIENTUS</span><span class="score">–</span></div>
                 <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" data-score="3-2" data-maxima-giornata="6" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" data-score="2-2" data-maxima-giornata="7" disabled>—</button></div></div>
                 <div class="match ottavo-5">
                     <div class="match-label">Ottavo 5</div>
-                    <div class="team"><span class="team-name">CASTEL</span><span class="score">–</span></div>
+                    <div class="team qualificata"><span class="team-name">CASTEL</span><span class="score">–</span></div>
                     <div class="team"><span class="team-name">MONACO DB</span><span class="score">–</span></div>
                 <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" data-score="3-1" data-maxima-giornata="6" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" data-score="0-0" data-maxima-giornata="7" disabled>—</button></div></div>
                 <div class="match ottavo-6">
                     <div class="match-label">Ottavo 6</div>
-                    <div class="team"><span class="team-name">EVERTOR</span><span class="score">–</span></div>
+                    <div class="team qualificata"><span class="team-name">EVERTOR</span><span class="score">–</span></div>
                     <div class="team"><span class="team-name">ZULUZEBRA</span><span class="score">–</span></div>
                 <div class="gara-extra"><span>ANDATA</span><button class="leg-result" type="button" data-leg="andata" data-score="2-2" data-maxima-giornata="6" disabled>—</button><span>RITORNO</span><button class="leg-result" type="button" data-leg="ritorno" data-score="3-2" data-maxima-giornata="7" disabled>—</button></div></div>
 
