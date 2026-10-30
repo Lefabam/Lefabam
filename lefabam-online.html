@@ -33,6 +33,14 @@ main{flex:1;width:min(1080px,100%);margin:0 auto;padding:35px 20px 46px}.page-he
 }
 @media(min-width:701px) and (max-width:1049px){main{padding-top:18px;padding-bottom:22px}.next{margin-top:14px}.online-circle{width:175px}.panel{padding:17px}}
 @media(max-width:700px){.access-panel p{margin-top:10px}.online-circle{width:155px}.next{margin-top:14px}.access-panel h2{margin-bottom:12px}}
+
+/* Riepilogo delle prossime scadenze confermate */
+.upcoming-deadlines{margin-top:14px;border-top:1px solid #ffffff35;padding-top:12px}
+.upcoming-deadlines h3{font-size:13px;text-transform:uppercase;color:var(--yellow);margin:0 0 9px;letter-spacing:.5px}
+.upcoming-deadlines ul{margin:0;padding:0;list-style:none;display:grid;gap:7px}
+.upcoming-deadlines li{display:flex;justify-content:space-between;gap:12px;font-size:13px;line-height:1.4;color:#edf3ff}
+.upcoming-deadlines li strong{color:white}
+@media(max-width:500px){.upcoming-deadlines li{flex-direction:column;gap:1px}}
 </style>
 </head>
 <body>
@@ -44,7 +52,7 @@ main{flex:1;width:min(1080px,100%);margin:0 auto;padding:35px 20px 46px}.page-he
 
 <section class="dashboard" aria-label="Accesso e scadenza formazioni">
 <div class="panel access-panel"><h2>Gestione formazioni</h2><a class="online-circle" href="https://www.dosio.com/lefabam/index.php?formazione" rel="noopener noreferrer" aria-label="Accedi a LEFABAM Online per la gestione delle formazioni"><img src="lega-online.png" alt="LEFABAM Online - Gestione Formazioni" class="online-logo"></a><p>Tocca il logo per accedere al portale e inviare la tua formazione.</p></div>
-<div class="panel deadline-panel"><p class="deadline-label">⏱ Prossima scadenza formazioni</p><h2 id="deadline-date" class="deadline-date">Scadenza da programmare</h2><div class="countdown" id="countdown" aria-label="Conto alla rovescia"><div class="time-box"><span class="time-number" id="days">--</span><span class="time-unit">Giorni</span></div><div class="time-box"><span class="time-number" id="hours">--</span><span class="time-unit">Ore</span></div><div class="time-box"><span class="time-number" id="minutes">--</span><span class="time-unit">Minuti</span></div><div class="time-box"><span class="time-number" id="seconds">--</span><span class="time-unit">Secondi</span></div></div><p id="deadline-status" class="status" role="status">Il conto alla rovescia sarà attivo appena inseriremo la prossima scadenza ufficiale.</p></div>
+<div class="panel deadline-panel"><p class="deadline-label">⏱ Prossima scadenza formazioni</p><h2 id="deadline-date" class="deadline-date">Scadenza da programmare</h2><div class="countdown" id="countdown" aria-label="Conto alla rovescia"><div class="time-box"><span class="time-number" id="days">--</span><span class="time-unit">Giorni</span></div><div class="time-box"><span class="time-number" id="hours">--</span><span class="time-unit">Ore</span></div><div class="time-box"><span class="time-number" id="minutes">--</span><span class="time-unit">Minuti</span></div><div class="time-box"><span class="time-number" id="seconds">--</span><span class="time-unit">Secondi</span></div></div><p id="deadline-status" class="status" role="status">Il conto alla rovescia sarà attivo appena inseriremo la prossima scadenza ufficiale.</p><div class="upcoming-deadlines" aria-label="Calendario delle prossime scadenze"><h3>Le prossime tre scadenze</h3><ul><li><strong>Serie A · 10ª / Maxima · 8ª</strong><span>Sab 31 ottobre · 15:00</span></li><li><strong>Serie A · 11ª</strong><span>Ven 6 novembre · 20:45</span></li><li><strong>Serie A · 12ª</strong><span>Sab 21 novembre · 15:00</span></li></ul></div></div>
 </section>
 <section class="panel next" aria-labelledby="next-title"><div class="next-heading"><h2 id="next-title">🏆 In campo nella prossima giornata</h2></div><div class="competitions" id="competitions"><p class="empty">Caricamento programma della prossima giornata…</p></div></section>
 </main>
@@ -53,7 +61,21 @@ main{flex:1;width:min(1080px,100%);margin:0 auto;padding:35px 20px 46px}.page-he
 <script>
 const $ = id => document.getElementById(id);
 const pad = n => String(n).padStart(2,'0');
-const entries = (window.CALENDARIO_LEFABAM || []).filter(x=>x.scadenza).sort((a,b)=>new Date(a.scadenza)-new Date(b.scadenza));
+
+/* Scadenze confermate: aggiornamenti indipendenti dal calendario esterno. */
+const scadenzeConfermate = [
+ {serieA:10, maxima:'8', dataRiferimento:'2026-10-31', scadenza:'2026-10-31T15:00:00+01:00'},
+ {serieA:11, dataRiferimento:'2026-11-06', scadenza:'2026-11-06T20:45:00+01:00'},
+ {serieA:12, dataRiferimento:'2026-11-21', scadenza:'2026-11-21T15:00:00+01:00'}
+];
+const calendarioBase = window.CALENDARIO_LEFABAM || [];
+const entries = [
+ ...calendarioBase.filter(x => !scadenzeConfermate.some(y => Number(y.serieA) === Number(x.serieA))),
+ ...scadenzeConfermate.map(x => ({
+   ...(calendarioBase.find(y => Number(y.serieA) === x.serieA) || {}),
+   ...x
+ }))
+].filter(x => x.scadenza).sort((a,b) => new Date(a.scadenza) - new Date(b.scadenza));
 let activeTurn = null;
 const formatDate = d => new Intl.DateTimeFormat('it-IT',{timeZone:'Europe/Rome',weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(d);
 function renderProgramme(x){
