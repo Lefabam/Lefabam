@@ -77,6 +77,11 @@ body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);fon
 @media(max-width:900px){.hero .dek{white-space:normal;font-size:13px}.main-grid .article h2{white-space:normal;font-size:clamp(19px,3vw,25px)}}
 @media(max-width:800px){.hero h1{font-size:clamp(19px,5.1vw,37px);letter-spacing:-.8px}.main-grid{grid-template-columns:1fr}.hero .dek{white-space:normal}}
 @media(max-width:420px){.hero h1{font-size:clamp(16px,4.8vw,21px);letter-spacing:-.5px}}
+.edition{display:grid;grid-template-columns:minmax(95px,1fr) auto minmax(95px,1fr);gap:12px;align-items:center;flex-direction:row}
+.edition span:first-child{text-align:left}
+.edition span:nth-child(2){text-align:center;color:var(--ink);white-space:nowrap}
+.edition span:last-child{text-align:right}
+@media(max-width:700px){.edition{grid-template-columns:1fr 1fr;gap:7px;font-size:11px}.edition span:nth-child(2){grid-column:1/-1;grid-row:1;white-space:normal}.edition span:first-child{grid-column:1;grid-row:2}.edition span:last-child{grid-column:2;grid-row:2}}
 </style>
 </head>
 <body>
@@ -92,7 +97,7 @@ body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);fon
 </header>
 <main class="page"><section class="paper">
 <img alt="La Pagina Sportiva - testata" class="masthead" src="pagina_sportiva_testata.png"/>
-<div class="edition"><span>PERIODICO INFORMATICO UFFICIALE DELLA LEFABAM</span><span>EDIZIONE N. 07 · 2026</span></div>
+<div class="edition"><span>N. 7</span><span>PERIODICO INFORMATICO UFFICIALE DELLA LEFABAM</span><span>29 OTTOBRE 2026</span></div>
 <header class="hero"><div class="kicker">Torneo di Apertura · Ottavi di ritorno · 7ª giornata</div><h1>SPARTAK, IMPRESA SFIORATA!</h1><div class="dek">Dopo l'1–5 dell'andata, i pisani vincono 4–1: la rimonta si ferma a un solo gol dalla qualificazione. Il Taurinorum resiste e passa ai quarti.</div></header>
 <div class="main-grid">
 <article class="article"><span class="tag">La copertina · I migliori della giornata</span><p class="lead">Noslin del Tomcat e Cissè del Lobe United accendono il settimo turno: due protagonisti, due maglie e una copertina tutta per loro.</p><img alt="Noslin del Tomcat e Cissè del Lobe United, i migliori della giornata" class="photo" src="migliori-giornata-07.png" style="object-fit:contain;display:block;height:auto;aspect-ratio:auto;max-height:none"/><div class="caption">Noslin in giallonero per il Tomcat, Cissè in rosso per il Lobe United: i migliori della 7ª giornata.</div>
