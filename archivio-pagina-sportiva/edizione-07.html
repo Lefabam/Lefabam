@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>La Pagina Sportiva · Edizione 07 | LEFABAM</title>
+<style>
+:root{--blue:#0756b8;--deep:#06366f;--yellow:#ffd21a;--paper:#fffdf8;--ink:#152238;--line:#d9dee7;--soft:#f3f7fc}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#dcecff,#f7f9fc 38%,#eaf2fb);font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+.topnav{background:linear-gradient(180deg,#06366f,#07529d);padding:14px 20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;position:sticky;top:0;z-index:10;box-shadow:0 3px 14px #0002}
+.topnav a{color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:9px 13px;border-radius:9px}.topnav a:hover{background:#ffffff20}.topnav a.active{background:var(--yellow);color:#07366d}
+.page{max-width:1180px;margin:24px auto 50px;padding:0 18px}.paper{background:var(--paper);box-shadow:0 12px 40px #06366f22;border:1px solid #d6dce6;padding:18px 24px 34px}
+.masthead{width:100%;display:block;height:auto;max-height:250px;object-fit:cover;object-position:center 32%;border-bottom:1px solid #d8dde6}
+.edition{display:flex;justify-content:space-between;align-items:center;border-bottom:4px solid var(--blue);padding:9px 2px 8px;font-size:13px;font-weight:700;letter-spacing:.4px}.edition span:nth-child(2){color:#555}
+.hero{text-align:center;padding:22px 8px 18px;border-bottom:1px solid var(--line)}.kicker{font-size:13px;color:var(--blue);font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-family:Georgia,serif;font-size:clamp(34px,5vw,62px);line-height:.98;margin:8px 0 10px;color:#082e62}.hero .dek{font-size:18px;color:#46546b;max-width:850px;margin:auto;line-height:1.4}
+.main-grid{display:grid;grid-template-columns:1.7fr .9fr;gap:22px;padding-top:22px}.article{border-bottom:1px solid var(--line);padding-bottom:20px}.article h2,.side h2,.section-title{font-family:Georgia,serif;margin:0 0 9px;color:#082e62}.article h2{font-size:30px}.article .lead{font-size:18px;font-weight:700;line-height:1.45}.article p,.side p,.story p{line-height:1.62;margin:9px 0}
+.photo{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#d8e8fb,#9fc4eb);display:flex;align-items:center;justify-content:center;color:#24568e;font-weight:800;font-size:18px;border:1px solid #b8cbe0;margin:15px 0}.caption{font-size:12px;color:#68768b;font-style:italic}
+.side{border-left:4px solid var(--yellow);padding-left:18px}.side .box{border-bottom:1px solid var(--line);padding:0 0 15px;margin-bottom:16px}.side .box:last-child{border-bottom:0}.tag{display:inline-block;background:var(--blue);color:#fff;font-size:11px;font-weight:800;padding:5px 8px;margin-bottom:7px;text-transform:uppercase}
+.stories{margin-top:26px}.story{border-top:5px solid var(--blue);padding:17px 0 20px}.story h2{font-family:Georgia,serif;font-size:29px;color:#082e62;margin:0 0 6px}.story .intro{font-weight:700;font-size:17px;margin-bottom:13px}.story-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}.mini{background:var(--soft);border:1px solid #d7e0ec;padding:15px}.mini h3{font-family:Georgia,serif;color:#082e62;margin:0 0 7px;font-size:20px}.mini p{margin:0}.signature{margin-top:13px;font-weight:800;color:var(--blue)}
+.opinions{margin-top:24px;border-top:5px solid var(--blue);padding-top:16px}.opinion-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.opinion{background:#f3f7fc;border:1px solid #d7e0ec;padding:16px;position:relative}.opinion:before{content:'“';position:absolute;right:12px;top:-9px;font:700 60px Georgia;color:#cbd9ec}.opinion .name{font-weight:800;color:var(--blue);font-size:13px}.opinion h3{font-family:Georgia,serif;margin:5px 0 8px;font-size:20px}.opinion p{line-height:1.62;margin:0}
+.editorial{margin-top:24px;background:#083a76;color:#fff;padding:20px 22px;border-left:8px solid var(--yellow)}.editorial h2{font-family:Georgia,serif;margin:0 0 7px;color:#fff;font-size:28px}.editorial .label{color:var(--yellow);font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:1.4px}.editorial p{line-height:1.65;margin:9px 0}.editorial .signature{color:var(--yellow)}
+.strip{margin-top:24px;background:#083a76;color:#fff;padding:18px 20px}.strip h2{color:#fff;font-family:Georgia,serif;margin:0 0 12px}.briefs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.brief{border-top:2px solid var(--yellow);padding-top:9px}.brief b{display:block;color:var(--yellow);margin-bottom:5px}.footer{text-align:center;margin-top:25px;color:#657287;font-size:12px}
+@media(max-width:800px){.main-grid,.story-grid,.opinion-grid,.briefs{grid-template-columns:1fr}.side{border-left:0;border-top:4px solid var(--yellow);padding:16px 0 0}.edition{flex-direction:column;gap:5px}.paper{padding:12px}.masthead{max-height:180px}}
+
+/* Fascia istituzionale LEFABAM */
+.lefabam-topbar{background:linear-gradient(180deg,#052c66,#084aa8);border-bottom:4px solid #ffe500;box-shadow:0 3px 14px #0002;padding:14px 20px}
+.lefabam-topbar-inner{max-width:1180px;margin:auto;display:grid;grid-template-columns:1fr minmax(0,2.4fr) 1fr;align-items:center;gap:12px}
+.lefabam-topbar .header-side{display:flex}.lefabam-topbar .header-right{justify-content:flex-end}
+.lefabam-topbar .header-nav-button{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#06366f;border-radius:9px;text-decoration:none;padding:11px 16px;font-weight:800;font-size:14px}
+.lefabam-topbar .header-nav-button:hover{background:#ffe500}
+.lefabam-topbar .header-brand{text-align:center;color:#ffe500}
+.lefabam-topbar .header-title{font-weight:900;letter-spacing:.7px;font-size:clamp(14px,2vw,22px)}
+.lefabam-topbar .header-subtitle{font-size:12px;color:#fff;margin-top:4px}
+@media(max-width:600px){.lefabam-topbar{padding:12px 9px}.lefabam-topbar-inner{grid-template-columns:1fr 1fr;gap:10px}.lefabam-topbar .header-brand{grid-row:1;grid-column:1/-1}.lefabam-topbar .header-left{grid-row:2;grid-column:1}.lefabam-topbar .header-right{grid-row:2;grid-column:2}.lefabam-topbar .header-nav-button{font-size:12px;padding:9px 11px}}
+
+/* Edizione 05: titolo calibrato e commento del direttore in spalla */
+.hero h1{font-size:clamp(31px,4.45vw,58px);line-height:1.06;letter-spacing:-1.1px;max-width:1100px;margin:10px auto 13px;text-wrap:balance}
+.main-grid{grid-template-columns:minmax(0,1.65fr) minmax(285px,1fr);align-items:start;gap:22px}
+.main-grid .article h2{margin-top:24px;font-size:29px}
+.side .editorial{margin-top:18px;padding:19px 17px;border-left:5px solid var(--yellow)}
+.side .editorial h2{font-size:25px;line-height:1.14}
+.side .editorial p{font-size:15px;line-height:1.55}
+@media(max-width:800px){.main-grid{grid-template-columns:1fr}.hero h1{font-size:clamp(27px,7vw,44px);letter-spacing:-.5px}.side .editorial{margin-top:15px}}
+
+/* Titoli della prima pagina: versione a tutta larghezza */
+.hero{padding:20px 0 18px}
+.hero h1{font-family:Georgia,serif;font-weight:900;font-size:clamp(39px,6.4vw,78px);line-height:.98;letter-spacing:-2.5px;max-width:none;width:100%;margin:0 auto 14px;text-align:center;text-wrap:initial}
+.hero .dek{font-size:clamp(13px,1.5vw,17px);font-weight:600;max-width:none;width:100%;line-height:1.3;white-space:nowrap;letter-spacing:-.3px}
+@media(max-width:800px){.hero h1{font-size:clamp(29px,6.6vw,52px);letter-spacing:-1.3px}.hero .dek{white-space:normal;font-size:15px}}
+@media(max-width:420px){.hero h1{font-size:clamp(25px,6.7vw,32px);letter-spacing:-1px}}
+
+/* Edizione 06: risultati di Apertura */
+.results-heading{font-family:Georgia,serif;color:#082e62;margin:20px 0 10px}.results-wrap{overflow-x:auto}.results-table{width:100%;border-collapse:collapse;font-size:15px}.results-table th{background:#083a76;color:white;text-align:left;padding:12px}.results-table td{border-bottom:1px solid #d9dee7;padding:12px}.results-table td:last-child,.results-table th:last-child{text-align:center;font-weight:800;white-space:nowrap}.results-table tbody tr:nth-child(even){background:#f3f7fc}
+
+/* Edizione 07 */
+.hero h1{font-size:clamp(32px,5.5vw,69px);line-height:1.04;letter-spacing:-1.6px;text-wrap:balance}.hero .dek{white-space:normal;max-width:920px;margin:auto}.results-table th,.results-table td{padding:10px 8px}.results-table td:last-child{color:#0756b8}@media(max-width:650px){.hero h1{font-size:clamp(29px,8vw,45px)}.results-table{font-size:12px}}
+/* Edizione 07 — impaginazione compatta e testi giustificati */
+.hero{padding:14px 0 13px}
+.hero h1{font-size:clamp(27px,4.3vw,53px);line-height:1.05;letter-spacing:-1.5px;white-space:nowrap;text-wrap:nowrap;margin:5px auto 8px}
+.hero .dek{font-size:clamp(11px,1.15vw,14px);line-height:1.3;max-width:none;white-space:nowrap;letter-spacing:-.3px}
+.main-grid{grid-template-columns:minmax(0,1.65fr) minmax(290px,1fr);gap:18px;padding-top:16px}
+.main-grid .article h2{font-size:clamp(14px,1.52vw,19px);line-height:1.18;letter-spacing:-.5px;white-space:nowrap;margin:15px 0 7px}
+.article .lead{font-size:16px;line-height:1.35}
+.article p,.side p,.story p,.editorial p,.mini p,.opinion p,.brief p{ text-align:justify; text-justify:inter-word; hyphens:auto; overflow-wrap:break-word }
+.article p,.side p,.story p{line-height:1.5;margin:7px 0}
+.main-grid .article .photo{margin:11px 0}
+.side .box{padding-bottom:10px;margin-bottom:12px}
+.side .editorial{margin-top:12px;padding:14px 15px}
+.side .editorial p{font-size:14px;line-height:1.45;margin:7px 0}
+.side .editorial h2{font-size:23px}
+.stories{margin-top:18px}.story{padding:12px 0 15px}
+@media(max-width:900px){.hero .dek{white-space:normal;font-size:13px}.main-grid .article h2{white-space:normal;font-size:clamp(19px,3vw,25px)}}
+@media(max-width:800px){.hero h1{font-size:clamp(19px,5.1vw,37px);letter-spacing:-.8px}.main-grid{grid-template-columns:1fr}.hero .dek{white-space:normal}}
+@media(max-width:420px){.hero h1{font-size:clamp(16px,4.8vw,21px);letter-spacing:-.5px}}
+.edition{display:grid;grid-template-columns:minmax(95px,1fr) auto minmax(95px,1fr);gap:12px;align-items:center;flex-direction:row}
+.edition span:first-child{text-align:left}
+.edition span:nth-child(2){text-align:center;color:var(--ink);white-space:nowrap}
+.edition span:last-child{text-align:right}
+@media(max-width:700px){.edition{grid-template-columns:1fr 1fr;gap:7px;font-size:11px}.edition span:nth-child(2){grid-column:1/-1;grid-row:1;white-space:normal}.edition span:first-child{grid-column:1;grid-row:2}.edition span:last-child{grid-column:2;grid-row:2}}
+</style>
+</head>
+<body>
+<header class="lefabam-topbar">
+<div class="lefabam-topbar-inner">
+<div class="header-side header-left"><a class="header-nav-button" href="index.html">⌂ Home</a></div>
+<div aria-label="Lega Fantacalcio Barriera dell'M" class="header-brand">
+<div class="header-title">LEGA FANTACALCIO BARRIERA DELL'M</div>
+<div class="header-subtitle">Portale ufficiale della lega</div>
+</div>
+<div class="header-side header-right"><a class="header-nav-button" href="lefabam-online.html">Portale OnLine</a></div>
+</div>
+</header>
+<main class="page"><section class="paper">
+<img alt="La Pagina Sportiva - testata" class="masthead" src="pagina_sportiva_testata.png"/>
+<div class="edition"><span>N. 7</span><span>PERIODICO INFORMATICO UFFICIALE DELLA LEFABAM</span><span>29 OTTOBRE 2026</span></div>
+<header class="hero"><div class="kicker">Torneo di Apertura · Ottavi di ritorno · 7ª giornata</div><h1>SPARTAK, IMPRESA SFIORATA!</h1><div class="dek">Dopo l'1–5 dell'andata, i pisani vincono 4–1: la rimonta si ferma a un solo gol dalla qualificazione. Il Taurinorum resiste e passa ai quarti.</div></header>
+<div class="main-grid">
+<article class="article"><span class="tag">La copertina · I migliori della giornata</span><p class="lead">Noslin del Tomcat e Cissè del Lobe United accendono il settimo turno: due protagonisti, due maglie e una copertina tutta per loro.</p><img alt="Noslin del Tomcat e Cissè del Lobe United, i migliori della giornata" class="photo" src="migliori-giornata-07.png" style="object-fit:contain;display:block;height:auto;aspect-ratio:auto;max-height:none"/><div class="caption">Noslin in giallonero per il Tomcat, Cissè in rosso per il Lobe United: i migliori della 7ª giornata.</div>
+<h2>SPARTAK, LA RIMONTA CHE FA TREMARE IL TAURINORUM</h2><p>Sembrava una qualificazione già scritta. Il <strong>5–1</strong> incassato all'andata dal Taurinorum aveva lasciato allo Spartak Pisa soltanto una possibilità remota. E invece il ritorno è diventato una serata da ricordare: <strong>4–1 per lo Spartak</strong>, un risultato clamoroso che però non basta. Il totale dice <strong>6–5 per il Taurinorum</strong>, che raggiunge i quarti dopo aver rischiato di dilapidare un vantaggio enorme.</p><p>Per lo Spartak resta l'orgoglio di una risposta feroce e il rammarico di essersi fermato a una sola rete dal completare la rimonta. Per il Taurinorum, il sollievo di una qualificazione sofferta, molto più di quanto promettesse la gara d'andata.</p>
+<h2>LOBE, CHE RIBALTONE! CISSÈ CAMBIA TUTTO</h2><p>La grande impresa degli ottavi porta la firma del <strong>Lobe United</strong>. Sconfitto <strong>2–1</strong> dai Wild Eagles all'andata, il Lobe risponde con un travolgente <strong>4–1</strong> nel ritorno e conquista i quarti con un complessivo <strong>5–3</strong>.</p><p>L'uomo della svolta è <strong>Cissè</strong>: parte dalla panchina, entra in campo e segna <strong>due gol</strong>, trasformando una rimonta complicata in una festa. Una di quelle prestazioni che cambiano una partita e, forse, il cammino in coppa di un'intera squadra.</p>
+<h2>EVERTOR, COLPO IN CASA ZULU</h2><p>Non è da meno l'<strong>Evertor</strong>, che dopo il 2–2 dell'andata va a vincere <strong>3–2 sul campo della Zuluzebra</strong>. Una partita combattutissima, risolta con carattere, che consegna all'Evertor la qualificazione per <strong>5–4</strong> nel doppio confronto.</p><p>Avanzano anche il <strong>Tomcat</strong>, che difende il 3–0 iniziale nonostante il 2–1 subito dal Real Doratom; la <strong>Dinamo</strong>, capace di pareggiare 2–2 in casa della Vaientus dopo il 3–2 dell'andata; e il <strong>Castel di Iemma</strong>, che conserva il vantaggio del 3–1 grazie allo 0–0 sul campo del Monaco di Barriera.</p><p>Ai quarti le sei qualificate si uniranno a <strong>Profonda Aurora e Intertor</strong>, già ammesse direttamente al turno successivo.</p><div class="signature">✍ Natis Rich</div></article>
+<aside class="side"><div class="box"><span class="tag">Torneo di Apertura · Il verdetto</span><h2>Sei qualificate, due già ai quarti</h2><p><strong>Tomcat, Lobe United, Taurinorum, Dinamo, Castel di Iemma ed Evertor</strong> superano gli ottavi. Ad attenderle ci sono <strong>Profonda Aurora e Intertor</strong>.</p></div><div class="box"><span class="tag">L'uomo decisivo</span><h2>Cissè, doppietta dalla panchina</h2><p>Entra e segna due volte: il Lobe United ribalta il risultato dell'andata e si prende la qualificazione.</p></div>
+<section class="editorial"><div class="label">Il Punto del Direttore</div><h2>Infortuni, la stagione presenta il conto</h2><p>Il campionato è appena cominciato, eppure molte società sono già costrette a fare i conti con un avversario che non compare in classifica: l'infermeria.</p><p>La <strong>Zuluzebra</strong> si ritrova praticamente senza difensori e deve attingere pesantemente alla propria formazione di Serie Minus. È la dimostrazione di quanto il vivaio collegato possa diventare una risorsa fondamentale, soprattutto nei momenti d'emergenza.</p><p>Il <strong>Monaco di Barriera</strong> deve rinunciare contemporaneamente a due dei suoi uomini migliori, <strong>Lautaro Martínez e Koné</strong>. Il <strong>Real Doratom</strong> è alle prese con le assenze di <strong>Yildiz e Kean</strong>, senza avere nella Minus alternative adeguate per sostituirli. Anche l'<strong>Intertor</strong> deve fare a meno di <strong>Kessié e Gudmundsson</strong>.</p><p>Le assenze non cancellano i meriti di chi vince, ma cambiano inevitabilmente gli equilibri. In una lega in cui ogni mezzo punto pesa, la profondità delle rose e la capacità di adattarsi diventano decisive.</p><p>È ancora presto per parlare di sfortuna come destino. Ma è già il momento di chiedersi chi saprà resistere meglio a questa lunga prova di tenuta.</p><div class="signature">✍ Candito Cannatò · Direttore</div></section></aside></div>
+
+<section class="stories"><div class="story"><span class="tag">Torneo di Apertura · Ottavi conclusi</span><h2>Il quadro completo: andata, ritorno e qualificate</h2><p class="intro">Le sei sfide hanno espresso i loro verdetti dopo centottanta minuti di emozioni.</p><div class="results-wrap"><table class="results-table"><thead><tr><th>Sfida</th><th>Andata</th><th>Ritorno</th><th>Totale</th><th>Passa</th></tr></thead><tbody>
+<tr><td>Tomcat – Real Doratom</td><td>3–0</td><td>1–2</td><td>4–2</td><td>Tomcat</td></tr><tr><td>Wild Eagles – Lobe United</td><td>2–1</td><td>1–4</td><td>3–5</td><td>Lobe United</td></tr><tr><td>Taurinorum – Spartak Pisa</td><td>5–1</td><td>1–4</td><td>6–5</td><td>Taurinorum</td></tr><tr><td>Dinamo – Vaientus</td><td>3–2</td><td>2–2</td><td>5–4</td><td>Dinamo</td></tr><tr><td>Castel di Iemma – Monaco</td><td>3–1</td><td>0–0</td><td>3–1</td><td>Castel di Iemma</td></tr><tr><td>Evertor – Zuluzebra</td><td>2–2</td><td>3–2</td><td>5–4</td><td>Evertor</td></tr></tbody></table></div><p class="caption">Il ritorno è riportato nell'ordine delle squadre dell'andata; le gare si sono disputate a campi invertiti.</p><div class="signature">✍ La redazione</div></div></section>
+<section class="stories"><div class="story"><span class="tag">Serie Maxima · 7ª giornata</span><h2>Intertor sul podio, Evertor risale. Castel sempre più solo</h2><p class="intro">Nessun terremoto in vetta, ma alle spalle delle prime posizioni la classifica continua a muoversi.</p><p>La settima giornata di <strong>Serie Maxima</strong> non regala grandi scossoni nelle zone più alte della graduatoria. A prendersi la scena è però l'<strong>Intertor</strong>, che torna sul <strong>podio</strong> e scalza la <strong>Dinamo</strong>. Quest'ultima perde un'altra posizione, superata anche dallo <strong>Spartak Pisa</strong>.</p><p>La risalita più evidente è quella dell'<strong>Evertor</strong>: dall'<strong>11° al 7° posto</strong>, un balzo che racconta una squadra in netta ripresa e che accompagna la splendida qualificazione in Apertura.</p><p>All'estremo opposto il <strong>Castel di Iemma</strong> resta ultimo e vede <strong>aumentare il distacco</strong> dalle squadre che lo precedono. La qualificazione in coppa regala un sorriso, ma in campionato la strada per la rimonta si fa sempre più impegnativa.</p><p>Davanti, la corsa continua senza grandi strappi. E alle spalle delle prime, basta una giornata per cambiare volto alla classifica.</p><div class="signature">✍ Kiara Velaconto</div></div></section>
+<section class="stories"><div class="story"><span class="tag">Serie Minus · Dopo due giornate</span><h2>Scialc 104, partenza a razzo. Santos, un avvio da dimenticare</h2><p class="intro">Dalle prime due giornate arriva già un contrasto netto: entusiasmo da una parte, preoccupazione dall'altra.</p><p>La <strong>Serie Minus</strong> ha mosso i primi passi e lo <strong>Scialc 104</strong> è partito fortissimo. Due giornate bastano per accendere i riflettori su una formazione che ha saputo mettersi subito in evidenza, lanciando un segnale chiaro alle rivali.</p><p>Il rovescio della medaglia è il momento difficile del <strong>Santos</strong>, l'altra società di proprietà <strong>Santoiemma</strong>: ultimo e già staccato in Minus, proprio come il <strong>Castel di Iemma</strong> in Serie Maxima. Un doppio avvio complicato per la stessa proprietà, chiamata ora a trovare risposte su entrambi i fronti.</p><p>Due turni non fanno una stagione, naturalmente. Ma i primi segnali meritano attenzione: lo Scialc 104 vuole trasformare lo slancio iniziale in continuità; il Santos ha bisogno di invertire la rotta prima che il divario diventi troppo pesante.</p><p><em>Con questo articolo torno a collaborare con La Pagina Sportiva, come agli inizi della sua storia. Un piacere ritrovare queste colonne e le vicende della nostra lega.</em></p><div class="signature">✍ Duaio Antomma · Bentornato in redazione</div></div></section><section class="stories" id="archivio-storico"><div class="story"><span class="tag">Tutte le uscite</span><h2>Archivio storico de La Pagina Sportiva</h2><p class="intro">Rileggi i numeri del giornale ufficiale della LEFABAM.</p><p><a href="archivio-pagina-sportiva/index.html" style="display:inline-block;background:#0756b8;color:white;text-decoration:none;padding:12px 18px;border-radius:8px;font-weight:800">Consulta l'archivio →</a></p></div></section>
+<div class="footer">Lega Fantacalcio Barriera dell'M · La Pagina Sportiva · Edizione n. 07</div></section></main>
+</body>
+</html>
