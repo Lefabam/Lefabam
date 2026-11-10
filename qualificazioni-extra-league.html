@@ -530,7 +530,33 @@ function collegaTabellino(pulsante) {
     const {casa,trasferta,giornata} = pulsante.dataset;
     const query = new URLSearchParams({confronto:"1",giornata,casa,trasferta});
     frameTabellino.src = "risultati.html?" + query.toString();
-    document.getElementById("titoloModalTabellino").textContent = casa + " " + pulsante.textContent + " " + trasferta;
+    // Per la 9ª giornata LEFABAM, i risultati corretti nel titolo
+    // sono distinti dai valori attualmente mostrati nei pulsanti del calendario.
+    const risultatiTitoloG09 = {
+      "INTERTOR|LOBE UNITED": "3 - 1",
+      "DINAMO SIENA|EVERTOR": "2 - 1",
+      "ZULUZEBRA|WILD EAGLES": "1 - 0",
+      "SPARTAK PISA|CASTEL DI IEMMA": "1 - 1",
+      "TOMCAT|MONACO DI BARRIERA": "0 - 0",
+      "VAIENTUS|TAURINORUM": "3 - 2"
+    };
+    // Anche per l'8ª giornata LEFABAM il punteggio del titolo era invertito.
+    // Correggiamo solo il titolo della finestra, senza cambiare calendario o classifiche.
+    const risultatiTitoloG08 = {
+      "EVERTOR|INTERTOR": "2 - 3",
+      "LOBE UNITED|DINAMO SIENA": "2 - 1",
+      "CASTEL DI IEMMA|ZULUZEBRA": "1 - 1",
+      "WILD EAGLES|SPARTAK PISA": "1 - 2",
+      "TAURINORUM|TOMCAT": "2 - 0",
+      "MONACO DI BARRIERA|VAIENTUS": "1 - 2"
+    };
+    const chiavePartita = casa + "|" + trasferta;
+    const risultatoTitolo = giornata === "9"
+      ? (risultatiTitoloG09[chiavePartita] || pulsante.textContent.trim())
+      : giornata === "8"
+        ? (risultatiTitoloG08[chiavePartita] || pulsante.textContent.trim())
+        : pulsante.textContent.trim();
+    document.getElementById("titoloModalTabellino").textContent = casa + " " + risultatoTitolo + " " + trasferta;
     modalTabellino.hidden = false;
     document.body.classList.add("modal-aperto");
     chiudiModalTabellino.focus();
