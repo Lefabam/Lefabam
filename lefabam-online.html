@@ -52,7 +52,7 @@ main{flex:1;width:min(1080px,100%);margin:0 auto;padding:35px 20px 46px}.page-he
 
 <section class="dashboard" aria-label="Accesso e scadenza formazioni">
 <div class="panel access-panel"><h2>Gestione formazioni</h2><a class="online-circle" href="https://www.dosio.com/lefabam/index.php?formazione" rel="noopener noreferrer" aria-label="Accedi a LEFABAM Online per la gestione delle formazioni"><img src="lega-online.png" alt="LEFABAM Online - Gestione Formazioni" class="online-logo"></a><p>Tocca il logo per accedere al portale e inviare la tua formazione.</p></div>
-<div class="panel deadline-panel"><p class="deadline-label">⏱ Prossima scadenza formazioni</p><h2 id="deadline-date" class="deadline-date">Scadenza da programmare</h2><div class="countdown" id="countdown" aria-label="Conto alla rovescia"><div class="time-box"><span class="time-number" id="days">--</span><span class="time-unit">Giorni</span></div><div class="time-box"><span class="time-number" id="hours">--</span><span class="time-unit">Ore</span></div><div class="time-box"><span class="time-number" id="minutes">--</span><span class="time-unit">Minuti</span></div><div class="time-box"><span class="time-number" id="seconds">--</span><span class="time-unit">Secondi</span></div></div><p id="deadline-status" class="status" role="status">Il conto alla rovescia sarà attivo appena inseriremo la prossima scadenza ufficiale.</p><div class="upcoming-deadlines" aria-label="Calendario delle prossime scadenze"><h3>Le prossime tre scadenze</h3><ul><li><strong>Serie A · 10ª / Maxima · 8ª</strong><span>Sab 31 ottobre · 15:00</span></li><li><strong>Serie A · 11ª</strong><span>Ven 6 novembre · 20:45</span></li><li><strong>Serie A · 12ª</strong><span>Sab 21 novembre · 15:00</span></li></ul></div></div>
+<div class="panel deadline-panel"><p class="deadline-label">⏱ Prossima scadenza formazioni</p><h2 id="deadline-date" class="deadline-date">Scadenza da programmare</h2><div class="countdown" id="countdown" aria-label="Conto alla rovescia"><div class="time-box"><span class="time-number" id="days">--</span><span class="time-unit">Giorni</span></div><div class="time-box"><span class="time-number" id="hours">--</span><span class="time-unit">Ore</span></div><div class="time-box"><span class="time-number" id="minutes">--</span><span class="time-unit">Minuti</span></div><div class="time-box"><span class="time-number" id="seconds">--</span><span class="time-unit">Secondi</span></div></div><p id="deadline-status" class="status" role="status">Il conto alla rovescia sarà attivo appena inseriremo la prossima scadenza ufficiale.</p><div class="upcoming-deadlines" aria-label="Calendario delle prossime scadenze"><h3>Le prossime quattro scadenze</h3><ul><li><strong>Serie A · 13ª</strong><span>Ven 27 novembre · 20:45</span></li><li><strong>Serie A · 14ª</strong><span>Ven 4 dicembre · 20:45</span></li><li><strong>Serie A · 15ª</strong><span>Ven 11 dicembre · 20:45</span></li><li><strong>Serie A · 16ª</strong><span>Ven 18 dicembre · 18:30</span></li></ul></div></div>
 </section>
 <section class="panel next" aria-labelledby="next-title"><div class="next-heading"><h2 id="next-title">🏆 In campo nella prossima giornata</h2></div><div class="competitions" id="competitions"><p class="empty">Caricamento programma della prossima giornata…</p></div></section>
 </main>
@@ -64,9 +64,10 @@ const pad = n => String(n).padStart(2,'0');
 
 /* Scadenze confermate: aggiornamenti indipendenti dal calendario esterno. */
 const scadenzeConfermate = [
- {serieA:10, maxima:'8', dataRiferimento:'2026-10-31', scadenza:'2026-10-31T15:00:00+01:00'},
- {serieA:11, dataRiferimento:'2026-11-06', scadenza:'2026-11-06T20:45:00+01:00'},
- {serieA:12, dataRiferimento:'2026-11-21', scadenza:'2026-11-21T15:00:00+01:00'}
+ {serieA:13, dataRiferimento:'2026-11-27', scadenza:'2026-11-27T20:45:00+01:00'},
+ {serieA:14, dataRiferimento:'2026-12-04', scadenza:'2026-12-04T20:45:00+01:00'},
+ {serieA:15, dataRiferimento:'2026-12-11', scadenza:'2026-12-11T20:45:00+01:00'},
+ {serieA:16, dataRiferimento:'2026-12-18', scadenza:'2026-12-18T18:30:00+01:00'}
 ];
 const calendarioBase = window.CALENDARIO_LEFABAM || [];
 const entries = [
